@@ -135,7 +135,7 @@
     </dependencies>
 
     <build>
-        <finalName>oa_system</finalName>
+        <finalName>oa</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

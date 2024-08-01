@@ -40,17 +40,5 @@
 
 #####     账号：test      密码：test
 #####     账号：soli      密码：123456
- 
 
-###  6.项目截图
 
-![演示1.gif](https://images.gitee.com/uploads/images/2019/0927/141250_aeec4d38_1277461.gif)
-![演示4.gif](https://i.loli.net/2018/09/26/5bab4565b121e.gif)
-![演示3.gif](https://images.gitee.com/uploads/images/2019/0927/141251_4ef0327c_1277461.gif)
-
-![主页面.png](https://images.gitee.com/uploads/images/2019/0927/141250_2286d104_1277461.png)
-![登陆页面.png](https://images.gitee.com/uploads/images/2019/0927/141250_f5277aa8_1277461.png)
-![文件管理.png](https://images.gitee.com/uploads/images/2019/0927/141250_491ce25d_1277461.png)
-![讨论区.png](https://images.gitee.com/uploads/images/2019/0927/141251_d4992cd4_1277461.png)
-![新建流程.png](https://images.gitee.com/uploads/images/2019/0927/141251_c7d89853_1277461.png)
-![通讯录.png](https://images.gitee.com/uploads/images/2019/0927/141251_bcf9cbda_1277461.png)

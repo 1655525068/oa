@@ -1,7 +1,7 @@
 
 /**
  * 通讯录
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.model.dao.address;

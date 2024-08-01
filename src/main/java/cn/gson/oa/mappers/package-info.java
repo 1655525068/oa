@@ -1,7 +1,7 @@
 
 /**
  * mybatis的类
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.mappers;

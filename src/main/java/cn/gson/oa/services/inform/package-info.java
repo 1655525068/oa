@@ -1,7 +1,7 @@
 
 /**
  * 通知公告service
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.services.inform;

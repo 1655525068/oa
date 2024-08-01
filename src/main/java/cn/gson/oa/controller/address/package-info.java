@@ -1,7 +1,7 @@
 
 /**
  * 讨论区
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.controller.address;

@@ -1,7 +1,7 @@
 
 /**
  * 表单验证
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.common.formValid;

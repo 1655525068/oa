@@ -18,7 +18,7 @@ import cn.gson.oa.model.entity.user.User;
 
  * 
  * 考勤表
- * @author admin
+ * @author
  *
  */
 @Entity

@@ -1,7 +1,7 @@
 
 /**
  * 公告通知模块
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.model.entity.notice;

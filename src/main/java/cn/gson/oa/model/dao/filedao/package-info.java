@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Administrator
+ * @author
  *
  */
 package cn.gson.oa.model.dao.filedao;

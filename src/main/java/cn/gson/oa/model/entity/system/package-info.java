@@ -1,7 +1,7 @@
 
 /**
  * 系统模块
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.model.entity.system;

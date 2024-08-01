@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * 系统菜单实体类表
  * 
- * @author luoxiang
+ * @author
  *
  */
 @Entity

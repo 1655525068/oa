@@ -2,7 +2,7 @@
  * 
  */
 /**任务实体类
- * @author 宋妈
+ * @author
  *
  */
 package cn.gson.oa.model.entity.task;

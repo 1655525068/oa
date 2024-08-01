@@ -16,7 +16,7 @@ import cn.gson.oa.model.entity.user.User;
 /**
  * user_id
  * 外键没有连
- * @author admin
+ * @author
  *---通讯录表----
  */
 @Entity

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 /**
  * 部门实体类
- * @author Administrator
+ * @author
  *
  */
 @Entity

@@ -19,7 +19,7 @@ import cn.gson.oa.model.entity.user.User;
 @Table(name="aoa_notepaper")
 /**
  * 便签表
- * @author 宋佳
+ * @author
  *
  */
 public class Notepaper {

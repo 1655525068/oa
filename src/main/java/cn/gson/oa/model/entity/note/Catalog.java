@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import cn.gson.oa.model.entity.user.User;
 /**
  * 此处有一个parentid需要连接
- * @author admin
+ * @author
  * ---目录表----
  *
  */

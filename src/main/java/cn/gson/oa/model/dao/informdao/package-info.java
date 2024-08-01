@@ -1,7 +1,7 @@
 
 /**
  * 通知公告管理dao层
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.model.dao.informdao;

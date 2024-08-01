@@ -4,7 +4,7 @@ package cn.gson.oa.common.formValid;
  * Description:
  * 异常结果抛出
  *
- * @author zzy
+ * @author
  * @create 2017-09-12 14:56
  */
 public enum ResultEnum {

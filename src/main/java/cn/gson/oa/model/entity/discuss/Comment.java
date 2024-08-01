@@ -19,7 +19,7 @@ import cn.gson.oa.model.entity.user.User;
  * 回复id
  * 没有连接外键
  * 评论表
- * @author admin
+ * @author
  *
  */
 @Entity

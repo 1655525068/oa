@@ -2,7 +2,7 @@
 /**
  * 异常处理
  * 自定义异常
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.exception;

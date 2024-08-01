@@ -1,7 +1,7 @@
 
 /**
  * 实体类
- * @author luoxiang
+ * @author
  *
  */
 package cn.gson.oa.model.entity;

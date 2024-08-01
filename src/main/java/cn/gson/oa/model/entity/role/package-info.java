@@ -2,7 +2,7 @@
  * 
  */
 /**角色权限
- * @author 宋妈
+ * @author
  *
  */
 package cn.gson.oa.model.entity.role;

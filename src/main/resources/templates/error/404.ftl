@@ -18,9 +18,6 @@
     <p class="text">{{ date }}</p>
     <p class="text">
         <a href="/index" style="color: #daf6ff;font-size: 14px;">回到首页</a>
-        <a href="https://gitee.com/aaluoxiang/oa_system" target="_blank" style="color: #daf6ff;font-size: 14px;">
-            查看项目地址
-        </a>
     </p>
 </div>
 <script>

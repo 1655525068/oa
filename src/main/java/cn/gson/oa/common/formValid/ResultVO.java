@@ -5,7 +5,7 @@ package cn.gson.oa.common.formValid;
  * http请求返回的最外层对象
  *
  * @author
- * @create 2017-09-07 13:38
+ * @create
  */
 
 public class ResultVO<T> {

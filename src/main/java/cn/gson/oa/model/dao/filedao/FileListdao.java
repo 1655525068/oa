@@ -20,7 +20,7 @@ public interface FileListdao extends PagingAndSortingRepository<FileList, Long>{
 	
 	List<FileList> findByUserAndContentTypeLikeAndFileIstrash(User user,String contenttype,Long istrash);
 	
-	List<FileList> findByUserAndFileIstrash(User user,Long istrash);
+	List<FileList>  findByUserAndFileIstrash(User user,Long istrash);
 	
 	@Query("from FileList f where f.user=?1 and f.fileIstrash=0 and f.contentType NOT LIKE 'image/%' and f.contentType NOT LIKE 'application/x%' and f.contentType NOT LIKE 'video/%' and f.contentType NOT LIKE 'audio/%'")
 	List<FileList> finddocument(User user);

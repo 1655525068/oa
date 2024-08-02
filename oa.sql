@@ -16,6 +16,58 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ao_three_book`
+--
+
+DROP TABLE IF EXISTS `ao_three_book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ao_three_book` (
+  `book_id` bigint NOT NULL COMMENT '三单ID',
+  `serial_number` varchar(200) DEFAULT NULL COMMENT '序号',
+  `type` varchar(200) DEFAULT NULL COMMENT '类型',
+  `three_book_numbers` varchar(200) DEFAULT NULL COMMENT '三单号',
+  `chinese_name` varchar(200) DEFAULT NULL COMMENT '中文名称',
+  `fcr_version` varchar(200) DEFAULT NULL COMMENT 'FCR版本',
+  `state` varchar(200) DEFAULT NULL COMMENT '状态',
+  `prepared_by` varchar(200) DEFAULT NULL COMMENT '编制人',
+  `latest_version` varchar(200) DEFAULT NULL COMMENT '最新版',
+  `receiving_time` date DEFAULT NULL COMMENT '接收时间',
+  `distribution_time` date DEFAULT NULL COMMENT '分发时间',
+  `invalid_identification` varchar(200) DEFAULT NULL COMMENT '作废标识',
+  `related_document_codes` varchar(200) DEFAULT NULL COMMENT '相关文件编码',
+  `internal_codes` varchar(200) DEFAULT NULL COMMENT '相关文件内部编码',
+  `draw_version` varchar(200) DEFAULT NULL COMMENT '图纸版本',
+  `professional_type` varchar(200) DEFAULT NULL COMMENT '专业',
+  `responsible_party` varchar(200) DEFAULT NULL COMMENT '责任方',
+  `identify_responsible_person` varchar(200) DEFAULT NULL COMMENT '识别责任人',
+  `process_person` varchar(200) DEFAULT NULL COMMENT '处理人',
+  `should_handle` varchar(200) DEFAULT NULL COMMENT '是否需要处理',
+  `handle_method` varchar(200) DEFAULT NULL COMMENT '处理方式\n(ICR/细化)',
+  `process_order_number` varchar(200) DEFAULT NULL COMMENT '处理单号',
+  `process_completion_time` date DEFAULT NULL COMMENT '处理完成时间',
+  `process_responsible_party` varchar(200) DEFAULT NULL COMMENT '责任方',
+  `remarks` varchar(200) DEFAULT NULL COMMENT '备注',
+  `should_claim` varchar(200) DEFAULT NULL COMMENT '是否涉及索赔',
+  `plan_to_close_time` varchar(200) DEFAULT NULL COMMENT '计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN',
+  `actual_close_time` varchar(200) DEFAULT NULL COMMENT '实际关闭时间',
+  `design_point_value` varchar(200) DEFAULT NULL COMMENT '设计点值',
+  `audit_point_value` varchar(200) DEFAULT NULL COMMENT '审核点值',
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ao_three_book`
+--
+
+LOCK TABLES `ao_three_book` WRITE;
+/*!40000 ALTER TABLE `ao_three_book` DISABLE KEYS */;
+INSERT INTO `ao_three_book` VALUES (1,'1','FCR','FCR-LD-X-CN23-000096','关于1116XML05BZS07贯穿件图册钢板材质和厚度替换的变更（管道）','A','有效','马文灿','Y','2024-05-15','2024-05-15','N','LDX-ML05-V2-317-B213','1116XML05BZS07-054','D','管道','建安承包商','朱建国','冉英男','是','ICR','ICR-PT-1-12-00049','2024-07-03','施工承包商',NULL,'否',NULL,NULL,NULL,NULL),(2,'2','CR','CR-LD-X-CN23-000154','关于1116X1215BZS02-051等图纸问题的澄清','A','有效','冉英男','Y','2024-05-21','2024-05-21','N','LDX-WRS-PLW-664-B213','1116X1215BZS02','B','管道','其他','冉英男','谷晓雨','/','/','/',NULL,'/','/','/','转FCR（FCR-LD-1-CN23-000354/FCR-LD-1-CN23-000164）',NULL,NULL,NULL),(3,'3','DEN','DEN-LD-X-B24K-000102','关于1116X12X8BZS02-008图纸修改。','A','有效',NULL,'Y','2024-05-24','2024-05-27','N','LDX-PCS-PLW-050-B24K','1116X12X8BZS02-008','A','管道','工程公司','颉古宝','张春芳','是','ICR','ICR-TM-1-12-00297/ICR-TM-2-12-00298','2024-07-18','设计院',NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `ao_three_book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `aoa_attachment_list`
 --
 

@@ -5,12 +5,13 @@ package cn.gson.oa.common.formValid;
  * 异常结果抛出
  *
  * @author
- * @create 2017-09-12 14:56
+ * @create
  */
 public enum ResultEnum {
     ERROR(2, "验证失败"),
     SUCCESS(200, "成功"),
-    NONETYPE(1, "找不到参数"),;
+    NONETYPE(1, "找不到参数"),
+    ;
 
     private Integer code;
     private String message;

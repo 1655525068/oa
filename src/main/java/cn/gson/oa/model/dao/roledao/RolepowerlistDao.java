@@ -42,7 +42,9 @@ public interface RolepowerlistDao extends JpaRepository<Rolepowerlist, Long>{
 				+ "from Rolepowerlist as role,SystemMenu as menu where role.menuId.menuId=menu.menuId "
 				+ "and menu.parentId=?1 and role.roleId.roleId=?2 and menu.show=?3 and role.check=?4 and menu.menuName like %?5% order by menu.sortId")
 		List<Rolemenu> findname(Long id,Long roleid,Boolean bo,Boolean le,String name);
-		
-		
+
+		//查询所有角色的菜单列表
+		@Query("select po from Rolepowerlist as po where po.roleId.roleId=?1")
+		List<Rolepowerlist> findAllByRoleId(Long roleid);
 
 }

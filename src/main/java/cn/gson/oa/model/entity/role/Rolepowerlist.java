@@ -1,13 +1,6 @@
 package cn.gson.oa.model.entity.role;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import cn.gson.oa.model.entity.system.SystemMenu;
 
@@ -15,8 +8,6 @@ import cn.gson.oa.model.entity.system.SystemMenu;
 @Table(name="aoa_role_power_list")
 //角色权限中间表
 public class Rolepowerlist {
-
-	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

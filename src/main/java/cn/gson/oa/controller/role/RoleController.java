@@ -189,7 +189,7 @@ public class RoleController {
  */
 	@RequestMapping("deshan")
 	public String index5(HttpServletRequest req,Model model,HttpSession session){
-		String userId = ((String) session.getAttribute("userId")).trim();
+		String userId = String.valueOf(session.getAttribute("userId")).trim();
 		Long userid = Long.parseLong(userId);
 		User user=udao.findOne(userid);
 		String id=null;
@@ -205,6 +205,8 @@ public class RoleController {
 				return "common/proce";
 			}else{
 				Role r=rdao.findOne(lid);
+				List<Rolepowerlist> list = rpdao.findAllByRoleId(r.getRoleId());
+				rpdao.delete(list);
 				rdao.delete(r);
 			}
 		}else{

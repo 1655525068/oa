@@ -38,16 +38,6 @@
 	</ul>
 	<!--右侧导航栏-->
 	<ul class="nav navbar-nav navbar-right moredeep">
-		<li>
-			<a href="javascript:void(0)" class="green-none white" data-toggle="modal" data-target="#myModal">
-				<span class="glyphicon glyphicon glyphicon-jpy">捐赠</span>
-			</a>
-		</li>
-		<li>
-			<a href="https://gitee.com/aaluoxiang/oa_system" target="_blank" class="green-none white">
-				<span class="glyphicon glyphicon-star">Git源码</span>
-			</a>
-		</li>
 		<li><a href="javascript:changepath('/infromlist');" class="green-none white"><span
 				class="glyphicon glyphicon-bell"></span>
 				<#if notice==0>

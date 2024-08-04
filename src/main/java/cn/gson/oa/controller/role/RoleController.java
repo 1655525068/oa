@@ -102,7 +102,6 @@ public class RoleController {
 	
 	/**
 	 * 设定角色权限
-	 * @return
 	 */
 	@RequestMapping("roleset")
 	public String index2(HttpServletRequest req,Model model){

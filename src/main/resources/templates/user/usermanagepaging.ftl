@@ -4,11 +4,11 @@
 		<h3 class="box-title">
 			<a href="useredit" class="label label-success" style="padding: 5px;">
 				<span class="glyphicon glyphicon-plus"></span> 新增
-			</a> 
-			<!-- <a href="daycalendar" class="label label-primary"
-				style="padding: 5px; margin-left: 5px;"> <span
-				class="glyphicon glyphicon-gift"></span> 生日
-			</a> -->
+			</a>
+            <a href="" class="label label-success" style="padding: 5px;margin-left:5px;">
+                <span class="glyphicon glyphicon-refresh"></span> 刷新
+            </a>
+
 		</h3>
 		<div class="box-tools">
 			<div class="input-group" style="width: 150px;">
@@ -28,12 +28,10 @@
 				<tr>
 					
 					<th scope="col">&nbsp;</th>
-					<th scope="col">部门</th>
-					<th scope="col">真实姓名</th>
+					<th scope="col">姓名</th>
 					<th scope="col">用户名</th>
 					<th scope="col">角色</th>
 					<th scope="col">电话</th>
-					<th scope="col">工资</th>
 					<th scope="col">操作</th>
 				</tr>
 				<#list users as user>
@@ -51,12 +49,10 @@
 									src="images/timg.jpg" alt="images"/>
 							</#if>
 						</td>
-						<td><span>${(user.dept.deptName)!''}</span></td>
 						<td><span>${(user.realName)!''}</span></td>
 						<td><span>${(user.userName)!''}</span></td>
 						<td><span>${(user.role.roleName)!''}</span></td>
 						<td><span>${(user.userTel)!''}</span></td>
-						<td><span>${(user.salary)!''}</span></td>
 						<td><a  href="useredit?userid=${user.userId}" class="label xiugai"><span
 								class="glyphicon glyphicon-edit"></span> 修改</a> <a
 							onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};" 

@@ -41,7 +41,7 @@ a:hover {
 			<form action="modifyrole"  method="post" onsubmit="return check();">
 			<div class="box-body no-padding">
 				<div class="box-body">
-				<!--錯誤信息提示  -->
+				<!--错误信息提示  -->
 					<div class="alert alert-danger alert-dismissable" role="alert"style="display: none;">
 						错误信息:<button class="thisclose close" type="button">&times;</button>
 						<span class="error-mess"></span>

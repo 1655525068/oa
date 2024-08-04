@@ -61,7 +61,6 @@ h1, h3 {
 .nav-tabs-custom>.nav-tabs>li>a, .nav-tabs-custom>.nav-tabs>li>a:hover {
 	background: transparent;
 	margin: 0;
-	color:
 }
 
 .nav-tabs-custom>.nav-tabs>li>a:hover {
@@ -131,9 +130,6 @@ h1, h3 {
 					<li class=""><b>我的消息</b> <a href="##" class="pull-right me" ><span
 							id="ctl00_cphMain_lblMsgCount">${noticelist}</span></a></li>
 					<hr class="pa" />
-					<li class=""><b>我的邮件</b> <a href="mail" class="pull-right me"><span
-							id="ctl00_cphMain_lblMailCount">${maillist}</span></a></li>
-					<hr class="pa" />
 				</ul>
 				<a href="##" class="btn btn-primary btn-block wri" data-toggle="modal" data-target="#notepaper"><b><i
 						class="glyphicon glyphicon-pushpin"></i> 写便签</b></a>
@@ -141,38 +137,6 @@ h1, h3 {
 
 		</div>
 
-		<div class="bgc-w box box-solid" style="border-top: 3px solid blue;">
-			<div class="box-header">
-				<h3 class="box-title">基本资料</h3>
-			</div>
-			<div class="box-body">
-				<strong><i class="glyphicon glyphicon-book"></i> 学历</strong>
-				<p class="text-muted">
-					<span id="ctl00_cphMain_lblEducation">${user.school} ${user.userEdu}</span>
-				</p>
-
-				<hr />
-
-				<strong><i class="glyphicon glyphicon-earphone"></i> 手机</strong>
-				<p class="text-muted">
-					<span id="ctl00_cphMain_lblPhone">${(user.userTel)!''}</span>
-				</p>
-
-				<hr />
-
-				<strong><i class="glyphicon glyphicon-map-marker"></i> 地址</strong>
-				<p class="text-muted">
-					<span id="ctl00_cphMain_lblAddress">${(user.address)!''}</span>
-				</p>
-
-				<hr />
-
-				<strong><i class="glyphicon glyphicon-pencil"></i> 签名</strong>
-				<p class="text-muted">
-					<span id="ctl00_cphMain_lblNote">${(user.userSign)!''}</span>
-				</p>
-			</div>
-		</div>
 	</div>
 	<div class="col-md-9" style="margin-bottom: 60px;">
 
@@ -192,7 +156,7 @@ h1, h3 {
 				</div>
 				<div class="tab-pane" id="settings">
 					<div class="box-body">
-					<!--錯誤信息提示  -->
+					<!--错误信息提示  -->
 					<div class="alert alert-danger alert-dismissable" style="display:none;" role="alert">
 						错误信息:<button class="thisclose close" type="button">&times;</button>
 						<span class="error-emp"></span>
@@ -201,9 +165,8 @@ h1, h3 {
 
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span id="ctl00_cphMain_Label1">用户名</span></label> <input
-									name="userName" type="text" value="${user.userName}" readonly="readonly"
-									id="ctl00_cphMain_txtName" class="form-control" style="background-color:#fff;"
-									onfocus="this.blur()" />
+									name="userName" type="text" value="${user.userName}"
+									id="ctl00_cphMain_txtName" class="form-control" />
 							</div>
 
 							<div class="col-md-6 form-group">
@@ -213,47 +176,15 @@ h1, h3 {
 							</div>
 
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label3">真实姓名</span></label> <input
+								<label class="control-label"><span id="ctl00_cphMain_Label3">姓名</span></label> <input
 									name="realName" type="text" value="${user.realName}"
 									id="ctl00_cphMain_txtFullName" class="form-control" />
 							</div>
 
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label5">Email</span></label> <input
+								<label class="control-label"><span id="ctl00_cphMain_Label5">邮箱</span></label> <input
 									name="eamil" type="text"
 									value="${(user.eamil)!''}" id="ctl00_cphMain_txtEmail1"
-									class="form-control" />
-							</div>
-
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label10">地址</span></label> <input
-									name="address" type="text" value="${(user.address)!''}"
-									id="ctl00_cphMain_txtAddress1" class="form-control" />
-							</div>
-
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label6">学历</span></label> <input
-									name="userEdu" type="text" value="${user.userEdu}"
-									id="ctl00_cphMain_txtEducation" class="form-control" />
-							</div>
-
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label7">毕业院校</span></label> <input
-									name="school" type="text" value="${user.school}"
-									id="ctl00_cphMain_txtSchool" class="form-control" />
-							</div>
-
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="icard">身份证号</span></label> <input
-									name="idCard" type="text"
-									value="${user.idCard}" id="ic"
-									class="form-control" />
-							</div>
-
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label9">银行账号</span></label> <input
-									name="bank" type="text"
-									value="${user.bank}" id="ctl00_cphMain_txtBankAccount"
 									class="form-control" />
 							</div>
 
@@ -273,6 +204,11 @@ h1, h3 {
 							</div>
 
 							<div class="col-md-6 form-group">
+								<label class="control-label"> <span>角色</span></label>
+								 <input name="roleid" type="text" readonly="readonly" value="${user.role.roleName}" class="form-control" />
+							</div>
+
+							<div class="col-md-6 form-group">
 								<label class="control-label"><span id="ctl00_cphMain_Label15">皮肤</span></label> <select
 									name="themeSkin" id="ctl00_cphMain_ddlSkin" onchange="alert('刷新页面生效')"
 									class="form-control select2">
@@ -281,46 +217,31 @@ h1, h3 {
 									<option value="red">中国红</option>
 									<option value="yellow">商务黄</option>
 									<option value="purple">高贵紫</option>
-
 								</select>
 							</div>
-
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span id="ctl00_cphMain_Label14">生日</span></label> <input
-									name="birth" type="text" 
-									id="Birthday" class="form-control" readonly="readonly" style="background-color:#fff;"/>
-							</div>
-
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span id="ctl00_cphMain_Label13">签名</span></label> <input
 									name="userSign" type="text" value="${(user.userSign)!''}"
 									id="ctl00_cphMain_txtNote" class="form-control" />
 							</div>
-
 						</div>
 
 						<div class="row">
-
 							<hr />
-
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span id="ctl00_cphMain_Label11">新的密码</span></label> <input
 									name="password1" type="password"
 									id="Password1" class="form-control" />
 							</div>
-
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span id="ctl00_cphMain_Label12">确认密码</span></label> <input
 									name="password" type="password"
 									id="Password2" class="form-control" />
 							</div>
-
 						</div>
 
 						<div class="row">
-
 							<hr />
-
 							<div class="col-md-6 form-group">
 								<label><span id="ctl00_cphMain_Label17">头像</span></label>
 								<div class="form-group">
@@ -466,40 +387,13 @@ function isPhoneNo(phone) {
  var pattern = /^1[34578]\d{9}$/; 
  return pattern.test(phone); 
 }
- 
-// 验证身份证 
-function isCardNo(card) { 
- var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; 
- return pattern.test(card); 
-} 
+
 //验证邮箱
 function isMailNo(mail){
-	var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/; 
-	return pattern.test(mail);
+    var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    return pattern.test(mail);
 }
-//验证卡号
-function CheckBankNo(bankn) {
-	var flag=true;
-	 if(isNaN(bankn)) {
-		 alertCheck("银行卡号必须全为数字!");
-	     flag=false;
-	   }
-	
-	var bankno = $.trim(bankn);
-  　　if(bankno.length < 16 || bankno.length > 19) {
-	 alertCheck("银行卡号长度必须在16到19之间!");
-     flag=false;
-   }
-  
-   //开头6位
-   var strBin = "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
-   if(strBin.indexOf(bankno.substring(0, 2)) == -1) {
-	 alertCheck("银行卡号开头6位不符合规范!");
-	 flag=false;
-   }
-   
-   return flag;
-}
+
 //验证密码
 function isPasswordNo(password){
 	var flag=true;
@@ -553,16 +447,24 @@ function alertCheck(errorMess){
  			
  			return false;
  		} else {
+ 		    console.log(index);
  			if (index == 1) {
- 				var $phone=$(this).val();
- 				
- 				
- 				if(isPhoneNo($phone) == false){
- 					$(this).parent().addClass("has-error has-feedback");
- 					alertCheck("请输入正确的电话号码!");
- 					isRight = 0;
- 		 			return false;
- 				}
+                var $phone = $(this).val();
+                if (isPhoneNo($phone) == false) {
+                    $(this).parent().addClass("has-error has-feedback");
+                    alertCheck("请输入正确的电话号码!");
+                    isRight = 0;
+                    return false;
+                }
+            }else if (index == 2) {
+                var $name=$(this).val();
+                console.log($name)
+                if(isChinaName($name) == false){
+                    $(this).parent().addClass("has-error has-feedback");
+                    alertCheck("请输入正确的中文名称!");
+                    isRight = 0;
+                    return false;
+                }
  				
  			}else if(index == 3){
  				var $mail=$(this).val();
@@ -573,24 +475,8 @@ function alertCheck(errorMess){
  		 			return false;
  				}
  				
- 			}else if(index == 7){
- 				var $card=$(this).val();
- 				if(isCardNo($card) == false){
- 					$(this).parent().addClass("has-error has-feedback");
- 					alertCheck("请输入正确的身份证号!");
- 					isRight = 0;
- 		 			return false;
- 				}
- 				
+
  			}else if(index == 8){
- 				var $bank=$(this).val();
- 				if(CheckBankNo($bank) == false){
- 					$(this).parent().addClass("has-error has-feedback");
- 					isRight = 0;
- 		 			return false;
- 				}
- 				
- 			}else if(index == 13){
  				var flag=true;
  				var $savepassword=$("#Password2").val();
  				var $newpassword=$(this).val();
@@ -607,7 +493,7 @@ function alertCheck(errorMess){
  				
  				return flag;
  				
- 			}else if(index == 14){
+ 			}else if(index == 9){
  				var $savepassword=$(this).val();
  				var $newpassword=$("#Password1").val();
  				if($savepassword != $newpassword){

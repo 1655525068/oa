@@ -84,7 +84,7 @@ public class UserController {
 		return "user/usermanagepaging";
 	}
 	
-	
+	// 用户管理-编辑
 	@RequestMapping(value="useredit",method = RequestMethod.GET)
 	public String usereditget(@RequestParam(value = "userid",required=false) Long userid,Model model) {
 		if(userid!=null){
@@ -92,39 +92,25 @@ public class UserController {
 			model.addAttribute("where","xg");
 			model.addAttribute("user",user);
 		}
-		
-		List<Dept> depts = (List<Dept>) ddao.findAll();
-		List<Position> positions = (List<Position>) pdao.findAll();
-		List<Role> roles = (List<Role>) rdao.findAll();
-		
-		model.addAttribute("depts", depts);
-		model.addAttribute("positions", positions);
+//		List<Dept> depts = (List<Dept>) ddao.findAll();
+//		List<Position> positions = (List<Position>) pdao.findAll();
+		List<Role> roles = rdao.findAll();
+
 		model.addAttribute("roles", roles);
 		return "user/edituser";
 	}
 	
 	@RequestMapping(value="useredit",method = RequestMethod.POST)
 	public String usereditpost(User user,
-			@RequestParam("deptid") Long deptid,
-			@RequestParam("positionid") Long positionid,
 			@RequestParam("roleid") Long roleid,
 			@RequestParam(value = "isbackpassword",required=false) boolean isbackpassword,
 			Model model) throws PinyinException {
-		System.out.println(user);
-		System.out.println(deptid);
-		System.out.println(positionid);
-		System.out.println(roleid);
-		Dept dept = ddao.findOne(deptid);
-		Position position = pdao.findOne(positionid);
 		Role role = rdao.findOne(roleid);
 		if(user.getUserId()==null){
 			String pinyin=PinyinHelper.convertToPinyinString(user.getUserName(), "", PinyinFormat.WITHOUT_TONE);
 			user.setPinyin(pinyin);
 			user.setPassword("123456");
-			user.setDept(dept);
 			user.setRole(role);
-			user.setPosition(position);
-			user.setFatherId(dept.getDeptmanager());
 			udao.save(user);
 		}else{
 			User user2 = udao.findOne(user.getUserId());
@@ -138,13 +124,10 @@ public class UserController {
 			user2.setBank(user.getBank());
 			user2.setThemeSkin(user.getThemeSkin());
 			user2.setSalary(user.getSalary());
-			user2.setFatherId(dept.getDeptmanager());
 			if(isbackpassword){
 				user2.setPassword("123456");
 			}
-			user2.setDept(dept);
 			user2.setRole(role);
-			user2.setPosition(position);
 			udao.save(user2);
 		}
 		

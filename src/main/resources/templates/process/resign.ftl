@@ -92,7 +92,7 @@ min-height: 120px;
 				</tr>
 					<tr >
 					<td colspan="14" style="text-align: left;">
-						<!--錯誤信息提示  -->
+						<!--错误信息提示  -->
 					<div class="alert alert-danger alert-dismissable" style="display:none;" role="alert">
 						错误信息:<button class="thisclose close" type="button">&times;</button>
 						<span class="error-mess"></span>

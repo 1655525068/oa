@@ -52,26 +52,26 @@ public class User {
 	@Pattern(regexp="^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\\.[a-zA-Z0-9_-]{2,3}){1,2})$",message="请填写正确邮箱号")
 	private String eamil;		//邮件
 	
-	@NotEmpty(message="地址不能为空")
+//	@NotEmpty(message="地址不能为空")
 	private String address;		//地址
 	
 	@Column(name="user_edu")
-	@NotEmpty(message="学历不能为空")
+//	@NotEmpty(message="学历不能为空")
 	private String userEdu;		//用户学历
 	
 	
 	private Boolean superman=false;
 	
 	@Column(name="user_school")
-	@NotEmpty(message="毕业院校不能为空")
+//	@NotEmpty(message="毕业院校不能为空")
 	private String school;		//学校
 	
 	@Column(name="user_idcard")
 	@Pattern(regexp="^(\\d{6})(19|20)(\\d{2})(1[0-2]|0[1-9])(0[1-9]|[1-2][0-9]|3[0-1])(\\d{3})(\\d|X|x)?$",message="请填写正确身份证号")
 	private String idCard;		//用户身份证
 	
-	@NotEmpty(message="卡号不能为空")
-	@Length(min=16, max=19,message="银行卡号长度必须在16到19之间!")
+//	@NotEmpty(message="卡号不能为空")
+//	@Length(min=16, max=19,message="银行卡号长度必须在16到19之间!")
 	private String bank;		//银行
 	
 	private String sex;			//性别

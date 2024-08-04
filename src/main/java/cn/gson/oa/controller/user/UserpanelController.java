@@ -189,6 +189,7 @@ public class UserpanelController {
 		User users=udao.findOne(userId);
 		
 		//重新set用户
+        users.setUserName(user.getUserName());
 		users.setRealName(user.getRealName());
 		users.setUserTel(user.getUserTel());
 		users.setEamil(user.getEamil());
@@ -217,11 +218,6 @@ public class UserpanelController {
 		if (!ResultEnum.SUCCESS.getCode().equals(res.getCode())) {
 			List<Object> list = new MapToList<>().mapToList(res.getData());
 			request.setAttribute("errormess", list.get(0).toString());
-			
-			System.out.println("list错误的实体类信息：" + user);
-			System.out.println("list错误详情:" + list);
-			System.out.println("list错误第一条:" + list.get(0));
-			System.out.println("啊啊啊错误的信息——：" + list.get(0).toString());
 			
 		}else{
 			udao.save(users);

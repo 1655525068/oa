@@ -14,7 +14,7 @@ a:hover {
 </style>
 <div class="row" style="padding-top: 10px;">
 	<div class="col-md-2">
-		<h1 style="font-size: 24px; margin: 0;" class="">用户管理</h1>
+		<h1 style="font-size: 24px; margin: 0;" class=""></h1>
 	</div>
 	<div class="col-md-10 text-right">
 		<a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
@@ -61,60 +61,19 @@ a:hover {
 									name="userTel" class="form-control" value="${(user.userTel)!''}"/>
 							</div>
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span>真实姓名</span></label> <input
+								<label class="control-label"><span>姓名</span></label> <input
 									name="realName" class="form-control" value="${(user.realName)!''}"/>
 							</div>
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span>Email</span></label> <input
+								<label class="control-label"><span>邮箱</span></label> <input
 									name="eamil" class="form-control" value="${(user.eamil)!''}"/>
 							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>地址</span></label> <input
-									name="address" class="form-control" value="${(user.address)!''}"/>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>学历</span></label> <input
-									name="userEdu" class="form-control" value="${(user.userEdu)!''}"/>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>毕业院校</span></label> <input
-									name="school" class="form-control" value="${(user.school)!''}"/>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>身份证号</span></label> <input
-									name="idCard" class="form-control" value="${(user.idCard)!''}"/>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>银行账号</span></label> <input
-									name="bank" class="form-control" value="${(user.bank)!''}"/>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"> <span>部门</span></label> 
-								<select class="deptselect form-control" name="deptid">
-									<#if user??>
-										<option value="${(user.dept.deptId)!''}">${user.dept.deptName}</option>
-									</#if>
-									<#list depts as dept>
-										<option value="${dept.deptId}">${dept.deptName}</option>
-									</#list>
-								</select>
-							</div>
+
 							<div class="col-md-6 form-group">
 								<label class="control-label"> <span>性别</span>
 								</label> <select class="form-control" name="sex" value="${(user.sex)!''}">
 									<option value="男">男</option>
 									<option value="女">女</option>
-								</select>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"> <span>职位</span></label> 
-								<select class="positionselect form-control" name="positionid">
-									<#if user??>
-										<option value="${(user.position.id)!''}">${user.position.name}</option>
-									</#if>
-									<#list positions as position>
-										<option value="${position.id}">${position.name}</option>
-									</#list>
 								</select>
 							</div>
 							<div class="col-md-6 form-group">
@@ -128,31 +87,15 @@ a:hover {
 									</#list>
 								</select>
 							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>工资</span></label> <input
-									name="salary" class="form-control" value="${(user.salary)!''}"/>
-							</div>
-							
-							
-							<#if where??>
-							<#else>
-								<div class="col-md-6 form-group">
-									<span> <label class="control-label">入职时间</label>
-									</span> <input name="hireTime" class="form-control" id="start" onclick="WdatePicker()"
-										value="${(user.hireTime)!''}"/>
-								</div>
-							</#if>
-							<!-- <div class="col-md-6 form-group">
-								<label class="control-label">生日</label> <input
-									name="birth" class="form-control" id="start" onclick="WdatePicker()" value="${(user.birth)!''}"/>
-							</div> -->
+
 							<div class="col-md-6 form-group">
 								<label class="control-label"> <span>皮肤</span>
 								</label> <select class="form-control" name="themeSkin" value="${(user.themeSkin)!''}">
-									<option value="blue">经典蓝</option>
-									<option value="green">原谅绿</option>
-									<option value="red">姨妈红</option>
-									<option value="yellow">shit黄</option>
+                                    <option value="blue">经典蓝</option>
+                                    <option value="green">青草绿</option>
+                                    <option value="red">中国红</option>
+                                    <option value="yellow">商务黄</option>
+                                    <option value="purple">高贵紫</option>
 								</select>
 							</div>
 							<input type="hidden" name="userId" value="${(user.userId)!''}"/>
@@ -186,14 +129,13 @@ a:hover {
 				<!--盒子尾-->
 				<div class="box-footer">
 					<input class="btn btn-primary" id="save" type="submit" value="保存" />
-					<input class="btn btn-default" id="cancel" type="submit" value="取消"
+					<input class="btn btn-default" id="cancel" type="button" value="取消"
 						onclick="window.history.back();" />
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="plugins/My97DatePicker/WdatePicker.js"></script>
 <#include "/common/modalTip.ftl"/> 
 <script type="text/javascript">
 $(".usernameonliy").on("blur",function(){
@@ -279,11 +221,7 @@ function check() {
 			return false;
 		} else {
 			if(index == 0){
-				
 				var aaa= $(".usernameonliyvalue").val();
-				console.log("aaaa");
-				console.log(aaa);
-				console.log("aaaa");
 				if(aaa=="false"){
 					console.log("进来了0");
 					$(this).parent().addClass("has-error has-feedback");
@@ -293,8 +231,7 @@ function check() {
 				}
 				
 			}
-			
-			
+
 			if(index == 1){
 				var $tel = $(this).val();
 				
@@ -315,16 +252,7 @@ function check() {
  		 			return false;
 				}
 			}
-			if(index == 7){
-				var $idcard = $(this).val();
-				
-				if(isCardNo($idcard) == false){
-					$(this).parent().addClass("has-error has-feedback");
- 					alertCheck("错误身份证");
- 					isRight = 0;
- 		 			return false;
-				}
-			}
+
 			if(index == 8){
 				var $bank = $(this).val();
 				

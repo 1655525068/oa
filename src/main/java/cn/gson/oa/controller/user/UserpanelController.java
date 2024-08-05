@@ -5,12 +5,10 @@ import cn.gson.oa.common.formValid.MapToList;
 import cn.gson.oa.common.formValid.ResultEnum;
 import cn.gson.oa.common.formValid.ResultVO;
 import cn.gson.oa.model.dao.informdao.InformRelationDao;
-import cn.gson.oa.model.dao.maildao.MailreciverDao;
 import cn.gson.oa.model.dao.processdao.NotepaperDao;
 import cn.gson.oa.model.dao.user.DeptDao;
 import cn.gson.oa.model.dao.user.PositionDao;
 import cn.gson.oa.model.dao.user.UserDao;
-import cn.gson.oa.model.entity.mail.Mailreciver;
 import cn.gson.oa.model.entity.notice.NoticeUserRelation;
 import cn.gson.oa.model.entity.process.Notepaper;
 import cn.gson.oa.model.entity.user.User;
@@ -55,8 +53,6 @@ public class UserpanelController {
 	private PositionDao pdao;
 	@Autowired
 	private InformRelationDao irdao;
-	@Autowired
-	private MailreciverDao mdao;
 	@Autowired
 	private NotepaperDao ndao;
 	@Autowired
@@ -104,10 +100,7 @@ public class UserpanelController {
 		
 		//找未读通知消息
 		List<NoticeUserRelation> noticelist=irdao.findByReadAndUserId(false, user);
-		
-		//找未读邮件
-		List<Mailreciver> maillist=mdao.findByReadAndDelAndReciverId(false,false, user);
-		
+
 		//找便签
 		Page<Notepaper> list=ndao.findByUserIdOrderByCreateTimeDesc(user,pa);
 		
@@ -117,7 +110,6 @@ public class UserpanelController {
 		model.addAttribute("deptname", deptname);
 		model.addAttribute("positionname", positionname);
 		model.addAttribute("noticelist", noticelist.size());
-		model.addAttribute("maillist", maillist.size());
 		model.addAttribute("notepaperlist", notepaperlist);
 		model.addAttribute("page", list);
 		model.addAttribute("url", "panel");
@@ -192,7 +184,7 @@ public class UserpanelController {
         users.setUserName(user.getUserName());
 		users.setRealName(user.getRealName());
 		users.setUserTel(user.getUserTel());
-		users.setEamil(user.getEamil());
+		users.setEmail(user.getEmail());
 		users.setAddress(user.getAddress());
 		users.setUserEdu(user.getUserEdu());
 		users.setSchool(user.getSchool());

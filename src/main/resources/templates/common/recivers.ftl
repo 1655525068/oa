@@ -11,7 +11,7 @@
 												</th>
 												<th class=" col-xs-2 b">部门</th>
 												<th class=" col-xs-2 b">真实姓名 </th>
-												<th class="col-xs-2 b">用户名</th>
+												<th class="col-xs-2 b">员工号</th>
 												<th class="col-xs-2 b">职位</th>
 												<th class=" col-xs-2">电话</th>
 											</tr>

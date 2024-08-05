@@ -167,7 +167,7 @@
                             <div class="row">
 
                                 <div class="col-md-6 form-group">
-                                    <label class="control-label"><span id="ctl00_cphMain_Label1">用户名</span></label>
+                                    <label class="control-label"><span id="ctl00_cphMain_Label1">员工号</span></label>
                                     <input
                                             name="userName" type="text" value="${user.userName}"
                                             id="ctl00_cphMain_txtName" class="form-control"/>
@@ -190,8 +190,8 @@
                                 <div class="col-md-6 form-group">
                                     <label class="control-label"><span id="ctl00_cphMain_Label5">邮箱</span></label>
                                     <input
-                                            name="eamil" type="text"
-                                            value="${(user.eamil)!''}" id="ctl00_cphMain_txtEmail1"
+                                            name="email" type="text"
+                                            value="${(user.email)!''}" id="ctl00_cphMain_txtEmail1"
                                             class="form-control"/>
                                 </div>
 

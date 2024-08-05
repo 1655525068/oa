@@ -10,7 +10,7 @@
 	<legend style="padding-left:5%;">基本信息</legend>
 	<table class="table" border=""  style="width: 90%;margin: auto;margin-bottom: 20px;">
 		<tr>
-			<td class="text-right"  >姓名:</td>
+			<td class="text-right"  >工号:</td>
 			<td >	${user.userName}</td>
 			<td rowspan="3" colspan="2">
 				<div id="">
@@ -28,7 +28,7 @@
 		</tr>	
 		<tr>
 			<td class="text-right" width="15%">邮箱:</td>
-			<td width="35%">${(user.userTel)!'空的'}</td>
+			<td width="35%">${(user.email)!'空的'}</td>
 			<td class="text-right" width="15%">真实姓名:</td>
 			<td class="text-left" width="35%">${(user.realName)!''}</td>
 		</tr>

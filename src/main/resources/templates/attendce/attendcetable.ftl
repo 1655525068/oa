@@ -18,7 +18,7 @@
 			<div class="">
 				<table class="table table-hover table-striped">
 					<tr class="table-header">
-						<th scope="col">用户名</th>
+						<th scope="col">员工号</th>
 						<th scope="col" class="paixu thistype" style="color:blue;">类型
 										<#if type?? && icon??>
 										<span class="glyphicon ${icon}"></span>

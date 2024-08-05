@@ -95,7 +95,7 @@ a:hover {
 										
 										<th scope="col">&nbsp;</th>
 										<th scope="col">真实姓名</th>
-										<th scope="col">用户名</th>
+										<th scope="col">员工号</th>
 										<th scope="col">操作</th>
 									</tr>
 									<#list deptuser as user>

@@ -16,7 +16,7 @@
 					style="display: block;"></span></th>
 				<th class=" col-xs-2 b">部门</th>
 				<th class="col-xs-2 b">职位</th>
-				<th class="col-xs-2 b">用户名</th>
+				<th class="col-xs-2 b">员工号</th>
 				<th class="col-xs-2 b">电话号码</th>
 				<th class=" col-xs-2 b">性别</th>
 				<th class=" col-xs-2">E-mail</th>
@@ -35,7 +35,7 @@
 				<td class="col-xs-2 na">${user.userName}</td>
 				<td class="col-xs-2 na">${user.userTel}</td>
 				<td class=" col-xs-2">男</td>
-				<td class=" col-xs-2">${(user.eamil)!''}</td>
+				<td class=" col-xs-2">${(user.email)!''}</td>
 			</tr>
 			</#list>
 		</tbody>

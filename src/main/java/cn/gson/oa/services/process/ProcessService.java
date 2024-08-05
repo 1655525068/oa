@@ -49,7 +49,6 @@ import cn.gson.oa.model.entity.system.SystemTypeList;
 import cn.gson.oa.model.entity.user.Dept;
 import cn.gson.oa.model.entity.user.Position;
 import cn.gson.oa.model.entity.user.User;
-import cn.gson.oa.services.mail.MailServices;
 
 
 @Service
@@ -75,8 +74,7 @@ public class ProcessService {
 	private AttachmentDao AttDao;
 	@Autowired
 	private BursementDao budao;
-	@Autowired
-	private MailServices mservice;
+
 	@Autowired
 	private ProcessListDao prodao;
 	 /**
@@ -138,17 +136,10 @@ public class ProcessService {
 				e.printStackTrace();
 			}
 		}
-		
-		
-	
+
 	}
   /**
    * 用户封装
-   * @param user
-   * @param page
-   * @param size
-   * @param val
-   * @return
    */
 	public void user(int page,int size,Model model){
 		Pageable pa=new PageRequest(page, size);
@@ -315,12 +306,12 @@ public class ProcessService {
 		pro.setStatusId(23L);
 		pro.setShenuser(name);
 		Attachment attaid=null;
-		if(!StringUtil.isEmpty(filePath.getOriginalFilename())){
-			attaid=mservice.upload(filePath, lu);
-			attaid.setModel("aoa_bursement");
-			AttDao.save(attaid);
-			pro.setProFileid(attaid);
-		}
+//		if(!StringUtil.isEmpty(filePath.getOriginalFilename())){
+//			attaid=mservice.upload(filePath, lu);
+//			attaid.setModel("aoa_bursement");
+//			AttDao.save(attaid);
+//			pro.setProFileid(attaid);
+//		}
 	}
 	public void index8(ProcessList pro,String val,User lu,String name) {
 		pro.setTypeNmae(val);

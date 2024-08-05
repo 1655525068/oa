@@ -32,7 +32,7 @@ public interface UserDao extends JpaRepository<User, Long>{
 	//根据名字找用户
 	User findByUserName(String title);
 	
-	//根据用户名模糊查找
+	//根据员工号模糊查找
 	@Query("from User u where u.userName like %:name% or u.realName like %:name%")
 	Page<User> findbyUserNameLike(@Param("name")String name,Pageable pa);
 	//根据真实姓名模糊查找
@@ -64,7 +64,7 @@ public interface UserDao extends JpaRepository<User, Long>{
 	@Query("select u from User u where u.role.roleId=?1")
 	List<User> findrole(Long lid); 
 	
-	/*通过（用户名或者电话号码）+密码查找用户*/
-	@Query("from User u where (u.userName = ?1 or u.userTel = ?1) and u.password =?2")
+	/*通过（员工号或者姓名拼音）+密码查找用户*/
+	@Query("from User u where (u.userName = ?1 or u.pinyin = ?1) and u.password =?2")
 	User findOneUser(String userName,String password);
 }

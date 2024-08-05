@@ -39,7 +39,7 @@
 				<p class="login-box-msg">让办公更加轻松有趣！</p>
 				<form>
 					<div class="form-group has-feedback">
-						<input name="userName" type="text" class="form-control" placeholder="用户名">
+						<input name="userName" type="text" class="form-control" placeholder="员工号">
 						<span class="glyphicon glyphicon-user form-control-feedback"></span>
 					</div>
 					<div class="form-group has-feedback">

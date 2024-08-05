@@ -1,11 +1,7 @@
 package cn.gson.oa.controller.address;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,7 +46,6 @@ import cn.gson.oa.model.entity.user.User;
 import cn.gson.oa.services.address.AddreddUserService;
 import cn.gson.oa.services.address.AddressService;
 import cn.gson.oa.services.file.FileServices;
-import cn.gson.oa.services.mail.MailServices;
 import cn.gson.oa.services.process.ProcessService;
 
 @Controller
@@ -77,8 +72,6 @@ public class AddrController {
 	 AttachService attachService;
 	@Autowired
 	AttachmentDao atDao;
-	@Autowired
-	private MailServices mservice;
 	@Autowired
 	private AttachmentDao AttDao;
 	
@@ -234,13 +227,13 @@ public class AddrController {
 				session.removeAttribute("did");
 			}
 			//试一下
-			if(file.getSize()>0){
-				Attachment attaid=mservice.upload(file, user);
-				attaid.setModel("aoa_bursement");
-				Attachment att=AttDao.save(attaid);
-				/*Attachment att= (Attachment) fileServices.savefile(file, user, null, false);*/
-				director.setAttachment(att.getAttachmentId());
-			}
+//			if(file.getSize()>0){
+//				Attachment attaid=mservice.upload(file, user);
+//				attaid.setModel("aoa_bursement");
+//				Attachment att=AttDao.save(attaid);
+//				/*Attachment att= (Attachment) fileServices.savefile(file, user, null, false);*/
+//				director.setAttachment(att.getAttachmentId());
+//			}
 			
 			directorUser.setHandle(true);
 			directorUser.setDirector(director);
@@ -522,7 +515,7 @@ public class AddrController {
 			if("ALL".equals(alph)){
 				userspage=uDao.findAll(pa);
 			}else{
-			 userspage=uDao.findByPinyinLike(alph+"%",pa);
+			 userspage=uDao.findByPinyinLike("%"+alph.toLowerCase(Locale.ROOT)+"%",pa);
 			}
 		}else{
 			if("ALL".equals(alph)){

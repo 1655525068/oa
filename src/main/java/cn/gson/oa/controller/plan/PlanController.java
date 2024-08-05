@@ -310,7 +310,7 @@ public class PlanController {
 				plans.add(plan2);
 		}
 		System.out.println("有没有plan"+plans);
-		// 将用户名和list绑定在一起
+		// 将员工号和list绑定在一起
 		Map<String, Plan> uMap = new HashMap<>();
 		for (User user : uListpage) {
 			if(plans.size()==0)

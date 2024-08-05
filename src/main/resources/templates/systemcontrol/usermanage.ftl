@@ -57,7 +57,7 @@ a:hover {
 								<th scope="col">&nbsp;</th>
 								<th scope="col">部门</th>
 								<th scope="col">真实姓名</th>
-								<th scope="col">用户名</th>
+								<th scope="col">员工号</th>
 								<th scope="col">角色</th>
 								<th scope="col">电话</th>
 								<th scope="col">工资</th>

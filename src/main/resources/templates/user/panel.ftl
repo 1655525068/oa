@@ -28,7 +28,7 @@
 												<span class="paperid">${notepaper.notepaperId}</span>
 											</p>
 											<a  style="margin-top: -22px;"class="pull-right edit" data-toggle="modal" data-target="#notepaper"
-												href="##"> <i class="glyphicon glyphicon-edit"></i>
+												href="##" todo> <i class="glyphicon glyphicon-edit"></i>
 														修改
 											</a>
 								</div>

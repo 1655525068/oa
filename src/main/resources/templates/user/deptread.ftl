@@ -72,14 +72,23 @@ a:hover {
 										
 										<th scope="col">&nbsp;</th>
 										<th scope="col">真实姓名</th>
-										<th scope="col">用户名</th>
+										<th scope="col">员工号</th>
 										<th scope="col">职位</th>
 										<th scope="col">操作</th>
 									</tr>
 									<#list deptuser as user>
 										<tr>
-											<td><img src="images/handsome.jpg" class="img-circle"
-												style="width: 25px; height: 25px;" /></td>
+											<td>
+												<#if user.imgPath?? && user.imgPath!=''  >
+													<img style="width: 25px;height: 25px;"
+														 class="profile-user-img img-responsive img-circle"
+														 src="/image/${user.imgPath}"/>
+												<#else>
+													<img style="width: 25px;height: 25px;"
+														 class="profile-user-img img-responsive img-circle"
+														 src="images/timg.jpg" alt="images"/>
+												</#if>
+											</td>
 											<td><span>${user.realName}</span></td>
 											<td><span>${user.userName}</span></td>
 											<td><span>${user.position.name}</span></td>

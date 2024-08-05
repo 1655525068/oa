@@ -35,7 +35,7 @@ public interface AddressUserDao extends JpaRepository<DirectorUser, Long>{
 	
 	List<DirectorUser> findByUserAndShareuserNotNullAndHandle(User user,Boolean boo);
 	
-	//模糊查询；可根据联系人名字、电话、用户名字查找中间表
+	//模糊查询；可根据联系人名字、电话、员工号字查找中间表
 	@Query("from DirectorUser du where (du.director.userName like ?1 or du.director.phoneNumber like ?1 or du.user.userName like ?1) and du.user =?2 and du.shareuser is NOT null")
 	Page<DirectorUser> findBaseKey(String baseKey,User user,Pageable pa);
 	

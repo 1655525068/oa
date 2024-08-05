@@ -40,7 +40,7 @@
 						thisdept="${du.user.dept.deptName}" 
 						thisrole="${du.user.role.roleName}" 
 						thistel="${(du.user.userTel)!'空的'}"
-						thisemail="${(du.user.eamil)!'空的'}" 
+						thisemail="${(du.user.email)!'空的'}"
 						>
 							<img src="/image/${(du.user.imgPath)!'timg.jpg'}" class="img-circle" style="width:24px;height:24px"/> ${du.user.userName}
 						</a>

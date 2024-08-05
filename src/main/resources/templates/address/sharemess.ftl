@@ -30,7 +30,7 @@
 						thisdept="${du.user.dept.deptName}" 
 						thisrole="${du.user.role.roleName}" 
 						thistel="${(du.user.userTel)!'空的'}"
-						thisemail="${(du.user.eamil)!'空的'}" 
+						thisemail="${(du.user.email)!'空的'}"
 						> <img src="/image/${(du.user.imgPath)!'timg.jpg'}" class="img-circle" />
 							<span> ${du.user.userName}</span></a>共享了以下联系人给你:
 					</div>

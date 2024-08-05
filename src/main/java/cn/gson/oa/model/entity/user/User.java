@@ -7,13 +7,10 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import cn.gson.oa.model.entity.note.Note;
 import cn.gson.oa.model.entity.attendce.Attends;
-import cn.gson.oa.model.entity.discuss.Discuss;
-import cn.gson.oa.model.entity.discuss.Reply;
 
 import cn.gson.oa.model.entity.role.Role;
 import cn.gson.oa.model.entity.schedule.ScheduleList;
@@ -35,8 +32,8 @@ public class User {
 	private Long userId;		//用户id
 	
 	@Column(name="user_name")
-	@NotEmpty(message="用户名不能为空")
-	private String userName;	//登录用户名
+	@NotEmpty(message="员工号不能为空")
+	private String userName;	//登录员工号
 	
 	@Column(name="user_tel")
 	@NotEmpty(message="电话不能为空")
@@ -50,7 +47,7 @@ public class User {
 	
 	@NotEmpty(message="邮箱不能为空")
 	@Pattern(regexp="^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\\.[a-zA-Z0-9_-]{2,3}){1,2})$",message="请填写正确邮箱号")
-	private String eamil;		//邮件
+	private String email;		//邮件
 	
 //	@NotEmpty(message="地址不能为空")
 	private String address;		//地址
@@ -130,12 +127,6 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<ScheduleList> scheduleLists;
 	
-	@ManyToMany(mappedBy = "users")
-	private List<Reply> replys;
-	
-	@ManyToMany(mappedBy = "users")
-	private List<Discuss> discuss;
-	
 	@ManyToMany(mappedBy = "userss")
 	private List<Note> note;
 
@@ -151,14 +142,6 @@ public class User {
 
 	public void setPinyin(String pinyin) {
 		this.pinyin = pinyin;
-	}
-
-	public List<Discuss> getDiscuss() {
-		return discuss;
-	}
-
-	public void setDiscuss(List<Discuss> discuss) {
-		this.discuss = discuss;
 	}
 
 	public User() {}		
@@ -212,12 +195,12 @@ public void setSuperman(Boolean superman) {
 		this.realName = realName;
 	}
 
-	public String getEamil() {
-		return eamil;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAddress() {
@@ -409,17 +392,6 @@ public void setSuperman(Boolean superman) {
 		this.scheduleLists = scheduleLists;
 	}
 
-
-	public List<Reply> getReplys() {
-		return replys;
-	}
-
-
-	public void setReplys(List<Reply> replys) {
-		this.replys = replys;
-	}
-
-
 	public List<Note> getNote() {
 		return note;
 	}
@@ -442,7 +414,7 @@ public void setSuperman(Boolean superman) {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userTel=" + userTel + ", realName=" + realName
-				+ ", eamil=" + eamil + ", address=" + address + ", userEdu=" + userEdu + ", school=" + school
+				+ ", email=" + email + ", address=" + address + ", userEdu=" + userEdu + ", school=" + school
 				+ ", idCard=" + idCard + ", bank=" + bank + ", sex=" + sex + ", themeSkin=" + themeSkin + ", birth="
 				+ birth + ", userSign=" + userSign + ", password=" + password + ", salary=" + salary + ", imgPath="
 				+ imgPath + ", hireTime=" + hireTime + ", isLock=" + isLock + ", lastLoginIp=" + lastLoginIp

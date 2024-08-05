@@ -7,7 +7,7 @@
 	</a>
 	<div class="box-tools">
 		<div class="input-group" style="width: 150px;">
-			<input type="text" class="form-control input-sm baseKey" placeholder="按部门/角色/用户名/电话号码/拼音" value="${(baseKey)!''}" style="width: 220px;"/>
+			<input type="text" class="form-control input-sm baseKey" placeholder="按部门/角色/员工号/电话号码/拼音" value="${(baseKey)!''}" style="width: 220px;"/>
 			<div class="input-group-btn">
 				<a class="btn btn-sm btn-default baseKeySumbit"> 
 					<span class="glyphicon glyphicon-search"></span>
@@ -24,6 +24,7 @@
 				<th scope="col">部门</th>
 				<th scope="col">职位</th>
 				<th scope="col">头像</th>
+				<th scope="col">工号</th>
 				<th scope="col">姓名</th>
 				<th scope="col">性别</th>
 				<th scope="col">Tel</th>
@@ -39,6 +40,7 @@
 						style="width: 24px; height: 24px;">
 				</a></td>
 				<td><span>${user.userName}</span></td>
+				<td><span>${user.realName}</span></td>
 				<td><span>
 				<#if user.sex=="男">
 					<img src="images/male.png" alt="男" style="width: 20px;height: 20px" />
@@ -47,7 +49,7 @@
 				</#if>
 				</span></td>
 				<td><span>${user.userTel}</span></td>
-				<td><span>${(user.eamil)!''}</span></td>
+				<td><span>${(user.email)!''}</span></td>
 				<td>
 					<a href="javascript:void(0);" userId="${user.userId}" class="label xiugai inlookthis">
 						<span class="glyphicon glyphicon-search"></span> 查看

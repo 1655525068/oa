@@ -17,7 +17,7 @@ a:hover {
 		<h1 style="font-size: 24px; margin: 0;" class=""></h1>
 	</div>
 	<div class="col-md-10 text-right">
-		<a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
+		<a href="##">="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
 			disabled="disabled">用户管理</a>
 	</div>
 </div>
@@ -45,12 +45,12 @@ a:hover {
 						<div class="row">
 							<#if where??>
 								<div class="col-md-6 form-group">
-									<label class="control-label"><span>用户名</span></label> <input
+									<label class="control-label"><span>员工号</span></label> <input
 										name="userName" readonly="readonly" class="form-control" value="${(user.userName)!''}"/>
 								</div>
 							<#else>
 								<div class="col-md-6 form-group">
-									<label class="control-label"><span>用户名</span></label> <input
+									<label class="control-label"><span>员工号</span></label> <input
 										name="userName" class="form-control usernameonliy" value="${(user.userName)!''}"/>
 										<input type="hidden" class="usernameonliyvalue" value=""/>
 								</div>
@@ -66,14 +66,36 @@ a:hover {
 							</div>
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span>邮箱</span></label> <input
-									name="eamil" class="form-control" value="${(user.eamil)!''}"/>
+									name="email" class="form-control" value="${(user.email)!''}"/>
 							</div>
 
+							<div class="col-md-6 form-group">
+								<label class="control-label"> <span>部门</span></label>
+								<select class="deptselect form-control" name="deptid">
+									<#if user??>
+										<option value="${(user.dept.deptId)!''}">${user.dept.deptName}</option>
+									</#if>
+									<#list depts as dept>
+										<option value="${dept.deptId}">${dept.deptName}</option>
+									</#list>
+								</select>
+							</div>
 							<div class="col-md-6 form-group">
 								<label class="control-label"> <span>性别</span>
 								</label> <select class="form-control" name="sex" value="${(user.sex)!''}">
 									<option value="男">男</option>
 									<option value="女">女</option>
+								</select>
+							</div>
+							<div class="col-md-6 form-group">
+								<label class="control-label"> <span>职位</span></label>
+								<select class="positionselect form-control" name="positionid">
+									<#if user??>
+										<option value="${(user.position.id)!''}">${user.position.name}</option>
+									</#if>
+									<#list positions as position>
+										<option value="${position.id}">${position.name}</option>
+									</#list>
 								</select>
 							</div>
 							<div class="col-md-6 form-group">
@@ -158,7 +180,7 @@ $(".usernameonliy").focus(function(){
 		console.log(data)
 		if(!data){
 			$(".usernameonliy").parent().addClass("has-error has-feedback");
-				alertCheck("用户名已存在");
+				alertCheck("员工号已存在");
 				isRight = 0;
 	 			return false;
 		}
@@ -225,7 +247,7 @@ function check() {
 				if(aaa=="false"){
 					console.log("进来了0");
 					$(this).parent().addClass("has-error has-feedback");
- 					alertCheck("用户名已存在");
+ 					alertCheck("员工号已存在");
  					isRight = 0;
  		 			return false;
 				}
@@ -253,15 +275,7 @@ function check() {
 				}
 			}
 
-			if(index == 8){
-				var $bank = $(this).val();
-				
- 				if(CheckBankNo($bank) == false){
- 					$(this).parent().addClass("has-error has-feedback");
- 					isRight = 0;
- 		 			return false;
- 				}
-			}
+
 			// 在这个里面进行其他的判断；不为空的错误信息提醒
 			return true;
 		}
@@ -281,38 +295,11 @@ function isPhoneNo(phone) {
  var pattern = /^1[34578]\d{9}$/; 
  return pattern.test(phone); 
 }
- 
-// 验证身份证 
-function isCardNo(card) { 
- var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; 
- return pattern.test(card); 
-} 
+
 //验证邮箱
 function isMailNo(mail){
 	var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/; 
 	return pattern.test(mail);
 }
-//验证卡号
-function CheckBankNo(bankn) {
-	var flag=true;
-	 if(isNaN(bankn)) {
-		 alertCheck("银行卡号必须全为数字!");
-	     flag=false;
-	   }
-	
-	var bankno = $.trim(bankn);
-  　　if(bankno.length < 16 || bankno.length > 19) {
-	 alertCheck("银行卡号长度必须在16到19之间!");
-     flag=false;
-   }
-  
-   //开头6位
-   var strBin = "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
-   if(strBin.indexOf(bankno.substring(0, 2)) == -1) {
-	 alertCheck("银行卡号开头6位不符合规范!");
-	 flag=false;
-   }
-   
-   return flag;
-}
+
 </script>

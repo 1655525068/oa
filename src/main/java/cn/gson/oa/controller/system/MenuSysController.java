@@ -51,7 +51,6 @@ public class MenuSysController {
 
 	/**
 	 *  显示菜单管理界面
-	 * @param req
 	 * @return
 	 */
 	@RequestMapping("testsysmenu")

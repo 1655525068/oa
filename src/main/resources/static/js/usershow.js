@@ -8,7 +8,7 @@
 	thisdept="${user.dept.deptName}" 
 	thisrole="${user.role.roleName}" 
 	thistel="${(user.userTel)!'空的'}"
-	thisemail="${(user.eamil)!'空的'}" 
+	thisemail="${(user.email)!'空的'}" 
  */
 
 /*内部员工资料版*/

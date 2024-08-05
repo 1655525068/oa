@@ -22,7 +22,7 @@ a:hover {
 		<h1 style="font-size: 24px; margin: 0;" class="">菜单管理</h1>
 	</div>
 	<div class="col-md-10 text-right">
-		<a href="index"><span class="glyphicon glyphicon-home"></span> 首页</a>
+		<a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a>
 		> <a disabled="disabled">菜单管理</a>
 	</div>
 </div>
@@ -38,7 +38,7 @@ a:hover {
 						style="padding: 5px;"> <span class="glyphicon glyphicon-plus"></span>
 						新增
 					</a>
-					<a href="" class="label label-success" style="padding: 5px;margin-left:5px;">
+					<a href="testsysmenu" class="label label-success" style="padding: 5px;margin-left:5px;">
 						<span class="glyphicon glyphicon-refresh"></span> 刷新
 					</a>
 				</h3>

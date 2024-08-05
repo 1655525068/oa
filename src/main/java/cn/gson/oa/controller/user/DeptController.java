@@ -92,7 +92,7 @@ public class DeptController {
 			model.addAttribute("deptmanage",deptmanage);
 		}
 		List<Dept> depts = (List<Dept>) deptdao.findAll();
-		List<Position> positions = pdao.findByDeptidAndNameNotLike(1L, "%经理");
+		List<Position> positions = pdao.findByDeptidAndNameNotLike(deptId, "%经理");
 		System.out.println(deptmanage);
 		List<User> formaluser = new ArrayList<>();
 		List<User> deptusers = udao.findByDept(dept);

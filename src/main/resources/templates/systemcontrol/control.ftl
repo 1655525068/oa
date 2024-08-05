@@ -113,7 +113,7 @@
 		<div class="col-md-3">
 			<div class="jichu chat">
 				<div class="wenzi">
-					<h2>${discussnum}</h2>
+					<h2>待开发...</h2>
 					<p>讨论区</p>
 				</div>
 				<div class="iconfont">

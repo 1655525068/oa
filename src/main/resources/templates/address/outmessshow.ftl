@@ -10,7 +10,7 @@
 	<legend style="padding-left:5%;">基本信息</legend>
 	<table class="table" border=""  style="width: 90%;margin: auto;margin-bottom: 20px;">
 		<tr>
-			<td class="text-right"  >姓名:</td>
+			<td class="text-right"  >工号:</td>
 			<td >	${d.userName}</td>
 			<td rowspan="3" colspan="2">
 				<div id="">
@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<td class="text-right" >电话:</td>
-			<td>${(d.phoneNumber)!'空的'}</td>
+			<td>${(d.email)!'空的'}</td>
 		</tr>	
 		<tr>
 			<td class="text-right" width="15%">邮箱:</td>
@@ -36,7 +36,7 @@
 						thisdept="${d.myuser.dept.deptName}" 
 						thisrole="${d.myuser.role.roleName}" 
 						thistel="${(d.myuser.userTel)!'空的'}"
-						thisemail="${(d.myuser.eamil)!'空的'}" >${d.myuser.userName}</a>
+						thisemail="${(d.myuser.email)!'空的'}" >${d.myuser.userName}</a>
 			</td>
 		</tr>
 		<tr>

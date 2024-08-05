@@ -47,15 +47,6 @@
 				</#if>
 				</a>
 		</li>
-		<li><a href="javascript:changepath('/mail');" class="green-none white"><span
-				class="glyphicon glyphicon-envelope"></span>
-				<#if mail==0>
-					<span class="badge yellow-badge badge-mail"></span>
-				<#else>
-					<span class="badge yellow-badge badge-mail">${(mail)!''}</span>
-				</#if>
-				</a>
-		</li>
 		<li><a href="javascript:changepath('/mytask');" class="green-none white"><span
 				class="glyphicon glyphicon-flag"></span>
 				<#if task==0>

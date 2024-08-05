@@ -12,8 +12,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import cn.gson.oa.model.entity.note.Note;
 import cn.gson.oa.model.entity.attendce.Attends;
-import cn.gson.oa.model.entity.discuss.Discuss;
-import cn.gson.oa.model.entity.discuss.Reply;
 
 import cn.gson.oa.model.entity.role.Role;
 import cn.gson.oa.model.entity.schedule.ScheduleList;
@@ -130,12 +128,6 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<ScheduleList> scheduleLists;
 	
-	@ManyToMany(mappedBy = "users")
-	private List<Reply> replys;
-	
-	@ManyToMany(mappedBy = "users")
-	private List<Discuss> discuss;
-	
 	@ManyToMany(mappedBy = "userss")
 	private List<Note> note;
 
@@ -151,14 +143,6 @@ public class User {
 
 	public void setPinyin(String pinyin) {
 		this.pinyin = pinyin;
-	}
-
-	public List<Discuss> getDiscuss() {
-		return discuss;
-	}
-
-	public void setDiscuss(List<Discuss> discuss) {
-		this.discuss = discuss;
 	}
 
 	public User() {}		
@@ -408,17 +392,6 @@ public void setSuperman(Boolean superman) {
 	public void setScheduleLists(List<ScheduleList> scheduleLists) {
 		this.scheduleLists = scheduleLists;
 	}
-
-
-	public List<Reply> getReplys() {
-		return replys;
-	}
-
-
-	public void setReplys(List<Reply> replys) {
-		this.replys = replys;
-	}
-
 
 	public List<Note> getNote() {
 		return note;

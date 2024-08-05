@@ -26,7 +26,6 @@ import com.github.pagehelper.PageInfo;
 import cn.gson.oa.mappers.NoticeMapper;
 import cn.gson.oa.model.dao.attendcedao.AttendceDao;
 import cn.gson.oa.model.dao.daymanagedao.DaymanageDao;
-import cn.gson.oa.model.dao.discuss.DiscussDao;
 import cn.gson.oa.model.dao.filedao.FileListdao;
 import cn.gson.oa.model.dao.informdao.InformRelationDao;
 import cn.gson.oa.model.dao.maildao.MailreciverDao;
@@ -62,9 +61,6 @@ import cn.gson.oa.services.system.MenuSysService;
 @Controller
 @RequestMapping("/")
 public class IndexController {
-
-	Logger log = LoggerFactory.getLogger(getClass());
-
 	@Autowired
 	private MenuSysService menuService;
 	@Autowired
@@ -79,8 +75,6 @@ public class IndexController {
 	private AttendceDao attendceDao;
 	@Autowired
 	private DirectorDao directorDao;
-	@Autowired
-	private DiscussDao discussDao;
 	@Autowired
 	private FileListdao filedao;
 	@Autowired
@@ -107,9 +101,6 @@ public class IndexController {
 	private DaymanageDao daydao;
 	@Autowired
 	private InformRelationService informrelationservice;
-	
-	// 格式转化导入
-	DefaultConversionService service = new DefaultConversionService();
 
 	@RequestMapping("index")
 	public String index(HttpServletRequest req,Model model) {
@@ -126,8 +117,7 @@ public class IndexController {
 			if(scheduleList.getIsreminded()!=null&&!scheduleList.getIsreminded()){
 				System.out.println(scheduleList.getStartTime());
 				
-				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");//24小时制 
-//				simpleDateFormat.parse(scheduleList.getStartTime()).getTime();  
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");//24小时制
 				String start = simpleDateFormat.format(scheduleList.getStartTime());
 				String now = simpleDateFormat.format(new Date());
 				try {
@@ -171,9 +161,6 @@ public class IndexController {
 	}
 	/**
 	 * 菜单查找
-	 * @param userId
-	 * @param req
-	 * @return
 	 */
 	@RequestMapping("menucha")
 	public String menucha(HttpSession session, Model model,HttpServletRequest req){
@@ -235,7 +222,7 @@ public class IndexController {
 		//计算三个模块的记录条数
 		request.setAttribute("filenum", filedao.count());
 		request.setAttribute("directornum", directorDao.count());
-		request.setAttribute("discussnum", discussDao.count());
+//		request.setAttribute("discussnum", discussDao.count());
 		
 		List<Map<String, Object>> list = nm.findMyNoticeLimit(userId);
 		model.addAttribute("user", user);

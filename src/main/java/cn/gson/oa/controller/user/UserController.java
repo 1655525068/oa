@@ -2,6 +2,10 @@ package cn.gson.oa.controller.user;
 
 import java.util.List;
 
+import cn.gson.oa.model.dao.system.StatusDao;
+import cn.gson.oa.model.dao.system.TypeDao;
+import cn.gson.oa.model.entity.system.SystemStatusList;
+import cn.gson.oa.model.entity.system.SystemTypeList;
 import cn.gson.oa.model.entity.user.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +17,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.github.pagehelper.util.StringUtil;
 import com.github.stuxuhai.jpinyin.PinyinException;
@@ -30,6 +31,7 @@ import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.role.Role;
 import cn.gson.oa.model.entity.user.Position;
 import cn.gson.oa.model.entity.user.User;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
@@ -43,6 +45,10 @@ public class UserController {
     PositionDao pdao;
     @Autowired
     RoleDao rdao;
+    @Autowired
+    private TypeDao tydao;
+    @Autowired
+    private StatusDao sdao;
 
     @Value("${user.first.password}")
     private String password;
@@ -64,6 +70,46 @@ public class UserController {
         model.addAttribute("page", userspage);
         model.addAttribute("url", "usermanagepaging");
         return "user/usermanage";
+    }
+
+    @RequestMapping("names")
+    public ModelAndView chaname(@SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
+                                @RequestParam(value = "size", defaultValue = "10") int size,
+                                @RequestParam(value = "title", required = false) String title,
+                                @RequestParam(value = "qufen", required = false) String qufen){
+        System.out.println(title);
+        System.out.println(qufen);
+        Sort sort = new Sort(new Order(Direction.ASC, "dept"));
+        Pageable pa = new PageRequest(page, size, sort);
+        System.out.println("11111111111");
+        Page<User> userspage = null;
+        if (StringUtil.isEmpty(title)) {
+            userspage = udao.findByIsLock(0, pa);
+        } else {
+            System.out.println(title);
+            userspage = udao.findnamelike(title, pa);
+        }
+        List<User> users = userspage.getContent();
+        Iterable<SystemTypeList> typelist = tydao.findAll();
+        // 查询状态表
+        Iterable<SystemStatusList> statuslist = sdao.findAll();
+
+        Page<User> pagelist = userspage;
+        List<User> emplist=userspage.getContent();
+        // 查询部门表
+        Iterable<Dept> deptlist = ddao.findAll();
+        // 查职位表
+        Iterable<Position> poslist = pdao.findAll();
+        ModelAndView mav = new ModelAndView("common/recivers");
+        mav.addObject("typelist", typelist);
+        mav.addObject("statuslist", statuslist);
+        mav.addObject("emplist", emplist);
+        mav.addObject("deptlist", deptlist);
+        mav.addObject("poslist", poslist);
+        mav.addObject("page", pagelist);
+        mav.addObject("url", "names");
+        mav.addObject("qufen", "任务");
+        return mav;
     }
 
     @RequestMapping("usermanagepaging")
@@ -117,8 +163,9 @@ public class UserController {
         Position position = pdao.findOne(positionid);
         Role role = rdao.findOne(roleid);
         if (user.getUserId() == null) {
-            String pinyin = PinyinHelper.convertToPinyinString(user.getRealName(), "", PinyinFormat.WITHOUT_TONE);
+            String pinyin = PinyinHelper.convertToPinyinString(user.getUserName(), "", PinyinFormat.WITHOUT_TONE);
             user.setPinyin(pinyin);
+            user.setRealName(user.getUserName());
             user.setPassword(this.password);
             user.setDept(dept);
             user.setRole(role);
@@ -127,8 +174,9 @@ public class UserController {
             udao.save(user);
         } else {
             User user2 = udao.findOne(user.getUserId());
+            user2.setUid(user.getUid());
             user2.setUserTel(user.getUserTel());
-            user2.setRealName(user.getRealName());
+            user2.setRealName(user.getUserName());
             user2.setEmail(user.getEmail());
             user2.setAddress(user.getAddress());
             user2.setUserEdu(user.getUserEdu());

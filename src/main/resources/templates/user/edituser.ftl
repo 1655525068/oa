@@ -17,7 +17,7 @@ a:hover {
 		<h1 style="font-size: 24px; margin: 0;" class=""></h1>
 	</div>
 	<div class="col-md-10 text-right">
-		<a href="##">="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
+		<a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
 			disabled="disabled">用户管理</a>
 	</div>
 </div>
@@ -45,12 +45,12 @@ a:hover {
 						<div class="row">
 							<#if where??>
 								<div class="col-md-6 form-group">
-									<label class="control-label"><span>员工号</span></label> <input
+									<label class="control-label"><span>姓名</span></label> <input
 										name="userName" readonly="readonly" class="form-control" value="${(user.userName)!''}"/>
 								</div>
 							<#else>
 								<div class="col-md-6 form-group">
-									<label class="control-label"><span>员工号</span></label> <input
+									<label class="control-label"><span>姓名</span></label> <input
 										name="userName" class="form-control usernameonliy" value="${(user.userName)!''}"/>
 										<input type="hidden" class="usernameonliyvalue" value=""/>
 								</div>
@@ -61,8 +61,8 @@ a:hover {
 									name="userTel" class="form-control" value="${(user.userTel)!''}"/>
 							</div>
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span>姓名</span></label> <input
-									name="realName" class="form-control" value="${(user.realName)!''}"/>
+								<label class="control-label"><span>工号</span></label> <input
+									name="uid" class="form-control" value="${(user.uid)!''}"/>
 							</div>
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span>邮箱</span></label> <input

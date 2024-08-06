@@ -62,15 +62,15 @@ a:hover {
 						<div class="col-md-6 form-group">
 							<label class="control-label"> <span>类型</span></label>
 							 <select class="form-control" name="typeId">
-								<option value="${type.typeId}">${type.typeName}</option>
-								<#if type.typeId ==3>
-								<#else>
-								<option value="3">公事</option>
-								</#if>
-								<#if type.typeId ==4>
-								<#else>
-								<option value="4">私事</option>
-								</#if>
+<#--								<option value="${type.typeId}">${type.typeName}</option>-->
+<#--								<#if type.typeId ==3>-->
+<#--								<#else>-->
+<#--								<option value="3">公事</option>-->
+<#--								</#if>-->
+<#--								<#if type.typeId ==4>-->
+<#--								<#else>-->
+<#--								<option value="4">私事</option>-->
+<#--								</#if>-->
 							</select>
 						</div>
 						<div class="col-md-6 form-group">

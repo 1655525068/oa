@@ -3,7 +3,7 @@
 	<!--盒子头-->
 	<div class="box-header">
 		<h3 class="box-title">
-			<a href="addtask" class="label " style="padding: 5px;"> <span
+			<a href="" class="label " style="padding: 5px;"> <span
 				class="glyphicon glyphicon-plus"></span>
 			</a>
 		</h3>
@@ -38,7 +38,7 @@
 					<#list tasklist as task>
 					<tr>
 
-						<td><span>${task.typename}</span></td>
+						<td><span>${task.typename!''}</span></td>
 
 						<td><span>${task.title}</span></td>
 						<td><span>${task.publishtime}</span></td>

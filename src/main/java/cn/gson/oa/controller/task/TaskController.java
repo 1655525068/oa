@@ -199,8 +199,8 @@ public class TaskController {
 		Long typeid = task.getTypeId();
 		// 查看状态表
 		SystemStatusList status = sdao.findOne(statusid);
-		// 查询类型表
-		SystemTypeList type = tydao.findOne(typeid);
+//		// 查询类型表
+//		SystemTypeList type = tydao.findOne(typeid);
 
 		// 查询部门下面的员工
 		Page<User> pagelist = udao.findByFatherId(userId,pa);
@@ -210,7 +210,7 @@ public class TaskController {
 		Iterable<Dept> deptlist = ddao.findAll();
 		// 查职位表
 		Iterable<Position> poslist = pdao.findAll();
-		mav.addObject("type", type);
+//		mav.addObject("type", type);
 		mav.addObject("status", status);
 		mav.addObject("emplist", emplist);
 		mav.addObject("deptlist", deptlist);
@@ -227,7 +227,7 @@ public class TaskController {
 	 */
 	@RequestMapping("update")
 	public String update(Tasklist task, HttpSession session) {
-		String userId = ((String) session.getAttribute("userId")).trim();
+		String userId = session.getAttribute("userId").toString().trim();
 		Long userid = Long.parseLong(userId);
 		User userlist = udao.findOne(userid);
 		task.setUsersId(userlist);

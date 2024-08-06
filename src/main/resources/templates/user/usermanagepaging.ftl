@@ -30,7 +30,6 @@
 
                     <th scope="col">&nbsp;</th>
                     <th scope="col">姓名</th>
-                    <th scope="col">拼音</th>
                     <th scope="col">员工号</th>
                     <th scope="col">职位</th>
                     <th scope="col">角色</th>
@@ -52,9 +51,8 @@
                                      src="images/timg.jpg" alt="images"/>
                             </#if>
                         </td>
-                        <td><span>${(user.realName)!''}</span></td>
-                        <td><span>${(user.pinyin)!''}</span></td>
                         <td><span>${(user.userName)!''}</span></td>
+                        <td><span>${(user.uid)!''}</span></td>
                         <td><span>${(user.position.name)!''}</span></td>
                         <td><span>${(user.role.roleName)!''}</span></td>
                         <td><span>${(user.userTel)!''}</span></td>

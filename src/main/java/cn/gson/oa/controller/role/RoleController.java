@@ -170,14 +170,9 @@ public class RoleController {
      */
     @RequestMapping("modifyrole")
     public String index4(HttpServletRequest req, @Valid Role role, BindingResult br) {
-        String id = null;
-        if (!StringUtil.isEmpty(req.getParameter("id"))) {
-            id = req.getParameter("id");
-
-        }
-        if (id != null) {
-            Long lid = Long.parseLong(id);
-            Role roles = rdao.findOne(lid);
+        Role r = rdao.findbyrolename(role.getRoleName());
+        if (r != null) {
+            Role roles = rdao.findOne(r.getRoleId());
             roles.setRoleName(role.getRoleName());
             rdao.save(roles);
 

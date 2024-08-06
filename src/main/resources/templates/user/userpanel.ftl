@@ -167,9 +167,9 @@
                             <div class="row">
 
                                 <div class="col-md-6 form-group">
-                                    <label class="control-label"><span id="ctl00_cphMain_Label1">员工号</span></label>
+                                    <label class="control-label"><span id="ctl00_cphMain_Label1">工号</span></label>
                                     <input
-                                            name="userName" type="text" value="${user.userName}"
+                                            name="uid" type="text" readonly="readonly" value="${user.uid}"
                                             id="ctl00_cphMain_txtName" class="form-control"/>
                                 </div>
 
@@ -183,7 +183,7 @@
                                 <div class="col-md-6 form-group">
                                     <label class="control-label"><span id="ctl00_cphMain_Label3">姓名</span></label>
                                     <input
-                                            name="realName" type="text" value="${user.realName}"
+                                            name="userName" type="text" readonly="readonly" value="${user.userName}"
                                             id="ctl00_cphMain_txtFullName" class="form-control"/>
                                 </div>
 

@@ -30,17 +30,21 @@ public class User {
 	@Column(name="user_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long userId;		//用户id
-	
-	@Column(name="user_name")
+
+	@Column(name="uid")
 	@NotEmpty(message="员工号不能为空")
-	private String userName;	//登录员工号
+	private String uid;	//登录员工号
+
+	@Column(name="user_name")
+	@NotEmpty(message="用户名不能为空")
+	private String userName;	//用户名
 	
 	@Column(name="user_tel")
 	@NotEmpty(message="电话不能为空")
 	private String userTel;		//用户电话
 	
 	@Column(name="real_name")
-	@NotEmpty(message="真实姓名不能为空")
+//	@NotEmpty(message="真实姓名不能为空")
 	private String realName;    //真实姓名
 	
 	private String pinyin;
@@ -169,6 +173,14 @@ public void setSuperman(Boolean superman) {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 	public String getUserName() {
@@ -413,7 +425,7 @@ public void setSuperman(Boolean superman) {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", userTel=" + userTel + ", realName=" + realName
+		return "User [userId=" + userId + ", uid=" + uid + ", userName=" + userName + ", userTel=" + userTel + ", realName=" + realName
 				+ ", email=" + email + ", address=" + address + ", userEdu=" + userEdu + ", school=" + school
 				+ ", idCard=" + idCard + ", bank=" + bank + ", sex=" + sex + ", themeSkin=" + themeSkin + ", birth="
 				+ birth + ", userSign=" + userSign + ", password=" + password + ", salary=" + salary + ", imgPath="

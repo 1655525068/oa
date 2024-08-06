@@ -5,79 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="通讯录">
-      <change afterPath="$PROJECT_DIR$/static/image/timg.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oa.sql" beforeDir="false" afterPath="$PROJECT_DIR$/oa.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/address/AddrController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/address/AddrController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/login/LoginsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/login/LoginsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/mail/MailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/mail/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/plan/PlanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/plan/PlanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/system/MenuSysController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/system/MenuSysController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/DeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/DeptController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/address/AddressUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/address/AddressUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/maildao/InMailDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/maildao/MailnumberDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/maildao/MailreciverDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/maildao/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/roledao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/roledao/RoleDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/user/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/mail/Inmaillist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/mail/Mailnumber.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/mail/Mailreciver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/mail/Pagemail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/mail/package-info.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/mail/MailServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/mail/package-info.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/process/ProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/process/ProcessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/usershow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/usershow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/addrmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/addrmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/inaddrss.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/inaddrss.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/inmessshow.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/inmessshow.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/mesharemess.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/mesharemess.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/outmessshow.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/outmessshow.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/sharemess.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/sharemess.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/shareuser.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/shareuser.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/userhas.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/userhas.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/attendce/attendcetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/attendce/attendcetable.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/chatmanage.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/chattable.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/discusslike.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/replaymanage.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/replylike.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/replytable.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/votetable.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chat/writechat.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/footerlist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/footerlist.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/navlist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/navlist.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/notereciver.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/notereciver.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/noterecivers.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/noterecivers.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/role/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/role/RoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/reciver.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/reciver.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/recivers.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/recivers.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index/index.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index/test.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index/test.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/inform/informlist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/inform/informlist.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/inform/informmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/inform/informmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/inform/informshow.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/inform/informshow.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/auditing.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/auditing.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/flowmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/flowmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/role/roleset.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/role/roleset.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/basicmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/basicmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/menumanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/menumanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/statusmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/statusmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/typemanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/typemanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/usermanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/usermanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/deptedit.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/deptedit.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/deptread.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/deptread.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/bursement.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/bursement.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/edittask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/edittask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/edituser.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/edituser.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/panel.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/panel.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/usermanagepaging.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/usermanagepaging.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userpanel.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/userpanel.ftl" afterDir="false" />
     </list>
@@ -123,17 +68,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="oa" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gson.oa.Application" />
@@ -153,6 +87,7 @@
       <workItem from="1722503342103" duration="140000" />
       <workItem from="1722829158848" duration="34000" />
       <workItem from="1722829244686" duration="21018000" />
+      <workItem from="1722911022037" duration="30123000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1722829344867</created>
@@ -199,42 +134,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>177</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>197</line>
+          <line>192</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>196</line>
+          <line>191</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>211</line>
+          <line>206</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
-          <line>163</line>
+          <line>211</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -242,12 +157,97 @@
           <line>539</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/note/NoteController.java</url>
+          <line>581</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/process/ProcessService.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/note/NoteController.java</url>
+          <line>590</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
+          <line>438</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/process/ProcessService.java</url>
+          <line>145</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
+          <line>165</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
+          <line>171</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/DeptController.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java</url>
+          <line>183</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java</url>
+          <line>206</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
+          <line>195</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="req.getParameter(&quot;id&quot;)" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

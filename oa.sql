@@ -120,7 +120,7 @@ CREATE TABLE `aoa_attends_list` (
   PRIMARY KEY (`attends_id`),
   KEY `FKaxgqsm98npnl1rxysh9upfjee` (`attends_user_id`),
   CONSTRAINT `FKaxgqsm98npnl1rxysh9upfjee` FOREIGN KEY (`attends_user_id`) REFERENCES `aoa_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `aoa_attends_list` (
 
 LOCK TABLES `aoa_attends_list` WRITE;
 /*!40000 ALTER TABLE `aoa_attends_list` DISABLE KEYS */;
-INSERT INTO `aoa_attends_list` VALUES (49,'192.168.2.2',NULL,'2024-08-04 14:17:15',11,8,1,'14:17','星期日',NULL,NULL),(50,'192.168.2.2',NULL,'2024-08-04 14:17:23',12,9,1,'14:17','星期日',NULL,NULL);
+INSERT INTO `aoa_attends_list` VALUES (49,'192.168.2.2',NULL,'2024-08-04 14:17:15',11,8,1,'14:17','星期日',NULL,NULL),(50,'192.168.2.2',NULL,'2024-08-04 14:17:23',12,9,1,'14:17','星期日',NULL,NULL),(51,'192.168.2.2',NULL,'2024-08-06 10:37:36',11,8,1,'10:37','星期二',NULL,NULL);
 /*!40000 ALTER TABLE `aoa_attends_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `aoa_bursement` (
   CONSTRAINT `FK666vswh4nl3voq8qalu73v2sq` FOREIGN KEY (`pro_id`) REFERENCES `aoa_process_list` (`process_id`),
   CONSTRAINT `FKgnqp4eax31sh7mn3lt2su7olr` FOREIGN KEY (`user_name`) REFERENCES `aoa_user` (`user_id`),
   CONSTRAINT `FKt3xu5y23deh0mtqkfk3ly6219` FOREIGN KEY (`operation_name`) REFERENCES `aoa_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,6 +168,7 @@ CREATE TABLE `aoa_bursement` (
 
 LOCK TABLES `aoa_bursement` WRITE;
 /*!40000 ALTER TABLE `aoa_bursement` DISABLE KEYS */;
+INSERT INTO `aoa_bursement` VALUES (10,66,66,NULL,NULL,'','负责人',NULL,NULL,26,42);
 /*!40000 ALTER TABLE `aoa_bursement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +196,7 @@ CREATE TABLE `aoa_catalog` (
 
 LOCK TABLES `aoa_catalog` WRITE;
 /*!40000 ALTER TABLE `aoa_catalog` DISABLE KEYS */;
-INSERT INTO `aoa_catalog` VALUES (1,'note',1,1),(2,'诗词记录',1,1),(9,'秒懂百科',1,2),(11,'上课要案',1,3),(12,'错题收集',1,3),(32,'规划(3)',1,1),(33,'根目录',1,NULL),(34,'规划(4)',1,1);
+INSERT INTO `aoa_catalog` VALUES (1,'note',1,1),(2,'诗词记录',1,1),(32,'规划(3)',1,1),(33,'根目录',1,NULL),(34,'规划(4)',1,1);
 /*!40000 ALTER TABLE `aoa_catalog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +257,7 @@ CREATE TABLE `aoa_dept` (
 
 LOCK TABLES `aoa_dept` WRITE;
 /*!40000 ALTER TABLE `aoa_dept` DISABLE KEYS */;
-INSERT INTO `aoa_dept` VALUES (2,'辽宁','','研发部','13700001111','114@qq.com',NULL,'2017-09-13 19:04:07','2010-05-23 00:00:00');
+INSERT INTO `aoa_dept` VALUES (2,'辽宁','0401-88884102','研发部','13700001111','114@qq.com',1,'2017-09-13 19:04:07','2010-05-23 00:00:00');
 /*!40000 ALTER TABLE `aoa_dept` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +279,7 @@ CREATE TABLE `aoa_detailsburse` (
   PRIMARY KEY (`detailsburse_id`),
   KEY `FKi02w0bghxr73fsc5sbpeyqdnn` (`bursment_id`),
   CONSTRAINT `FKi02w0bghxr73fsc5sbpeyqdnn` FOREIGN KEY (`bursment_id`) REFERENCES `aoa_bursement` (`bursement_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,6 +288,7 @@ CREATE TABLE `aoa_detailsburse` (
 
 LOCK TABLES `aoa_detailsburse` WRITE;
 /*!40000 ALTER TABLE `aoa_detailsburse` DISABLE KEYS */;
+INSERT INTO `aoa_detailsburse` VALUES (12,'vvvvv',66,66,'2024-08-06 14:04:22','车辆油费',10);
 /*!40000 ALTER TABLE `aoa_detailsburse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -700,7 +702,7 @@ CREATE TABLE `aoa_mailnumber` (
 
 LOCK TABLES `aoa_mailnumber` WRITE;
 /*!40000 ALTER TABLE `aoa_mailnumber` DISABLE KEYS */;
-INSERT INTO `aoa_mailnumber` VALUES (1,'1057245260@qq.com','2017-09-24 12:23:26',NULL,1,'宋佳','scdvszfjjfrpbeaa',1,1),(2,'664303632@qq.com','2017-09-13 13:29:28',NULL,1,'李明','123456',2,1),(3,'ffffff','2017-09-22 14:02:51',NULL,2,'ggg','33333',1,1),(4,'66@qq.com','2017-09-24 18:26:31','的点点滴滴',1,'私事','333',1,1),(5,'66@qq.com','2017-09-24 18:27:26','的点点滴滴',1,'哈哈哈哈','55555',1,1),(6,'66@qq.com','2017-09-24 18:37:06','的点点滴滴',1,'滚滚滚','55555',2,1),(8,'ggg','2017-09-28 20:33:06','hhh',1,'llll','11111',1,2),(9,'10@qq.com','2017-09-25 18:45:52','',1,'多对多','发vwv ',1,1),(10,'45@qq.com','2017-09-25 18:46:22','是是是',1,'吗vwjrerg ','14982',1,1),(11,'1234@qq.com','2017-09-25 18:46:53','',1,'点点滴滴','dbetet',2,1),(12,'12@qq.com','2017-09-25 18:47:15','',1,'反反复复','34455',1,1),(13,'34@qq.com','2017-09-25 18:47:35','',1,'别发额','457895780',1,1);
+INSERT INTO `aoa_mailnumber` VALUES (1,'1057245260@qq.com','2017-09-24 12:23:26',NULL,1,'宋佳','scdvszfjjfrpbeaa',1,1),(2,'664303632@qq.com','2017-09-13 13:29:28',NULL,1,'李明','123456',2,1),(3,'ffffff','2017-09-22 14:02:51',NULL,2,'ggg','33333',1,1),(4,'66@qq.com','2017-09-24 18:26:31','的点点滴滴',1,'私事','333',1,1),(5,'66@qq.com','2017-09-24 18:27:26','的点点滴滴',1,'哈哈哈哈','55555',1,1),(6,'66@qq.com','2017-09-24 18:37:06','的点点滴滴',1,'滚滚滚','55555',2,1),(9,'10@qq.com','2017-09-25 18:45:52','',1,'多对多','发vwv ',1,1),(10,'45@qq.com','2017-09-25 18:46:22','是是是',1,'吗vwjrerg ','14982',1,1),(11,'1234@qq.com','2017-09-25 18:46:53','',1,'点点滴滴','dbetet',2,1),(12,'12@qq.com','2017-09-25 18:47:15','',1,'反反复复','34455',1,1),(13,'34@qq.com','2017-09-25 18:47:35','',1,'别发额','457895780',1,1);
 /*!40000 ALTER TABLE `aoa_mailnumber` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -825,7 +827,6 @@ CREATE TABLE `aoa_notice_user_relation` (
 
 LOCK TABLES `aoa_notice_user_relation` WRITE;
 /*!40000 ALTER TABLE `aoa_notice_user_relation` DISABLE KEYS */;
-INSERT INTO `aoa_notice_user_relation` VALUES (74,0,27,2),(75,0,28,2);
 /*!40000 ALTER TABLE `aoa_notice_user_relation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -947,7 +948,7 @@ CREATE TABLE `aoa_process_list` (
   KEY `FKhtdg4du5ryotah5v1dgyjfh2t` (`process_user_id`),
   CONSTRAINT `FKhtdg4du5ryotah5v1dgyjfh2t` FOREIGN KEY (`process_user_id`) REFERENCES `aoa_user` (`user_id`),
   CONSTRAINT `FKiltoi9iw3vjixl6u4cd60fi1p` FOREIGN KEY (`pro_file_id`) REFERENCES `aoa_attachment_list` (`attachment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -956,6 +957,7 @@ CREATE TABLE `aoa_process_list` (
 
 LOCK TABLES `aoa_process_list` WRITE;
 /*!40000 ALTER TABLE `aoa_process_list` DISABLE KEYS */;
+INSERT INTO `aoa_process_list` VALUES (26,'2024-08-06 14:32:57',22,NULL,'vvffv','vvv',NULL,0,NULL,25,'费用报销',NULL,43,'Admin');
 /*!40000 ALTER TABLE `aoa_process_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1107,7 +1109,7 @@ CREATE TABLE `aoa_reviewed` (
   KEY `FK2iljei0wvy0cylwwyfh5dr9yk` (`user_id`),
   CONSTRAINT `FK2iljei0wvy0cylwwyfh5dr9yk` FOREIGN KEY (`user_id`) REFERENCES `aoa_user` (`user_id`),
   CONSTRAINT `FKevjvy6myxg1l0ibiuph3i7jw2` FOREIGN KEY (`pro_id`) REFERENCES `aoa_process_list` (`process_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1116,6 +1118,7 @@ CREATE TABLE `aoa_reviewed` (
 
 LOCK TABLES `aoa_reviewed` WRITE;
 /*!40000 ALTER TABLE `aoa_reviewed` DISABLE KEYS */;
+INSERT INTO `aoa_reviewed` VALUES (37,'','2024-08-06 14:43:21',25,26,1,0);
 /*!40000 ALTER TABLE `aoa_reviewed` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1140,7 +1143,7 @@ CREATE TABLE `aoa_role_` (
 
 LOCK TABLES `aoa_role_` WRITE;
 /*!40000 ALTER TABLE `aoa_role_` DISABLE KEYS */;
-INSERT INTO `aoa_role_` VALUES (1,'主任',NULL),(2,'文件管理员',NULL),(3,'通风负责人',NULL),(23,'通风技术员',NULL),(24,'管道负责人',NULL),(25,'管道技术员',NULL),(26,'电仪负责人',NULL),(27,'电仪技术员',NULL);
+INSERT INTO `aoa_role_` VALUES (1,'主任',NULL),(2,'文件管理员',NULL),(3,'通风负责人',NULL),(4,'通风技术员',NULL),(5,'管道负责人',NULL),(6,'管道技术员',NULL),(7,'电仪负责人',NULL),(8,'电仪技术员',NULL);
 /*!40000 ALTER TABLE `aoa_role_` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1161,7 +1164,7 @@ CREATE TABLE `aoa_role_power_list` (
   KEY `FK7b71lfkstl47tston4lrd8066` (`role_id`),
   CONSTRAINT `FK2f9f91f213gwtglofko5r429s` FOREIGN KEY (`menu_id`) REFERENCES `aoa_sys_menu` (`menu_id`),
   CONSTRAINT `FK7b71lfkstl47tston4lrd8066` FOREIGN KEY (`role_id`) REFERENCES `aoa_role_` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1536 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1809 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1170,7 +1173,7 @@ CREATE TABLE `aoa_role_power_list` (
 
 LOCK TABLES `aoa_role_power_list` WRITE;
 /*!40000 ALTER TABLE `aoa_role_power_list` DISABLE KEYS */;
-INSERT INTO `aoa_role_power_list` VALUES (56,1,1,1),(57,1,2,1),(58,1,3,1),(59,1,4,1),(60,1,5,1),(61,1,6,1),(62,1,7,1),(63,1,8,1),(64,1,9,1),(65,1,10,1),(66,1,11,1),(67,1,12,1),(68,1,13,1),(69,1,14,1),(70,1,15,1),(71,1,16,1),(72,1,17,1),(73,1,18,1),(74,1,19,1),(75,1,20,1),(76,1,21,1),(77,1,22,1),(78,1,23,1),(79,1,24,1),(80,1,25,1),(81,1,26,1),(82,1,27,1),(83,1,28,1),(84,1,29,1),(85,1,30,1),(86,1,31,1),(87,1,32,1),(88,1,33,1),(89,1,34,1),(90,1,35,1),(91,1,36,1),(92,1,37,1),(93,1,38,1),(94,1,39,1),(95,1,40,1),(96,1,41,1),(97,1,42,1),(98,1,67,1),(109,1,89,1),(110,1,90,1),(111,1,1,2),(112,1,2,2),(113,1,3,2),(114,1,4,2),(115,1,5,2),(116,1,6,2),(117,1,7,2),(118,1,8,2),(119,1,9,2),(120,1,10,2),(121,1,11,2),(122,1,12,2),(123,1,13,2),(127,1,17,2),(128,1,18,2),(129,1,19,2),(130,0,20,2),(131,1,21,2),(132,1,22,2),(133,1,23,2),(134,1,24,2),(135,0,25,2),(136,1,26,2),(137,1,27,2),(138,1,28,2),(139,1,29,2),(140,1,30,2),(141,1,31,2),(142,1,32,2),(143,1,33,2),(144,1,34,2),(145,1,35,2),(146,1,36,2),(147,1,37,2),(148,1,38,2),(149,1,39,2),(150,1,40,2),(151,1,41,2),(152,1,42,2),(153,1,67,2),(167,1,2,3),(168,1,3,3),(169,1,4,3),(170,1,5,3),(171,1,6,3),(172,1,7,3),(173,1,8,3),(174,1,9,3),(175,1,10,3),(176,1,11,3),(177,1,12,3),(178,1,13,3),(182,1,17,3),(183,1,18,3),(184,1,19,3),(185,1,20,3),(186,1,21,3),(187,1,22,3),(188,1,23,3),(189,1,24,3),(190,1,25,3),(191,1,26,3),(192,1,27,3),(193,1,28,3),(194,1,29,3),(195,1,30,3),(196,1,31,3),(197,1,32,3),(198,1,33,3),(199,1,34,3),(200,1,35,3),(201,1,36,3),(202,1,37,3),(203,1,38,3),(204,1,39,3),(205,1,40,3),(206,1,41,3),(207,1,42,3),(208,1,67,3),(606,0,1,3),(661,0,1,23),(662,0,2,23),(663,0,3,23),(664,0,4,23),(665,0,5,23),(666,0,6,23),(667,0,7,23),(668,0,8,23),(669,0,9,23),(670,0,10,23),(671,0,11,23),(672,0,12,23),(673,0,13,23),(674,0,14,23),(675,0,15,23),(676,0,16,23),(677,0,17,23),(678,0,18,23),(679,0,19,23),(680,0,20,23),(681,0,21,23),(682,0,22,23),(683,0,23,23),(684,0,24,23),(685,0,25,23),(686,0,26,23),(687,0,27,23),(688,0,28,23),(689,0,29,23),(690,0,30,23),(691,0,31,23),(692,0,32,23),(693,0,33,23),(694,0,34,23),(695,0,35,23),(696,0,36,23),(697,0,37,23),(698,0,38,23),(699,0,39,23),(700,0,40,23),(701,0,41,23),(702,0,42,23),(703,0,67,23),(714,0,89,23),(715,0,90,23),(826,0,1,24),(827,0,2,24),(828,0,3,24),(829,0,4,24),(830,0,5,24),(831,0,6,24),(832,0,7,24),(833,0,8,24),(834,0,9,24),(835,0,10,24),(836,0,11,24),(837,0,12,24),(838,0,13,24),(839,0,14,24),(840,1,15,24),(841,0,16,24),(842,0,17,24),(843,0,18,24),(844,0,19,24),(845,0,20,24),(846,0,21,24),(847,0,22,24),(848,0,23,24),(849,0,24,24),(850,0,25,24),(851,0,26,24),(852,0,27,24),(853,0,28,24),(854,0,29,24),(855,0,30,24),(856,0,31,24),(857,0,32,24),(858,0,33,24),(859,0,34,24),(860,0,35,24),(861,0,36,24),(862,0,37,24),(863,0,38,24),(864,0,39,24),(865,0,40,24),(866,0,41,24),(867,0,42,24),(868,0,67,24),(879,0,89,24),(880,0,90,24),(881,0,1,25),(882,0,2,25),(883,0,3,25),(884,0,4,25),(885,0,5,25),(886,0,6,25),(887,0,7,25),(888,0,8,25),(889,0,9,25),(890,0,10,25),(891,0,11,25),(892,0,12,25),(893,0,13,25),(894,0,14,25),(895,0,15,25),(896,0,16,25),(897,0,17,25),(898,0,18,25),(899,0,19,25),(900,0,20,25),(901,0,21,25),(902,0,22,25),(903,0,23,25),(904,0,24,25),(905,0,25,25),(906,0,26,25),(907,0,27,25),(908,0,28,25),(909,0,29,25),(910,0,30,25),(911,0,31,25),(912,0,32,25),(913,0,33,25),(914,0,34,25),(915,0,35,25),(916,0,36,25),(917,0,37,25),(918,0,38,25),(919,0,39,25),(920,0,40,25),(921,0,41,25),(922,0,42,25),(923,0,67,25),(934,0,89,25),(935,0,90,25),(936,0,1,26),(937,0,2,26),(938,0,3,26),(939,0,4,26),(940,0,5,26),(941,0,6,26),(942,0,7,26),(943,0,8,26),(944,0,9,26),(945,0,10,26),(946,0,11,26),(947,0,12,26),(948,0,13,26),(949,0,14,26),(950,0,15,26),(951,0,16,26),(952,0,17,26),(953,0,18,26),(954,0,19,26),(955,0,20,26),(956,0,21,26),(957,0,22,26),(958,0,23,26),(959,0,24,26),(960,0,25,26),(961,0,26,26),(962,0,27,26),(963,0,28,26),(964,0,29,26),(965,0,30,26),(966,0,31,26),(967,0,32,26),(968,0,33,26),(969,0,34,26),(970,0,35,26),(971,0,36,26),(972,0,37,26),(973,0,38,26),(974,0,39,26),(975,0,40,26),(976,0,41,26),(977,0,42,26),(978,0,67,26),(989,0,89,26),(990,0,90,26),(991,0,1,27),(992,1,2,27),(1158,0,3,27),(1159,0,4,27),(1160,0,5,27),(1161,0,6,27),(1162,0,7,27),(1163,0,8,27),(1164,0,9,27),(1165,0,10,27),(1166,0,11,27),(1167,0,12,27),(1168,0,13,27),(1169,0,14,27),(1170,0,15,27),(1171,0,16,27),(1172,0,17,27),(1173,0,18,27),(1174,0,19,27),(1175,1,20,27),(1176,0,21,27),(1177,0,22,27),(1178,0,23,27),(1179,0,24,27),(1180,0,25,27),(1181,0,26,27),(1182,0,27,27),(1183,0,28,27),(1184,0,29,27),(1185,0,30,27),(1186,0,31,27),(1187,0,32,27),(1188,0,33,27),(1189,0,34,27),(1190,0,35,27),(1191,0,36,27),(1192,0,37,27),(1193,0,38,27),(1194,0,39,27),(1195,0,40,27),(1196,0,41,27),(1197,0,42,27),(1198,0,67,27),(1209,0,89,27),(1210,0,90,27);
+INSERT INTO `aoa_role_power_list` VALUES (1,1,1,1),(2,1,2,1),(3,1,3,1),(4,1,5,1),(5,1,8,1),(7,1,10,1),(8,1,11,1),(9,1,12,1),(10,1,13,1),(11,1,14,1),(12,1,15,1),(13,1,16,1),(14,1,17,1),(15,1,18,1),(16,1,19,1),(17,1,20,1),(18,1,21,1),(19,1,22,1),(20,1,23,1),(21,1,24,1),(22,1,25,1),(1536,0,1,2),(1537,0,2,2),(1538,0,3,2),(1539,0,5,2),(1540,0,8,2),(1541,0,10,2),(1542,0,11,2),(1543,0,12,2),(1544,0,13,2),(1545,0,14,2),(1546,0,15,2),(1547,0,16,2),(1548,0,17,2),(1549,0,18,2),(1550,0,19,2),(1551,0,20,2),(1552,0,21,2),(1553,0,22,2),(1554,0,23,2),(1555,0,24,2),(1556,0,25,2),(1557,0,1,3),(1558,0,2,3),(1559,0,3,3),(1560,1,5,3),(1561,1,8,3),(1562,1,10,3),(1563,0,11,3),(1564,0,12,3),(1565,0,13,3),(1566,0,14,3),(1567,0,15,3),(1568,0,16,3),(1569,0,17,3),(1570,0,18,3),(1571,1,19,3),(1572,1,20,3),(1573,1,21,3),(1574,0,22,3),(1575,1,23,3),(1576,1,24,3),(1577,1,25,3),(1578,0,1,4),(1579,0,2,4),(1580,0,3,4),(1581,0,5,4),(1582,1,8,4),(1583,0,10,4),(1584,0,11,4),(1585,0,12,4),(1586,0,13,4),(1587,0,14,4),(1588,0,15,4),(1589,0,16,4),(1590,0,17,4),(1591,0,18,4),(1592,0,19,4),(1593,0,20,4),(1594,0,21,4),(1595,0,22,4),(1596,1,23,4),(1597,1,24,4),(1598,0,25,4),(1620,0,1,5),(1621,0,2,5),(1622,0,3,5),(1623,0,5,5),(1624,0,8,5),(1625,0,10,5),(1626,0,11,5),(1627,0,12,5),(1628,0,13,5),(1629,0,14,5),(1630,0,15,5),(1631,0,16,5),(1632,0,17,5),(1633,0,18,5),(1634,0,19,5),(1635,0,20,5),(1636,0,21,5),(1637,0,22,5),(1638,0,23,5),(1639,0,24,5),(1640,0,25,5),(1641,0,1,6),(1642,0,2,6),(1643,0,3,6),(1644,0,5,6),(1645,0,8,6),(1646,0,10,6),(1647,0,11,6),(1648,0,12,6),(1649,0,13,6),(1650,0,14,6),(1651,0,15,6),(1652,0,16,6),(1653,0,17,6),(1654,0,18,6),(1655,0,19,6),(1656,0,20,6),(1657,0,21,6),(1658,0,22,6),(1659,0,23,6),(1660,0,24,6),(1661,0,25,6),(1662,0,1,7),(1663,0,2,7),(1664,0,3,7),(1665,0,5,7),(1666,0,8,7),(1667,0,10,7),(1668,0,11,7),(1669,0,12,7),(1670,0,13,7),(1671,0,14,7),(1672,0,15,7),(1673,0,16,7),(1674,0,17,7),(1675,0,18,7),(1676,0,19,7),(1677,0,20,7),(1678,0,21,7),(1679,0,22,7),(1680,0,23,7),(1681,0,24,7),(1682,0,25,7),(1683,0,1,8),(1684,0,2,8),(1685,0,3,8),(1686,0,5,8),(1687,0,8,8),(1688,0,10,8),(1689,0,11,8),(1690,0,12,8),(1691,0,13,8),(1692,0,14,8),(1693,0,15,8),(1694,0,16,8),(1695,0,17,8),(1696,0,18,8),(1697,0,19,8),(1698,0,20,8),(1699,0,21,8),(1700,0,22,8),(1701,0,23,8),(1702,0,24,8),(1703,0,25,8);
 /*!40000 ALTER TABLE `aoa_role_power_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1233,7 +1236,6 @@ CREATE TABLE `aoa_schedule_user` (
 
 LOCK TABLES `aoa_schedule_user` WRITE;
 /*!40000 ALTER TABLE `aoa_schedule_user` DISABLE KEYS */;
-INSERT INTO `aoa_schedule_user` VALUES (6,2),(6,3),(1,2),(1,3),(1,4);
 /*!40000 ALTER TABLE `aoa_schedule_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1350,7 +1352,7 @@ CREATE TABLE `aoa_sys_menu` (
 
 LOCK TABLES `aoa_sys_menu` WRITE;
 /*!40000 ALTER TABLE `aoa_sys_menu` DISABLE KEYS */;
-INSERT INTO `aoa_sys_menu` VALUES (1,1,NULL,'glyphicon-cog','系统管理','##',0,0),(2,1,NULL,'glyphicon-education','用户管理','#',0,2),(3,1,NULL,'glyphicon-user','角色列表','#',0,3),(4,1,NULL,'glyphicon-time','考勤管理','#',0,4),(5,1,NULL,'glyphicon-hourglass','流程管理','#',0,5),(6,1,NULL,'glyphicon-bell','公告管理','#',0,6),(7,1,NULL,'glyphicon-envelope','邮件管理','#',0,7),(8,1,NULL,'glyphicon-flag','任务管理','#',0,8),(9,1,NULL,'glyphicon-calendar','日程管理','#',0,9),(10,1,NULL,'glyphicon-plane','工作计划','#',0,10),(11,1,NULL,'glyphicon-folder-open','文件管理','#',0,11),(12,1,NULL,'glyphicon-edit','笔记管理','#',0,12),(13,1,NULL,'glyphicon-comment','讨论区','#',0,14),(14,1,NULL,'glyphicon-record','菜单管理','/testsysmenu',1,2),(15,1,NULL,'glyphicon-record','类型管理','/testsystype',1,1),(16,1,NULL,'glyphicon-record','状态管理','/testsysstatus',1,3),(17,1,NULL,'glyphicon-record','部门管理','/deptmanage',2,1),(18,1,NULL,'glyphicon-record','职位管理','/positionmanage',2,3),(19,1,NULL,'glyphicon-record','用户管理','/usermanage',2,4),(20,1,NULL,'glyphicon-record','在线用户','/morelogrecord',2,2),(21,1,NULL,'glyphicon-record','角色列表','/rolemanage',3,1),(22,1,NULL,'glyphicon-record','考勤管理','/attendceatt',4,1),(23,1,NULL,'glyphicon-record','考勤周报表','/attendceweek',4,2),(24,1,NULL,'glyphicon-record','考勤月报表','/attendcemonth',4,3),(25,1,NULL,'glyphicon-record','我的申请','/flowmanage',5,1),(26,1,NULL,'glyphicon-record','流程审核','/audit',5,2),(27,1,NULL,'glyphicon-record','通知管理','/infrommanage',6,1),(28,1,NULL,'glyphicon-record','通知列表','/infromlist',6,2),(29,1,NULL,'glyphicon-record','账号管理','/accountmanage',7,1),(30,1,NULL,'glyphicon-record','邮件管理','/mail',7,2),(31,1,NULL,'glyphicon-record','任务管理','/taskmanage',8,1),(32,1,NULL,'glyphicon-record','我的任务','/mytask',8,2),(33,1,NULL,'glyphicon-record','日程管理','/daymanage',9,1),(34,1,NULL,'glyphicon-record','我的日历','/daycalendar',9,2),(35,1,NULL,'glyphicon-record','计划管理','/planview',10,1),(36,1,NULL,'glyphicon-record','计划报表','/myplan',10,2),(37,1,NULL,'glyphicon-record','文件管理','/filemanage',11,1),(38,1,NULL,'glyphicon-record','笔记管理','/noteview',12,0),(39,1,NULL,'glyphicon-earphone','通讯录','#',0,13),(40,1,NULL,'glyphicon-record','通讯录','/addrmanage',39,1),(41,1,NULL,'glyphicon-record','我的管理','/chatmanage',13,1),(42,1,NULL,'glyphicon-record','讨论区列表','/chatlist',13,2),(67,1,NULL,'glyphicon-record','考勤列表','/attendcelist',4,4),(89,1,NULL,'glyphicon-record','超级管理员','/adminmanage',13,0),(90,1,NULL,'glyphicon-record','新建流程','/xinxeng',5,0);
+INSERT INTO `aoa_sys_menu` VALUES (1,1,NULL,'glyphicon-cog','系统管理','##',0,0),(2,1,NULL,'glyphicon-education','用户管理','#',0,2),(3,1,NULL,'glyphicon-user','角色列表','#',0,3),(5,1,NULL,'glyphicon-hourglass','流程管理','#',0,5),(8,1,NULL,'glyphicon-flag','任务管理','#',0,8),(10,1,NULL,'glyphicon-earphone','通讯录','#',0,13),(11,1,NULL,'glyphicon-record','菜单管理','/testsysmenu',1,2),(12,1,NULL,'glyphicon-record','类型管理','/testsystype',1,1),(13,1,NULL,'glyphicon-record','状态管理','/testsysstatus',1,3),(14,1,NULL,'glyphicon-record','部门管理','/deptmanage',2,1),(15,1,NULL,'glyphicon-record','职位管理','/positionmanage',2,3),(16,1,NULL,'glyphicon-record','用户管理','/usermanage',2,4),(17,1,NULL,'glyphicon-record','在线用户','/morelogrecord',2,2),(18,1,NULL,'glyphicon-record','角色列表','/rolemanage',3,1),(19,1,NULL,'glyphicon-record','我的申请','/flowmanage',5,1),(20,1,NULL,'glyphicon-record','流程审核','/audit',5,2),(21,1,NULL,'glyphicon-record','新建流程','/xinxeng',5,0),(22,1,NULL,'glyphicon-record','账号管理','/accountmanage',7,1),(23,1,NULL,'glyphicon-record','任务管理','/taskmanage',8,1),(24,1,NULL,'glyphicon-record','我的任务','/mytask',8,2),(25,1,NULL,'glyphicon-record','通讯录','/addrmanage',10,1);
 /*!40000 ALTER TABLE `aoa_sys_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1380,7 +1382,7 @@ CREATE TABLE `aoa_task_list` (
   PRIMARY KEY (`task_id`),
   KEY `FK7qch0fh6s2y73dvngy1m87aw7` (`task_push_user_id`),
   CONSTRAINT `FK7qch0fh6s2y73dvngy1m87aw7` FOREIGN KEY (`task_push_user_id`) REFERENCES `aoa_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1389,7 +1391,7 @@ CREATE TABLE `aoa_task_list` (
 
 LOCK TABLES `aoa_task_list` WRITE;
 /*!40000 ALTER TABLE `aoa_task_list` DISABLE KEYS */;
-INSERT INTO `aoa_task_list` VALUES (1,'无法把淘宝','2017-09-10 00:00:00',0,0,NULL,'2017-09-18 18:39:01','2017-09-09 00:00:00',5,'入股',NULL,'24日',3,1,'罗密欧'),(13,'噁7ikea','2017-09-26 00:00:00',1,1,NULL,'2017-09-18 18:41:48','2017-09-13 00:00:00',3,'6uj',NULL,'熱土啊u就',3,1,'朱丽叶;伊丽莎白'),(14,'','2017-09-21 18:44:14',0,1,'2017-09-20 18:44:20','2017-09-20 18:44:20','2017-09-20 18:44:14',7,'給我如果 ',NULL,'的v我如果1111',3,1,'朱丽叶;伊丽莎白'),(19,'tttbthhry','2017-09-21 13:49:33',1,0,'2017-09-20 13:49:37','2017-09-20 13:49:37','2017-09-20 13:49:33',7,'ergget',NULL,'啦啦啦啦绿绿绿绿绿',3,1,'朱丽叶;伊丽莎白'),(20,'1','2017-09-30 00:00:00',1,1,NULL,'2017-09-16 15:54:10','2017-09-16 00:00:00',3,'1',NULL,'1',3,1,'朱丽叶;伊丽莎白'),(21,'31','2017-09-14 00:00:00',1,1,'2017-10-16 09:22:58','2017-10-16 09:22:58','2017-09-13 00:00:00',7,'312',NULL,'噼噼啪啪铺铺铺铺',3,1,'朱丽叶;伊丽莎白'),(26,'犯得上','2017-09-12 00:00:00',0,1,NULL,'2017-09-18 18:42:59','2017-09-07 00:00:00',3,'富士達',NULL,'飛灑',3,1,'伊丽莎白'),(27,'','2017-09-21 13:33:36',0,0,'2017-09-20 13:33:47','2017-09-20 13:33:47','2017-09-20 13:33:36',3,'FDSA ',NULL,'的方法',4,1,'朱丽叶'),(30,'','2017-09-21 13:27:51',0,1,'2017-09-20 13:27:56','2017-09-20 13:27:56','2017-09-20 13:27:51',3,'多对多',NULL,'的',4,1,'朱丽叶'),(31,'','2017-09-20 20:58:22',0,0,'2017-09-19 21:01:16','2017-09-19 21:01:16','2017-09-19 20:58:22',3,'点点滴滴',NULL,'凄凄切切',3,1,'朱丽叶;伊丽莎白'),(32,'','2017-09-24 12:48:55',0,1,'2017-09-23 12:49:28','2017-09-23 12:49:28','2017-09-23 12:48:55',3,'少时诵诗书',NULL,'凄凄切切',3,4,'soli;红之花'),(33,'','2017-09-24 12:49:44',0,0,'2017-09-23 12:49:56','2017-09-23 12:49:56','2017-09-23 12:49:44',3,'密密麻麻',NULL,'哈哈哈',3,4,'红之花'),(34,' 烦死哒','2017-09-26 12:13:03',0,1,'2017-10-16 09:34:02','2017-10-16 09:34:02','2017-09-25 12:13:03',7,'烦死哒大多数',NULL,'范德萨类型',3,1,'朱丽叶'),(35,'','2017-09-26 16:39:29',0,0,'2017-09-25 16:39:45','2017-09-25 16:39:45','2017-09-25 16:39:29',3,'反反复复付',NULL,'男男女女女',3,1,'朱丽叶;伊丽莎白;小李父斯基'),(36,'','2017-09-26 16:39:51',0,1,'2017-09-25 16:40:04','2017-09-25 16:40:04','2017-09-25 16:39:51',3,'啦啦啦啦绿绿绿',NULL,'斤斤计较军军',3,1,'朱丽叶;伊丽莎白;小李父斯基'),(37,'','2017-09-26 16:40:16',0,1,'2017-10-16 09:33:12','2017-10-16 09:33:12','2017-09-25 16:40:16',7,'巴巴爸爸',NULL,'啦啦啦啦木木木木',3,1,'朱丽叶;伊丽莎白;小李父斯基'),(38,'123','2017-10-04 19:14:10',0,1,'2017-10-16 09:33:52','2017-10-16 09:33:52','2017-10-03 19:14:10',7,'231',NULL,'221',3,1,'伊丽莎白'),(39,'','2017-10-16 14:05:02',0,1,'2017-10-15 14:05:39','2017-10-15 14:05:39','2017-10-15 14:05:02',3,'he疼合同号',NULL,'的vzfbhtrhet',3,4,'甄嬛;无双'),(40,'地方撒','2017-10-17 09:29:41',0,1,'2017-10-16 09:32:41','2017-10-16 09:32:41','2017-10-16 09:29:41',5,'的说法',NULL,'发给',3,1,'朱丽叶'),(41,'nicw','2017-10-17 09:30:13',0,1,'2017-10-16 09:33:41','2017-10-16 09:33:41','2017-10-16 09:30:13',7,'完成了',NULL,'哈哈',3,1,'朱丽叶'),(42,'','2017-10-17 09:30:44',0,1,'2017-10-16 09:32:52','2017-10-16 09:32:52','2017-10-16 09:30:44',5,'已经完成',NULL,'以完成',3,1,'朱丽叶'),(45,'','2017-10-21 09:48:26',0,0,'2017-10-20 09:48:40','2017-10-20 09:48:40','2017-10-20 09:48:26',7,'ok',NULL,'ok',3,3,'soli;红之花');
+INSERT INTO `aoa_task_list` VALUES (49,'333\r\n','2024-08-07 14:58:41',0,0,'2024-08-06 15:20:18','2024-08-06 15:20:18','2024-08-06 14:58:41',3,'333',NULL,'4',NULL,43,'test1'),(50,'','2024-08-07 15:01:17',0,0,'2024-08-06 15:20:13','2024-08-06 15:20:13','2024-08-06 15:01:17',3,'6589',NULL,'3',NULL,43,'test1'),(51,'','2024-08-07 15:01:17',0,0,'2024-08-06 15:20:08','2024-08-06 15:20:08','2024-08-06 15:01:17',3,'6589',NULL,'2',NULL,43,'test1'),(52,'','2024-08-07 15:01:17',0,0,'2024-08-06 15:21:38','2024-08-06 15:21:38','2024-08-06 15:01:17',5,'6589',NULL,'1',NULL,43,'test1'),(54,'','2024-08-07 17:34:58',0,0,'2024-08-06 17:35:24','2024-08-06 17:35:24','2024-08-06 17:34:58',3,'888',NULL,'8////8888',NULL,1,'李季;王博辰');
 /*!40000 ALTER TABLE `aoa_task_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1410,7 +1412,7 @@ CREATE TABLE `aoa_task_logger` (
   PRIMARY KEY (`logger_id`),
   KEY `FK5gu0thq54i7ujc6cict009h4y` (`task_id`),
   CONSTRAINT `FK5gu0thq54i7ujc6cict009h4y` FOREIGN KEY (`task_id`) REFERENCES `aoa_task_list` (`task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1419,7 +1421,7 @@ CREATE TABLE `aoa_task_logger` (
 
 LOCK TABLES `aoa_task_logger` WRITE;
 /*!40000 ALTER TABLE `aoa_task_logger` DISABLE KEYS */;
-INSERT INTO `aoa_task_logger` VALUES (1,'2017-09-15 19:54:58','土豪阅海万家无可',19,'罗密欧',NULL),(3,'2017-09-15 21:17:31','heenrnm',19,'罗密欧',7),(4,'2017-09-15 21:19:13','ujw5ukj5wuk',19,'罗密欧',7),(5,'2017-09-15 21:22:34','yukd68kd6',19,'罗密欧',7),(6,'2017-09-15 21:23:19','fwrgqetbh',19,'罗密欧',7),(17,'2017-09-19 21:08:06','点点滴滴',14,'罗密欧',5),(29,'2017-09-22 13:42:21','立刻开口',1,'罗密欧',5),(30,'2017-10-15 14:04:36','',35,'小李父斯基',4),(31,'2017-10-15 14:09:01','',39,'甄嬛',4),(32,'2018-02-09 00:51:03','',34,'罗密欧',7);
+INSERT INTO `aoa_task_logger` VALUES (35,'2024-08-06 15:21:47','333',52,'cni23256467',5),(36,'2024-08-06 15:21:58','232456456',52,'cni23256467',5),(38,'2024-08-06 18:15:02','',54,'李季',3),(39,'2024-08-06 18:15:10','',54,'李季',3),(40,'2024-08-06 18:15:14','',54,'李季',3),(41,'2024-08-06 18:58:28','',52,'王博辰',5),(42,'2024-08-06 18:58:32','',54,'王博辰',3),(43,'2024-08-06 18:58:40','',51,'王博辰',3),(44,'2024-08-06 18:58:43','',50,'王博辰',3);
 /*!40000 ALTER TABLE `aoa_task_logger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1440,7 +1442,7 @@ CREATE TABLE `aoa_task_user` (
   KEY `FK654dfo0oouy3fk07fs7rqo4ld` (`task_recive_user_id`),
   CONSTRAINT `FK2714kl5ywm5chya4dxte8c788` FOREIGN KEY (`task_id`) REFERENCES `aoa_task_list` (`task_id`),
   CONSTRAINT `FK654dfo0oouy3fk07fs7rqo4ld` FOREIGN KEY (`task_recive_user_id`) REFERENCES `aoa_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1449,6 +1451,7 @@ CREATE TABLE `aoa_task_user` (
 
 LOCK TABLES `aoa_task_user` WRITE;
 /*!40000 ALTER TABLE `aoa_task_user` DISABLE KEYS */;
+INSERT INTO `aoa_task_user` VALUES (68,3,49,44),(69,3,50,44),(70,3,51,44),(71,5,52,44),(73,3,54,43),(74,3,54,44);
 /*!40000 ALTER TABLE `aoa_task_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1509,7 +1512,7 @@ CREATE TABLE `aoa_type_list` (
 
 LOCK TABLES `aoa_type_list` WRITE;
 /*!40000 ALTER TABLE `aoa_type_list` DISABLE KEYS */;
-INSERT INTO `aoa_type_list` VALUES (1,'red','aoa_mailnumber','系统邮件',0),(2,'red','aoa_mailnumber','公司邮件',1),(3,'red','aoa_task_list','公事',0),(4,'red','aoa_task_list','私事',1),(5,'red','aoa_note_list','我的笔记',0),(6,'red','aoa_note_list','公司笔记',1),(7,'red','aoa_note_list','共享笔记',2),(8,'red','aoa_attends_list','上班',1),(9,'red','aoa_attends_list','下班',2),(10,'red','inform','公告',0),(11,'red','inform','通知',1),(12,'red','inform','投票',2),(13,'red','aoa_plan_list','日计划',0),(14,'red','aoa_plan_list','周计划',1),(15,'red','aoa_plan_list','月计划',2),(16,'red','aoa_in_mail_list','邮件',0),(17,'red','aoa_in_mail_list','通知',1),(18,'red','aoa_in_mail_list','公告',2),(19,'label-danger','chat','公告',0),(20,'label-success','chat','讨论',1),(21,'label-warning','chat','投票',2),(22,'red','aoa_process_list','正常',0),(23,'red','aoa_process_list','重要',1),(24,'red','aoa_process_list','紧急',2),(25,'red','aoa_bursement','银行卡',0),(26,'red','aoa_bursement','现金',1),(27,'red','aoa_bursement','其他',2),(28,'red','aoa_evection','销售拜访',0),(29,'red','aoa_evection','售前支持',1),(30,'red','aoa_evection','项目支持',2),(31,'red','aoa_evection','客服外出',3),(32,'red','aoa_evection','其他',4),(33,'red','aoa_overtime','工作日',0),(34,'red','aoa_overtime','休息日',1),(35,'red','aoa_overtime','节假日',2),(36,'red','aoa_overtime','其他',3),(37,'1、年假：工作满一年以上每年可享受带薪年假，当年的年假使用期至次年3月1日止；未经用人单位批准，员工不得自行休假。','aoa_holiday','年假',7),(38,'2、事假：按照平均工作日扣发薪资（包含工资及各类补贴福利）；单次事假原则上不应超过3天，当年累计事假超过15天的视为主动放弃继续履行岗位职责的权利，特殊情况除外。  ','aoa_holiday','事假',4),(39,'3、病假：两天及以上病假必须持工作地二级甲等以上医院相关病假证明单或就医记录证明，否则无法享受病假工资；单次病假超过5天，应当持有工作所在地三级甲等医院提供的病假证明单。原则上当年累计病假超过15天应视为不具备继续履行岗位职责身体条件，特殊情况除外。  ','aoa_holiday','病假',NULL),(40,'4、婚假：婚假为十天，包含休息日，请婚假必须持结婚证明，结婚证必须在泛微工作期间领取，且婚假必须在一年内使用完毕，不得分次休假，国家或地方政府有其他规定的按照当地要求执行；  ','aoa_holiday','婚假',10),(41,'5、产假及哺乳假：按国家及地方法律法规执行，包含休息日与法定节假日；  ','aoa_holiday','产假及哺乳假',180),(42,'6、陪产假：泛微正式男性员工在工作期间配偶生育的，可凭子女出生证明，享受十个自然日陪产假。  ','aoa_holiday','陪产假',10),(43,'7、丧假：直系亲属：配偶、子女、父母可享受三天，岳父母、祖父母、外祖父母可享受一天','aoa_holiday','丧假',NULL),(44,'','aoa_schedule_list','日程提醒',0),(45,'','aoa_schedule_list','假日安排',1),(46,'red','aoa_attends_list','请假',3),(47,'red','aoa_attends_list','出差',4);
+INSERT INTO `aoa_type_list` VALUES (8,'red','aoa_attends_list','上班',1),(9,'red','aoa_attends_list','下班',2),(13,'red','aoa_plan_list','日计划',0),(14,'red','aoa_plan_list','周计划',1),(15,'red','aoa_plan_list','月计划',2),(16,'red','aoa_in_mail_list','邮件',0),(17,'red','aoa_in_mail_list','通知',1),(18,'red','aoa_in_mail_list','公告',2),(22,'red','aoa_process_list','正常',0),(23,'red','aoa_process_list','重要',1),(24,'red','aoa_process_list','紧急',2);
 /*!40000 ALTER TABLE `aoa_type_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1542,6 +1545,7 @@ CREATE TABLE `aoa_user` (
   `sex` varchar(255) DEFAULT NULL,
   `theme_skin` varchar(255) DEFAULT NULL,
   `user_edu` varchar(255) DEFAULT NULL,
+  `uid` varchar(255) DEFAULT NULL COMMENT '员工号',
   `user_name` varchar(255) DEFAULT NULL,
   `user_sign` varchar(255) DEFAULT NULL,
   `user_tel` varchar(255) DEFAULT NULL,
@@ -1558,7 +1562,7 @@ CREATE TABLE `aoa_user` (
   CONSTRAINT `FKadtg9xju7q1ijcyxlkl9gwv5t` FOREIGN KEY (`position_id`) REFERENCES `aoa_position` (`position_id`),
   CONSTRAINT `FKl738mmblfx0uia6671rl17cj9` FOREIGN KEY (`role_id`) REFERENCES `aoa_role_` (`role_id`),
   CONSTRAINT `FKt0vmot9xfbgq14oyij0gwh3gh` FOREIGN KEY (`dept_id`) REFERENCES `aoa_dept` (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1567,7 +1571,7 @@ CREATE TABLE `aoa_user` (
 
 LOCK TABLES `aoa_user` WRITE;
 /*!40000 ALTER TABLE `aoa_user` DISABLE KEYS */;
-INSERT INTO `aoa_user` VALUES (1,NULL,NULL,NULL,'1057@qq.com',3,'2017-09-22 19:35:40',NULL,'/d6242233-05de-462c-a919-ca8bcfa82773.jpg',0,NULL,NULL,NULL,NULL,'123456','罗密欧',NULL,NULL,'男','blue',NULL,'Admin','好好','13272143450',2,1,1,1,NULL,'luomiou'),(2,'中国广东','12345','1994-03-28 00:00:00','aaluoxiang@foxmail.com',1,'2008-03-06 00:00:00','510322199403280426','oa.jpg',0,NULL,NULL,NULL,NULL,'123456','小梅',1000,'中南大学','女','green','硕士','pro','天天向上','13203318185',2,1,2,0,NULL,'xiaomei'),(3,'中国广东','6217002940101998752','1995-03-05 00:00:00','255@qq.com',2,'2009-05-24 00:00:00','510322199503052485','oa.jpg',0,NULL,NULL,NULL,NULL,'123456','芳芳',1000,'湖南大学','女','blue','硕士','test1','好学','18683688154',2,1,3,0,NULL,'fangfang'),(4,'清华大学','6666','1994-09-19 16:52:11','164@qq.com',3,'2013-09-19 16:52:40','432524199612188018','oa.jpg',0,NULL,NULL,NULL,NULL,'123456','李明',3000,'清华大学','男','red','硕士','test2','天天努力','18173328888',2,1,3,0,NULL,'liming'),(38,NULL,NULL,NULL,'1057@qq.com',NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,'123456','小明',NULL,NULL,'男','green',NULL,'test3',NULL,'13272143450',2,1,27,0,NULL,'xiaoming'),(39,NULL,NULL,NULL,'16555@qq.com',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'123456','朱丽叶',NULL,NULL,'男','purple',NULL,'test4',NULL,'13272143450',2,1,27,0,NULL,'zhuliye'),(40,NULL,NULL,NULL,'16555@qq.com',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'123456','祝英台',NULL,NULL,'女','yellow',NULL,'123456',NULL,'13272143450',2,1,26,0,NULL,'zhuyingtai'),(41,NULL,NULL,NULL,'16555@qq.com',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'123456','小明家',NULL,NULL,'男','red',NULL,'111111',NULL,'13272143450',2,2,27,0,NULL,'xiaomingjia');
+INSERT INTO `aoa_user` VALUES (1,NULL,NULL,NULL,'10574444@qq.com',1,'2017-09-22 19:35:40',NULL,'/d6242233-05de-462c-a919-ca8bcfa82773.jpg',0,NULL,NULL,NULL,NULL,'123456','康兴',NULL,NULL,'男','blue',NULL,'Admin','康兴','好好','13272143450',2,1,1,1,NULL,'kangxing'),(42,NULL,NULL,NULL,'16555@qq.com',1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'123456','曾蓉',NULL,NULL,'男','blue',NULL,'cni23256466','曾蓉',NULL,'13272143450',2,1,2,0,NULL,'cengrong'),(43,NULL,NULL,NULL,'16555@qq.com',1,NULL,NULL,'/56ae48e9-0be4-4ad4-8ed9-014b9f6446f6.jpg',0,NULL,NULL,NULL,NULL,'123456','李季',NULL,NULL,'男','blue',NULL,'cni23256467','李季','我是通风负责人','13272143450',2,1,3,0,NULL,'liji'),(44,NULL,NULL,NULL,'1655525068@qq.com',1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'123456','王博辰',NULL,NULL,'男','blue',NULL,'cni23256111','王博辰',NULL,'13700117876',2,1,4,0,NULL,'wangbochen'),(45,NULL,NULL,NULL,'bochenwang0630@163.com',1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,'123456','李老三',NULL,NULL,'男','blue',NULL,'cni23256468','李老三','gbhhh','13700117876',2,1,4,0,NULL,'lilaosan');
 /*!40000 ALTER TABLE `aoa_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1588,7 +1592,7 @@ CREATE TABLE `aoa_user_log` (
   PRIMARY KEY (`log_id`),
   KEY `FKherb88q97dxbtcge09ii875qm` (`user_id`),
   CONSTRAINT `FKherb88q97dxbtcge09ii875qm` FOREIGN KEY (`user_id`) REFERENCES `aoa_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2686 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2935 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1597,7 +1601,7 @@ CREATE TABLE `aoa_user_log` (
 
 LOCK TABLES `aoa_user_log` WRITE;
 /*!40000 ALTER TABLE `aoa_user_log` DISABLE KEYS */;
-INSERT INTO `aoa_user_log` VALUES (2521,'192.168.2.2','2024-08-05 10:21:55','在线用户','/morelogrecord',1),(2522,'192.168.2.2','2024-08-05 10:22:05','角色列表','/rolemanage',1),(2523,'192.168.2.2','2024-08-05 10:22:21','用户管理','/usermanage',1),(2524,'192.168.2.2','2024-08-05 10:32:21','账号管理','/accountmanage',1),(2525,'192.168.2.2','2024-08-05 10:38:35','类型管理','/testsystype',1),(2526,'192.168.2.2','2024-08-05 10:38:36','菜单管理','/testsysmenu',1),(2527,'192.168.2.2','2024-08-05 10:38:36','状态管理','/testsysstatus',1),(2528,'192.168.2.2','2024-08-05 10:38:38','在线用户','/morelogrecord',1),(2529,'192.168.2.2','2024-08-05 10:38:45','职位管理','/positionmanage',1),(2530,'192.168.2.2','2024-08-05 10:38:46','用户管理','/usermanage',1),(2562,'192.168.2.2','2024-08-05 10:51:55','职位管理','/positionmanage',1),(2563,'192.168.2.2','2024-08-05 10:52:00','角色列表','/rolemanage',1),(2564,'192.168.2.2','2024-08-05 10:52:26','职位管理','/positionmanage',1),(2565,'192.168.2.2','2024-08-05 10:54:36','角色列表','/rolemanage',1),(2566,'192.168.2.2','2024-08-05 10:58:06','职位管理','/positionmanage',1),(2567,'192.168.2.2','2024-08-05 10:58:48','用户管理','/usermanage',1),(2568,'192.168.2.2','2024-08-05 10:58:51','角色列表','/rolemanage',1),(2569,'192.168.2.2','2024-08-05 11:00:47','部门管理','/deptmanage',1),(2570,'192.168.2.2','2024-08-05 11:00:48','在线用户','/morelogrecord',1),(2571,'192.168.2.2','2024-08-05 11:00:49','职位管理','/positionmanage',1),(2572,'192.168.2.2','2024-08-05 11:02:20','用户管理','/usermanage',1),(2573,'192.168.2.2','2024-08-05 11:02:22','角色列表','/rolemanage',1),(2574,'192.168.2.2','2024-08-05 11:02:25','职位管理','/positionmanage',1),(2575,'192.168.2.2','2024-08-05 11:03:01','用户管理','/usermanage',1),(2576,'192.168.2.2','2024-08-05 11:03:48','角色列表','/rolemanage',1),(2577,'192.168.2.2','2024-08-05 11:09:59','职位管理','/positionmanage',1),(2578,'192.168.2.2','2024-08-05 11:10:01','用户管理','/usermanage',1),(2579,'192.168.2.2','2024-08-05 11:10:03','部门管理','/deptmanage',1),(2580,'192.168.2.2','2024-08-05 11:10:36','在线用户','/morelogrecord',1),(2581,'192.168.2.2','2024-08-05 11:10:38','职位管理','/positionmanage',1),(2582,'192.168.2.2','2024-08-05 11:10:40','在线用户','/morelogrecord',1),(2583,'192.168.2.2','2024-08-05 11:11:12','用户管理','/usermanage',1),(2584,'192.168.2.2','2024-08-05 11:11:14','职位管理','/positionmanage',1),(2585,'192.168.2.2','2024-08-05 11:11:24','部门管理','/deptmanage',1),(2586,'192.168.2.2','2024-08-05 11:11:26','角色列表','/rolemanage',1),(2587,'192.168.2.2','2024-08-05 11:12:20','用户管理','/usermanage',1),(2588,'192.168.2.2','2024-08-05 11:13:01','角色列表','/rolemanage',1),(2589,'192.168.2.2','2024-08-05 11:13:56','用户管理','/usermanage',1),(2590,'192.168.2.2','2024-08-05 11:17:04','在线用户','/morelogrecord',1),(2591,'192.168.2.2','2024-08-05 11:17:06','职位管理','/positionmanage',1),(2592,'192.168.2.2','2024-08-05 11:17:07','用户管理','/usermanage',1),(2593,'192.168.2.2','2024-08-05 11:54:56','职位管理','/positionmanage',1),(2594,'192.168.2.2','2024-08-05 11:56:11','用户管理','/usermanage',1),(2595,'192.168.2.2','2024-08-05 11:58:08','职位管理','/positionmanage',1),(2596,'192.168.2.2','2024-08-05 11:58:09','在线用户','/morelogrecord',1),(2597,'192.168.2.2','2024-08-05 11:58:10','用户管理','/usermanage',1),(2598,'192.168.2.2','2024-08-05 11:58:11','部门管理','/deptmanage',1),(2599,'192.168.2.2','2024-08-05 11:58:13','角色列表','/rolemanage',1),(2600,'192.168.2.2','2024-08-05 11:59:04','用户管理','/usermanage',1),(2601,'192.168.2.2','2024-08-05 12:25:06','职位管理','/positionmanage',1),(2602,'192.168.2.2','2024-08-05 12:25:14','部门管理','/deptmanage',1),(2603,'192.168.2.2','2024-08-05 12:30:04','职位管理','/positionmanage',1),(2604,'192.168.2.2','2024-08-05 12:30:05','用户管理','/usermanage',1),(2605,'192.168.2.2','2024-08-05 14:29:37','类型管理','/testsystype',1),(2606,'192.168.2.2','2024-08-05 14:29:47','考勤管理','/attendceatt',1),(2607,'192.168.2.2','2024-08-05 14:30:45','类型管理','/testsystype',1),(2608,'192.168.2.2','2024-08-05 14:32:17','用户管理','/usermanage',1),(2609,'192.168.2.2','2024-08-05 14:40:40','角色列表','/rolemanage',1),(2610,'192.168.2.2','2024-08-05 14:42:25','职位管理','/positionmanage',1),(2611,'192.168.2.2','2024-08-05 14:42:27','用户管理','/usermanage',1),(2612,'192.168.2.2','2024-08-05 14:42:32','角色列表','/rolemanage',1),(2613,'192.168.2.2','2024-08-05 14:43:47','用户管理','/usermanage',1),(2614,'192.168.2.2','2024-08-05 14:43:48','角色列表','/rolemanage',1),(2615,'192.168.2.2','2024-08-05 15:14:18','用户管理','/usermanage',1),(2616,'192.168.2.2','2024-08-05 15:14:36','在线用户','/morelogrecord',41),(2617,'192.168.2.2','2024-08-05 15:44:09','角色列表','/rolemanage',1),(2618,'192.168.2.2','2024-08-05 16:13:16','通讯录','/addrmanage',1),(2619,'192.168.2.2','2024-08-05 16:26:25','角色列表','/rolemanage',1),(2620,'192.168.2.2','2024-08-05 16:26:57','部门管理','/deptmanage',1),(2621,'192.168.2.2','2024-08-05 16:34:29','在线用户','/morelogrecord',1),(2622,'192.168.2.2','2024-08-05 16:34:30','职位管理','/positionmanage',1),(2623,'192.168.2.2','2024-08-05 16:34:31','用户管理','/usermanage',1),(2624,'192.168.2.2','2024-08-05 16:35:54','部门管理','/deptmanage',1),(2625,'192.168.2.2','2024-08-05 16:36:21','在线用户','/morelogrecord',1),(2626,'192.168.2.2','2024-08-05 16:44:26','我的任务','/mytask',1),(2627,'192.168.2.2','2024-08-05 16:44:28','通知列表','/infromlist',1),(2628,'192.168.2.2','2024-08-05 16:44:29','邮件管理','/mail',1),(2629,'192.168.2.2','2024-08-05 16:44:31','我的任务','/mytask',1),(2630,'192.168.2.2','2024-08-05 16:44:32','邮件管理','/mail',1),(2631,'192.168.2.2','2024-08-05 17:32:56','在线用户','/morelogrecord',1),(2632,'192.168.2.2','2024-08-05 18:12:53','状态管理','/testsysstatus',1),(2633,'192.168.2.2','2024-08-05 18:44:11','通讯录','/addrmanage',1),(2634,'192.168.2.2','2024-08-05 18:45:06','类型管理','/testsystype',1),(2635,'192.168.2.2','2024-08-05 18:51:18','菜单管理','/testsysmenu',1),(2636,'192.168.2.2','2024-08-05 18:52:14','新建流程','/xinxeng',1),(2637,'192.168.2.2','2024-08-05 18:52:22','流程审核','/audit',1),(2638,'192.168.2.2','2024-08-05 18:52:28','新建流程','/xinxeng',1),(2639,'192.168.2.2','2024-08-05 18:52:30','日程管理','/daymanage',1),(2640,'192.168.2.2','2024-08-05 18:52:40','菜单管理','/testsysmenu',1),(2641,'192.168.2.2','2024-08-05 18:53:18','类型管理','/testsystype',1),(2642,'192.168.2.2','2024-08-05 18:53:19','菜单管理','/testsysmenu',1),(2643,'192.168.2.2','2024-08-05 18:55:20','角色列表','/rolemanage',1),(2644,'192.168.2.2','2024-08-05 18:55:27','用户管理','/usermanage',1),(2645,'192.168.2.2','2024-08-05 18:55:54','菜单管理','/testsysmenu',1),(2646,'192.168.2.2','2024-08-05 19:01:59','通讯录','/addrmanage',1),(2647,'192.168.2.2','2024-08-05 19:04:19','菜单管理','/testsysmenu',1),(2648,'192.168.2.2','2024-08-05 19:04:28','在线用户','/morelogrecord',1),(2649,'192.168.2.2','2024-08-05 19:05:28','部门管理','/deptmanage',1),(2650,'192.168.2.2','2024-08-05 19:05:33','考勤管理','/attendceatt',1),(2651,'192.168.2.2','2024-08-05 19:05:39','考勤周报表','/attendceweek',1),(2652,'192.168.2.2','2024-08-05 19:05:42','菜单管理','/testsysmenu',1),(2653,'192.168.2.2','2024-08-05 19:06:21','类型管理','/testsystype',1),(2654,'192.168.2.2','2024-08-05 19:07:10','职位管理','/positionmanage',1),(2655,'192.168.2.2','2024-08-05 19:07:14','菜单管理','/testsysmenu',1),(2656,'192.168.2.2','2024-08-05 19:08:23','计划管理','/planview',1),(2657,'192.168.2.2','2024-08-05 19:08:32','部门管理','/deptmanage',1),(2658,'192.168.2.2','2024-08-05 19:10:41','菜单管理','/testsysmenu',1),(2659,'192.168.2.2','2024-08-05 19:10:45','邮件管理','/mail',1),(2660,'192.168.2.2','2024-08-05 19:10:50','通知列表','/infromlist',1),(2661,'192.168.2.2','2024-08-05 19:10:52','我的任务','/mytask',1),(2662,'192.168.2.2','2024-08-05 19:10:54','邮件管理','/mail',1),(2663,'192.168.2.2','2024-08-05 19:19:30','菜单管理','/testsysmenu',1),(2664,'192.168.2.2','2024-08-05 19:21:55','角色列表','/rolemanage',1),(2665,'192.168.2.2','2024-08-05 19:22:04','用户管理','/usermanage',1),(2666,'192.168.2.2','2024-08-05 19:24:30','菜单管理','/testsysmenu',1),(2667,'192.168.2.2','2024-08-05 19:27:31','类型管理','/testsystype',1),(2668,'192.168.2.2','2024-08-05 19:27:35','菜单管理','/testsysmenu',1),(2669,'192.168.2.2','2024-08-05 19:27:38','状态管理','/testsysstatus',1),(2670,'192.168.2.2','2024-08-05 19:27:41','菜单管理','/testsysmenu',1),(2671,'192.168.2.2','2024-08-05 19:27:41','类型管理','/testsystype',1),(2672,'192.168.2.2','2024-08-05 19:27:48','状态管理','/testsysstatus',1),(2673,'192.168.2.2','2024-08-05 19:27:53','部门管理','/deptmanage',1),(2674,'192.168.2.2','2024-08-05 19:28:01','在线用户','/morelogrecord',1),(2675,'192.168.2.2','2024-08-05 19:28:04','职位管理','/positionmanage',1),(2676,'192.168.2.2','2024-08-05 19:28:06','用户管理','/usermanage',1),(2677,'192.168.2.2','2024-08-05 19:28:12','角色列表','/rolemanage',1),(2678,'192.168.2.2','2024-08-05 19:28:15','考勤管理','/attendceatt',1),(2679,'192.168.2.2','2024-08-05 19:28:23','考勤周报表','/attendceweek',1),(2680,'192.168.2.2','2024-08-05 19:28:24','考勤月报表','/attendcemonth',1),(2681,'192.168.2.2','2024-08-05 19:28:25','考勤列表','/attendcelist',1),(2682,'192.168.2.2','2024-08-05 19:28:27','新建流程','/xinxeng',1),(2683,'192.168.2.2','2024-08-05 19:28:30','考勤管理','/attendceatt',1),(2684,'192.168.2.2','2024-08-05 19:29:14','文件管理','/filemanage',1),(2685,'192.168.2.2','2024-08-05 19:29:36','通讯录','/addrmanage',1);
+INSERT INTO `aoa_user_log` VALUES (2776,'192.168.2.2','2024-08-06 10:59:41','新建流程','/xinxeng',1),(2777,'192.168.2.2','2024-08-06 10:59:42','我的申请','/flowmanage',1),(2778,'192.168.2.2','2024-08-06 10:59:44','流程审核','/audit',1),(2779,'192.168.2.2','2024-08-06 10:59:46','任务管理','/taskmanage',1),(2780,'192.168.2.2','2024-08-06 10:59:47','我的任务','/mytask',1),(2781,'192.168.2.2','2024-08-06 10:59:50','新建流程','/xinxeng',1),(2782,'192.168.2.2','2024-08-06 10:59:51','流程审核','/audit',1),(2783,'192.168.2.2','2024-08-06 10:59:52','我的申请','/flowmanage',1),(2784,'192.168.2.2','2024-08-06 10:59:52','流程审核','/audit',1),(2785,'192.168.2.2','2024-08-06 10:59:53','我的申请','/flowmanage',1),(2786,'192.168.2.2','2024-08-06 11:00:07','新建流程','/xinxeng',1),(2787,'192.168.2.2','2024-08-06 11:00:54','类型管理','/testsystype',1),(2788,'192.168.2.2','2024-08-06 11:03:43','菜单管理','/testsysmenu',1),(2789,'192.168.2.2','2024-08-06 11:04:49','类型管理','/testsystype',1),(2790,'192.168.2.2','2024-08-06 11:04:50','菜单管理','/testsysmenu',1),(2791,'192.168.2.2','2024-08-06 11:06:47','状态管理','/testsysstatus',1),(2792,'192.168.2.2','2024-08-06 11:06:48','在线用户','/morelogrecord',1),(2793,'192.168.2.2','2024-08-06 11:06:50','部门管理','/deptmanage',1),(2794,'192.168.2.2','2024-08-06 11:06:51','职位管理','/positionmanage',1),(2795,'192.168.2.2','2024-08-06 11:06:54','用户管理','/usermanage',1),(2796,'192.168.2.2','2024-08-06 11:12:13','类型管理','/testsystype',1),(2797,'192.168.2.2','2024-08-06 11:12:14','菜单管理','/testsysmenu',1),(2798,'192.168.2.2','2024-08-06 11:12:16','状态管理','/testsysstatus',1),(2799,'192.168.2.2','2024-08-06 11:12:17','部门管理','/deptmanage',1),(2800,'192.168.2.2','2024-08-06 11:12:53','用户管理','/usermanage',1),(2801,'192.168.2.2','2024-08-06 11:17:10','部门管理','/deptmanage',1),(2802,'192.168.2.2','2024-08-06 11:17:15','角色列表','/rolemanage',1),(2803,'192.168.2.2','2024-08-06 11:17:59','类型管理','/testsystype',1),(2804,'192.168.2.2','2024-08-06 11:18:00','菜单管理','/testsysmenu',1),(2805,'192.168.2.2','2024-08-06 11:18:02','状态管理','/testsysstatus',1),(2806,'192.168.2.2','2024-08-06 11:18:03','菜单管理','/testsysmenu',1),(2807,'192.168.2.2','2024-08-06 11:18:03','类型管理','/testsystype',1),(2808,'192.168.2.2','2024-08-06 11:18:05','部门管理','/deptmanage',1),(2809,'192.168.2.2','2024-08-06 11:18:05','在线用户','/morelogrecord',1),(2810,'192.168.2.2','2024-08-06 11:18:07','职位管理','/positionmanage',1),(2811,'192.168.2.2','2024-08-06 11:18:13','用户管理','/usermanage',1),(2812,'192.168.2.2','2024-08-06 11:18:18','角色列表','/rolemanage',1),(2813,'192.168.2.2','2024-08-06 11:22:47','新建流程','/xinxeng',1),(2814,'192.168.2.2','2024-08-06 11:22:48','我的申请','/flowmanage',1),(2815,'192.168.2.2','2024-08-06 11:22:49','新建流程','/xinxeng',1),(2816,'192.168.2.2','2024-08-06 11:22:50','流程审核','/audit',1),(2817,'192.168.2.2','2024-08-06 11:22:50','新建流程','/xinxeng',1),(2818,'192.168.2.2','2024-08-06 11:26:35','新建流程','/xinxeng',43),(2819,'192.168.2.2','2024-08-06 11:45:24','任务管理','/taskmanage',43),(2820,'192.168.2.2','2024-08-06 11:45:25','我的申请','/flowmanage',43),(2821,'192.168.2.2','2024-08-06 11:45:26','新建流程','/xinxeng',43),(2822,'192.168.2.2','2024-08-06 13:41:38','任务管理','/taskmanage',43),(2823,'192.168.2.2','2024-08-06 13:41:45','我的申请','/flowmanage',43),(2824,'192.168.2.2','2024-08-06 13:41:46','新建流程','/xinxeng',43),(2825,'192.168.2.2','2024-08-06 14:19:25','通讯录','/addrmanage',43),(2826,'192.168.2.2','2024-08-06 14:22:01','用户管理','/usermanage',1),(2827,'192.168.2.2','2024-08-06 14:24:20','部门管理','/deptmanage',1),(2828,'192.168.2.2','2024-08-06 14:29:37','角色列表','/rolemanage',1),(2829,'192.168.2.2','2024-08-06 14:29:43','菜单管理','/testsysmenu',1),(2830,'192.168.2.2','2024-08-06 14:29:46','部门管理','/deptmanage',1),(2831,'192.168.2.2','2024-08-06 14:30:48','用户管理','/usermanage',1),(2832,'192.168.2.2','2024-08-06 14:33:03','新建流程','/xinxeng',43),(2833,'192.168.2.2','2024-08-06 14:33:09','我的申请','/flowmanage',43),(2834,'192.168.2.2','2024-08-06 14:34:22','我的任务','/mytask',1),(2835,'192.168.2.2','2024-08-06 14:34:28','流程审核','/audit',1),(2836,'192.168.2.2','2024-08-06 14:43:40','我的任务','/mytask',1),(2837,'192.168.2.2','2024-08-06 14:44:44','任务管理','/taskmanage',43),(2838,'192.168.2.2','2024-08-06 14:45:38','我的任务','/mytask',43),(2839,'192.168.2.2','2024-08-06 14:45:53','任务管理','/taskmanage',43),(2840,'192.168.2.2','2024-08-06 14:46:40','新建流程','/xinxeng',43),(2841,'192.168.2.2','2024-08-06 14:46:52','任务管理','/taskmanage',43),(2842,'192.168.2.2','2024-08-06 14:47:22','任务管理','/taskmanage',1),(2843,'192.168.2.2','2024-08-06 14:47:24','我的任务','/mytask',1),(2844,'192.168.2.2','2024-08-06 14:47:38','我的任务','/mytask',43),(2845,'192.168.2.2','2024-08-06 14:47:40','任务管理','/taskmanage',43),(2846,'192.168.2.2','2024-08-06 14:47:42','我的任务','/mytask',43),(2847,'192.168.2.2','2024-08-06 14:48:42','新建流程','/xinxeng',43),(2848,'192.168.2.2','2024-08-06 14:48:47','任务管理','/taskmanage',43),(2849,'192.168.2.2','2024-08-06 14:55:54','任务管理','/taskmanage',1),(2850,'192.168.2.2','2024-08-06 14:57:38','我的任务','/mytask',43),(2851,'192.168.2.2','2024-08-06 14:57:39','任务管理','/taskmanage',43),(2852,'192.168.2.2','2024-08-06 14:57:39','我的任务','/mytask',43),(2853,'192.168.2.2','2024-08-06 14:57:41','任务管理','/taskmanage',43),(2854,'192.168.2.2','2024-08-06 14:57:44','我的任务','/mytask',43),(2855,'192.168.2.2','2024-08-06 14:57:44','任务管理','/taskmanage',43),(2856,'192.168.2.2','2024-08-06 14:58:25','我的任务','/mytask',43),(2857,'192.168.2.2','2024-08-06 14:58:38','任务管理','/taskmanage',43),(2858,'192.168.2.2','2024-08-06 14:58:40','我的任务','/mytask',43),(2859,'192.168.2.2','2024-08-06 14:58:41','任务管理','/taskmanage',43),(2860,'192.168.2.2','2024-08-06 15:00:14','我的任务','/mytask',43),(2861,'192.168.2.2','2024-08-06 15:00:14','任务管理','/taskmanage',43),(2862,'192.168.2.2','2024-08-06 15:00:14','任务管理','/taskmanage',43),(2863,'192.168.2.2','2024-08-06 15:00:15','任务管理','/taskmanage',43),(2864,'192.168.2.2','2024-08-06 15:00:18','我的任务','/mytask',43),(2865,'192.168.2.2','2024-08-06 15:00:19','任务管理','/taskmanage',43),(2866,'192.168.2.2','2024-08-06 15:12:49','我的任务','/mytask',43),(2867,'192.168.2.2','2024-08-06 15:12:53','任务管理','/taskmanage',43),(2868,'192.168.2.2','2024-08-06 15:28:06','用户管理','/usermanage',1),(2869,'192.168.2.2','2024-08-06 15:34:35','我的申请','/flowmanage',43),(2870,'192.168.2.2','2024-08-06 15:34:36','流程审核','/audit',43),(2871,'192.168.2.2','2024-08-06 15:53:15','任务管理','/taskmanage',1),(2872,'192.168.2.2','2024-08-06 15:57:29','用户管理','/usermanage',1),(2873,'192.168.2.2','2024-08-06 16:00:06','在线用户','/morelogrecord',1),(2874,'192.168.2.2','2024-08-06 16:00:07','职位管理','/positionmanage',1),(2875,'192.168.2.2','2024-08-06 16:00:09','用户管理','/usermanage',1),(2876,'192.168.2.2','2024-08-06 16:00:10','部门管理','/deptmanage',1),(2877,'192.168.2.2','2024-08-06 16:00:44','职位管理','/positionmanage',1),(2878,'192.168.2.2','2024-08-06 16:00:45','在线用户','/morelogrecord',1),(2879,'192.168.2.2','2024-08-06 16:00:49','用户管理','/usermanage',1),(2880,'192.168.2.2','2024-08-06 16:05:01','角色列表','/rolemanage',1),(2881,'192.168.2.2','2024-08-06 16:05:07','新建流程','/xinxeng',1),(2882,'192.168.2.2','2024-08-06 16:08:23','用户管理','/usermanage',1),(2883,'192.168.2.2','2024-08-06 16:14:48','任务管理','/taskmanage',1),(2884,'192.168.2.2','2024-08-06 16:26:37','我的任务','/mytask',1),(2885,'192.168.2.2','2024-08-06 16:28:52','任务管理','/taskmanage',1),(2886,'192.168.2.2','2024-08-06 16:55:51','我的任务','/mytask',1),(2887,'192.168.2.2','2024-08-06 16:55:53','任务管理','/taskmanage',1),(2888,'192.168.2.2','2024-08-06 17:23:08','用户管理','/usermanage',1),(2889,'192.168.2.2','2024-08-06 17:26:14','任务管理','/taskmanage',1),(2890,'192.168.2.2','2024-08-06 17:32:53','我的任务','/mytask',1),(2891,'192.168.2.2','2024-08-06 17:33:00','任务管理','/taskmanage',1),(2892,'192.168.2.2','2024-08-06 17:33:02','我的任务','/mytask',1),(2893,'192.168.2.2','2024-08-06 17:33:03','任务管理','/taskmanage',1),(2894,'192.168.2.2','2024-08-06 17:33:04','我的任务','/mytask',1),(2895,'192.168.2.2','2024-08-06 17:33:04','任务管理','/taskmanage',1),(2896,'192.168.2.2','2024-08-06 17:33:08','任务管理','/taskmanage',1),(2897,'192.168.2.2','2024-08-06 17:33:11','我的任务','/mytask',1),(2898,'192.168.2.2','2024-08-06 17:33:14','任务管理','/taskmanage',1),(2899,'192.168.2.2','2024-08-06 17:33:14','我的任务','/mytask',1),(2900,'192.168.2.2','2024-08-06 17:34:30','任务管理','/taskmanage',1),(2901,'192.168.2.2','2024-08-06 17:34:31','我的任务','/mytask',1),(2902,'192.168.2.2','2024-08-06 17:34:57','任务管理','/taskmanage',1),(2903,'192.168.2.2','2024-08-06 17:35:35','我的任务','/mytask',1),(2904,'192.168.2.2','2024-08-06 17:37:19','用户管理','/usermanage',1),(2905,'192.168.2.2','2024-08-06 18:12:57','新建流程','/xinxeng',43),(2906,'192.168.2.2','2024-08-06 18:12:59','我的申请','/flowmanage',43),(2907,'192.168.2.2','2024-08-06 18:13:01','流程审核','/audit',43),(2908,'192.168.2.2','2024-08-06 18:13:03','我的任务','/mytask',43),(2909,'192.168.2.2','2024-08-06 18:13:05','任务管理','/taskmanage',43),(2910,'192.168.2.2','2024-08-06 18:13:06','我的任务','/mytask',43),(2911,'192.168.2.2','2024-08-06 18:14:08','任务管理','/taskmanage',43),(2912,'192.168.2.2','2024-08-06 18:14:10','我的任务','/mytask',43),(2913,'192.168.2.2','2024-08-06 18:14:13','任务管理','/taskmanage',43),(2914,'192.168.2.2','2024-08-06 18:14:36','我的任务','/mytask',43),(2915,'192.168.2.2','2024-08-06 18:14:40','任务管理','/taskmanage',43),(2916,'192.168.2.2','2024-08-06 18:14:41','我的任务','/mytask',43),(2917,'192.168.2.2','2024-08-06 18:14:43','任务管理','/taskmanage',43),(2918,'192.168.2.2','2024-08-06 18:14:43','我的任务','/mytask',43),(2919,'192.168.2.2','2024-08-06 18:15:02','我的任务','/mytask',43),(2920,'192.168.2.2','2024-08-06 18:16:05','职位管理','/positionmanage',1),(2921,'192.168.2.2','2024-08-06 18:16:06','用户管理','/usermanage',1),(2922,'192.168.2.2','2024-08-06 18:16:09','职位管理','/positionmanage',1),(2923,'192.168.2.2','2024-08-06 18:16:12','菜单管理','/testsysmenu',1),(2924,'192.168.2.2','2024-08-06 18:16:14','职位管理','/positionmanage',1),(2925,'192.168.2.2','2024-08-06 18:16:16','部门管理','/deptmanage',1),(2926,'192.168.2.2','2024-08-06 18:16:17','在线用户','/morelogrecord',1),(2927,'192.168.2.2','2024-08-06 18:16:19','用户管理','/usermanage',1),(2928,'192.168.2.2','2024-08-06 18:16:22','角色列表','/rolemanage',1),(2929,'192.168.2.2','2024-08-06 18:57:19','类型管理','/testsystype',1),(2930,'192.168.2.2','2024-08-06 18:57:28','我的任务','/mytask',1),(2931,'192.168.2.2','2024-08-06 18:57:30','任务管理','/taskmanage',1),(2932,'192.168.2.2','2024-08-06 18:57:33','我的任务','/mytask',1),(2933,'192.168.2.2','2024-08-06 18:57:41','角色列表','/rolemanage',1),(2934,'192.168.2.2','2024-08-06 18:58:22','我的任务','/mytask',44);
 /*!40000 ALTER TABLE `aoa_user_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1618,7 +1622,7 @@ CREATE TABLE `aoa_user_login_record` (
   PRIMARY KEY (`record_id`),
   KEY `FKks6qpqj3ss4e4timjt0xok1p0` (`user_id`),
   CONSTRAINT `FKks6qpqj3ss4e4timjt0xok1p0` FOREIGN KEY (`user_id`) REFERENCES `aoa_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1627,7 +1631,7 @@ CREATE TABLE `aoa_user_login_record` (
 
 LOCK TABLES `aoa_user_login_record` WRITE;
 /*!40000 ALTER TABLE `aoa_user_login_record` DISABLE KEYS */;
-INSERT INTO `aoa_user_login_record` VALUES (115,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 14:43:09',NULL,1),(116,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 14:47:14',NULL,1),(117,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 14:49:48',NULL,1),(118,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 16:10:04',NULL,1),(119,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 16:11:35',NULL,1),(120,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 16:15:03',NULL,1),(122,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 17:20:07',NULL,1),(123,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 17:27:25',NULL,1),(124,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 21:16:46',NULL,1),(125,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 21:37:00',NULL,1),(126,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-04 21:38:12',NULL,1),(127,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 09:42:03',NULL,1),(128,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 10:02:32',NULL,1),(130,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 10:34:22',NULL,1),(131,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 10:36:17',NULL,1),(132,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 10:38:08',NULL,1),(134,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 10:51:48',NULL,1),(135,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 11:50:13',NULL,1),(136,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 11:56:07',NULL,1),(137,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 11:57:30',NULL,1),(138,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 12:00:55',NULL,1),(139,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 14:09:40',NULL,1),(140,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 14:29:01',NULL,1),(141,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 14:40:00',NULL,41),(142,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 14:40:37',NULL,1),(143,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 14:41:41',NULL,41),(144,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 14:41:58',NULL,1),(145,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 15:14:34',NULL,41),(146,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 15:44:01',NULL,1),(147,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 18:20:19',NULL,1),(148,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-05 18:20:19',NULL,1);
+INSERT INTO `aoa_user_login_record` VALUES (152,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 10:26:02',NULL,1),(153,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 11:25:24',NULL,43),(154,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 14:02:17',NULL,43),(155,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 14:21:56',NULL,1),(156,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 15:28:03',NULL,1),(157,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 15:57:25',NULL,1),(158,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 17:37:16',NULL,1),(159,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 17:39:50',NULL,44),(160,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 17:45:38',NULL,45),(161,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 18:10:07',NULL,45),(162,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 18:12:22',NULL,43),(163,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 18:15:43',NULL,44),(164,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 18:16:01',NULL,1),(165,'Chrome 12/127.0.0.0','192.168.2.2','2024-08-06 18:58:19',NULL,44);
 /*!40000 ALTER TABLE `aoa_user_login_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1683,7 +1687,7 @@ CREATE TABLE `aoa_vote_title_user` (
 
 LOCK TABLES `aoa_vote_title_user` WRITE;
 /*!40000 ALTER TABLE `aoa_vote_title_user` DISABLE KEYS */;
-INSERT INTO `aoa_vote_title_user` VALUES (1,3,1,7),(2,3,2,8),(3,3,3,9),(4,3,4,7),(5,1,2,2),(6,2,2,4),(7,4,2,11),(8,4,2,12),(9,4,2,13),(13,5,2,15),(17,8,2,23),(18,8,2,24),(19,8,2,25),(20,11,2,32),(21,8,1,23),(22,8,1,24),(23,8,1,25);
+INSERT INTO `aoa_vote_title_user` VALUES (1,3,1,7),(21,8,1,23);
 /*!40000 ALTER TABLE `aoa_vote_title_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1724,4 +1728,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-05 20:03:53
+-- Dump completed on 2024-08-06 20:03:59

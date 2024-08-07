@@ -62,7 +62,7 @@ public class UserController {
     public String usermanage(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
                              @RequestParam(value = "size", defaultValue = "10") int size
     ) {
-        Sort sort = new Sort(new Order(Direction.ASC, "dept"));
+        Sort sort = new Sort(new Order(Direction.ASC, "role"));
         Pageable pa = new PageRequest(page, size, sort);
         Page<User> userspage = udao.findByIsLock(0, pa);
         List<User> users = userspage.getContent();
@@ -76,7 +76,7 @@ public class UserController {
     public ModelAndView chaname(@SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
                                 @RequestParam(value = "size", defaultValue = "10") int size,
                                 @RequestParam(value = "title", required = false) String title,
-                                @RequestParam(value = "qufen", required = false) String qufen){
+                                @RequestParam(value = "qufen", required = false) String qufen) {
         System.out.println(title);
         System.out.println(qufen);
         Sort sort = new Sort(new Order(Direction.ASC, "dept"));
@@ -95,7 +95,7 @@ public class UserController {
         Iterable<SystemStatusList> statuslist = sdao.findAll();
 
         Page<User> pagelist = userspage;
-        List<User> emplist=userspage.getContent();
+        List<User> emplist = userspage.getContent();
         // 查询部门表
         Iterable<Dept> deptlist = ddao.findAll();
         // 查职位表

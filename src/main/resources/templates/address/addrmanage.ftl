@@ -94,8 +94,8 @@
 </div>
 <div class="row" style="padding-top: 15px;">
     <div class="col-md-3">
-        <a class="btn btn-primary addaddress" href="javascript:void(0);"
-           style="width: 100%; margin-bottom: 20px;"><span
+        <a class="btn btn-primary" disabled="" href="javascript:void(0);"
+           style="width: 100%; margin-bottom: 20px;background-color: grey"><span
                     class="glyphicon glyphicon-edit"></span> 新建联系人</a>
         <div class="bgc-w box box-solid">
             <div class="box-header">
@@ -106,13 +106,7 @@
             </div>
             <ul class="nav nav-pills nav-stacked mm" id="navpills">
                 <li class="activee notfather">
-                    <a href="##" todo> <span class="glyphicon glyphicon-user"> 内部通讯录</span>
-                    </a>
-                </li>
-                <li class="ulfather">
-                    <a href="#"><span class="glyphicon glyphicon-user"> 外部通讯录</span>
-                        <i class="glyphicon pull-right glyphicon-menu-left collapsed" href="#thisul"
-                           data-toggle="collapse"></i>
+                    <a href=""> <span class="glyphicon glyphicon-user"> 内部通讯录</span>
                     </a>
                 </li>
                 <ul id="thisul" class="nav nav-pills nav-stacked panel-collapse collapse">

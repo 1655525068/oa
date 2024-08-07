@@ -35,7 +35,7 @@ public class ThreeBook {
 
     // FCR版本
     @Column(name = "fcr_version")
-    private String FCRVersion;
+    private String fcrVersion;
 
     // 状态
     @Column(name = "state")
@@ -175,12 +175,12 @@ public class ThreeBook {
         this.chineseName = chineseName;
     }
 
-    public String getFCRVersion() {
-        return FCRVersion;
+    public String getFcrVersion() {
+        return fcrVersion;
     }
 
-    public void setFCRVersion(String FCRVersion) {
-        this.FCRVersion = FCRVersion;
+    public void setFcrVersion(String FCRVersion) {
+        this.fcrVersion = FCRVersion;
     }
 
     public String getState() {
@@ -383,7 +383,7 @@ public class ThreeBook {
                 ", type='" + type + '\'' +
                 ", threeBookNumbers='" + threeBookNumbers + '\'' +
                 ", chineseName='" + chineseName + '\'' +
-                ", FCRVersion='" + FCRVersion + '\'' +
+                ", FCRVersion='" + fcrVersion + '\'' +
                 ", state='" + state + '\'' +
                 ", preparedBy='" + preparedBy + '\'' +
                 ", latestVersion='" + latestVersion + '\'' +

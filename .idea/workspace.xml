@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="update 用户名">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oa.sql" beforeDir="false" afterPath="$PROJECT_DIR$/oa.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/address/AddrController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/address/AddrController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/addrmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/addrmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/inaddrss.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/inaddrss.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileAjaxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileAjaxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/exception/WebControllerException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/exception/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/common/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/bursement.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/bursement.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/procedure.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/procedure.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +60,30 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/image" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/plugins" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\02_github\oa\src\main\resources\static\plugins" />
+      <recent name="E:\02_github\oa\src\main\resources\static" />
       <recent name="E:\02_github\oa\static\image" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="oa" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gson.oa.Application" />
@@ -86,6 +108,8 @@
       <workItem from="1722991418244" duration="626000" />
       <workItem from="1722992455977" duration="174000" />
       <workItem from="1722993929539" duration="4629000" />
+      <workItem from="1723003569176" duration="155000" />
+      <workItem from="1723003732221" duration="21261000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1722829344867</created>
@@ -175,7 +199,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
-          <line>57</line>
+          <line>58</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -187,11 +211,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
           <line>438</line>
           <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/process/ProcessService.java</url>
-          <line>145</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
@@ -215,23 +234,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>202</line>
+          <line>207</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
           <line>161</line>
           <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>159</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java</url>
@@ -263,7 +272,18 @@
           <line>123</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>160</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="reciver.getUserId()" language="JAVA" />
+        <watch expression="request.getAttribute(&quot;tasklist&quot;)" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

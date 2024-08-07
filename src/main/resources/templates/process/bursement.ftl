@@ -256,7 +256,7 @@
         </div>
     </div>
 </div>
-<input type="text" class="recive_list" >
+<input type="text" class="recive_list" style="display:none;">
 <input type="text" class="ject" style="display:none;">
 <#include "/common/modalTip.ftl">
 <script>
@@ -268,7 +268,7 @@
         var isRight = 1;
         $('.form-control').each(function (index) {
             // 如果在这些input框中，判断是否能够为空
-            if ($(this).val() == "") {
+            if ($(this).val() === "") {
                 if ($(this).hasClass("cha")) {
                     return true;
                 }
@@ -294,10 +294,10 @@
             }
         });
 
-        if (isRight == 0) {
+        if (isRight === 0) {
             //modalShow(0);
             return false;
-        } else if (isRight == 1) {
+        } else if (isRight === 1) {
             //modalShow(1);
             return true;
         }
@@ -315,8 +315,6 @@
         $(".recive_list").change(function () {
             var $val = $(this).val();
             $(".qu").siblings("input").val($val);
-            debugger;
-
         });
 
         $(".tbody").on("click", ".sub", function () {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="新建任务三单form">
+    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="查看任务">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" afterDir="false" />
@@ -91,7 +91,7 @@
       <workItem from="1722993929539" duration="4629000" />
       <workItem from="1723003569176" duration="155000" />
       <workItem from="1723003732221" duration="22234000" />
-      <workItem from="1723070064128" duration="19847000" />
+      <workItem from="1723070064128" duration="20716000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1722829344867</created>
@@ -114,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1723037300937</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="查看任务">
+      <created>1723116307276</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723116307276</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +154,8 @@
     <MESSAGE value="通讯录" />
     <MESSAGE value="update 用户名" />
     <MESSAGE value="新建任务三单form" />
-    <option name="LAST_COMMIT_MESSAGE" value="新建任务三单form" />
+    <MESSAGE value="查看任务" />
+    <option name="LAST_COMMIT_MESSAGE" value="查看任务" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

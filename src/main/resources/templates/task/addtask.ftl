@@ -129,7 +129,7 @@
                             <!-- 编制人 -->
                             <div class="col-md-4 form-group">
                                 <label class="control-label" data-toggle="modal">编制人</label>
-                                <input name="processPerson" type="text"  class="form-control "
+                                <input name="preparedBy" type="text"  class="form-control "
                                         style="background-color:#fff;"/>
 <#--                                <div class="reciver">-->
 <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
@@ -194,7 +194,7 @@
                             <!-- 责任方 -->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">责任方</label>
-                                <select class="form-control" name="state">
+                                <select class="form-control" name="responsibleParty">
                                     <option value="建安承包">建安承包</option>
                                     <option value="工程公司">工程公司</option>
                                     <option value="其他">其他</option>
@@ -203,7 +203,7 @@
                             <!-- 识别责任人 -->
                             <div class="col-md-4 form-group">
                                 <label class="control-label" data-toggle="modal" >识别责任人</label>
-                                <input name="identifyResponsiblePerson" type="text" id=""
+                                <input name="reciverlist" type="text" id=""
                                        class="form-control "  style="background-color:#fff;"/>
 <#--                                <div class="reciver">-->
 <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
@@ -213,7 +213,7 @@
                             <!-- 处理人 -->
                             <div class="col-md-4 form-group">
                                 <label class="control-label" data-toggle="modal">处理人</label>
-                                <input name="reciverlist" type="text" id="" class="form-control "
+                                <input name="processPerson" type="text" id="" class="form-control "
                                         style="background-color:#fff;"/>
 <#--                                <div class="reciver">-->
 <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
@@ -238,7 +238,7 @@
                 <!--盒子尾-->
                 <div class="box-footer">
                     <input class="btn btn-primary" id="save" type="submit" value="保存"/>
-                    <input class="btn btn-default" id="cancel" type="submit" value="取消"
+                    <input class="btn btn-default" id="cancel" type="button" value="取消"
                            onclick="window.history.back();"/>
                 </div>
             </form>

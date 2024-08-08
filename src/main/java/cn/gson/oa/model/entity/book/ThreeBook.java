@@ -1,5 +1,7 @@
 package cn.gson.oa.model.entity.book;
 
+import cn.gson.oa.model.entity.user.User;
+
 import javax.persistence.*;
 
 /**
@@ -14,7 +16,7 @@ public class ThreeBook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
     // book_id
-    private String bookId;
+    private Long bookId;
 
     /*基本信息*/
     // 序号
@@ -135,11 +137,11 @@ public class ThreeBook {
     @Column(name = "audit_point_value")
     private String auditPointValue;
 
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 

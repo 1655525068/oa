@@ -4,23 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="update 用户名">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="新建任务三单form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileAjaxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileAjaxController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/file/FileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/exception/WebControllerException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/exception/package-info.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/common/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/bursement.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/bursement.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/process/procedure.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/process/procedure.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Tasklist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Tasklist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Taskuser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Taskuser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,17 +65,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="oa" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gson.oa.Application" />
@@ -109,7 +90,8 @@
       <workItem from="1722992455977" duration="174000" />
       <workItem from="1722993929539" duration="4629000" />
       <workItem from="1723003569176" duration="155000" />
-      <workItem from="1723003732221" duration="21261000" />
+      <workItem from="1723003732221" duration="22234000" />
+      <workItem from="1723070064128" duration="19847000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1722829344867</created>
@@ -125,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1722945713295</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="新建任务三单form">
+      <created>1723037300937</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723037300937</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,7 +146,8 @@
     <MESSAGE value="add gitignore" />
     <MESSAGE value="通讯录" />
     <MESSAGE value="update 用户名" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 用户名" />
+    <MESSAGE value="新建任务三单form" />
+    <option name="LAST_COMMIT_MESSAGE" value="新建任务三单form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -234,7 +224,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>207</line>
+          <line>214</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -273,16 +263,34 @@
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>160</line>
-          <option name="timeStamp" value="64" />
+          <line>174</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="reciver.getUserId()" language="JAVA" />
-        <watch expression="request.getAttribute(&quot;tasklist&quot;)" language="JAVA" />
+        <watch expression="st.nextToken()" language="JAVA" />
+        <watch expression="st.nextToken()" language="JAVA" />
+        <watch expression="udao.findid(st.nextToken())" language="JAVA" />
+        <watch expression="st" language="JAVA" />
+        <watch expression="return null;" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

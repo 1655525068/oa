@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
+import cn.gson.oa.model.dao.book.BookDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -70,6 +71,8 @@ public class TaskController {
     private TaskloggerDao tldao;
     @Autowired
     private PositionDao pdao;
+    @Autowired
+    private BookDao bdao;
 
     /**
      * 任务管理表格
@@ -160,13 +163,16 @@ public class TaskController {
     public String addtask(@SessionAttribute("userId") Long userId, HttpServletRequest request) {
         User userlist = udao.findOne(userId);
         ThreeBook threeBook = (ThreeBook) request.getAttribute("threeBook");
-        //三单
-        System.out.println(threeBook);
+
         Tasklist list = (Tasklist) request.getAttribute("tasklist");
         request.getAttribute("success");
         list.setUsersId(userlist);
         list.setPublishTime(new Date());
         list.setModifyTime(new Date());
+        //三单
+        threeBook.setIdentifyResponsiblePerson(list.getReciverlist());
+        ThreeBook result = bdao.save(threeBook);
+        list.setThreeBook(result);
         tdao.save(list);
         // 分割任务接收人
         StringTokenizer st = new StringTokenizer(list.getReciverlist(), ";");
@@ -174,6 +180,7 @@ public class TaskController {
             User reciver = udao.findid(st.nextToken());
             Taskuser task = new Taskuser();
             task.setTaskId(list);
+            task.setIrp(result.getIdentifyResponsiblePerson());
             task.setUserId(reciver);
             task.setStatusId(list.getStatusId());
             // 存任务中间表
@@ -448,10 +455,6 @@ public class TaskController {
 
     /**
      * 根据发布人这边删除任务和相关联系
-     *
-     * @param req
-     * @param session
-     * @return
      */
     @RequestMapping("shanchu")
     public String delete(HttpServletRequest req, @SessionAttribute("userId") Long userId) {

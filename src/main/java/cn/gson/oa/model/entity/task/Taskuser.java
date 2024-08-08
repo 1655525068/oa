@@ -25,10 +25,13 @@ public class Taskuser {
 	@ManyToOne
 	@JoinColumn(name="task_id")
 	private Tasklist taskId;//任务id外键
-	
+
 	@ManyToOne
 	@JoinColumn(name="task_recive_user_id")
 	private User userId;//接收人id外键
+
+	@Column(name = "identify_responsible_person")
+	private String irp; // 识别责任人
 	
 	@Column(name="status_id")
 	private Integer statusId;//任务状态id
@@ -36,6 +39,14 @@ public class Taskuser {
 
 	public Taskuser() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getIrp() {
+		return irp;
+	}
+
+	public void setIrp(String irp) {
+		this.irp = irp;
 	}
 
 	public Long getPkId() {

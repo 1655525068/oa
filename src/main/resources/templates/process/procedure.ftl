@@ -81,23 +81,23 @@ margin-bottom: 48px;
 						</div>
 					</div>
 					</a> -->
-					<a href="evection">
-					<div class="col-md-3 form-group">
-					<label class="control-label" style="float:left;"><img src="images/chuchai.jpg" style="width:100px;height:100px;"></label>
-						<div>
-						<h4>出差申请单</h4><br>
-						<h5>指出差申请单</h5>
-						</div>
-					</div>
-					</a>
-					<a href="overtime">
-					<div class="col-md-3 form-group">
-					<label class="control-label" style="float:left;"><img src="images/jiaban.jpg" style="width:100px;height:100px;"></label>
-						<div>
-						<h4>加班申请单</h4><br>
-						<h5>指加班申请单</h5>
-						</div>
-					</div>
+<#--					<a href="evection">-->
+<#--					<div class="col-md-3 form-group">-->
+<#--					<label class="control-label" style="float:left;"><img src="images/chuchai.jpg" style="width:100px;height:100px;"></label>-->
+<#--						<div>-->
+<#--						<h4>出差申请单</h4><br>-->
+<#--						<h5>指出差申请单</h5>-->
+<#--						</div>-->
+<#--					</div>-->
+<#--					</a>-->
+<#--					<a href="overtime">-->
+<#--					<div class="col-md-3 form-group">-->
+<#--					<label class="control-label" style="float:left;"><img src="images/jiaban.jpg" style="width:100px;height:100px;"></label>-->
+<#--						<div>-->
+<#--						<h4>加班申请单</h4><br>-->
+<#--						<h5>指加班申请单</h5>-->
+<#--						</div>-->
+<#--					</div>-->
 					</a>
 					<a href="regular">
 					<div class="col-md-3 form-group">
@@ -108,24 +108,24 @@ margin-bottom: 48px;
 						</div>
 					</div>
 					</a>
-					<a href="holiday">
-					<div class="col-md-3 form-group">
-					<label class="control-label" style="float:left;"><img src="images/qingjia.jpg" style="width:100px;height:100px;"></label>
-						<div>
-						<h4>请假申请单</h4><br>
-						<h5>指请假申请单</h5>
-						</div>
-					</div>
-					</a>
-					<a href="resign">
-					<div class="col-md-3 form-group">
-					<label class="control-label" style="float:left;"><img src="images/lizhi.jpg" style="width:100px;height:100px;"></label>
-						<div>
-						<h4>离职申请单</h4><br>
-						<h5>指离职申请单</h5>
-						</div>
-					</div>
-					</a>
+<#--					<a href="holiday">-->
+<#--					<div class="col-md-3 form-group">-->
+<#--					<label class="control-label" style="float:left;"><img src="images/qingjia.jpg" style="width:100px;height:100px;"></label>-->
+<#--						<div>-->
+<#--						<h4>请假申请单</h4><br>-->
+<#--						<h5>指请假申请单</h5>-->
+<#--						</div>-->
+<#--					</div>-->
+<#--					</a>-->
+<#--					<a href="resign">-->
+<#--					<div class="col-md-3 form-group">-->
+<#--					<label class="control-label" style="float:left;"><img src="images/lizhi.jpg" style="width:100px;height:100px;"></label>-->
+<#--						<div>-->
+<#--						<h4>离职申请单</h4><br>-->
+<#--						<h5>指离职申请单</h5>-->
+<#--						</div>-->
+<#--					</div>-->
+<#--					</a>-->
 				</div>
 			</div>
 		</div>

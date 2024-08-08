@@ -16,13 +16,13 @@ public class BookController {
     private BookServices bookServices;
 
     @RequestMapping("getAllExcel")
-    public void getAllExcel(){
+    public void getAllExcel() {
         Iterable<ThreeBook> books = bookServices.getAllThreebook();
         books.forEach(System.out::println);
     }
 
     @RequestMapping("getExcel")
-    public void getExcel(HttpServletRequest request){
+    public void getExcel(HttpServletRequest request) {
         Iterable<ThreeBook> books = bookServices.getThreeBookByPrepared("冉英男");
         books.forEach(System.out::println);
     }

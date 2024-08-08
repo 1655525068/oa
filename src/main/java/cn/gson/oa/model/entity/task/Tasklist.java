@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import cn.gson.oa.model.entity.book.ThreeBook;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -78,8 +79,19 @@ public class Tasklist implements Serializable {
 	
 	@Column(name="status_id")
 	private Integer statusId;//任务状态id
-	
-	
+
+	@ManyToOne()
+	@JoinColumn(name = "book_id")
+	private ThreeBook threeBook;
+
+	public ThreeBook getThreeBook() {
+		return threeBook;
+	}
+
+	public void setThreeBook(ThreeBook treebook) {
+		this.threeBook = treebook;
+	}
+
 	public Tasklist(){}
 	
 	public Long getTaskId() {
@@ -239,7 +251,7 @@ public class Tasklist implements Serializable {
 		return "Tasklist [taskId=" + taskId + ", typeId=" + typeId + ", publishTime=" + publishTime + ", starTime="
 				+ starTime + ", endTime=" + endTime + ", modifyTime=" + modifyTime + ", title=" + title
 				+ ", taskDescribe=" + taskDescribe + ", comment=" + comment + ", cancel=" + cancel + ", top="
-				+ top + ", ticking=" + ticking + ", statusId=" + statusId + "]";
+				+ top + ", ticking=" + ticking + ", statusId=" + statusId + "threeBook"+ threeBook + "]";
 	}
 
 	

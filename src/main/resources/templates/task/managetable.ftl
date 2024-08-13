@@ -25,10 +25,10 @@
                 <tr>
                     <th scope="col">标题</th>
                     <th scope="col" class="co commen">类型<span class="block"></span></th>
-                    <th scope="col">三单号</th>
                     <th scope="col" class="co commen">发布时间<span class="block"></span></th>
+                    <th scope="col">三单号</th>
                     <th scope="col">发布人</th>
-                    <th scope="col">识别责任人</th>
+                    <th scope="col">责任人</th>
                     <th scope="col">处理人</th>
                     <th scope="col" class="co commen">状态<span class="block"></span></th>
                     <th>置顶</th>
@@ -40,11 +40,11 @@
                     <tr>
                         <td><span>${task.title}</span></td>
                         <td><span>${task.type!''}</span></td>
-                        <td><span>${task.threeBookNumbers}</span></td>
-                        <td><span>${task.publishtime}</span></td>
-                        <td><span>${task.username}</span></td>
-                        <td><span>${task.identifyResponsiblePerson}</span></td>
-                        <td><span>${task.processPerson}</span></td>
+                        <td><span>${task.publishtime!''}</span></td>
+                        <td><span>${task.threeBookNumbers!''}</span></td>
+                        <td><span>${task.username!''}</span></td>
+                        <td><span>${task.identifyResponsiblePerson!''}</span></td>
+                        <td><span>${task.processPerson!''}</span></td>
                         <#if task.cancel==true>
                             <td><span class="label label-default">已取消</span></td>
                         <#else>

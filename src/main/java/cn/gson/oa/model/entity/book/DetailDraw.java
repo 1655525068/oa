@@ -7,4 +7,6 @@ package cn.gson.oa.model.entity.book;
  */
 
 public class DetailDraw {
+    // 文件编码
+    //
 }

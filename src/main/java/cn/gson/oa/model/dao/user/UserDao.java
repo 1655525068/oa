@@ -2,6 +2,8 @@ package cn.gson.oa.model.dao.user;
 
 import java.util.List;
 
+import cn.gson.oa.model.entity.task.Taskuser;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,6 +30,9 @@ public interface UserDao extends JpaRepository<User, Long> {
 
     @Query("select tu.pkId from Taskuser tu where tu.taskId.taskId=:taskid and tu.userId.userId=:userid")
     Long findpkId(@Param("taskid") Long taskid, @Param("userid") Long userid);
+
+    @Query("select tu from Taskuser tu where tu.taskId.taskId=:taskid")
+    List<Taskuser> findpkIdList(@Param("taskid") Long taskid);
 
     //根据名字找用户
     User findByUserName(String title);

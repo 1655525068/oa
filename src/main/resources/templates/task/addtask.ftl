@@ -27,11 +27,11 @@
 </style>
 <div class="row" style="padding-top: 10px;">
     <div class="col-md-2">
-        <h1 style="font-size: 24px; margin: 0;" class="">任务管理</h1>
+        <h1 style="font-size: 24px; margin: 0;" class="">三单任务管理</h1>
     </div>
     <div class="col-md-10 text-right">
         <a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
-                disabled="disabled">任务管理</a>
+                disabled="disabled">三单任务管理</a>
     </div>
 </div>
 <div class="row" style="padding-top: 15px;">
@@ -333,7 +333,7 @@
 <!--校验模态框 -->
 
 <#include "/common/modalTip.ftl">
-<input type="text" class="recive_list">
+<input type="text" class="recive_list" style="display: none">
 <script type="text/javascript">
     //表单提交前执行的onsubmit()方法；返回false时，执行相应的提示信息；返回true就提交表单到后台校验与执行
     function check() {
@@ -345,7 +345,7 @@
             // 如果在这些input框中，判断是否能够为空
             if ($(this).val() === "") {
                 // 排除哪些字段是可以为空的，在这里排除
-                if (index === 7 || index === 23 || index === 24) {
+                if (index === 7 || index === 11 || index === 22 || index === 23 || index === 24) {
                     return true;
                 }
 

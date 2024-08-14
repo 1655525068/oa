@@ -57,11 +57,11 @@
                 <div class="box-body" style="margin-left:20px;margin-right: 20px;">
                     <div class=" mailbox-read-info">
                         <h3>
-                            <span id="ctl00_cphMain_lblTitle">任务主题：${task.title}</span></h3>
+                            <span id="ctl00_cphMain_lblTitle">主题：${task.title}</span></h3>
                         <#if task.reciverlist??>
                             <h5 class="fonts">
 
-                                <span id="ctl00_cphMain_lblFrom" class="mailbox-read-time">录入人：<i>${user.userName}</i> &nbsp;&nbsp;识别责任人：<i>${task.reciverlist}</i></span>
+                                <span id="ctl00_cphMain_lblFrom" class="mailbox-read-time">录入人：<i>${user.userName}</i> &nbsp;&nbsp;责任人：<i>${task.reciverlist}</i></span>
 
                                 <span id="ctl00_cphMain_lblDate"
                                       class="mailbox-read-time pull-right">${task.publishTime}</span>

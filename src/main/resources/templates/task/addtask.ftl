@@ -92,10 +92,20 @@
                                 <label class="control-label">评价</label>
                                 <input class="form-control" name="comment" value="评价"/>
                             </div>
+                            <#--文件录入类型-->
+                            <div>
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label"> <span>文件</span></label>
+                                    <select class="form-control" name="typeId">
+                                        <option value="1">图纸细化</option>
+                                        <option value="2">三单</option>
+                                    </select>
+                                </div>
+                            </div>
                             <!-- 类型 -->
                             <div class="col-md-4 form-group">
                                 <label class="control-label"> <span>类型</span></label>
-                                <select class="form-control" name="type">
+                                <select class="form-control" name="threeType">
                                     <option value="FCR">FCR</option>
                                     <option value="CR">CR</option>
                                     <option value="DEN">DEN</option>

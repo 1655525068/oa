@@ -64,24 +64,20 @@ a:hover {
 								 <input type="number" min="0" class="form-control" value="${(menuObj.sortId)!'0'}" name="sortId"/>
 							</div>
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span>父级</span></label> 
+								<label class="control-label"><span>父级</span></label>
 								 <select class="form-control" name="parentId">
-                                <#if menuObj.parentId == 0>
+<#--                                <#if menuObj.parentId == 0>-->
                                     <option value="0" selected>顶级</option>
-                                </#if>
+<#--                                </#if>-->
 								 <#list parentList as list>
-                                     <#if menuObj.parentId == list.menuId>
-										 <option value="${list.menuId}" selected>${list.menuName}</option>
-                                         <#else>
-											  <option value="${list.menuId}">${list.menuName}</option>
-                                     </#if>
+									 <option value="${list.menuId}">${list.menuName}</option>
 								 </#list>
 								 </select>
-								<!-- <#if getAdd??>
+								<#--<#if getAdd??>
 									<input type="number" min="0" class="form-control" value="${getAdd}"  name="parentId" readonly="readonly"/>
 								<#else>
 									<input type="number" min="0" class="form-control" value="${(menuObj.parentId)!''}"  name="parentId"/>
-								</#if> -->
+								</#if>-->
 							</div>
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span>显示</span></label><br>

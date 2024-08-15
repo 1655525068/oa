@@ -25,7 +25,7 @@
 				<thead>
 					<tr>
 						<th scope="col">标题</th>
-						<th scope="col">类型</th>
+						<th scope="col">文件类型</th>
 						<th scope="col">发布时间</th>
 						<th scope="col">三单号/文件编码/编号/图册号</th>
 						<th scope="col">发布人</th>
@@ -39,7 +39,13 @@
 					<#list tasklist as task>
 					<tr>
 						<td><span>${task.title}</span></td>
-						<td><span>${task.type!''}</span></td>
+						<td>
+							<#if task.type == 1>
+								<span>三单</span>
+							<#else >
+								<span>图纸细化</span>
+							</#if>
+						</td>
 
 						<td><span>${task.publishtime}</span></td>
 						<td>

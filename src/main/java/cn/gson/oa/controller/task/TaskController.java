@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
-import cn.gson.oa.model.dao.book.BookDao;
+import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -72,10 +72,10 @@ public class TaskController {
     @Autowired
     private PositionDao pdao;
     @Autowired
-    private BookDao bdao;
+    private ThreeBookDao bdao;
 
     /**
-     * 三单任务管理表格
+     * 任务管理表格
      *
      * @return
      */
@@ -126,7 +126,7 @@ public class TaskController {
 
 
     /**
-     * 点击新增任务
+     * 点击新增任务(三单)
      */
     @RequestMapping("addtask")
     public ModelAndView index2(@SessionAttribute("userId") Long userId,
@@ -157,7 +157,7 @@ public class TaskController {
     }
 
     /**
-     * 新增任务保存
+     * 新增任务保存(三单)
      */
     @RequestMapping("addtasks")
     public String addtask(@SessionAttribute("userId") Long userId, HttpServletRequest request) {
@@ -169,6 +169,7 @@ public class TaskController {
         list.setUsersId(userlist);
         list.setPublishTime(new Date());
         list.setModifyTime(new Date());
+        list.setTypeId(1L);
         //三单
         threeBook.setIdentifyResponsiblePerson(list.getReciverlist());
         ThreeBook result = bdao.save(threeBook);
@@ -192,7 +193,7 @@ public class TaskController {
     }
 
     /**
-     * 修改任务
+     * 修改任务(三单)
      */
     @RequestMapping("edittasks")
     public ModelAndView index3(HttpServletRequest req, @SessionAttribute("userId") Long userId,
@@ -235,7 +236,7 @@ public class TaskController {
     }
 
     /**
-     * 修改任务确定
+     * 修改任务确定(三单)
      */
     @RequestMapping("update")
     public String update(Tasklist task, HttpSession session) {
@@ -441,7 +442,7 @@ public class TaskController {
     }
 
     /**
-     * 从我的三单任务查看里面修改状态和日志
+     * 从我的任务查看里面修改状态和日志
      */
     @RequestMapping("uplogger")
     public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req) {

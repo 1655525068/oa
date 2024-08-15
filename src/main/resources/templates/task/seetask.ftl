@@ -37,11 +37,11 @@
 <div class="outside">
     <div class="row head">
         <div class="col-md-2">
-            <h1 style="font-size: 24px; margin: 0;" class="">三单任务查看</h1>
+            <h1 style="font-size: 24px; margin: 0;" class="">任务查看</h1>
         </div>
         <div class="col-md-10 text-right right-me">
             <a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> >
-            <a disabled="disabled">三单任务查看</a>
+            <a disabled="disabled">任务查看</a>
         </div>
     </div>
     <div class="containers">
@@ -59,8 +59,12 @@
                     <div class=" mailbox-read-info">
                         <h3>
                             <span id="ctl00_cphMain_lblTitle">主题：${task.title}</span>
-                            <span id="">&nbsp;&nbsp;三单号：${task.threeBook.threeBookNumbers}</span>
-                            <span id="">&nbsp;&nbsp;中文名称：${task.threeBook.chineseName}</span>
+                            <#if task.typeId == 1>
+                                <span id="">&nbsp;&nbsp;三单号：${task.threeBook.threeBookNumbers}</span>
+                                <span id="">&nbsp;&nbsp;中文名称：${task.threeBook.chineseName}</span>
+                            <#else >
+                                <span id="">&nbsp;&nbsp;bianhao</span>
+                            </#if>
                         </h3>
                         <#if task.reciverlist??>
                             <h5 class="fonts">
@@ -139,14 +143,15 @@
 
                     <#-- todo 处理人，是否需要处理，处理方式，处理单号，处理完成时间，责任方，备注，是否涉及索赔，计划关闭时间，实际关闭时间，设计点值，审核点值-->
 
-                    <#if c_user.role.roleName?contains("负责人") >
+                    <#if task.typeId == 1>
+                        <#if c_user.role.roleName?contains("负责人") >
                         <div class="col-md-4 form-group">
                             <label> <span id="ctl00_cphMain_Label2">处理人</span>
                             </label><input name="processPerson" type="text" id="" class="form-control"
                                            value="${task.threeBook.processPerson}"/>
                         </div>
                     </#if>
-                    <#if task.threeBook.type == "CR">
+                        <#if task.threeBook.type == "CR">
                     <#--CR--填写关闭时间-->
                         <div class="col-md-4 form-group">
                             <label> <span id="ctl00_cphMain_Label2">计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN</span>
@@ -209,6 +214,9 @@
                                 <option value="/">/</option>
                             </select>
                         </div>
+                    </#if>
+                    <#else >
+                        asdfasdrf
                     </#if>
 
                     <#--<div class="col-md-6 form-group">

@@ -3,7 +3,11 @@
     <div class="box-header">
         <h3 class="box-title">
             <a href="addtask" class="label label-success" style="padding: 5px;">
-                <span class="glyphicon glyphicon-plus"></span> 新增
+                <span class="glyphicon glyphicon-plus"></span> 新增三单
+            </a>
+            &nbsp;&nbsp;
+            <a href="addtaskdetail" class="label label-success" style="padding: 5px;">
+                <span class="glyphicon glyphicon-plus"></span> 新增图纸细化
             </a>
         </h3>
         <div class="box-tools">
@@ -24,9 +28,9 @@
                 <thead>
                 <tr>
                     <th scope="col">标题</th>
-                    <th scope="col" class="co commen">类型<span class="block"></span></th>
+                    <th scope="col" class="co commen">文件类型<span class="block"></span></th>
                     <th scope="col" class="co commen">发布时间<span class="block"></span></th>
-                    <th scope="col">三单号</th>
+                    <th scope="col">三单号/文件编码/编号/图册号</th>
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
                     <th scope="col">处理人</th>
@@ -39,7 +43,13 @@
                 <#list tasklist as task>
                     <tr>
                         <td><span>${task.title}</span></td>
-                        <td><span>${task.type!''}</span></td>
+                        <td>
+                            <#if task.type == 1>
+                                <span>三单</span>
+                            <#else >
+                                <span>图纸细化</span>
+                            </#if>
+                        </td>
                         <td><span>${task.publishtime!''}</span></td>
                         <td><span>${task.threeBookNumbers!''}</span></td>
                         <td><span>${task.username!''}</span></td>
@@ -57,14 +67,16 @@
                             <td><span class="labels"><label><input type="checkbox" name="top" class="val"
                                                                    disabled><i>✓</i></label></span></td>
                         </#if>
-                        <td><a href="edittasks?id=${task.taskid}"
+                        <td>
+                            <#--<a href="edittasks?id=${task.taskid}"
                                class="label xiugai"><span
-                                        class="glyphicon glyphicon-edit"></span> 修改</a>
+                                        class="glyphicon glyphicon-edit"></span> 修改</a>-->
                             <a href="seetasks?id=${task.taskid}" class="label xiugai"><span
                                         class="glyphicon glyphicon-search"></span> 查看</a>
                             <a href="shanchu?id=${task.taskid}" onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                                class="label shanchu"><span
-                                        class="glyphicon glyphicon-remove"></span> 删除</a></td>
+                                        class="glyphicon glyphicon-remove"></span> 删除</a>
+                        </td>
                     </tr>
                 </#list>
 

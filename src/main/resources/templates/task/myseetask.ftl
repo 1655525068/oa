@@ -35,12 +35,12 @@
 <div class="outside">
     <div class="row head">
         <div class="col-md-2">
-            <h1 style="font-size:24px;margin: 0;" class="">三单任务查看</h1>
+            <h1 style="font-size:24px;margin: 0;" class="">任务查看</h1>
         </div>
         <div class="col-md-10 text-right right-me">
             <a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a>
             >
-            <a disabled="disabled">三单任务查看</a>
+            <a disabled="disabled">任务查看</a>
         </div>
     </div>
     <div class="containers">

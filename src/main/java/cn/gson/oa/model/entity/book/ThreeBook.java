@@ -140,6 +140,18 @@ public class ThreeBook {
     @Column(name = "logger_ticking")
     private String loggerTicking;
 
+    @Column(name = "is_lock")
+    private Integer isLock = 0;
+
+
+    public Integer getIsLock() {
+        return isLock;
+    }
+
+    public void setIsLock(Integer isLock) {
+        this.isLock = isLock;
+    }
+
     public Long getBookId() {
         return bookId;
     }

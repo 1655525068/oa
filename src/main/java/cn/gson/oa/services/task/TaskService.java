@@ -10,7 +10,7 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
-import cn.gson.oa.model.dao.book.BookDao;
+import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -55,7 +55,7 @@ public class TaskService {
     @Autowired
     private DeptDao ddao;
     @Autowired
-    private BookDao bdao;
+    private ThreeBookDao bdao;
 
     public Tasklist save(Tasklist task) {
         return tdao.save(task);
@@ -116,7 +116,7 @@ public class TaskService {
             pa = new PageRequest(page, size, sort);
             tasklist = tdao.findByUsersId(tu, pa);
 
-        } else if (("类型").equals(val)) {
+        } else if (("文件类型").equals(val)) {
             tasklist = tdao.findByUsersIdOrderByTypeId(tu, pa);
         } else if (("状态").equals(val)) {
             orders.addAll(Arrays.asList(new Order(Direction.ASC, "cancel"), new Order(Direction.ASC, "statusId")));
@@ -150,10 +150,13 @@ public class TaskService {
             result.put("cancel", task.get(i).getCancel());
             result.put("username", username);
             result.put("deptname", deptname);
-            result.put("type", task.get(i).getThreeBook().getType());
-            result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
-            result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
-            result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
+            result.put("type", task.get(i).getTypeId());
+            if (task.get(i).getThreeBook() != null){
+                result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
+                result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
+                result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
+            }
+
             list.add(result);
         }
         return list;
@@ -238,6 +241,8 @@ public class TaskService {
                 result.put("cancel", task.get(i).getCancel());
                 result.put("username", username);
                 result.put("deptname", deptname);
+                //type
+                result.put("type",task.get(i).getTypeId());
 
                 list.add(result);
             }

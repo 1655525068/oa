@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import cn.gson.oa.model.entity.book.DetailDraw;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -55,7 +56,7 @@ public class Tasklist implements Serializable {
 	private String title;//任务主题
 	
 	@Column(name="reciverlist")
-	@NotEmpty(message="接收人不能为空")
+//	@NotEmpty(message="接收人不能为空")
 	private String reciverlist;
 	
 	@ManyToOne
@@ -83,6 +84,18 @@ public class Tasklist implements Serializable {
 	@ManyToOne()
 	@JoinColumn(name = "book_id")
 	private ThreeBook threeBook;
+
+	@ManyToOne()
+	@JoinColumn(name = "detail_book_id")
+	private DetailDraw detailDraw;
+
+	public DetailDraw getDetailDraw() {
+		return detailDraw;
+	}
+
+	public void setDetailDraw(DetailDraw detailDraw) {
+		this.detailDraw = detailDraw;
+	}
 
 	public ThreeBook getThreeBook() {
 		return threeBook;

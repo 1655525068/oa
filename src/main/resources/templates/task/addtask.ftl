@@ -27,11 +27,11 @@
 </style>
 <div class="row" style="padding-top: 10px;">
     <div class="col-md-2">
-        <h1 style="font-size: 24px; margin: 0;" class="">三单任务管理</h1>
+        <h1 style="font-size: 24px; margin: 0;" class="">任务管理</h1>
     </div>
     <div class="col-md-10 text-right">
         <a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
-                disabled="disabled">三单任务管理</a>
+                disabled="disabled">任务管理</a>
     </div>
 </div>
 <div class="row" style="padding-top: 15px;">
@@ -92,146 +92,136 @@
                                 <label class="control-label">评价</label>
                                 <input class="form-control" name="comment" value="评价"/>
                             </div>
-                            <#--文件录入类型-->
-                            <div>
+
+                                <!-- 类型 -->
                                 <div class="col-md-4 form-group">
-                                    <label class="control-label"> <span>文件</span></label>
-                                    <select class="form-control" name="typeId">
-                                        <option value="1">图纸细化</option>
-                                        <option value="2">三单</option>
+                                    <label class="control-label"> <span>类型</span></label>
+                                    <select class="form-control" name="threeType">
+                                        <option value="FCR">FCR</option>
+                                        <option value="CR">CR</option>
+                                        <option value="DEN">DEN</option>
                                     </select>
                                 </div>
-                            </div>
-                            <!-- 类型 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label"> <span>类型</span></label>
-                                <select class="form-control" name="threeType">
-                                    <option value="FCR">FCR</option>
-                                    <option value="CR">CR</option>
-                                    <option value="DEN">DEN</option>
-                                </select>
-                            </div>
-                            <!-- 三单号 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">三单号</label>
-                                <input name="threeBookNumbers" type="text" id="threeBookNumbers" class="form-control"/>
-                            </div>
-                            <!-- 中文名称 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">中文名称</label>
-                                <input name="chineseName" type="text" id="chineseName" class="form-control"/>
-                            </div>
-                            <!-- FCR版本 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label"> <span>FCR版本</span></label>
-                                <select class="form-control" name="fcrVersion">
-                                    <option value="A">A</option>
-                                </select>
-                            </div>
-                            <!-- 状态 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">状态</label>
-                                <select class="form-control" name="state">
-                                    <option value="有效">有效</option>
-                                    <option value="无效">无效</option>
-                                </select>
-                            </div>
-                            <!-- 编制人 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label" data-toggle="modal">编制人</label>
-                                <input name="preparedBy" type="text"  class="form-control "
-                                        style="background-color:#fff;"/>
-<#--                                <div class="reciver">-->
-<#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
-<#--                                          >通讯录</span>-->
-<#--                                </div>-->
-                            </div>
-                            <!-- 最新版 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">最新版</label>
-                                <select class="form-control" name="latestVersion">
-                                    <option value="Y">Y</option>
-                                    <option value="N">N</option>
-                                </select>
-                            </div>
-                            <!-- 接收时间 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">接收时间</label>
-                                <input id="receivingTime" name="receivingTime" class="form-control"/>
-                            </div>
-                            <!-- 分发时间 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">分发时间</label>
-                                <input id="distributionTime" name="distributionTime" class="form-control"/>
-                            </div>
-                            <!-- 作废标识 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">作废标识</label>
-                                <select class="form-control" name="invalidIdentification">
-                                    <option value="Y">Y</option>
-                                    <option value="N">N</option>
-                                </select>
-                            </div>
-                            <!-- 相关文件编码 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">相关文件编码</label>
-                                <input name="relatedDocumentCodes" type="text" id="relatedDocumentCodes"
-                                       class="form-control"/>
-                            </div>
-                            <!-- 相关文件内部编码 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">相关文件内部编码</label>
-                                <input name="internalCodes" type="text" id="internalCodes" class="form-control"/>
-                            </div>
-                            <!-- 图纸版本 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">图纸版本</label>
-                                <select class="form-control" name="drawVersion">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="D">D</option>
-                                </select>
-                            </div>
-                            <!-- 专业 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">专业</label>
-                                <select class="form-control" name="professionalType">
-                                    <option value="管道">管道</option>
-                                    <option value="通风">通风</option>
-                                    <option value="电仪">电仪</option>
-                                </select>
-                            </div>
-                            <!-- 责任方 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">责任方</label>
-                                <select class="form-control" name="responsibleParty">
-                                    <option value="建安承包">建安承包</option>
-                                    <option value="工程公司">工程公司</option>
-                                    <option value="其他">其他</option>
-                                </select>
-                            </div>
-                            <!-- 识别责任人 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label" data-toggle="modal" >识别责任人</label>
-                                <input name="reciverlist" type="text" id=""
-                                       class="form-control "  style="background-color:#fff;"/>
-<#--                                <div class="reciver">-->
-<#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
-<#--                                          >通讯录</span>-->
-<#--                                </div>-->
-                            </div>
-                            <!-- 处理人 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label" data-toggle="modal">处理人</label>
-                                <input name="processPerson" type="text" id="" class="form-control "
-                                        style="background-color:#fff;"/>
-<#--                                <div class="reciver">-->
-<#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
-<#--                                          >通讯录</span>-->
-<#--                                </div>-->
-                            </div>
-
-
+                                <!-- 三单号 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">三单号</label>
+                                    <input name="threeBookNumbers" type="text" id="threeBookNumbers"
+                                           class="form-control"/>
+                                </div>
+                                <!-- 中文名称 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">中文名称</label>
+                                    <input name="chineseName" type="text" id="chineseName" class="form-control"/>
+                                </div>
+                                <!-- FCR版本 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label"> <span>FCR版本</span></label>
+                                    <select class="form-control" name="fcrVersion">
+                                        <option value="A">A</option>
+                                    </select>
+                                </div>
+                                <!-- 状态 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">状态</label>
+                                    <select class="form-control" name="state">
+                                        <option value="有效">有效</option>
+                                        <option value="无效">无效</option>
+                                    </select>
+                                </div>
+                                <!-- 编制人 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label" data-toggle="modal">编制人</label>
+                                    <input name="preparedBy" type="text" class="form-control "
+                                           style="background-color:#fff;"/>
+                                    <#--                                <div class="reciver">-->
+                                    <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
+                                    <#--                                          >通讯录</span>-->
+                                    <#--                                </div>-->
+                                </div>
+                                <!-- 最新版 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">最新版</label>
+                                    <select class="form-control" name="latestVersion">
+                                        <option value="Y">Y</option>
+                                        <option value="N">N</option>
+                                    </select>
+                                </div>
+                                <!-- 接收时间 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">接收时间</label>
+                                    <input id="receivingTime" name="receivingTime" class="form-control"/>
+                                </div>
+                                <!-- 分发时间 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">分发时间</label>
+                                    <input id="distributionTime" name="distributionTime" class="form-control"/>
+                                </div>
+                                <!-- 作废标识 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">作废标识</label>
+                                    <select class="form-control" name="invalidIdentification">
+                                        <option value="Y">Y</option>
+                                        <option value="N">N</option>
+                                    </select>
+                                </div>
+                                <!-- 相关文件编码 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">相关文件编码</label>
+                                    <input name="relatedDocumentCodes" type="text" id="relatedDocumentCodes"
+                                           class="form-control"/>
+                                </div>
+                                <!-- 相关文件内部编码 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">相关文件内部编码</label>
+                                    <input name="internalCodes" type="text" id="internalCodes" class="form-control"/>
+                                </div>
+                                <!-- 图纸版本 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">图纸版本</label>
+                                    <select class="form-control" name="drawVersion">
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="D">D</option>
+                                    </select>
+                                </div>
+                                <!-- 专业 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">专业</label>
+                                    <select class="form-control" name="professionalType">
+                                        <option value="管道">管道</option>
+                                        <option value="通风">通风</option>
+                                        <option value="电仪">电仪</option>
+                                    </select>
+                                </div>
+                                <!-- 责任方 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">责任方</label>
+                                    <select class="form-control" name="responsibleParty">
+                                        <option value="建安承包">建安承包</option>
+                                        <option value="工程公司">工程公司</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                                <!-- 识别责任人 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label" data-toggle="modal">识别责任人</label>
+                                    <input name="reciverlist" type="text" id=""
+                                           class="form-control " style="background-color:#fff;"/>
+                                    <#--                                <div class="reciver">-->
+                                    <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
+                                    <#--                                          >通讯录</span>-->
+                                    <#--                                </div>-->
+                                </div>
+                                <!-- 处理人 -->
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label" data-toggle="modal">处理人</label>
+                                    <input name="processPerson" type="text" id="" class="form-control "
+                                           style="background-color:#fff;"/>
+                                    <#--                                <div class="reciver">-->
+                                    <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
+                                    <#--                                          >通讯录</span>-->
+                                    <#--                                </div>-->
+                                </div>
                             <div class="col-md-4 form-group ">
                                 <label class="control-label">置顶</label>
                                 <span class="labels"><label><input type="checkbox" name="top"
@@ -385,6 +375,7 @@
         }
 
     }
+
     $(function () {
         $('.reciver').on('click', function () {
             $('#myModal').modal("toggle");
@@ -394,8 +385,14 @@
         });
         $(".recive_list").change(function () {
             var $val = $(this).val();
-            debugger;
             $(".qu").siblings("input").val($val);
+        });
+        $('#mySelect').change(function(){
+            var selectedValue = $(this).val();
+            // 隐藏所有div
+            $('#div1, #div2').hide();
+            // 显示对应的div
+            $('#div' + selectedValue).show();
         });
     })
 </script>

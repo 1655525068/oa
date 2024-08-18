@@ -12,7 +12,7 @@ public class BookServices {
     @Autowired
     private ThreeBookDao threeBookDao;
 
-    public Iterable<ThreeBook> getAllThreebook() {
+    public Iterable<ThreeBook> getAllThreeBook() {
         return threeBookDao.findAll();
     }
 
@@ -26,5 +26,9 @@ public class BookServices {
 
     public Page<ThreeBook> findAllByIsLock(Integer isLock, Pageable pa) {
         return threeBookDao.findAllByIsLock(isLock, pa);
+    }
+
+    public Iterable<ThreeBook> getAllThreeBookByCondition(String name) {
+        return threeBookDao.findAllByCondition(name);
     }
 }

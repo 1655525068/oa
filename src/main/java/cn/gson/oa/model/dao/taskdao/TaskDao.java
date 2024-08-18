@@ -32,7 +32,7 @@ public interface TaskDao extends JpaRepository<Tasklist, Long>{
 
 	
 	//根据用户id 和title的模糊查询
-	@Query("select tl from Tasklist tl where tl.usersId=:userId and tl.title like %:title%")
+	@Query("select tl from Tasklist tl where tl.usersId=:userId and tl.title like %:title% or tl.threeBook.type like %:title% or tl.threeBook.threeBookNumbers like %:title% or tl.threeBook.identifyResponsiblePerson like %:title% or tl.threeBook.processPerson like %:title% ")
 	Page<Tasklist> findByTitleLikeAndUsersId(@Param("title")String title,@Param("userId")User userId,Pageable pa);
 	
 	

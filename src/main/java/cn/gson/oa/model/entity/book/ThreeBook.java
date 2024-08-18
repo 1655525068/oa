@@ -137,6 +137,21 @@ public class ThreeBook {
     @Column(name = "audit_point_value")
     private String auditPointValue;
 
+    @Column(name = "logger_ticking")
+    private String loggerTicking;
+
+    @Column(name = "is_lock")
+    private Integer isLock = 0;
+
+
+    public Integer getIsLock() {
+        return isLock;
+    }
+
+    public void setIsLock(Integer isLock) {
+        this.isLock = isLock;
+    }
+
     public Long getBookId() {
         return bookId;
     }
@@ -377,6 +392,14 @@ public class ThreeBook {
         this.actualCloseTime = actualCloseTime;
     }
 
+    public String getLoggerTicking() {
+        return loggerTicking;
+    }
+
+    public void setLoggerTicking(String loggerTicking) {
+        this.loggerTicking = loggerTicking;
+    }
+
     @Override
     public String toString() {
         return "ThreeBook{" +
@@ -410,6 +433,7 @@ public class ThreeBook {
                 ", shouldClaim='" + shouldClaim + '\'' +
                 ", planToCloseTime='" + planToCloseTime + '\'' +
                 ", actualCloseTime='" + actualCloseTime + '\'' +
+                ", loggerTicking " + loggerTicking + '\'' +
                 '}';
     }
 }

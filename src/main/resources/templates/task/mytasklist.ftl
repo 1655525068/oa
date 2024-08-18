@@ -24,12 +24,13 @@
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-
-						<th scope="col">类型</th>
 						<th scope="col">标题</th>
+						<th scope="col">文件类型</th>
 						<th scope="col">发布时间</th>
+						<th scope="col">三单号/文件编码/编号/图册号</th>
 						<th scope="col">发布人</th>
-						<th scope="col">部门</th>
+						<th scope="col">责任人</th>
+						<th scope="col">处理人</th>
 						<th scope="col">状态</th>
 						<th scope="col">操作</th>
 					</tr>
@@ -37,14 +38,23 @@
 				<tbody >
 					<#list tasklist as task>
 					<tr>
-
-						<td><span>${task.typename!''}</span></td>
-
 						<td><span>${task.title}</span></td>
+						<td>
+							<#if task.type == 1>
+								<span>三单</span>
+							<#else >
+								<span>图纸细化</span>
+							</#if>
+						</td>
+
 						<td><span>${task.publishtime}</span></td>
+						<td>
+							<#--task 图纸细化，三单 -->
+							<span>${task.threeBook.threeBookNumbers}</span></td>
 
 						<td><span>${task.username}</span></td>
-						<td><span>${task.deptname}</span></td>
+						<td><span>${task.threeBook.identifyResponsiblePerson}</span></td>
+						<td><span>${task.threeBook.processPerson}</span></td>
 						<#if task.cancel==true>
 						<td><span class="label label-default">已取消</span></td>
 						<#else>

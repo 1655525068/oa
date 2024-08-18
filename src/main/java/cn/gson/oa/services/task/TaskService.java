@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
+import cn.gson.oa.model.dao.book.ThreeBookDao;
+import cn.gson.oa.model.entity.book.ThreeBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -51,6 +54,8 @@ public class TaskService {
     private TypeDao tydao;
     @Autowired
     private DeptDao ddao;
+    @Autowired
+    private ThreeBookDao bdao;
 
     public Tasklist save(Tasklist task) {
         return tdao.save(task);
@@ -111,7 +116,7 @@ public class TaskService {
             pa = new PageRequest(page, size, sort);
             tasklist = tdao.findByUsersId(tu, pa);
 
-        } else if (("类型").equals(val)) {
+        } else if (("文件类型").equals(val)) {
             tasklist = tdao.findByUsersIdOrderByTypeId(tu, pa);
         } else if (("状态").equals(val)) {
             orders.addAll(Arrays.asList(new Order(Direction.ASC, "cancel"), new Order(Direction.ASC, "statusId")));
@@ -145,10 +150,13 @@ public class TaskService {
             result.put("cancel", task.get(i).getCancel());
             result.put("username", username);
             result.put("deptname", deptname);
-            result.put("type", task.get(i).getThreeBook().getType());
-            result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
-            result.put("identifyResponsiblePerson",task.get(i).getThreeBook().getIdentifyResponsiblePerson());
-            result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
+            result.put("type", task.get(i).getTypeId());
+            if (task.get(i).getThreeBook() != null){
+                result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
+                result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
+                result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
+            }
+
             list.add(result);
         }
         return list;
@@ -224,6 +232,7 @@ public class TaskService {
 
                 result.put("taskid", tid);
                 result.put("typename", tydao.findname(task.get(i).getTypeId()));
+                result.put("threeBook",bdao.findOneByBookId(task.get(i).getThreeBook().getBookId()));
                 result.put("statusname", sdao.findname(statusid));
                 result.put("statuscolor", sdao.findcolor(statusid));
                 result.put("title", task.get(i).getTitle());
@@ -232,12 +241,107 @@ public class TaskService {
                 result.put("cancel", task.get(i).getCancel());
                 result.put("username", username);
                 result.put("deptname", deptname);
+                //type
+                result.put("type",task.get(i).getTypeId());
 
                 list.add(result);
             }
         }
 
         return list;
+    }
+
+    public ThreeBook updateBook(HttpServletRequest req, ThreeBook threeBook, String type) {
+
+        if ("three".equals(type)) {
+            // 更新三单
+            // CR
+            // 计划关闭时间
+            String planToCloseTime = req.getParameter("planToCloseTime");
+            threeBook.setPlanToCloseTime(planToCloseTime);
+            // 实际关闭时间
+            String actualCloseTime = req.getParameter("actualCloseTime");
+            threeBook.setActualCloseTime(actualCloseTime);
+            // 处理人
+            String processPerson = req.getParameter("processPerson");
+            threeBook.setProcessPerson(processPerson);
+            // 是否需要处理
+            String shouldHandle = req.getParameter("shouldHandle");
+            threeBook.setShouldHandle(shouldHandle);
+            // 处理方式
+            String handleMethod = req.getParameter("handleMethod");
+            threeBook.setHandleMethod(handleMethod);
+            // 处理单号
+            String processOrderNumber = req.getParameter("processOrderNumber");
+            threeBook.setProcessOrderNumber(processOrderNumber);
+            // 处理完成时间
+            String processCompletionTime = req.getParameter("processCompletionTime");
+            threeBook.setProcessCompletionTime(processCompletionTime);
+            // 责任方
+            String processResponsibleParty = req.getParameter("processResponsibleParty");
+            threeBook.setProcessResponsibleParty(processResponsibleParty);
+            // 备注
+            String remarks = req.getParameter("remarks");
+            threeBook.setRemarks(remarks);
+            // 是否涉及索赔
+            String shouldClaim = req.getParameter("shouldClaim");
+            threeBook.setShouldClaim(shouldClaim);
+            // 设计点值
+            String designPointValue = req.getParameter("designPointValue");
+            threeBook.setDesignPointValue(designPointValue);
+            // 审核点值
+            String auditPointValue =  req.getParameter("auditPointValue");
+            threeBook.setAuditPointValue(auditPointValue);
+            // 反馈
+            String loggerTicking = req.getParameter("loggerTicking");
+            threeBook.setLoggerTicking(loggerTicking);
+        }
+        return threeBook;
+    }
+
+    public Tasklogger updateLogger(HttpServletRequest req, Tasklogger tasklogger, String type) {
+
+        if ("three".equals(type)) {
+            // 更新三单
+            // CR
+            // 计划关闭时间
+            String planToCloseTime = req.getParameter("planToCloseTime");
+            tasklogger.setLoggerPlanToCloseTime(planToCloseTime);
+            // 实际关闭时间
+            String actualCloseTime = req.getParameter("actualCloseTime");
+            tasklogger.setLoggerActualCloseTime(actualCloseTime);
+            // 处理人
+            String processPerson = req.getParameter("processPerson");
+            tasklogger.setLoggerProcessPerson(processPerson);
+            // 是否需要处理
+            String shouldHandle = req.getParameter("shouldHandle");
+            tasklogger.setLoggerShouldHandle(shouldHandle);
+            // 处理方式
+            String handleMethod = req.getParameter("handleMethod");
+            tasklogger.setLoggerHandleMethod(handleMethod);
+            // 处理单号
+            String processOrderNumber = req.getParameter("processOrderNumber");
+            tasklogger.setLoggerProcessOrderNumber(processOrderNumber);
+            // 处理完成时间
+            String processCompletionTime = req.getParameter("processCompletionTime");
+            tasklogger.setLoggerProcessCompletionTime(processCompletionTime);
+            // 责任方
+            String processResponsibleParty = req.getParameter("processResponsibleParty");
+            tasklogger.setLoggerProcessResponsibleParty(processResponsibleParty);
+            // 备注
+            String remarks = req.getParameter("remarks");
+            tasklogger.setLoggerRemarks(remarks);
+            // 是否涉及索赔
+            String shouldClaim = req.getParameter("shouldClaim");
+            tasklogger.setLoggerShouldClaim(shouldClaim);
+            // 设计点值
+            String loggerDesignPointValue = req.getParameter("designPointValue");
+            tasklogger.setLoggerDesignPointValue(loggerDesignPointValue);
+            // 审核点值
+            String auditPointValue = req.getParameter("auditPointValue");
+            tasklogger.setLoggerAuditPointValue(auditPointValue);
+        }
+        return tasklogger;
     }
 
 }

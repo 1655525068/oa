@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
-import cn.gson.oa.model.dao.book.BookDao;
+import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -72,7 +72,7 @@ public class TaskController {
     @Autowired
     private PositionDao pdao;
     @Autowired
-    private BookDao bdao;
+    private ThreeBookDao bdao;
 
     /**
      * 任务管理表格
@@ -126,7 +126,7 @@ public class TaskController {
 
 
     /**
-     * 点击新增任务
+     * 点击新增任务(三单)
      */
     @RequestMapping("addtask")
     public ModelAndView index2(@SessionAttribute("userId") Long userId,
@@ -157,7 +157,7 @@ public class TaskController {
     }
 
     /**
-     * 新增任务保存
+     * 新增任务保存(三单)
      */
     @RequestMapping("addtasks")
     public String addtask(@SessionAttribute("userId") Long userId, HttpServletRequest request) {
@@ -169,13 +169,14 @@ public class TaskController {
         list.setUsersId(userlist);
         list.setPublishTime(new Date());
         list.setModifyTime(new Date());
+        list.setTypeId(1L);
         //三单
         threeBook.setIdentifyResponsiblePerson(list.getReciverlist());
         ThreeBook result = bdao.save(threeBook);
         list.setThreeBook(result);
         tdao.save(list);
         // 分割任务接收人
-        StringTokenizer st = new StringTokenizer(list.getReciverlist(), ";");
+        StringTokenizer st = new StringTokenizer(list.getReciverlist() + ";" + threeBook.getProcessPerson(), ";");
         while (st.hasMoreElements()) {
             User reciver = udao.findid(st.nextToken());
             Taskuser task = new Taskuser();
@@ -192,7 +193,7 @@ public class TaskController {
     }
 
     /**
-     * 修改任务
+     * 修改任务(三单)
      */
     @RequestMapping("edittasks")
     public ModelAndView index3(HttpServletRequest req, @SessionAttribute("userId") Long userId,
@@ -235,16 +236,18 @@ public class TaskController {
     }
 
     /**
-     * 修改任务确定
+     * 修改任务确定(三单)
      */
     @RequestMapping("update")
     public String update(Tasklist task, HttpSession session) {
         String userId = session.getAttribute("userId").toString().trim();
         Long userid = Long.parseLong(userId);
-        User userlist = udao.findOne(userid);
-        task.setUsersId(userlist);
+        User user = udao.findOne(userid);
+        task.setUsersId(user);
         task.setPublishTime(new Date());
         task.setModifyTime(new Date());
+        Tasklist tasklist = tdao.findOne(task.getTaskId());
+        task.setThreeBook(tasklist.getThreeBook());
         tservice.save(task);
 
         // 分割任务接收人 还要查找联系人的主键
@@ -259,11 +262,9 @@ public class TaskController {
             tasku.setStatusId(task.getStatusId());
             // 存任务中间表
             tudao.save(tasku);
-
         }
 
         return "redirect:/taskmanage";
-
     }
 
     /**
@@ -285,10 +286,14 @@ public class TaskController {
         Iterable<SystemStatusList> statuslist = sdao.findAll();
         // 查看发布人
         User user = udao.findOne(task.getUsersId().getUserId());
+
+        // 查看参加人员
+        User c_user = udao.findid(task.getReciverlist());
         // 查看任务日志表
         List<Tasklogger> logger = tldao.findByTaskId(ltaskid);
         mav.addObject("task", task);
         mav.addObject("user", user);
+        mav.addObject("c_user", c_user);
         mav.addObject("status", status);
         mav.addObject("loggerlist", logger);
         mav.addObject("statuslist", statuslist);
@@ -297,20 +302,53 @@ public class TaskController {
 
     /**
      * 存反馈日志
-     *
-     * @return
      */
     @RequestMapping("tasklogger")
-    public String tasklogger(Tasklogger logger, @SessionAttribute("userId") Long userId) {
+    public String tasklogger(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req) {
         User userlist = udao.findOne(userId);
         logger.setCreateTime(new Date());
         logger.setUsername(userlist.getUserName());
+        //更新三单
+
+        System.out.println(req.getParameter("shouldHandle"));
+        Tasklist task = tdao.getOne(logger.getTaskId().getTaskId());
+        System.out.println(task.getThreeBook());
+
+        // 获取原三单处理人
+        Taskuser taskuser = tudao.findByuserNameAndTaskId(task.getThreeBook().getProcessPerson(), task.getTaskId());
+        System.out.println(taskuser);
+        Taskuser taskuser1 = taskuser;
+        tservice.updateBook(req, task.getThreeBook(), "three");
+        // 更新日志
+        logger = tservice.updateLogger(req, logger, "three");
         // 存日志
         tldao.save(logger);
         // 修改任务状态
         tservice.updateStatusid(logger.getTaskId().getTaskId(), logger.getLoggerStatusid());
         // 修改任务中间表状态
         tservice.updateUStatusid(logger.getTaskId().getTaskId(), logger.getLoggerStatusid());
+
+        User findUser = udao.findid(task.getThreeBook().getProcessPerson());
+
+        if (taskuser1 != null) {
+            if (!req.getParameter("processPerson").equals(userlist.getUserName())) {
+                tudao.delete(taskuser1);
+                taskuser1.setUserId(findUser);
+                tudao.save(taskuser1);
+            }else {
+                tudao.delete(taskuser1);
+            }
+
+        } else {
+            Taskuser tasku2 = new Taskuser();
+            tasku2.setTaskId(task);
+            tasku2.setUserId(findUser);
+            if (!Objects.isNull(logger.getLoggerStatusid())) {
+
+                tasku2.setStatusId(logger.getLoggerStatusid());
+            }
+            tudao.save(tasku2);
+        }
 
         return "redirect:/taskmanage";
 
@@ -386,11 +424,16 @@ public class TaskController {
 
         // 查看发布人
         User user = udao.findOne(task.getUsersId().getUserId());
+
+        //查看参加人员
+        User c_user = udao.findid(task.getReciverlist());
+
         // 查看任务日志表
         List<Tasklogger> logger = tldao.findByTaskId(ltaskid);
 
         mav.addObject("task", task);
         mav.addObject("user", user);
+        mav.addObject("c_user", c_user);
         mav.addObject("status", status);
         mav.addObject("statuslist", statuslist);
         mav.addObject("loggerlist", logger);
@@ -402,7 +445,7 @@ public class TaskController {
      * 从我的任务查看里面修改状态和日志
      */
     @RequestMapping("uplogger")
-    public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId) {
+    public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req) {
         System.out.println(logger.getLoggerStatusid());
         // 获取用户id
 
@@ -412,6 +455,17 @@ public class TaskController {
         Tasklist task = tdao.findOne(logger.getTaskId().getTaskId());
         logger.setCreateTime(new Date());
         logger.setUsername(user.getUserName());
+        // 查三单
+        ThreeBook threeBook = task.getThreeBook();
+
+        // 获取原三单处理人
+        Taskuser taskuser = tudao.findByuserNameAndTaskId(task.getThreeBook().getProcessPerson(), task.getTaskId());
+        System.out.println(taskuser);
+        Taskuser taskuser1 = taskuser;
+        // 更新三单
+        threeBook = tservice.updateBook(req, threeBook, "three");
+        bdao.save(threeBook);
+        tservice.updateLogger(req, logger, "three");
         // 存日志
         tldao.save(logger);
 
@@ -428,6 +482,36 @@ public class TaskController {
         // 存任务中间表
         tudao.save(tasku);
 
+
+
+        User findUser = udao.findid(task.getThreeBook().getProcessPerson());
+
+        if (taskuser1 != null) {
+            if (!req.getParameter("processPerson").equals(user.getUserName())) {
+                tudao.delete(taskuser1);
+                taskuser1.setUserId(findUser);
+                tudao.save(taskuser1);
+            }else if(!user.getRole().getRoleName().contains("技术员")) {
+                tudao.delete(taskuser1);
+            }
+
+        } else {
+            Taskuser tasku2 = new Taskuser();
+            tasku2.setTaskId(task);
+            tasku2.setUserId(findUser);
+            if (!Objects.isNull(logger.getLoggerStatusid())) {
+
+                tasku2.setStatusId(logger.getLoggerStatusid());
+            }
+            tudao.save(tasku2);
+        }
+
+        // logger.getLoggerStatusid()
+        List<Taskuser>  tus = udao.findpkIdList(logger.getTaskId().getTaskId());
+        tus.forEach((x->{
+            x.setStatusId(logger.getLoggerStatusid());
+            tudao.save(x);
+        }));
         // 修改任务状态
         // 通过任务id查看总状态
 
@@ -469,7 +553,7 @@ public class TaskController {
             int i = tservice.detelelogger(ltaskid);
             System.out.println(i + "mmmmmmmmmmmm");
             // 分割任务接收人 还要查找联系人的主键并删除接收人中间表
-            StringTokenizer st = new StringTokenizer(task.getReciverlist(), ";");
+            StringTokenizer st = new StringTokenizer(task.getReciverlist() + ";" + task.getThreeBook().getProcessPerson(), ";");
             while (st.hasMoreElements()) {
                 User reciver = udao.findid(st.nextToken());
                 Long pkid = udao.findpkId(task.getTaskId(), reciver.getUserId());

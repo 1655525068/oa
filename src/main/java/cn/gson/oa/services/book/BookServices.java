@@ -1,22 +1,34 @@
 package cn.gson.oa.services.book;
 
-import cn.gson.oa.model.dao.book.BookDao;
+import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class BookServices {
     @Autowired
-    private BookDao bookDao;
+    private ThreeBookDao threeBookDao;
 
-    public Iterable<ThreeBook> getAllThreebook(){
-        return bookDao.findAll();
+    public Iterable<ThreeBook> getAllThreeBook() {
+        return threeBookDao.findAll();
     }
 
-    public Iterable<ThreeBook> getThreeBookByPrepared(String preparedBy){
-        return bookDao.findByPreparedBy(preparedBy);
+    public Iterable<ThreeBook> getThreeBookByPrepared(String preparedBy) {
+        return threeBookDao.findByPreparedBy(preparedBy);
+    }
+
+    public Page<ThreeBook> getThreeBookByName(String name, Pageable pa) {
+        return threeBookDao.findnamelike(name, pa);
+    }
+
+    public Page<ThreeBook> findAllByIsLock(Integer isLock, Pageable pa) {
+        return threeBookDao.findAllByIsLock(isLock, pa);
+    }
+
+    public Iterable<ThreeBook> getAllThreeBookByCondition(String name) {
+        return threeBookDao.findAllByCondition(name);
     }
 }

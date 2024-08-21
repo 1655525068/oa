@@ -1,6 +1,7 @@
 <div class="table-responsive">
     <table class="table table-hover table-condensed" style="min-width: 3500px;">
         <tr>
+            <th scope="col">操作</th>
             <th style="background-color: yellow" scope="col">序号</th>
             <th style="background-color: yellow" scope="col">类型</th>
             <th style="background-color: yellow" scope="col">三单号</th>
@@ -30,10 +31,14 @@
             <th style="background-color: yellow" scope="col">实际关闭时间</th>
             <th style="background-color: greenyellow" scope="col">设计点值</th>
             <th style="background-color: greenyellow" scope="col">审核点值</th>
-            <#--<th scope="col">操作</th>-->
+            <th scope="col">操作</th>
         </tr>
         <#list threeBooks as threeBook>
             <tr>
+                <td><a href="deletethreebook?bookId=${threeBook.bookId}"
+                       onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                       class="label shanchu"><span
+                                class="glyphicon glyphicon-remove"></span> 删除</a></td>
                 <td><span>${threeBook_index +1}</span></td>
                 <td><span>${threeBook.type!''}</span></td>
                 <td><span>${threeBook.threeBookNumbers!''}</span></td>
@@ -63,8 +68,10 @@
                 <td><span>${threeBook.actualCloseTime!''}</span></td>
                 <td><span>${threeBook.designPointValue!''}</span></td>
                 <td><span>${threeBook.auditPointValue!''}</span></td>
-                <#--<td><a href="threeBookEdit?bookId=${threeBook.bookId}" class="label xiugai"><span
-                                class="glyphicon glyphicon-edit"></span> 修改</a> </td>-->
+                <td><a href="deletethreebook?bookId=${threeBook.bookId}"
+                       onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                       class="label shanchu"><span
+                                class="glyphicon glyphicon-remove"></span> 删除</a></td>
 
             </tr>
         </#list>

@@ -1,8 +1,11 @@
 package cn.gson.oa.controller.book;
 
 import cn.gson.oa.common.ExportExcel;
+import cn.gson.oa.model.dao.book.ThreeBookDao;
+import cn.gson.oa.model.dao.book.ThreeBookProcessDao;
 import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
+import cn.gson.oa.model.entity.book.ThreeBookProcess;
 import cn.gson.oa.services.book.BookServices;
 import com.github.pagehelper.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +24,53 @@ public class BookController {
     @Autowired
     private BookServices bookServices;
 
+    @Autowired
+    private ThreeBookDao tbDao;
+
+    @Autowired
+    private ThreeBookProcessDao threeBookProcessDao;
+
     @RequestMapping("getExcel")
     public void getExcel(HttpServletRequest request) {
         Iterable<ThreeBook> books = bookServices.getThreeBookByPrepared("冉英男");
         books.forEach(System.out::println);
     }
 
+    @RequestMapping("deletethreebook")
+    public String deletethreebook(@RequestParam(value = "bookId") Long bookId) {
+        ThreeBook tb = tbDao.findOneByBookId(bookId);
+        tbDao.delete(tb);
+        return "redirect:/threebookmanage";
+    }
+
     @RequestMapping("threebookmanage")
-    public String usermanage(Model model) {
+    public String threebookmanage(Model model) throws CloneNotSupportedException {
 
         Iterable<ThreeBook> threeBooks = bookServices.getAllThreeBook();
-        model.addAttribute("threeBooks", threeBooks);
+        threeBooks.forEach(
+                x -> {
+                    x.setProcesses(threeBookProcessDao.findAllByTbs(x));
+                }
+        );
+        List<ThreeBook> threeBooks1 = new ArrayList<>();
+        for (ThreeBook threeBook : threeBooks) {
+            if (threeBook.getProcesses().size() > 0) {
+                for (ThreeBookProcess process : threeBook.getProcesses()) {
+                    ThreeBook t = (ThreeBook) threeBook.clone();
+                    threeBooks1.add(createThreeBook(t, process));
+                }
+            } else
+                threeBooks1.add(createThreeBook(threeBook, null));
+        }
+        model.addAttribute("threeBooks", threeBooks1);
 //        model.addAttribute("page", threeBookPage);
         model.addAttribute("url", "threebooktable");
         return "book/threebookmanage";
     }
 
     @RequestMapping("threebooktable")
-    public String userPaging(Model model, @RequestParam(value = "search", required = false) String search
-    ) {
+    public String threebooktable(Model model, @RequestParam(value = "search", required = false) String search
+    ) throws CloneNotSupportedException {
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
             threeBooks = bookServices.getAllThreeBook();
@@ -47,14 +78,29 @@ public class BookController {
             System.out.println(search);
             threeBooks = bookServices.getAllThreeBookByCondition(search);
         }
-        model.addAttribute("threeBooks", threeBooks);
+        threeBooks.forEach(
+                x -> {
+                    x.setProcesses(threeBookProcessDao.findAllByTbs(x));
+                }
+        );
+        List<ThreeBook> threeBooks1 = new ArrayList<>();
+        for (ThreeBook threeBook : threeBooks) {
+            if (threeBook.getProcesses().size() > 0) {
+                for (ThreeBookProcess process : threeBook.getProcesses()) {
+                    ThreeBook t = (ThreeBook) threeBook.clone();
+                    threeBooks1.add(createThreeBook(t, process));
+                }
+            } else
+                threeBooks1.add(createThreeBook(threeBook, null));
+        }
+        model.addAttribute("threeBooks", threeBooks1);
         model.addAttribute("url", "threebooktable");
 
         return "book/threebooktable";
     }
 
     @RequestMapping(value = "threebookexport", method = RequestMethod.GET)
-    public String export(Model model, HttpServletResponse response, @RequestParam(value = "search", required = false) String search) {
+    public String threebookexport(Model model, HttpServletResponse response, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
             threeBooks = bookServices.getAllThreeBook();
@@ -62,6 +108,12 @@ public class BookController {
             System.out.println(search);
             threeBooks = bookServices.getAllThreeBookByCondition(search);
         }
+
+        threeBooks.forEach(
+                x -> {
+                    x.setProcesses(threeBookProcessDao.findAllByTbs(x));
+                }
+        );
         Map<String, Object> datas = new HashMap<>();
 
         List<ThreeBook> threeBooks1 = new ArrayList<>();
@@ -70,14 +122,24 @@ public class BookController {
 
         int index = 1;
         for (ThreeBook threeBook : threeBooks) {
+            if (threeBook.getProcesses().size() > 0) {
+                for (ThreeBookProcess process : threeBook.getProcesses()) {
+                    ThreeBook t = (ThreeBook) threeBook.clone();
+                    threeBooks1.add(createThreeBook(t, process));
+                }
+            } else
+                threeBooks1.add(createThreeBook(threeBook, null));
+        }
+
+        List<ThreeBook> threeBooks11 = new ArrayList<>(threeBooks1);
+        for (ThreeBook threeBook : threeBooks11) {
             threeBook.setSerialNumber(index + "");
-            threeBooks1.add(threeBook);
             index += 1;
         }
 
-        datas.put("threeBooks1", threeBooks1);
+        datas.put("threeBooks1", threeBooks11);
 
-        threeBooks1.forEach(x -> {
+        threeBooks11.forEach(x -> {
             if (x.getType().equals("CR")) {
                 threeBooks2.add(x);
             } else {
@@ -95,6 +157,24 @@ public class BookController {
 //        model.addAttribute("page", threeBookPage);
         model.addAttribute("url", "threebooktable");
         return "book/threebookmanage";
+    }
+
+    private ThreeBook createThreeBook(ThreeBook threeBook, ThreeBookProcess pro) {
+        if (pro != null) {
+            threeBook.setHandleMethod(pro.getHandleMethod());
+            threeBook.setProcessOrderNumber(pro.getProcessOrderNumber());
+            threeBook.setProcessCompletionTime(pro.getProcessCompletionTime());
+            threeBook.setRemarks(pro.getRemarks());
+        } else {
+            threeBook.setShouldHandle("/");
+            threeBook.setHandleMethod("/");
+            threeBook.setProcessOrderNumber("/");
+            threeBook.setProcessCompletionTime("/");
+            threeBook.setProcessResponsibleParty("/");
+            threeBook.setRemarks("/");
+            threeBook.setShouldClaim("/");
+        }
+        return threeBook;
     }
 
 }

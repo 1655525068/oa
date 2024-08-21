@@ -1,5 +1,6 @@
 <#include "/common/commoncss.ftl">
 <link rel="stylesheet" href="css/task/seetask.css"/>
+<link rel="stylesheet" type="text/css" href="css/common/tanchuang.css"/>
 <style type="text/css">
     a {
         color: #fff;
@@ -10,8 +11,16 @@
         color: #fff;
     }
 
-    .text {
-        min-height: 114px;
+    .inside thead {
+        background-color: rgba(76, 175, 95, 0.06);
+    }
+
+    .reciver {
+        position: relative;
+        float: right;
+        margin-top: -28px;
+        right: 5px;
+        cursor: pointer;
     }
 </style>
 <script>
@@ -156,95 +165,162 @@
                             <#else>
                                 <option value="6">已提交</option>
                             </#if>
-                            <#if c_user.role.roleName?contains("负责人") >
+                            <#--<#if c_user.role.roleName?contains("负责人") >
                                 <option value="7">已完成</option>
+                            </#if>-->
+                            <#if status.statusId ==7 >
+                            <#else >
+                                <option value="7">已完成</option>
+
                             </#if>
 
                         </select>
                     </div>
                     <#-- todo 处理人，是否需要处理，处理方式，处理单号，处理完成时间，责任方，备注，是否涉及索赔，计划关闭时间，实际关闭时间，设计点值，审核点值-->
+                    <#if task.typeId == 1>
+                        <div class="col-md-4 form-group">
+                            <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">处理人</span>
+                            </label><input name="processPerson" type="text" id="" class="form-control"
+                                           value="${task.threeBook.processPerson!''}"/>
+                            <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                        >通讯录</span>
+                            </div>
+                        </div>
 
+                        <#if task.threeBook.type == "CR">
+                        <#--CR--填写关闭时间-->
+                            <div class="col-md-4 form-group">
+                                <label> <span id="ctl00_cphMain_Label2">计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN</span>
+                                </label><input name="planToCloseTime" type="text" id="" class="form-control"
+                                               value="${task.threeBook.planToCloseTime!''}"/>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label> <span id="ctl00_cphMain_Label2">实际关闭时间</span>
+                                </label><input name="actualCloseTime" type="text" id=""
+                                               class="form-control actualCloseTime"
+                                               value="${task.threeBook.actualCloseTime!''}"/>
+                            </div>
+                        <#else>
+                        <#--填写处理方式-->
+                            <div class="col-md-4 form-group">
+                                <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
+                                <select name="shouldHandle" class="form-control">
+                                    <#if task.threeBook.shouldHandle ??>
+                                        <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
+                                    </#if>
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                    <option value="/">/</option>
+                                </select>
+                            </div>
+                        <#--table-->
+                            <table class="bo table ">
+                                <tr>
+                                    <td class="title"><label class="control-label">填写处理</label></td>
+                                    <td colspan="13" style="text-align: right;"><i
+                                                class="glyphicon glyphicon-plus zeng"></i>&nbsp;&nbsp;&nbsp;<i
+                                                class="glyphicon glyphicon-minus jian"></i></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="14">
+                                        <div class="food">
+                                            <table class="table inside process">
+                                                <thead>
+                                                <tr>
+                                                    <th colspan="1" style="width: 77px;">选择</th>
+                                                    <th colspan="2">处理方式(ICR/细化)</th>
+                                                    <th colspan="2">处理单号</th>
+                                                    <th colspan="3">处理完成时间</th>
+                                                    <th colspan="2">备注</th>
+                                                    <th colspan="2">操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="tbody">
+                                                <#if task.threeBook.processes??>
+                                                    <#list task.threeBook.processes as pro>
+                                                        <tr class="tr">
+                                                            <td class="chebox" colspan="1"><span
+                                                                        class="labels"><label><input
+                                                                                type="checkbox" name="items" disabled
+                                                                                class="val"><i>✓</i></label></span></td>
+                                                            <td style="display: none"><input
+                                                                        name="processes[${pro_index}].tbId"
+                                                                        value="${pro.tbId}"/></td>
+                                                            <td colspan="2">
+                                                                <select name="processes[${pro_index}].handleMethod"
+                                                                        class="form-control">
+                                                                    <option value="${pro.handleMethod!''}">${pro.handleMethod!''}</option>
+                                                                    <option value="ICR">ICR</option>
+                                                                    <option value="细化">细化</option>
+                                                                    <option value="/">/</option>
+                                                                </select>
+                                                            </td>
+                                                            <td colspan="2">
+                                                                <input type="text" class="form-control inpu"
+                                                                       name="processes[${pro_index}].processOrderNumber"
+                                                                       value="${pro.processOrderNumber!''}"
+                                                                       style="background-color:#fff;"/>
+                                                            </td>
+                                                            <td colspan="2"><input type="text"
+                                                                                   class="form-control inpu processCompletionTime"
+                                                                                   name="processes[${pro_index}].processCompletionTime"
+                                                                                   value="${pro.processCompletionTime!''}"/>
+                                                            </td>
+                                                            <td colspan="2"><input type="text" class="form-control inpu"
+                                                                                   name="processes[${pro_index}].remarks"
+                                                                                   value="${pro.remarks!''}"/></td>
+                                                            <td colspan="2">
+                                                                <a onclick="updateProcess(this,${pro.tbId})"
+                                                                   class="label xiugai"><span
+                                                                            class="glyphicon glyphicon-edit"></span> 修改</a>
+                                                                <a
+                                                                        onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                                                                        href="processremove?tbId=${pro.tbId}"
+                                                                        class="label shanchu"><span
+                                                                            class="glyphicon glyphicon-remove"></span>
+                                                                    删除</a>
+                                                            </td>
 
-                    <div class="col-md-4 form-group">
-                        <label> <span id="ctl00_cphMain_Label2">处理人</span> </label>
-                        <input name="processPerson" type="text" id="" class="form-control"
-<#--                                <#if !c_user.role.roleName?contains("负责人") >-->
-<#--                                    readonly="readonly"-->
-<#--                                </#if >-->
-                               value="${task.threeBook.processPerson!''}"/>
-                    </div>
+                                                        </tr>
+                                                    </#list>
+                                                </#if >
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
-                    <#if task.threeBook.type == "CR">
-                    <#--CR--填写关闭时间-->
-                        <div class="col-md-4 form-group">
-                            <label> <span id="ctl00_cphMain_Label2">计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN</span>
-                            </label><input name="planToCloseTime" type="text" id="" class="form-control"
-                                           value="${task.threeBook.planToCloseTime!''}"/>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span id="ctl00_cphMain_Label2">实际关闭时间</span>
-                            </label><input name="actualCloseTime" type="text" id="" class="form-control"
-                                           value="${task.threeBook.actualCloseTime!''}"/>
-                        </div>
-                    <#else>
-                    <#--填写处理方式-->
-                    <#--是否需要处理-->
-                        <div class="col-md-4 form-group">
-                            <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
-                            <select name="shouldHandle" class="form-control">
-                                <#if task.threeBook.shouldHandle??>
-                                    <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
-                                </#if>
-                                <option value="">--</option>
-                                <option value="是">是</option>
-                                <option value="否">否</option>
-                                <option value="/">/</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span>处理方式(ICR/细化)</span> </label>
-                            <select name="handleMethod" class="form-control">
-                                <#if task.threeBook.handleMethod??>
-                                    <option value="${task.threeBook.handleMethod}">${task.threeBook.handleMethod}</option>
-                                </#if>
-                                <option value="">--</option>
-                                <option value="ICR">ICR</option>
-                                <option value="细化">细化</option>
-                                <option value="/">/</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span>处理单号</span> </label>
-                            <input name="processOrderNumber" type="text" id="" class="form-control"
-                                   value="${task.threeBook.processOrderNumber!''}"/>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span>处理完成时间</span> </label>
-                            <input name="processCompletionTime" type="text" id="" class="form-control"
-                                   value="${task.threeBook.processCompletionTime!''}"/>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span>责任方</span> </label>
-                            <input name="processResponsibleParty" type="text" id="" class="form-control"
-                                   value="${task.threeBook.processResponsibleParty!''}"/>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span>备注</span> </label>
-                            <input name="remarks" type="text" id="" class="form-control"
-                                   value="${task.threeBook.remarks!''}"/>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label> <span>是否涉及索赔</span> </label>
-                            <select name="shouldClaim" class="form-control">
-                                <#if task.threeBook.shouldClaim??>
-                                    <option value="${task.threeBook.shouldClaim}">${task.threeBook.shouldClaim}</option>
-                                </#if>
-                                <option value="">--</option>
-                                <option value="否">否</option>
-                                <option value="是">是</option>
-                                <option value="/">/</option>
-                            </select>
-                        </div>
+                        <#--是否需要处理-->
+                            <div class="col-md-6 form-group">
+                                <label> <span>责任方</span> </label>
+                                <select name="processResponsibleParty"
+                                        class="form-control">
+                                    <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
+                                    <option value="设计院">设计院</option>
+                                    <option value="施工承包商">施工承包商</option>
+                                    <option value="细化引起">细化引起</option>
+                                    <option value="工程公司">工程公司</option>
+                                    <option value="业主">业主</option>
+                                    <option value="其他">其他</option>
+                                    <option value="/">/</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label> <span>是否涉及索赔</span> </label>
+                                <select name="shouldClaim" class="form-control">
+                                    <#if task.threeBook.shouldClaim ??>
+                                        <option value="${task.threeBook.shouldClaim}">${task.threeBook.shouldClaim}</option>
+                                    </#if>
+                                    <option value="否">否</option>
+                                    <option value="是">是</option>
+                                    <option value="/">/</option>
+                                </select>
+                            </div>
+                        </#if>
+                    <#else >
+                        asdfasdrf
                     </#if>
 
                     <#--设计点值-->
@@ -261,12 +337,10 @@
                                value="${task.threeBook.auditPointValue!''}"/>
                     </div>
 
-                    <#--反馈-->
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label> <span id="ctl00_cphMain_Label2">反馈</span>
                         </label> <input name="loggerTicking" type="text"
-                                        id="ctl00_cphMain_txtPowerValue" class="form-control"
-                                        value="${task.threeBook.loggerTicking!''}"/>
+                                        id="ctl00_cphMain_txtPowerValue" class="form-control"/>
                     </div>
                     <input
                             name="taskId" type="text" id="ctl00_cphMain_txtPowerValue"
@@ -279,8 +353,12 @@
 
             <div class="box-footer foot">
                 <input class="btn btn-primary" id="save" type="submit" value="保存"
-                <#if  (status.statusId == 6 || status.statusId == 7) && !c_user.role.roleName?contains("负责人") >
-                    disabled="disabled"
+                        <#--<#if  (status.statusId == 6 || status.statusId == 7) && !c_user.role.roleName?contains("负责人") >
+                            disabled="disabled"
+                                </#if>
+                        />-->
+                        <#if   status.statusId == 7 >
+                            disabled="disabled"
                         </#if>
                 />
                 <input class="btn btn-default" id="cancel" type="button" value="取消"
@@ -290,3 +368,70 @@
         </form>
     </div>
 </div>
+<#include "/common/reciver.ftl">
+<#include "/common/modalTip.ftl">
+<input type="text" class="recive_list" style="display: none">
+<script type="text/javascript">
+    function updateProcess(button, tbId) {
+        // 获取当前按钮所在的行
+        var row = button.parentNode.parentNode;
+        var handleMethod = row.querySelector('select');
+        var processOrderNumber = row.cells[2].children[0].value;
+        var processCompletionTime = row.cells[3].children[0].value;
+        var remarks = row.cells[4].children[0].value;
+        console.log(handleMethod.value)
+        $(".xiugai").load("processedit", {
+            tbId: tbId,
+            handleMethod: handleMethod.value,
+            processOrderNumber: processOrderNumber,
+            processCompletionTime: processCompletionTime,
+            remarks: remarks
+        });
+        window.location.href = "/taskmanage";
+    };
+    $(".xiugai").on("click", ".usersearchgo", function () {
+        var usersearch = $(".thistable .usersearch").val();
+        console.log(usersearch);
+        $(".thistable").load("usermanagepaging", {usersearch: usersearch});
+    });
+
+    $(function () {
+        var i = $('.tbody').find("tr").length;
+        //增加一行
+        $(".zeng").click(function () {
+            var td1 = $('<td class="chebox" colspan="1"></td>').append($('<span class="labels"></span>').append($('<label></label>').append($('<input type="checkbox" name="items"  class="val" >')).append($('<i></i>').text('✓'))));
+            var td2 = $('<td colspan="2"></td>').append($('<select class="form-control" name="processes[' + i + '].handleMethod"><option value="ICR">ICR</option><option value="细化">细化</option>  <option value="/">/</option></select>'));
+            var td3 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].processOrderNumber" style="background-color:#fff;"/>'));
+            var td4 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu processCompletionTime" name="processes[' + i + '].processCompletionTime"/>'));
+            var td5 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].remarks"/>'));
+            var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3).append(td4).append(td5);
+            $('.tbody').append(tr);
+            i = i + 1;
+        });
+        //把tr置空
+        $(".jian").click(function () {
+
+            $("[name=items]:checkbox").each(function () {
+                if (this.checked) {
+                    //获取被选中了的行
+                    var $tr = $(this).parents(".tr");
+                    $tr.html("");
+
+                }
+            })
+        });
+        $('.reciver').on('click', function () {
+            $('#myModal').modal("toggle");
+            $(this).siblings("input").val("");
+            $('.reciver').removeClass("qu");
+            $(this).addClass("qu");
+        });
+        $(".recive_list").change(function () {
+            var $val = $(this).val();
+            $(".qu").siblings("input").val($val);
+        });
+
+    })
+</script>
+<script type="text/javascript" src="js/common/data.js"></script>
+<script type="text/javascript" src="plugins/My97DatePicker/WdatePicker.js"></script>

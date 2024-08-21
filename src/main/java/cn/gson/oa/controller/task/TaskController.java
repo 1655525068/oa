@@ -14,9 +14,14 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import cn.gson.oa.model.dao.book.ThreeBookDao;
+import cn.gson.oa.model.dao.book.ThreeBookProcessDao;
+import cn.gson.oa.model.dao.roledao.RoleDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
+import cn.gson.oa.model.entity.book.ThreeBookProcess;
+import cn.gson.oa.model.entity.role.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -73,6 +78,12 @@ public class TaskController {
     private PositionDao pdao;
     @Autowired
     private ThreeBookDao bdao;
+
+    @Autowired
+    private RoleDao rdao;
+
+    @Autowired
+    private ThreeBookProcessDao threeBookProcessDao;
 
     /**
      * 任务管理表格
@@ -163,6 +174,7 @@ public class TaskController {
     public String addtask(@SessionAttribute("userId") Long userId, HttpServletRequest request) {
         User userlist = udao.findOne(userId);
         ThreeBook threeBook = (ThreeBook) request.getAttribute("threeBook");
+        threeBook.setType(request.getParameter("threeType"));
 
         Tasklist list = (Tasklist) request.getAttribute("tasklist");
         request.getAttribute("success");
@@ -174,6 +186,9 @@ public class TaskController {
         threeBook.setIdentifyResponsiblePerson(list.getReciverlist());
         ThreeBook result = bdao.save(threeBook);
         list.setThreeBook(result);
+        if (threeBook.getProcessPerson() != null) {
+            list.setStatusId(5);
+        }
         tdao.save(list);
         // 分割任务接收人
         StringTokenizer st = new StringTokenizer(list.getReciverlist() + ";" + threeBook.getProcessPerson(), ";");
@@ -271,13 +286,17 @@ public class TaskController {
      * 查看任务
      */
     @RequestMapping("seetasks")
-    public ModelAndView index4(HttpServletRequest req) {
+    public ModelAndView index4(HttpServletRequest req, @RequestParam(value = "page", defaultValue = "0") int page,
+                               @RequestParam(value = "size", defaultValue = "200") int size) {
+        Pageable pa = new PageRequest(page, size);
         ModelAndView mav = new ModelAndView("task/seetask");
         // 得到任务的 id
         String taskid = req.getParameter("id");
         Long ltaskid = Long.parseLong(taskid);
         // 通过任务id得到相应的任务
         Tasklist task = tdao.findOne(ltaskid);
+        List<ThreeBookProcess> list = threeBookProcessDao.findAllByTbs(task.getThreeBook());
+        task.getThreeBook().setProcesses(list);
         Long statusid = task.getStatusId().longValue();
 
         // 根据状态id查看状态表
@@ -297,6 +316,23 @@ public class TaskController {
         mav.addObject("status", status);
         mav.addObject("loggerlist", logger);
         mav.addObject("statuslist", statuslist);
+
+        // 查询部门下面的员工
+        Page<User> pagelist = udao.findByFatherId(1L, pa);
+        // 查询类型表
+        Iterable<SystemTypeList> typelist = tydao.findAll();
+        List<User> emplist = pagelist.getContent();
+        // 查询部门表
+        Iterable<Dept> deptlist = ddao.findAll();
+        // 查角色表
+        Iterable<Role> rolelist = rdao.findAll();
+        mav.addObject("typelist", typelist);
+        mav.addObject("statuslist", statuslist);
+        mav.addObject("emplist", emplist);
+        mav.addObject("deptlist", deptlist);
+        mav.addObject("rolelist", rolelist);
+        mav.addObject("page", pagelist);
+        mav.addObject("url", "paixu");
         return mav;
     }
 
@@ -304,15 +340,29 @@ public class TaskController {
      * 存反馈日志
      */
     @RequestMapping("tasklogger")
-    public String tasklogger(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req) {
+    public String tasklogger(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req, @Valid ThreeBook tb) {
         User userlist = udao.findOne(userId);
         logger.setCreateTime(new Date());
         logger.setUsername(userlist.getUserName());
         //更新三单
 
-        System.out.println(req.getParameter("shouldHandle"));
         Tasklist task = tdao.getOne(logger.getTaskId().getTaskId());
         System.out.println(task.getThreeBook());
+        task.getThreeBook().setShouldHandle(tb.getShouldHandle());
+        tdao.save(task);
+
+        // 填写处理
+        System.out.println(tb.getProcesses());
+        if (tb.getProcesses() != null) {
+            for (ThreeBookProcess process : tb.getProcesses()) {
+                process.setTbs(task.getThreeBook());
+                if (process.getTbId() != null) {
+                    threeBookProcessDao.save(process);
+                } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessCompletionTime().trim().length() == 0 && process.getRemarks().trim().length() == 0)) {
+                    threeBookProcessDao.save(process);
+                }
+            }
+        }
 
         // 获取原三单处理人
         Taskuser taskuser = tudao.findByuserNameAndTaskId(task.getThreeBook().getProcessPerson(), task.getTaskId());
@@ -335,7 +385,7 @@ public class TaskController {
                 tudao.delete(taskuser1);
                 taskuser1.setUserId(findUser);
                 tudao.save(taskuser1);
-            }else {
+            } else {
                 tudao.delete(taskuser1);
             }
 
@@ -349,6 +399,12 @@ public class TaskController {
             }
             tudao.save(tasku2);
         }
+        List<Taskuser> tus = udao.findpkIdList(logger.getTaskId().getTaskId());
+        Tasklogger finalLogger = logger;
+        tus.forEach((x -> {
+            x.setStatusId(finalLogger.getLoggerStatusid());
+            tudao.save(x);
+        }));
 
         return "redirect:/taskmanage";
 
@@ -404,7 +460,9 @@ public class TaskController {
 
 
     @RequestMapping("myseetasks")
-    public ModelAndView myseetask(HttpServletRequest req, @SessionAttribute("userId") Long userId) {
+    public ModelAndView myseetask(HttpServletRequest req, @SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
+                                  @RequestParam(value = "size", defaultValue = "200") int size) {
+        Pageable pa = new PageRequest(page, size);
 
         ModelAndView mav = new ModelAndView("task/myseetask");
         // 得到任务的 id
@@ -414,13 +472,15 @@ public class TaskController {
         // 通过任务id得到相应的任务
         Tasklist task = tdao.findOne(ltaskid);
 
+        List<ThreeBookProcess> list = threeBookProcessDao.findAllByTbs(task.getThreeBook());
+        task.getThreeBook().setProcesses(list);
+
         // 查看状态表
         Iterable<SystemStatusList> statuslist = sdao.findAll();
         // 查询接收人的任务状态
         Long ustatus = tudao.findByuserIdAndTaskId(userId, ltaskid);
 
         SystemStatusList status = sdao.findOne(ustatus);
-        /*System.out.println(status);*/
 
         // 查看发布人
         User user = udao.findOne(task.getUsersId().getUserId());
@@ -437,6 +497,24 @@ public class TaskController {
         mav.addObject("status", status);
         mav.addObject("statuslist", statuslist);
         mav.addObject("loggerlist", logger);
+
+        // 查询部门下面的员工
+        Page<User> pagelist = udao.findByFatherId(1L, pa);
+        // 查询类型表
+        Iterable<SystemTypeList> typelist = tydao.findAll();
+        List<User> emplist = pagelist.getContent();
+        // 查询部门表
+        Iterable<Dept> deptlist = ddao.findAll();
+        // 查角色表
+        Iterable<Role> rolelist = rdao.findAll();
+        mav.addObject("typelist", typelist);
+        mav.addObject("statuslist", statuslist);
+        mav.addObject("emplist", emplist);
+        mav.addObject("deptlist", deptlist);
+        mav.addObject("rolelist", rolelist);
+        mav.addObject("page", pagelist);
+        mav.addObject("url", "paixu");
+
         return mav;
 
     }
@@ -445,7 +523,7 @@ public class TaskController {
      * 从我的任务查看里面修改状态和日志
      */
     @RequestMapping("uplogger")
-    public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req) {
+    public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req, @Valid ThreeBook tb) {
         System.out.println(logger.getLoggerStatusid());
         // 获取用户id
 
@@ -464,6 +542,20 @@ public class TaskController {
         Taskuser taskuser1 = taskuser;
         // 更新三单
         threeBook = tservice.updateBook(req, threeBook, "three");
+
+        task.getThreeBook().setShouldHandle(tb.getShouldHandle());
+        tdao.save(task);
+        System.out.println(tb.getProcesses());
+        if (tb.getProcesses() != null) {
+            for (ThreeBookProcess process : tb.getProcesses()) {
+                process.setTbs(task.getThreeBook());
+                if (process.getTbId() != null) {
+                    threeBookProcessDao.save(process);
+                } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessCompletionTime().trim().length() == 0 && process.getRemarks().trim().length() == 0)) {
+                    threeBookProcessDao.save(process);
+                }
+            }
+        }
         bdao.save(threeBook);
         tservice.updateLogger(req, logger, "three");
         // 存日志
@@ -483,7 +575,6 @@ public class TaskController {
         tudao.save(tasku);
 
 
-
         User findUser = udao.findid(task.getThreeBook().getProcessPerson());
 
         if (taskuser1 != null) {
@@ -491,8 +582,6 @@ public class TaskController {
                 tudao.delete(taskuser1);
                 taskuser1.setUserId(findUser);
                 tudao.save(taskuser1);
-            }else if(!user.getRole().getRoleName().contains("技术员")) {
-                tudao.delete(taskuser1);
             }
 
         } else {
@@ -507,8 +596,8 @@ public class TaskController {
         }
 
         // logger.getLoggerStatusid()
-        List<Taskuser>  tus = udao.findpkIdList(logger.getTaskId().getTaskId());
-        tus.forEach((x->{
+        List<Taskuser> tus = udao.findpkIdList(logger.getTaskId().getTaskId());
+        tus.forEach((x -> {
             x.setStatusId(logger.getLoggerStatusid());
             tudao.save(x);
         }));
@@ -553,13 +642,16 @@ public class TaskController {
             int i = tservice.detelelogger(ltaskid);
             System.out.println(i + "mmmmmmmmmmmm");
             // 分割任务接收人 还要查找联系人的主键并删除接收人中间表
-            StringTokenizer st = new StringTokenizer(task.getReciverlist() + ";" + task.getThreeBook().getProcessPerson(), ";");
-            while (st.hasMoreElements()) {
-                User reciver = udao.findid(st.nextToken());
-                Long pkid = udao.findpkId(task.getTaskId(), reciver.getUserId());
-                int m = tservice.delete(pkid);
-                System.out.println(m + "sssssssssss");
+            if (task.getThreeBook() != null) {
+                StringTokenizer st = new StringTokenizer(task.getReciverlist() + ";" + task.getThreeBook().getProcessPerson(), ";");
+                while (st.hasMoreElements()) {
+                    User reciver = udao.findid(st.nextToken());
+                    Long pkid = udao.findpkId(task.getTaskId(), reciver.getUserId());
+                    int m = tservice.delete(pkid);
+                    System.out.println(m + "sssssssssss");
+                }
             }
+
             // 删除这条任务
             tservice.deteletask(task);
         } else {
@@ -585,6 +677,31 @@ public class TaskController {
 
         return "redirect:/mytask";
 
+    }
+
+    /**
+     * 修改处理过程
+     */
+    @RequestMapping("processedit")
+    public String processEdit(@Valid ThreeBookProcess pro) {
+        System.out.println(pro);
+        ThreeBookProcess tp = threeBookProcessDao.findByAndTbId(pro.getTbId());
+        tp.setHandleMethod(pro.getHandleMethod());
+        tp.setProcessOrderNumber(pro.getProcessOrderNumber());
+        tp.setProcessCompletionTime(pro.getProcessCompletionTime());
+        tp.setRemarks(pro.getRemarks());
+        threeBookProcessDao.save(tp);
+        return "";
+    }
+
+    /**
+     * 删除处理过程
+     */
+    @RequestMapping("processremove")
+    public String processremove(@RequestParam(value = "tbId") Long tbId) {
+        ThreeBookProcess tp = threeBookProcessDao.findByAndTbId(tbId);
+        threeBookProcessDao.delete(tp);
+        return "redirect:/taskmanage";
     }
 
 

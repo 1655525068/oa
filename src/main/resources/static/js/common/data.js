@@ -35,7 +35,7 @@ $(function () {
     var date = new Date();
     var nowDate = date.Format('yyyy-MM-dd hh:mm:ss');
     var startime = addDate(nowDate, 0);
-    var endtime = addDate(nowDate, 1);
+    var endtime = addDate(nowDate, 3);
     //判断如果为空 就赋默认值 不为空 从数据库那里读取得到值就不用赋默认值
     if ($('#starTime').val() == "" || $('#starTime').val() == null)
         $('#starTime').val(startime);
@@ -127,6 +127,14 @@ $(function () {
     });
 
     $('#distributionTime').click(function () {
+        WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
+    });
+    $('.process').on('click', '.processCompletionTime', function() {
+        // 你的处理逻辑
+        WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
+
+    });
+    $('.actualCloseTime').click(function () {
         WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
     });
 });

@@ -18,11 +18,10 @@
 
     .reciver {
         position: relative;
-        top: -24px;
         float: right;
-        right: 4px;
-        cursor: pointer;
         margin-top: -28px;
+        right: 5px;
+        cursor: pointer;
     }
 </style>
 <div class="row" style="padding-top: 10px;">
@@ -133,10 +132,10 @@
                                     <label class="control-label" data-toggle="modal">编制人</label>
                                     <input name="preparedBy" type="text" class="form-control "
                                            style="background-color:#fff;"/>
-                                    <#--                                <div class="reciver">-->
-                                    <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
-                                    <#--                                          >通讯录</span>-->
-                                    <#--                                </div>-->
+                                    <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                        >通讯录</span>
+                                    </div>
                                 </div>
                                 <!-- 最新版 -->
                                 <div class="col-md-4 form-group">
@@ -160,8 +159,8 @@
                                 <div class="col-md-4 form-group">
                                     <label class="control-label">作废标识</label>
                                     <select class="form-control" name="invalidIdentification">
-                                        <option value="Y">Y</option>
                                         <option value="N">N</option>
+                                        <option value="Y">Y</option>
                                     </select>
                                 </div>
                                 <!-- 相关文件编码 -->
@@ -181,6 +180,7 @@
                                     <select class="form-control" name="drawVersion">
                                         <option value="A">A</option>
                                         <option value="B">B</option>
+                                        <option value="C">C</option>
                                         <option value="D">D</option>
                                     </select>
                                 </div>
@@ -205,22 +205,22 @@
                                 <!-- 识别责任人 -->
                                 <div class="col-md-4 form-group">
                                     <label class="control-label" data-toggle="modal">识别责任人</label>
-                                    <input name="reciverlist" type="text" id=""
-                                           class="form-control " style="background-color:#fff;"/>
-                                    <#--                                <div class="reciver">-->
-                                    <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
-                                    <#--                                          >通讯录</span>-->
-                                    <#--                                </div>-->
+                                    <input name="reciverlist" type="text" id=""  class="form-control "
+                                           style="background-color:#fff;"/>
+                                    <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                              >通讯录</span>
+                                    </div>
                                 </div>
                                 <!-- 处理人 -->
                                 <div class="col-md-4 form-group">
                                     <label class="control-label" data-toggle="modal">处理人</label>
                                     <input name="processPerson" type="text" id="" class="form-control "
                                            style="background-color:#fff;"/>
-                                    <#--                                <div class="reciver">-->
-                                    <#--                                    <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"-->
-                                    <#--                                          >通讯录</span>-->
-                                    <#--                                </div>-->
+                                    <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                        >通讯录</span>
+                                    </div>
                                 </div>
                             <div class="col-md-4 form-group ">
                                 <label class="control-label">置顶</label>
@@ -242,88 +242,7 @@
                            onclick="window.history.back();"/>
                 </div>
             </form>
-            <#-- <form action="ck_addtask" method="post" onsubmit="return check();">
-                 <div class="box-body no-padding">
-                     <div class="box-body">
-                         <!--错误信息提示  &ndash;&gt;
-                         <div class="alert alert-danger alert-dismissable" role="alert" style="display: none;">
-                             错误信息:
-                             <button class="thisclose close" type="button">&times;</button>
-                             <span class="error-mess"></span>
-                         </div>
-                         <div class="row">
 
-                             <div class="col-md-4 form-group">
-                                 <label class="control-label"> <span>类型</span></label>
-                                 <select class="form-control" name="typeId">
-                                     <#list typelist as type>
-                                         <#if type.typeModel=="aoa_task_list">
-                                             <option value="${type.typeId}">${type.typeName}</option>
-                                         </#if>
-                                     </#list>
-                                 </select>
-                             </div>
-                             <div class="col-md-4 form-group">
-                                 <label class="control-label">状态</label>
-                                 <select class="form-control" name="statusId">
-                                     <#list statuslist as status>
-                                         <#if status.statusModel=="aoa_task_list">
-                                             <option value="${status.statusId}">${status.statusName}</option>
-                                         </#if>
-                                     </#list>
-                                 </select>
-                             </div>
-                             <div class="col-md-4 form-group">
-                                 <label class="control-label">开始日期</label> <input id="starTime" name="starTime"
-                                                                                  class="form-control"/>
-                             </div>
-                             <div class="col-md-4 form-group">
-                                 <label class="control-label">结束日期</label> <input id="endTime" name="endTime"
-                                                                                  class="form-control"/>
-                             </div>
-                             <div class="col-md-4 form-group">
-
-                                 <label class="control-label">标题</label> <input name="title"
-                                                                                type="text" id="title_Name"
-                                                                                class="form-control"/>
-                             </div>
-                             <div class="col-md-4 form-group" style="position: relative;">
-                                 <label class="control-label" data-toggle="modal" data-target="#myModal">接收人</label>
-                                 <input name="reciverlist" type="text" id="recive_list"
-                                        class="form-control " readonly="readonly" style="background-color:#fff;"/>
-                                 <div class="reciver">
-                                 <span class="label label-success glyphicon glyphicon-plus"
-                                       data-toggle="modal" data-target="#myModal">通讯录</span>
-                                 </div>
-                             </div>
-                             <div class="col-md-4 form-group">
-                                 <label class="control-label">描述</label>
-                                 <textarea class="form-control text" name="taskDescribe"></textarea>
-                             </div>
-                             <div class="col-md-4 form-group">
-                                 <label class="control-label">评价</label>
-                                 <textarea class="form-control text" name="comment"></textarea>
-                             </div>
-                             <div class="col-md-4 form-group ">
-                                 <label class="control-label">置顶</label> <br/>
-                                 <span class="labels"><label><input type="checkbox" name="top"
-                                                                    class="val"><i>✓</i></label></span>
-                             </div>
-
-                             <div class="col-md-4  form-group">
-                                 <label class="control-label">取消</label> <br/> <span
-                                         class="labels"><label><input type="checkbox" name="cancel" class="val"><i>✓</i></label></span>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <!--盒子尾&ndash;&gt;
-                 <div class="box-footer">
-                     <input class="btn btn-primary" id="save" type="submit" value="保存"/>
-                     <input class="btn btn-default" id="cancel" type="submit" value="取消"
-                            onclick="window.history.back();"/>
-                 </div>
-             </form>-->
         </div>
     </div>
 </div>

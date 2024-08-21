@@ -47,14 +47,14 @@
 							</#if>
 						</td>
 
-						<td><span>${task.publishtime}</span></td>
+						<td><span>${task.publishtime!''}</span></td>
 						<td>
 							<#--task 图纸细化，三单 -->
-							<span>${task.threeBook.threeBookNumbers}</span></td>
+							<span>${task.threeBook.threeBookNumbers!''}</span></td>
 
-						<td><span>${task.username}</span></td>
-						<td><span>${task.threeBook.identifyResponsiblePerson}</span></td>
-						<td><span>${task.threeBook.processPerson}</span></td>
+						<td><span>${task.username!''}</span></td>
+						<td><span>${task.threeBook.identifyResponsiblePerson!''}</span></td>
+						<td><span>${task.threeBook.processPerson!''}</span></td>
 						<#if task.cancel==true>
 						<td><span class="label label-default">已取消</span></td>
 						<#else>

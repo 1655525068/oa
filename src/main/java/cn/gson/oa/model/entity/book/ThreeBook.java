@@ -3,6 +3,7 @@ package cn.gson.oa.model.entity.book;
 import cn.gson.oa.model.entity.user.User;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author bochen.wang
@@ -11,7 +12,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ao_three_book")
-public class ThreeBook {
+public class ThreeBook implements Cloneable {
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); // 调用Object的clone方法，返回此对象的浅拷贝
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
@@ -91,6 +98,10 @@ public class ThreeBook {
     @Column(name = "process_person")
     private String processPerson;
 
+    // 处理流程
+    @OneToMany(cascade=CascadeType.ALL,mappedBy="tbs",orphanRemoval = true)
+    List<ThreeBookProcess> processes;
+
     /*处理流程*/
     // 是否需要处理
     @Column(name = "should_handle")
@@ -143,6 +154,55 @@ public class ThreeBook {
     @Column(name = "is_lock")
     private Integer isLock = 0;
 
+
+
+    public List<ThreeBookProcess> getProcesses() {
+        return processes;
+    }
+
+    public void setProcesses(List<ThreeBookProcess> processes) {
+        this.processes = processes;
+    }
+
+    public String getShouldHandle() {
+        return shouldHandle;
+    }
+
+    public void setShouldHandle(String shouldHandle) {
+        this.shouldHandle = shouldHandle;
+    }
+
+    public String getHandleMethod() {
+        return handleMethod;
+    }
+
+    public void setHandleMethod(String handleMethod) {
+        this.handleMethod = handleMethod;
+    }
+
+    public String getProcessOrderNumber() {
+        return processOrderNumber;
+    }
+
+    public void setProcessOrderNumber(String processOrderNumber) {
+        this.processOrderNumber = processOrderNumber;
+    }
+
+    public String getProcessCompletionTime() {
+        return processCompletionTime;
+    }
+
+    public void setProcessCompletionTime(String processCompletionTime) {
+        this.processCompletionTime = processCompletionTime;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public Integer getIsLock() {
         return isLock;
@@ -320,52 +380,12 @@ public class ThreeBook {
         this.auditPointValue = auditPointValue;
     }
 
-    public String getShouldHandle() {
-        return shouldHandle;
-    }
-
-    public void setShouldHandle(String shouldHandle) {
-        this.shouldHandle = shouldHandle;
-    }
-
-    public String getHandleMethod() {
-        return handleMethod;
-    }
-
-    public void setHandleMethod(String handleMethod) {
-        this.handleMethod = handleMethod;
-    }
-
-    public String getProcessOrderNumber() {
-        return processOrderNumber;
-    }
-
-    public void setProcessOrderNumber(String processOrderNumber) {
-        this.processOrderNumber = processOrderNumber;
-    }
-
-    public String getProcessCompletionTime() {
-        return processCompletionTime;
-    }
-
-    public void setProcessCompletionTime(String processCompletionTime) {
-        this.processCompletionTime = processCompletionTime;
-    }
-
     public String getProcessResponsibleParty() {
         return processResponsibleParty;
     }
 
     public void setProcessResponsibleParty(String processResponsibleParty) {
         this.processResponsibleParty = processResponsibleParty;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
     }
 
     public String getShouldClaim() {
@@ -424,13 +444,6 @@ public class ThreeBook {
                 ", processPerson='" + processPerson + '\'' +
                 ", designPointValue='" + designPointValue + '\'' +
                 ", auditPointValue='" + auditPointValue + '\'' +
-                ", shouldHandle='" + shouldHandle + '\'' +
-                ", handleMethod='" + handleMethod + '\'' +
-                ", processOrderNumber='" + processOrderNumber + '\'' +
-                ", processCompletionTime='" + processCompletionTime + '\'' +
-                ", processResponsibleParty='" + processResponsibleParty + '\'' +
-                ", remarks='" + remarks + '\'' +
-                ", shouldClaim='" + shouldClaim + '\'' +
                 ", planToCloseTime='" + planToCloseTime + '\'' +
                 ", actualCloseTime='" + actualCloseTime + '\'' +
                 ", loggerTicking " + loggerTicking + '\'' +

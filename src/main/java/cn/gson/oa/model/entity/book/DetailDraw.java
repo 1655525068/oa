@@ -64,7 +64,7 @@ public class DetailDraw implements Cloneable {
     // 细化责任人
     @Column(name = "responsible_person")
     private String responsiblePerson;
-    // 处理流程
+    // 问题
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dds", orphanRemoval = true)
     private List<DetailDrawQuestion> questions;
     // 问题描述

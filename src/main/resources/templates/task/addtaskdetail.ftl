@@ -11,18 +11,12 @@
         text-decoration: none;
     }
 
-
-    .text {
-        min-height: 114px;
-    }
-
     .reciver {
         position: relative;
-        top: -24px;
         float: right;
-        right: 4px;
-        cursor: pointer;
         margin-top: -28px;
+        right: 5px;
+        cursor: pointer;
     }
 </style>
 <div class="row" style="padding-top: 10px;">
@@ -143,17 +137,20 @@
                             <#--接收日期-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">接收日期</label>
-                                <input class="form-control" name="receivingTime" value=""/>
+                                <input id="receivingTime" class="form-control" name="receivingTime" value=""/>
                             </div>
                             <#--是否需FU-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">是否需FU</label>
-                                <input class="form-control" name="doNeedFU" value=""/>
+                                <select class="form-control" name="doNeedFU">
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                </select>
                             </div>
                             <#--FU计划时间-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">FU计划时间</label>
-                                <input class="form-control" name="planTimeFU" value=""/>
+                                <input id="planTimeFU" class="form-control" name="planTimeFU" value=""/>
                             </div>
                             <#--FU单号-->
                             <div class="col-md-4 form-group">
@@ -170,28 +167,32 @@
                                 <label class="control-label">细化责任人</label>
                                 <#--<input class="form-control" name="responsiblePerson" value=""/>-->
                                 <input class="form-control" name="reciverlist" value=""/>
+                                <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                        >通讯录</span>
+                                </div>
                             </div>
-                            <#--问题描述-->
+                            <#--&lt;#&ndash;问题描述&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">问题描述</label>
                                 <input class="form-control" name="problemDescription" value=""/>
                             </div>
-                            <#--图纸问题数量-->
+                            &lt;#&ndash;图纸问题数量&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">图纸问题数量</label>
                                 <input class="form-control" name="problemCount" value=""/>
                             </div>
-                            <#--处理方式-->
+                            &lt;#&ndash;处理方式&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">处理方式</label>
                                 <input class="form-control" name="handleMethod" value=""/>
                             </div>
-                            <#--处理单号-->
+                            &lt;#&ndash;处理单号&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">处理单号</label>
                                 <input class="form-control" name="processOrderNumber" value=""/>
                             </div>
-                            <#--核实郑分会审单问题是否修改-->
+                            &lt;#&ndash;核实郑分会审单问题是否修改&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">核实郑分会审单问题是否修改</label>
                                 <select class="form-control" name="modify">
@@ -199,26 +200,26 @@
                                     <option value="否">否</option>
                                 </select>
                             </div>
-                            <#--备注-->
+                            &lt;#&ndash;备注&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">备注</label>
                                 <input class="form-control" name="remarks" value=""/>
                             </div>
-                            <#--完成时间-->
+                            &lt;#&ndash;完成时间&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">完成时间</label>
                                 <input class="form-control" name="completionTime" value=""/>
                             </div>
-                            <#--设计点值-->
+                            &lt;#&ndash;设计点值&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">设计点值</label>
                                 <input class="form-control" name="designPointValue" value=""/>
                             </div>
-                            <#--审核点值-->
+                            &lt;#&ndash;审核点值&ndash;&gt;
                             <div class="col-md-4 form-group">
                                 <label class="control-label">审核点值</label>
                                 <input class="form-control" name="auditPointValue" value=""/>
-                            </div>
+                            </div>-->
 
                             <div class="col-md-4 form-group ">
                                 <label class="control-label">置顶</label>
@@ -262,7 +263,7 @@
             // 如果在这些input框中，判断是否能够为空
             if ($(this).val() === "") {
                 // 排除哪些字段是可以为空的，在这里排除
-                 if (index === 18 || index === 28) {
+                 if (index === 18 || index === 19) {
                     return true;
                  }
 

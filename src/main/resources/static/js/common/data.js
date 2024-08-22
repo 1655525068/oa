@@ -123,20 +123,23 @@ $(function () {
     });
 
     $('#receivingTime').click(function () {
-        WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
+        WdatePicker({dateFmt: 'yyyy-MM-dd'});
     });
 
     $('#distributionTime').click(function () {
-        WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
+        WdatePicker({dateFmt: 'yyyy-MM-dd'});
     });
-    $('.process').on('click', '.processCompletionTime', function() {
+    $('.process').on('click', '.processCompletionTime', function () {
         // 你的处理逻辑
-        WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
-
+        WdatePicker({dateFmt: 'yyyy-MM-dd'});
     });
     $('.actualCloseTime').click(function () {
-        WdatePicker({minDate: addDate(nowDate, -180), maxDate: addDate(nowDate, 180), dateFmt: 'yyyy-MM-dd'});
+        WdatePicker({dateFmt: 'yyyy-MM-dd'});
     });
+    $('#planTimeFU').click(function () {
+        WdatePicker({dateFmt: 'yyyy-MM-dd'});
+    });
+
 });
 	
 	

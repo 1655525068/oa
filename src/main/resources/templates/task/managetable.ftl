@@ -44,19 +44,25 @@
                 <#list tasklist as task>
                     <tr>
                         <td><span>${task.title}</span></td>
-                        <td>
-                            <#if task.type == 1>
-                                <span>三单</span>
-                            <#else >
-                                <span>图纸细化</span>
-                            </#if>
-                        </td>
-                        <td><span>${task.threeType!''}</span></td>
-                        <td><span>${task.publishtime!''}</span></td>
-                        <td><span>${task.threeBookNumbers!''}</span></td>
-                        <td><span>${task.username!''}</span></td>
-                        <td><span>${task.identifyResponsiblePerson!''}</span></td>
-                        <td><span>${task.processPerson!''}</span></td>
+                        <#if task.type == 1>
+                            <td><span>三单</span></td>
+                            <td><span>${task.threeType!''}</span></td>
+                            <td><span>${task.publishtime!''}</span></td>
+                            <td><span>${task.threeBookNumbers!''}</span></td>
+                            <td><span>${task.username!''}</span></td>
+                            <td><span>${task.identifyResponsiblePerson!''}</span></td>
+                            <td><span>${task.processPerson!''}</span></td>
+                        <#else>
+                            <td><span>图纸细化</span></td>
+                            <td><span> </span></td>
+                            <td><span>${task.publishtime!''}</span></td>
+                            <td><span>
+                                    ${task.documentCodes!''}&nbsp;/&nbsp;${task.internalDocumentCodes!''}&nbsp;/&nbsp; ${task.catalogNumber!''}
+                                </span></td>
+                            <td><span>${task.username!''}</span></td>
+                            <td><span>${task.processPerson!''}</span></td>
+                            <td><span> </span></td>
+                        </#if>
                         <#if task.cancel==true>
                             <td><span class="label label-default">已取消</span></td>
                         <#else>

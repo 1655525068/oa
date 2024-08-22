@@ -77,7 +77,9 @@
                                 <span id="">&nbsp;&nbsp;中文名称：${task.threeBook.chineseName!''}</span>
                                 <span id="">&nbsp;&nbsp;类型：${task.threeBook.type!''}</span>
                             <#else >
-                                <span id="">&nbsp;&nbsp;bianhao</span>
+                                <span id="">&nbsp;&nbsp;文件编码：${task.detailDraw.documentCodes!''}</span>
+                                <span id="">&nbsp;&nbsp;内部文件编号：${task.detailDraw.internalDocumentCodes!''}</span>
+                                <span id="">&nbsp;&nbsp;图册号：${task.detailDraw.catalogNumber!''}</span>
                             </#if>
                         </h3>
                         <#if task.reciverlist??>
@@ -113,17 +115,25 @@
 										${logger.username}
 											<span style="font-size:8pt; color:#999; margin-left:3px;">${logger.createTime}</span>：将状态【${statu.statusName!''}】
                                                         <span>处理人【${logger.loggerProcessPerson!''}】</span>
-                                                        <#if task.threeBook.type == "CR">
-                                                            <span>计划关闭时间【${logger.loggerPlanToCloseTime!''}】</span>
-                                                            <span>实际关闭时间【${logger.loggerActualCloseTime!''}】</span>
+                                                        <#if task.typeId = 1>
+                                                            <#if task.threeBook.type == "CR">
+                                                                <span>计划关闭时间【${logger.loggerPlanToCloseTime!''}】</span>
+                                                                <span>实际关闭时间【${logger.loggerActualCloseTime!''}】</span>
                                                         <#else >
-                                                            <span>是否需要处理【${logger.loggerShouldHandle!''}】</span>
+                                                                <span>是否需要处理【${logger.loggerShouldHandle!''}】</span>
+                                                                <span>处理方式【${logger.loggerHandleMethod!''}】</span>
+                                                                <span>处理单号【${logger.loggerProcessOrderNumber!''}】</span>
+                                                                <span>处理完成时间【${logger.loggerProcessCompletionTime!''}】</span>
+                                                                <span>责任方【${logger.loggerProcessResponsibleParty!''}】</span>
+                                                                <span>备注【${logger.loggerRemarks!''}】</span>
+                                                                <span>是否涉及索赔【${logger.loggerShouldClaim!''}】</span>
+                                                            </#if>
+                                                        <#else >
                                                             <span>处理方式【${logger.loggerHandleMethod!''}】</span>
                                                             <span>处理单号【${logger.loggerProcessOrderNumber!''}】</span>
-                                                            <span>处理完成时间【${logger.loggerProcessCompletionTime!''}】</span>
-                                                            <span>责任方【${logger.loggerProcessResponsibleParty!''}】</span>
                                                             <span>备注【${logger.loggerRemarks!''}】</span>
-                                                            <span>是否涉及索赔【${logger.loggerShouldClaim!''}】</span>
+                                                            <span>完成时间【${logger.loggerCompletionTime!''}】</span>
+                                                            <span>问题是否修改【${logger.loggerModify!''}】</span>
                                                         </#if>
                                                         <span>设计点值【${logger.loggerDesignPointValue!''}】</span>
                                                         <span>审核点值【${logger.loggerAuditPointValue!''}】</span>
@@ -131,8 +141,7 @@
                                         </#if>
                                     </#list>
                                 </#if>
-									
-									<#if logger.loggerTicking!=''>
+								<#if logger.loggerTicking!=''>
                                 <div>
 										${logger.username}
 											<span style="font-size:8pt; color:#999; margin-left:3px;">${logger.createTime}</span>
@@ -144,8 +153,6 @@
 							</span> <span id="ctl00_cphMain_lblNote"></span>
                     </div>
                     <div class="page-header page"></div>
-
-
                     <div class="col-md-4 form-group">
                         <label> <span>状态</span> </label>
                         <select name="loggerStatusid" class="form-control">
@@ -154,7 +161,6 @@
                                 <option value="5">进行中</option></#if>
                             <#if status.statusId==7> <#else>
                                 <option value="7">已完成</option></#if>
-
                         </select>
                     </div>
 
@@ -262,7 +268,6 @@
                                                                             class="glyphicon glyphicon-remove"></span>
                                                                     删除</a>
                                                             </td>
-
                                                         </tr>
                                                     </#list>
                                                 </#if >
@@ -272,7 +277,6 @@
                                     </td>
                                 </tr>
                             </table>
-
                         <#--是否需要处理-->
                             <div class="col-md-6 form-group">
                                 <label> <span>责任方</span> </label>
@@ -300,23 +304,138 @@
                                 </select>
                             </div>
                         </#if>
-                    <#else >
-                        asdfasdrf
-                    </#if>
-
                     <#--设计点值-->
-                    <div class="col-md-4 form-group">
-                        <label> <span>设计点值</span> </label>
-                        <input name="designPointValue" type="text" id="" class="form-control"
-                               value="${task.threeBook.designPointValue!''}"/>
-                    </div>
+                        <div class="col-md-4 form-group">
+                            <label> <span>设计点值</span> </label>
+                            <input name="designPointValue" type="text" id="" class="form-control"
+                                   value="${task.threeBook.designPointValue!''}"/>
+                        </div>
 
                     <#--审核点值-->
-                    <div class="col-md-4 form-group">
-                        <label> <span>审核点值</span> </label>
-                        <input name="auditPointValue" type="text" id="" class="form-control"
-                               value="${task.threeBook.auditPointValue!''}"/>
-                    </div>
+                        <div class="col-md-4 form-group">
+                            <label> <span>审核点值</span> </label>
+                            <input name="auditPointValue" type="text" id="" class="form-control"
+                                   value="${task.threeBook.auditPointValue!''}"/>
+                        </div>
+
+                    <#else >
+                        <div class="col-md-4 form-group">
+                            <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化责任人</span>
+                            </label><input name="processPerson" type="text" id="" class="form-control"
+                                           value="${task.detailDraw.responsiblePerson!''}"/>
+                            <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                        >通讯录</span>
+                            </div>
+                        </div>
+                        <table class="bo table ">
+                            <tr>
+                                <td class="title"><label class="control-label">填写问题</label></td>
+                                <td colspan="13" style="text-align: right;"><i
+                                            class="glyphicon glyphicon-plus zeng2"></i>&nbsp;&nbsp;&nbsp;<i
+                                            class="glyphicon glyphicon-minus jian"></i></td>
+                            </tr>
+                            <tr>
+                                <td colspan="14">
+                                    <div class="food">
+                                        <table class="table inside question">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="1" style="width: 77px;">选择</th>
+                                                <th colspan="6">问题描述</th>
+                                                <th colspan="3">图纸问题数量</th>
+                                                <th colspan="2">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="tbody">
+                                            <#if task.detailDraw.questions??>
+                                                <#list task.detailDraw.questions as q>
+                                                    <tr class="tr">
+                                                        <td class="chebox" colspan="1"><span
+                                                                    class="labels"><label><input
+                                                                            type="checkbox" name="items" disabled
+                                                                            class="val"><i>✓</i></label></span></td>
+                                                        <td style="display: none"><input
+                                                                    name="questions[${q_index}].ddId"
+                                                                    value="${q.ddId}"/></td>
+                                                        <td colspan="6">
+                                                            <input type="text" class="form-control inpu"
+                                                                   name="questions[${q_index}].problemDescription"
+                                                                   value="${q.problemDescription!''}"
+                                                                   style="background-color:#fff;"/>
+                                                        </td>
+                                                        <td colspan="3">
+                                                            <input type="text" class="form-control inpu"
+                                                                   name="questions[${q_index}].problemCount"
+                                                                   value="${q.problemCount!''}"
+                                                                   style="background-color:#fff;"/>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <a onclick="updateQuestion(this,${q.ddId})"
+                                                               class="label xiugai"><span
+                                                                        class="glyphicon glyphicon-edit"></span> 修改</a>
+                                                            <a
+                                                                    onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                                                                    href="questionremove?ddId=${q.ddId}"
+                                                                    class="label shanchu"><span
+                                                                        class="glyphicon glyphicon-remove"></span>
+                                                                删除</a>
+                                                        </td>
+                                                    </tr>
+                                                </#list>
+                                            </#if >
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">处理方式</label>
+                            <input class="form-control" name="handleMethod" value="${task.detailDraw.handleMethod!''}"/>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">处理单号</label>
+                            <input class="form-control" name="processOrderNumber"
+                                   value="${task.detailDraw.processOrderNumber!''}"/>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">核实郑分会审单问题是否修改</label>
+                            <select class="form-control" name="modify">
+                                <option value="${task.detailDraw.modify!''}">${task.detailDraw.modify!''}</option>
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">备注</label>
+                            <input class="form-control" name="remarks" value="${task.detailDraw.remarks!''}"/>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">完成时间</label>
+                            <input id="completionTime" class="form-control" name="completionTime"
+                                   value="${task.detailDraw.completionTime!''}"/>
+                        </div>
+                        <#--设计点值-->
+                        <div class="col-md-4 form-group">
+                            <label> <span>设计点值</span> </label>
+                            <input name="designPointValue" type="text" id="" class="form-control"
+                                   value="${task.detailDraw.designPointValue!''}"/>
+                        </div>
+
+                        <#--审核点值-->
+                        <div class="col-md-4 form-group">
+                            <label> <span>审核点值</span> </label>
+                            <input name="auditPointValue" type="text" id="" class="form-control"
+                                   value="${task.detailDraw.auditPointValue!''}"/>
+                        </div>
+
+                    </#if>
+
 
                     <div class="col-md-4 form-group">
                         <label> <span id="ctl00_cphMain_Label2">反馈</span>
@@ -324,7 +443,7 @@
                                         id="ctl00_cphMain_txtPowerValue" class="form-control"/>
                     </div>
                     <input
-                            name="taskId" type="text" id="ctl00_cphMain_txtPowerValue"
+                            name="taskId" type="text" id=""
                             class="form-control" value="${task.taskId}"
                             style="display: none;"/>
                 </div>
@@ -349,16 +468,28 @@
         // 获取当前按钮所在的行
         var row = button.parentNode.parentNode;
         var handleMethod = row.querySelector('select');
-        var processOrderNumber = row.cells[2].children[0].value;
-        var processCompletionTime = row.cells[3].children[0].value;
-        var remarks = row.cells[4].children[0].value;
-        console.log(handleMethod.value)
+        var processOrderNumber = row.cells[3].children[0].value;
+        var processCompletionTime = row.cells[4].children[0].value;
+        var remarks = row.cells[5].children[0].value;
         $(".xiugai").load("processedit", {
             tbId: tbId,
             handleMethod: handleMethod.value,
             processOrderNumber: processOrderNumber,
             processCompletionTime: processCompletionTime,
             remarks: remarks
+        });
+        window.location.href = "/taskmanage";
+    };
+
+    function updateQuestion(button, ddId) {
+        // 获取当前按钮所在的行
+        var row = button.parentNode.parentNode;
+        var problemDescription = row.cells[2].children[0].value;
+        var problemCount = row.cells[3].children[0].value;
+        $(".xiugai").load("questionedit", {
+            ddId: ddId,
+            problemDescription: problemDescription,
+            problemCount: problemCount
         });
         window.location.href = "/taskmanage";
     };
@@ -378,6 +509,15 @@
             var td4 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu processCompletionTime" name="processes[' + i + '].processCompletionTime"/>'));
             var td5 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].remarks"/>'));
             var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3).append(td4).append(td5);
+            $('.tbody').append(tr);
+            i = i + 1;
+        });
+        $(".zeng2").click(function () {
+            var td1 = $('<td class="chebox" colspan="1"></td>').append($('<span class="labels"></span>').append($('<label></label>').append($('<input type="checkbox" name="items"  class="val" >')).append($('<i></i>').text('✓'))));
+            var td2 = $('<td colspan="6"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].problemDescription" style="background-color:#fff;"/>'));
+            var td3 = $('<td colspan="3"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].problemCount" style="background-color:#fff;"/>'));
+
+            var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3);
             $('.tbody').append(tr);
             i = i + 1;
         });

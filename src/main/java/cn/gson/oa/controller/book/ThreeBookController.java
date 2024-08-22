@@ -3,7 +3,6 @@ package cn.gson.oa.controller.book;
 import cn.gson.oa.common.ExportExcel;
 import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.dao.book.ThreeBookProcessDao;
-import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import cn.gson.oa.model.entity.book.ThreeBookProcess;
 import cn.gson.oa.services.book.BookServices;
@@ -19,22 +18,16 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/")
-public class BookController {
+public class ThreeBookController {
 
     @Autowired
-    private BookServices bookServices;
+    private BookServices bs;
 
     @Autowired
     private ThreeBookDao tbDao;
 
     @Autowired
-    private ThreeBookProcessDao threeBookProcessDao;
-
-    @RequestMapping("getExcel")
-    public void getExcel(HttpServletRequest request) {
-        Iterable<ThreeBook> books = bookServices.getThreeBookByPrepared("冉英男");
-        books.forEach(System.out::println);
-    }
+    private ThreeBookProcessDao tbpDao;
 
     @RequestMapping("deletethreebook")
     public String deletethreebook(@RequestParam(value = "bookId") Long bookId) {
@@ -46,10 +39,10 @@ public class BookController {
     @RequestMapping("threebookmanage")
     public String threebookmanage(Model model) throws CloneNotSupportedException {
 
-        Iterable<ThreeBook> threeBooks = bookServices.getAllThreeBook();
+        Iterable<ThreeBook> threeBooks = bs.getAllThreeBook();
         threeBooks.forEach(
                 x -> {
-                    x.setProcesses(threeBookProcessDao.findAllByTbs(x));
+                    x.setProcesses(tbpDao.findAllByTbs(x));
                 }
         );
         List<ThreeBook> threeBooks1 = new ArrayList<>();
@@ -73,14 +66,14 @@ public class BookController {
     ) throws CloneNotSupportedException {
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
-            threeBooks = bookServices.getAllThreeBook();
+            threeBooks = bs.getAllThreeBook();
         } else {
             System.out.println(search);
-            threeBooks = bookServices.getAllThreeBookByCondition(search);
+            threeBooks = bs.getAllThreeBookByCondition(search);
         }
         threeBooks.forEach(
                 x -> {
-                    x.setProcesses(threeBookProcessDao.findAllByTbs(x));
+                    x.setProcesses(tbpDao.findAllByTbs(x));
                 }
         );
         List<ThreeBook> threeBooks1 = new ArrayList<>();
@@ -103,15 +96,15 @@ public class BookController {
     public String threebookexport(Model model, HttpServletResponse response, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
-            threeBooks = bookServices.getAllThreeBook();
+            threeBooks = bs.getAllThreeBook();
         } else {
             System.out.println(search);
-            threeBooks = bookServices.getAllThreeBookByCondition(search);
+            threeBooks = bs.getAllThreeBookByCondition(search);
         }
 
         threeBooks.forEach(
                 x -> {
-                    x.setProcesses(threeBookProcessDao.findAllByTbs(x));
+                    x.setProcesses(tbpDao.findAllByTbs(x));
                 }
         );
         Map<String, Object> datas = new HashMap<>();
@@ -150,7 +143,7 @@ public class BookController {
         datas.put("threeBooks3", threeBooks3);
 
         if (threeBooks1.size() > 0) {
-            ExportExcel.exportFile(response, "现场设计室变更三单管理台账" + new Date(), datas);
+            ExportExcel.exportFile(response, "现场设计室变更三单管理台账" + new Date().getTime(), "template1.ftl", datas);
         }
 
         model.addAttribute("threeBooks", threeBooks);
@@ -159,22 +152,22 @@ public class BookController {
         return "book/threebookmanage";
     }
 
-    private ThreeBook createThreeBook(ThreeBook threeBook, ThreeBookProcess pro) {
+    private ThreeBook createThreeBook(ThreeBook tb, ThreeBookProcess pro) {
         if (pro != null) {
-            threeBook.setHandleMethod(pro.getHandleMethod());
-            threeBook.setProcessOrderNumber(pro.getProcessOrderNumber());
-            threeBook.setProcessCompletionTime(pro.getProcessCompletionTime());
-            threeBook.setRemarks(pro.getRemarks());
+            tb.setHandleMethod(pro.getHandleMethod());
+            tb.setProcessOrderNumber(pro.getProcessOrderNumber());
+            tb.setProcessCompletionTime(pro.getProcessCompletionTime());
+            tb.setRemarks(pro.getRemarks());
         } else {
-            threeBook.setShouldHandle("/");
-            threeBook.setHandleMethod("/");
-            threeBook.setProcessOrderNumber("/");
-            threeBook.setProcessCompletionTime("/");
-            threeBook.setProcessResponsibleParty("/");
-            threeBook.setRemarks("/");
-            threeBook.setShouldClaim("/");
+            tb.setShouldHandle("/");
+            tb.setHandleMethod("/");
+            tb.setProcessOrderNumber("/");
+            tb.setProcessCompletionTime("/");
+            tb.setProcessResponsibleParty("/");
+            tb.setRemarks("/");
+            tb.setShouldClaim("/");
         }
-        return threeBook;
+        return tb;
     }
 
 }

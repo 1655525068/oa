@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 public class ExportExcel {
-    public static void exportFile(HttpServletResponse response, String name, Map<String, Object> data) {
+    public static void exportFile(HttpServletResponse response, String name, String tpName, Map<String, Object> data) {
         FreemarkerInput freemarkerInput = new FreemarkerInput();
         //设置freemarker模板路径
         freemarkerInput.setTemplateFilePath("/templates");
         //模板名字
-        freemarkerInput.setTemplateName("template.ftl");
+        freemarkerInput.setTemplateName(tpName);
         //缓存xml路径
         freemarkerInput.setXmlTempFile("/templates/tmp");
         //缓存xml名字

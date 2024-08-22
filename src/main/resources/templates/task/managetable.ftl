@@ -7,7 +7,7 @@
             </a>
             &nbsp;&nbsp;
             <a href="addtaskdetail" class="label label-success" style="padding: 5px;">
-                <span class="glyphicon glyphicon-plus"></span> 新增图纸细化
+                <span class="glyphicon glyphicon-plus"></span> 新增细化
             </a>
         </h3>
         <div class="box-tools">

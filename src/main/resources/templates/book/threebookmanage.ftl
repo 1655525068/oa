@@ -64,7 +64,7 @@
                 <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                         <input type="text" class="form-control input-sm baseKey"
-                               placeholder="按名称/模块查找"/>
+                               placeholder="按名称查找"/>
                         <div class="input-group-btn">
                             <a class="btn btn-sm btn-default baseKeySubmit"><span
                                         class="glyphicon glyphicon-search"></span></a>

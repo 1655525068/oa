@@ -139,6 +139,9 @@ $(function () {
     $('#planTimeFU').click(function () {
         WdatePicker({dateFmt: 'yyyy-MM-dd'});
     });
+    $('#completionTime').click(function () {
+        WdatePicker({dateFmt: 'yyyy-MM-dd'});
+    });
 
 });
 	

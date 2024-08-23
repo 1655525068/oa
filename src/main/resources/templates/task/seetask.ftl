@@ -94,7 +94,20 @@
                         </#if>
                     </div>
                     <div class="mailbox-read-message">
-                        <span id="ctl00_cphMain_lblDescription">任务描述：${task.taskDescribe!''}</span>
+                        <h5 class="fonts">
+                            <#if task.typeId == 1>
+                                <#if task.threeBook.loggerTicking?? && task.threeBook.loggerTicking !='' >
+                                    <span style="background-color: grey"> <i
+                                                style="color: orange">反馈：${task.threeBook.loggerTicking!''}</i></span>
+                                </#if>
+                            <#else >
+                                <#if task.detailDraw.loggerTicking?? && task.detailDraw.loggerTicking !='' >
+                                    <span style="background-color: grey"> <i
+                                                style="color: orange">反馈：${task.detailDraw.loggerTicking!''}</i></span>
+                                </#if>
+                            </#if>
+
+                        </h5>
                         <span id="ctl00_cphMain_lblFeedback">
 								<h5 style="margin-top: 20px;">
 									任务进度（${task.starTime}至 ${task.endTime}） <small
@@ -119,7 +132,7 @@
                                                             <#if task.threeBook.type == "CR">
                                                                 <span>计划关闭时间【${logger.loggerPlanToCloseTime!''}】</span>
                                                                 <span>实际关闭时间【${logger.loggerActualCloseTime!''}】</span>
-                                                        <#else >
+                                                            <#else >
                                                                 <span>是否需要处理【${logger.loggerShouldHandle!''}】</span>
                                                                 <span>处理方式【${logger.loggerHandleMethod!''}】</span>
                                                                 <span>处理单号【${logger.loggerProcessOrderNumber!''}】</span>
@@ -420,14 +433,14 @@
                             <input id="completionTime" class="form-control" name="completionTime"
                                    value="${task.detailDraw.completionTime!''}"/>
                         </div>
-                        <#--设计点值-->
+                    <#--设计点值-->
                         <div class="col-md-4 form-group">
                             <label> <span>设计点值</span> </label>
                             <input name="designPointValue" type="text" id="" class="form-control"
                                    value="${task.detailDraw.designPointValue!''}"/>
                         </div>
 
-                        <#--审核点值-->
+                    <#--审核点值-->
                         <div class="col-md-4 form-group">
                             <label> <span>审核点值</span> </label>
                             <input name="auditPointValue" type="text" id="" class="form-control"

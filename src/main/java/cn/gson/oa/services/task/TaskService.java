@@ -10,6 +10,7 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
+import cn.gson.oa.model.dao.book.DetailDrawDao;
 import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.entity.book.DetailDraw;
 import cn.gson.oa.model.entity.book.ThreeBook;
@@ -57,6 +58,8 @@ public class TaskService {
     private DeptDao ddao;
     @Autowired
     private ThreeBookDao bdao;
+    @Autowired
+    private DetailDrawDao dddao;
 
     public Tasklist save(Tasklist task) {
         return tdao.save(task);
@@ -243,7 +246,13 @@ public class TaskService {
 
                 result.put("taskid", tid);
                 result.put("typename", tydao.findname(task.get(i).getTypeId()));
-                result.put("threeBook", bdao.findOneByBookId(task.get(i).getThreeBook().getBookId()));
+                if (task.get(i).getTypeId() == 1) {
+                    result.put("threeBook", bdao.findOneByBookId(task.get(i).getThreeBook().getBookId()));
+                }
+                if (task.get(i).getTypeId() == 2) {
+                    result.put("detailDraw", dddao.findOneByBookId(task.get(i).getDetailDraw().getBookId()));
+                }
+
                 result.put("statusname", sdao.findname(statusid));
                 result.put("statuscolor", sdao.findcolor(statusid));
                 result.put("title", task.get(i).getTitle());
@@ -311,6 +320,9 @@ public class TaskService {
 
     public DetailDraw updateDetailDraw(HttpServletRequest req, DetailDraw detailDraw) {
 
+        //细化责任人
+        String processPerson = req.getParameter("processPerson");
+        detailDraw.setResponsiblePerson(processPerson);
         // 处理方式
         String handleMethod = req.getParameter("handleMethod");
         detailDraw.setHandleMethod(handleMethod);
@@ -332,6 +344,9 @@ public class TaskService {
         // 审核点值
         String auditPointValue = req.getParameter("auditPointValue");
         detailDraw.setAuditPointValue(auditPointValue);
+        // 反馈
+        String loggerTicking = req.getParameter("loggerTicking");
+        detailDraw.setLoggerTicking(loggerTicking);
         return detailDraw;
     }
 

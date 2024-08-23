@@ -3,8 +3,10 @@ package cn.gson.oa.controller.book;
 import cn.gson.oa.common.ExportExcel;
 import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.dao.book.ThreeBookProcessDao;
+import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import cn.gson.oa.model.entity.book.ThreeBookProcess;
+import cn.gson.oa.model.entity.user.User;
 import cn.gson.oa.services.book.BookServices;
 import com.github.pagehelper.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class ThreeBookController {
     @Autowired
     private ThreeBookProcessDao tbpDao;
 
+    @Autowired
+    private UserDao udao;
+
     @RequestMapping("deletethreebook")
     public String deletethreebook(@RequestParam(value = "bookId") Long bookId) {
         ThreeBook tb = tbDao.findOneByBookId(bookId);
@@ -37,7 +42,9 @@ public class ThreeBookController {
     }
 
     @RequestMapping("threebookmanage")
-    public String threebookmanage(Model model) throws CloneNotSupportedException {
+    public String threebookmanage(Model model, @SessionAttribute("userId") Long userId) throws CloneNotSupportedException {
+
+        User user = udao.findOne(userId);
 
         Iterable<ThreeBook> threeBooks = bs.getAllThreeBook();
         threeBooks.forEach(
@@ -58,12 +65,14 @@ public class ThreeBookController {
         model.addAttribute("threeBooks", threeBooks1);
 //        model.addAttribute("page", threeBookPage);
         model.addAttribute("url", "threebooktable");
+        model.addAttribute("user", user);
         return "book/threebookmanage";
     }
 
     @RequestMapping("threebooktable")
-    public String threebooktable(Model model, @RequestParam(value = "search", required = false) String search
+    public String threebooktable(Model model, @SessionAttribute("userId") Long userId, @RequestParam(value = "search", required = false) String search
     ) throws CloneNotSupportedException {
+        User user = udao.findOne(userId);
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
             threeBooks = bs.getAllThreeBook();
@@ -88,6 +97,7 @@ public class ThreeBookController {
         }
         model.addAttribute("threeBooks", threeBooks1);
         model.addAttribute("url", "threebooktable");
+        model.addAttribute("user", user);
 
         return "book/threebooktable";
     }

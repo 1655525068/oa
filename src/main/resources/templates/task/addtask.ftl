@@ -197,7 +197,7 @@
                                 <div class="col-md-4 form-group">
                                     <label class="control-label">责任方</label>
                                     <select class="form-control" name="responsibleParty">
-                                        <option value="建安承包">建安承包</option>
+                                        <option value="建安承包商">建安承包商</option>
                                         <option value="工程公司">工程公司</option>
                                         <option value="其他">其他</option>
                                     </select>

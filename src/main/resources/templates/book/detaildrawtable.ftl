@@ -1,7 +1,9 @@
 <div class="table-responsive">
     <table class="table table-hover table-condensed" style="min-width: 3500px;">
         <tr>
-            <th scope="col">操作</th>
+            <#if user.role.roleName =='主任'>
+                <th scope="col">操作</th>
+            </#if>
             <th style="background-color: yellow" scope="col">序号</th>
             <th style="background-color: yellow" scope="col">文件编码</th>
             <th style="background-color: yellow" scope="col">内部文件编号</th>
@@ -25,14 +27,18 @@
             <th style="background-color: greenyellow" scope="col">完成时间</th>
             <th style="background-color: greenyellow" scope="col">设计点值</th>
             <th style="background-color: greenyellow" scope="col">审核点值</th>
-            <th scope="col">操作</th>
+            <#if user.role.roleName =='主任'>
+                <th scope="col">操作</th>
+            </#if>
         </tr>
         <#list detailDraws as detailDraw>
             <tr>
-                <td><a href="deletedetaildraw?bookId=${detailDraw.bookId}"
-                       onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                       class="label shanchu"><span
-                                class="glyphicon glyphicon-remove"></span> 删除</a></td>
+                <#if user.role.roleName =='主任'>
+                    <td><a href="deletedetaildraw?bookId=${detailDraw.bookId}"
+                           onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                           class="label shanchu"><span
+                                    class="glyphicon glyphicon-remove"></span> 删除</a></td>
+                </#if>
                 <td><span>${detailDraw_index +1}</span></td>
                 <td><span>${detailDraw.documentCodes!''}</span></td>
                 <td><span>${detailDraw.internalDocumentCodes!''}</span></td>
@@ -56,10 +62,12 @@
                 <td><span>${detailDraw.completionTime!''}</span></td>
                 <td><span>${detailDraw.designPointValue!''}</span></td>
                 <td><span>${detailDraw.auditPointValue!''}</span></td>
-                <td><a href="deletedetaildraw?bookId=${detailDraw.bookId}"
-                       onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                       class="label shanchu"><span
-                                class="glyphicon glyphicon-remove"></span> 删除</a></td>
+                <#if user.role.roleName =='主任'>
+                    <td><a href="deletedetaildraw?bookId=${detailDraw.bookId}"
+                           onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                           class="label shanchu"><span
+                                    class="glyphicon glyphicon-remove"></span> 删除</a></td>
+                </#if>
 
             </tr>
         </#list>

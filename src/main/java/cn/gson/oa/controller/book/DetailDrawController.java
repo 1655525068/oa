@@ -3,8 +3,10 @@ package cn.gson.oa.controller.book;
 import cn.gson.oa.common.ExportExcel;
 import cn.gson.oa.model.dao.book.DetailDrawDao;
 import cn.gson.oa.model.dao.book.DetailDrawQuestionDao;
+import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.book.DetailDraw;
 import cn.gson.oa.model.entity.book.DetailDrawQuestion;
+import cn.gson.oa.model.entity.user.User;
 import com.github.pagehelper.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
@@ -25,6 +28,9 @@ public class DetailDrawController {
     @Autowired
     private DetailDrawQuestionDao ddqDao;
 
+    @Autowired
+    private UserDao udao;
+
     @RequestMapping("deletedetaildraw")
     public String deletedetaildraw(@RequestParam(value = "bookId") Long bookId) {
         DetailDraw dd = ddDao.findOneByBookId(bookId);
@@ -33,8 +39,8 @@ public class DetailDrawController {
     }
 
     @RequestMapping("detaildrawmanage")
-    public String detaildrawmanage(Model model) throws CloneNotSupportedException {
-
+    public String detaildrawmanage(Model model, @SessionAttribute("userId") Long userId) throws CloneNotSupportedException {
+        User user = udao.findOne(userId);
         Iterable<DetailDraw> detailDraws = ddDao.findAllByIsLock(0);
         detailDraws.forEach(
                 x -> {
@@ -52,14 +58,15 @@ public class DetailDrawController {
                 detailDraws1.add(createDetailDraw(dd, null));
         }
         model.addAttribute("detailDraws", detailDraws1);
-//        model.addAttribute("page", threeBookPage);
         model.addAttribute("url", "detaildrawtable");
+        model.addAttribute("user", user);
         return "book/detaildrawmanage";
     }
 
     @RequestMapping("detaildrawtable")
-    public String detaildrawtable(Model model, @RequestParam(value = "search", required = false) String search
+    public String detaildrawtable(Model model, @SessionAttribute("userId") Long userId, @RequestParam(value = "search", required = false) String search
     ) throws CloneNotSupportedException {
+        User user = udao.findOne(userId);
         Iterable<DetailDraw> detailDraws = null;
         if (StringUtil.isEmpty(search)) {
             detailDraws = ddDao.findAllByIsLock(0);
@@ -85,6 +92,7 @@ public class DetailDrawController {
         }
         model.addAttribute("detailDraws", detailDraws1);
         model.addAttribute("url", "detaildrawtable");
+        model.addAttribute("user", user);
 
         return "book/detaildrawtable";
     }

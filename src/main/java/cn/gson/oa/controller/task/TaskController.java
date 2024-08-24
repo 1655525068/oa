@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import cn.gson.oa.model.dao.book.DetailDrawDao;
 import cn.gson.oa.model.dao.book.DetailDrawQuestionDao;
 import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.dao.book.ThreeBookProcessDao;
@@ -29,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -90,6 +92,9 @@ public class TaskController {
 
     @Autowired
     private DetailDrawQuestionDao ddqDao;
+
+    @Autowired
+    private DetailDrawDao ddDao;
 
     /**
      * 任务管理表格
@@ -169,6 +174,13 @@ public class TaskController {
         mav.addObject("poslist", poslist);
         mav.addObject("page", pagelist);
         mav.addObject("url", "names");
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "bookId"));
+        Pageable pa2 = new PageRequest(page, size, sort);
+        Page<DetailDraw> detailDraws = ddDao.findAllByIsLock(0, pa2);
+        mav.addObject("page2", detailDraws);
+        mav.addObject("details", detailDraws.getContent());
+
+        mav.addObject("url2", "details");
         mav.addObject("qufen", "任务");
         return mav;
     }
@@ -293,7 +305,7 @@ public class TaskController {
      */
     @RequestMapping("seetasks")
     public ModelAndView index4(HttpServletRequest req, @RequestParam(value = "page", defaultValue = "0") int page,
-                               @RequestParam(value = "size", defaultValue = "200") int size) {
+                               @RequestParam(value = "size", defaultValue = "10") int size) {
         Pageable pa = new PageRequest(page, size);
         ModelAndView mav = new ModelAndView("task/seetask");
         // 得到任务的 id
@@ -344,7 +356,7 @@ public class TaskController {
         mav.addObject("deptlist", deptlist);
         mav.addObject("rolelist", rolelist);
         mav.addObject("page", pagelist);
-        mav.addObject("url", "paixu");
+        mav.addObject("url", "names");
         return mav;
     }
 
@@ -505,7 +517,7 @@ public class TaskController {
 
     @RequestMapping("myseetasks")
     public ModelAndView myseetask(HttpServletRequest req, @SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
-                                  @RequestParam(value = "size", defaultValue = "200") int size) {
+                                  @RequestParam(value = "size", defaultValue = "10") int size) {
         Pageable pa = new PageRequest(page, size);
 
         ModelAndView mav = new ModelAndView("task/myseetask");

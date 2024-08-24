@@ -42,6 +42,50 @@
 	margin-top: 13px;
 }
 
+#myModalDetail .b {
+	color: #72afd2;
+}
+
+#myModalDetail .b:hover {
+	color: #23527c;
+}
+
+#myModalDetail #pager {
+	border-top: solid 1px #F5F5F5;
+	padding: 10px 0;
+	margin-top: -10px;
+	background: #FAFAFA;
+	overflow: hidden;
+}
+
+#myModalDetail div.Pager .CustomInfo span {
+	color: #000;
+	font-weight: bold;
+	padding: 5px;
+}
+
+#myModalDetail .modal-1 {
+	margin: 20px;
+	padding: 20px;
+	background: #ECF0F5;
+}
+
+#myModalDetail .modal-2 {
+	background: white;
+	border-top: 3px solid #D2D6DE;
+}
+
+#myModalDetail .closespan {
+	color: white;
+	font-size: 45px;
+}
+
+#myModalDetail .input-group {
+	width: 150px;
+	float: right;
+	margin-top: 13px;
+}
+
 #shareModal .b {
 	color: #72afd2;
 }

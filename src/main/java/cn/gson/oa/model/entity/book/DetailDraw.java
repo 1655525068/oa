@@ -1,6 +1,7 @@
 package cn.gson.oa.model.entity.book;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author bochen.wang
@@ -9,12 +10,21 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ao_detail_draw")
-public class DetailDraw {
+public class DetailDraw implements Cloneable {
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); // 调用Object的clone方法，返回此对象的浅拷贝
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // book_id
     @Column(name = "book_id")
     private Long bookId;
+    // 序号
+    @Column(name = "serial_number")
+    private String serialNumber;
     // 文件编码
     @Column(name = "document_codes")
     private String documentCodes;
@@ -54,6 +64,9 @@ public class DetailDraw {
     // 细化责任人
     @Column(name = "responsible_person")
     private String responsiblePerson;
+    // 问题
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dds", orphanRemoval = true)
+    private List<DetailDrawQuestion> questions;
     // 问题描述
     @Column(name = "problem_description")
     private String problemDescription;
@@ -280,6 +293,22 @@ public class DetailDraw {
         this.auditPointValue = auditPointValue;
     }
 
+    public List<DetailDrawQuestion> getQuestions() {
+        return questions;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public void setQuestions(List<DetailDrawQuestion> questions) {
+        this.questions = questions;
+    }
+
     public String getLoggerTicking() {
         return loggerTicking;
     }
@@ -305,8 +334,6 @@ public class DetailDraw {
                 ", numberFU='" + numberFU + '\'' +
                 ", planCompletionTime='" + planCompletionTime + '\'' +
                 ", responsiblePerson='" + responsiblePerson + '\'' +
-                ", problemDescription='" + problemDescription + '\'' +
-                ", problemCount='" + problemCount + '\'' +
                 ", handleMethod='" + handleMethod + '\'' +
                 ", processOrderNumber='" + processOrderNumber + '\'' +
                 ", modify='" + modify + '\'' +

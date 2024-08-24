@@ -90,6 +90,14 @@ public class Tasklogger {
     @Column(name = "logger_audit_point_value")
     private String loggerAuditPointValue;
 
+    // 核实郑分会审单问题是否修改
+    @Column(name = "logger_modify")
+    private String loggerModify;
+
+    // 完成时间
+    @Column(name = "logger_completion_time")
+    private String loggerCompletionTime;
+
     public Long getLoggerId() {
         return loggerId;
     }
@@ -240,6 +248,22 @@ public class Tasklogger {
 
     public void setLoggerAuditPointValue(String loggerAuditPointValue) {
         this.loggerAuditPointValue = loggerAuditPointValue;
+    }
+
+    public String getLoggerModify() {
+        return loggerModify;
+    }
+
+    public void setLoggerModify(String loggerModify) {
+        this.loggerModify = loggerModify;
+    }
+
+    public String getLoggerCompletionTime() {
+        return loggerCompletionTime;
+    }
+
+    public void setLoggerCompletionTime(String loggerCompletionTime) {
+        this.loggerCompletionTime = loggerCompletionTime;
     }
 
     @Override

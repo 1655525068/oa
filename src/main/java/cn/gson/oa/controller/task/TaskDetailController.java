@@ -107,9 +107,12 @@ public class TaskDetailController {
         detailDraw.setResponsiblePerson(list.getReciverlist());
         DetailDraw result = detailDrawDao.save(detailDraw);
         list.setDetailDraw(result);
+        if (detailDraw.getResponsiblePerson() != null) {
+            list.setStatusId(5);
+        }
         tdao.save(list);
         // 分割任务接收人
-        StringTokenizer st = new StringTokenizer(list.getReciverlist() + ";" + detailDraw.getResponsiblePerson(), ";");
+        StringTokenizer st = new StringTokenizer(detailDraw.getResponsiblePerson(), ";");
         while (st.hasMoreElements()) {
             User reciver = udao.findid(st.nextToken());
             Taskuser task = new Taskuser();
@@ -124,7 +127,6 @@ public class TaskDetailController {
 
         return "redirect:/taskmanage";
     }
-
 
 
 }

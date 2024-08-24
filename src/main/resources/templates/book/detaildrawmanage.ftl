@@ -38,11 +38,11 @@
 
 <div class="row" style="padding-top: 10px;">
     <div class="col-md-2">
-        <h1 style="font-size: 24px; margin: 0;" class="">三单一览</h1>
+        <h1 style="font-size: 24px; margin: 0;" class="">细化一览</h1>
     </div>
     <div class="col-md-10 text-right">
         <a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> >
-        <a disabled="disabled">三单一览</a>
+        <a disabled="disabled">细化一览 </a>
     </div>
 </div>
 
@@ -57,7 +57,7 @@
                         <span class="glyphicon glyphicon-export"></span> 导出
                     </a>
 
-                    <a href="threebookmanage" class="label label-success" style="padding: 5px;margin-left:5px;">
+                    <a href="detaildrawmanage" class="label label-success" style="padding: 5px;margin-left:5px;">
                         <span class="glyphicon glyphicon-refresh"></span> 刷新
                     </a>
                 </h3>
@@ -74,7 +74,7 @@
             </div>
             <!--盒子身体-->
             <div class="box-body no-padding thistable">
-                <#include "threebooktable.ftl">
+                <#include "detaildrawtable.ftl">
             </div>
             <!--盒子尾-->
         </div>
@@ -83,7 +83,7 @@
 <script>
     $('.baseKeySubmit').on('click', function () {
         var search = $('.baseKey').val();
-        $('.thistable').load("threebooktable?search=" + search);
+        $('.thistable').load("detaildrawtable?search=" + search);
     });
     // $('.threebookexport').on('click',function (){
     // 	var search=$('.baseKey').val();
@@ -91,7 +91,7 @@
     // })
     function downloadFile() {
         var search = $('.baseKey').val();
-        window.location.href = '/threebookexport?search=' + search
+        window.location.href = '/detaildrawexport?search=' + search
     }
 
 </script>

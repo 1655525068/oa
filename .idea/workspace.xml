@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="三单一览">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ThreeBookProcessDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DetailDrawQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBookProcess.java" afterDir="false" />
+    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="0823">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/common/detail.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/common/details.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/common/paging2.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ThreeBookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ThreeBookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/common/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/threebooktable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/threebooktable.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/common/tanchuang.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/common/tanchuang.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/mytask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/mytask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,19 +59,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/cn/gson/oa" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/common" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\02_github\oa\src\main\resources\templates\common" />
+      <recent name="E:\02_github\oa\src\main\resources\templates" />
+      <recent name="E:\02_github\oa\src\main\resources\templates\book" />
       <recent name="E:\02_github\oa\src\main\java\cn\gson\oa" />
       <recent name="E:\02_github\oa\src\main\java\cn\gson\oa\common" />
-      <recent name="E:\02_github\oa\src\main\java\cn\gson\oa\model\entity" />
-      <recent name="E:\02_github\oa\src\main\resources\templates\user" />
-      <recent name="E:\02_github\oa\src\main\resources\templates\book" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\02_github\oa\src\main\resources\templates" />
@@ -137,6 +127,13 @@
       <workItem from="1724026745283" duration="6788000" />
       <workItem from="1724112784103" duration="25029000" />
       <workItem from="1724197653740" duration="36204000" />
+      <workItem from="1724285378057" duration="953000" />
+      <workItem from="1724287589322" duration="29098000" />
+      <workItem from="1724325940103" duration="8339000" />
+      <workItem from="1724341627451" duration="373000" />
+      <workItem from="1724366460279" duration="25594000" />
+      <workItem from="1724451142489" duration="5425000" />
+      <workItem from="1724456859419" duration="457000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1722829344867</created>
@@ -180,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1723726023214</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="细化一览">
+      <created>1724298004349</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724298004349</updated>
+    </task>
+    <task id="LOCAL-00008" summary="细化一览">
+      <created>1724340915114</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724340915114</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +227,9 @@
     <MESSAGE value="查看任务" />
     <MESSAGE value="查看任务-msql" />
     <MESSAGE value="三单一览" />
-    <option name="LAST_COMMIT_MESSAGE" value="三单一览" />
+    <MESSAGE value="细化一览" />
+    <MESSAGE value="0823" />
+    <option name="LAST_COMMIT_MESSAGE" value="0823" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -293,7 +306,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>230</line>
+          <line>248</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -338,7 +351,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>451</line>
+          <line>507</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -348,18 +361,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>257</line>
+          <line>275</line>
           <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/system/MenuSysController.java</url>
@@ -372,64 +375,69 @@
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>176</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java</url>
           <line>207</line>
           <option name="timeStamp" value="162" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java</url>
-          <line>95</line>
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java</url>
+          <line>104</line>
           <option name="timeStamp" value="164" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java</url>
-          <line>85</line>
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java</url>
+          <line>93</line>
           <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>184</line>
+          <line>202</line>
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>655</line>
+          <line>766</line>
           <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>644</line>
+          <line>746</line>
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>188</line>
+          <line>206</line>
           <option name="timeStamp" value="186" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/BookController.java</url>
-          <line>41</line>
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java</url>
+          <line>47</line>
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="190" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DetailDraw.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>536</line>
-          <option name="timeStamp" value="194" />
+          <line>596</line>
+          <option name="timeStamp" value="211" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>348</line>
-          <option name="timeStamp" value="196" />
+          <line>424</line>
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>625</line>
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
+          <line>354</line>
+          <option name="timeStamp" value="217" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

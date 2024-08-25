@@ -108,7 +108,8 @@ public class DetailDrawController {
 
 
     @RequestMapping(value = "detaildrawexport", method = RequestMethod.GET)
-    public String detaildrawexport(Model model, HttpServletResponse response, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
+    public String detaildrawexport(Model model, HttpServletResponse response, @SessionAttribute("userId") Long userId, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
+        User user = udao.findOne(userId);
         Iterable<DetailDraw> detailDraws = null;
         if (StringUtil.isEmpty(search)) {
             detailDraws = ddDao.findAllByIsLock(0);
@@ -149,6 +150,7 @@ public class DetailDrawController {
 
 //        model.addAttribute("page", threeBookPage);
         model.addAttribute("url", "detaildrawtable");
+        model.addAttribute("user", user);
         return "book/detaildrawmanage";
     }
 

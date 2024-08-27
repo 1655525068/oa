@@ -103,7 +103,7 @@ public class ThreeBookController {
     }
 
     @RequestMapping(value = "threebookexport", method = RequestMethod.GET)
-    public String threebookexport(Model model, HttpServletResponse response,@SessionAttribute("userId") Long userId, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
+    public String threebookexport(Model model, HttpServletResponse response, @SessionAttribute("userId") Long userId, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
         User user = udao.findOne(userId);
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
@@ -169,7 +169,9 @@ public class ThreeBookController {
             tb.setHandleMethod(pro.getHandleMethod());
             tb.setProcessOrderNumber(pro.getProcessOrderNumber());
             tb.setProcessCompletionTime(pro.getProcessCompletionTime());
+            tb.setProcessResponsibleParty(pro.getProcessResponsibleParty());
             tb.setRemarks(pro.getRemarks());
+            tb.setShouldClaim(pro.getShouldClaim());
         } else {
             tb.setShouldHandle("/");
             tb.setHandleMethod("/");

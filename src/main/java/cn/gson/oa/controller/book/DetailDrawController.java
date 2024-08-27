@@ -158,9 +158,15 @@ public class DetailDrawController {
         if (question != null) {
             dd.setProblemDescription(question.getProblemDescription());
             dd.setProblemCount(question.getProblemCount());
+            dd.setHandleMethod(question.getHandleMethod());
+            dd.setProcessOrderNumber(question.getProcessOrderNumber());
+            dd.setRemarks(question.getRemarks());
         } else {
             dd.setProblemDescription("/");
             dd.setProblemCount("/");
+            dd.setHandleMethod("/");
+            dd.setProcessOrderNumber("/");
+            dd.setRemarks("/");
         }
         return dd;
 

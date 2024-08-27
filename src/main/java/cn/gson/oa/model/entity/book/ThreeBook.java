@@ -94,12 +94,16 @@ public class ThreeBook implements Cloneable {
     @Column(name = "identify_responsible_person")
     private String identifyResponsiblePerson;
 
-    // 处理人
+    // 三单处理人
     @Column(name = "process_person")
     private String processPerson;
 
+    // 审核人
+    @Column(name = "audit_person")
+    private String auditPerson;
+
     // 处理流程
-    @OneToMany(cascade=CascadeType.ALL,mappedBy="tbs",orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbs", orphanRemoval = true)
     List<ThreeBookProcess> processes;
 
     /*处理流程*/
@@ -155,7 +159,6 @@ public class ThreeBook implements Cloneable {
     private Integer isLock = 0;
 
 
-
     public List<ThreeBookProcess> getProcesses() {
         return processes;
     }
@@ -202,6 +205,14 @@ public class ThreeBook implements Cloneable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public String getAuditPerson() {
+        return auditPerson;
+    }
+
+    public void setAuditPerson(String auditPerson) {
+        this.auditPerson = auditPerson;
     }
 
     public Integer getIsLock() {

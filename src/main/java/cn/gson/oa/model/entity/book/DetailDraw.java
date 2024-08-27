@@ -61,9 +61,18 @@ public class DetailDraw implements Cloneable {
     // 计划细化完成时间（无需细化填/）
     @Column(name = "plan_completion_time")
     private String planCompletionTime;
+
+    // 识别责任人
+    @Column(name = "identify_responsible_person")
+    private String identifyResponsiblePerson;
+
     // 细化责任人
     @Column(name = "responsible_person")
     private String responsiblePerson;
+
+    // 审核人
+    @Column(name = "audit_person")
+    private String auditPerson;
     // 问题
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dds", orphanRemoval = true)
     private List<DetailDrawQuestion> questions;
@@ -315,6 +324,22 @@ public class DetailDraw implements Cloneable {
 
     public void setLoggerTicking(String loggerTicking) {
         this.loggerTicking = loggerTicking;
+    }
+
+    public String getIdentifyResponsiblePerson() {
+        return identifyResponsiblePerson;
+    }
+
+    public void setIdentifyResponsiblePerson(String identifyResponsiblePerson) {
+        this.identifyResponsiblePerson = identifyResponsiblePerson;
+    }
+
+    public String getAuditPerson() {
+        return auditPerson;
+    }
+
+    public void setAuditPerson(String auditPerson) {
+        this.auditPerson = auditPerson;
     }
 
     @Override

@@ -384,7 +384,7 @@ public class TaskController {
                     process.setTbs(task.getThreeBook());
                     if (process.getTbId() != null) {
                         tbpDao.save(process);
-                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessCompletionTime().trim().length() == 0 && process.getRemarks().trim().length() == 0)) {
+                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessCompletionTime().trim().length() == 0 && process.getProcessResponsibleParty().trim().length() == 0 && process.getRemarks().trim().length() == 0 && process.getShouldClaim().trim().length() == 0)) {
                         tbpDao.save(process);
                     }
                 }
@@ -586,7 +586,9 @@ public class TaskController {
      * 从我的任务查看里面修改状态和日志
      */
     @RequestMapping("uplogger")
-    public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req, @Valid ThreeBook tb, @Valid DetailDraw dd) {
+    public String updatelo(Tasklogger logger, @SessionAttribute("userId") Long userId, HttpServletRequest req, @Valid ThreeBook tb, @Valid DetailDraw dd, @RequestParam(value = "commit", defaultValue = "") String commit) {
+
+        System.out.println(commit);
         System.out.println(logger.getLoggerStatusid());
         // 获取用户id
 
@@ -617,7 +619,7 @@ public class TaskController {
                     process.setTbs(task.getThreeBook());
                     if (process.getTbId() != null) {
                         tbpDao.save(process);
-                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessCompletionTime().trim().length() == 0 && process.getRemarks().trim().length() == 0)) {
+                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessCompletionTime().trim().length() == 0 && process.getProcessResponsibleParty().trim().length() == 0 && process.getRemarks().trim().length() == 0 && process.getShouldClaim().trim().length() == 0)) {
                         tbpDao.save(process);
                     }
                 }
@@ -724,6 +726,10 @@ public class TaskController {
             System.out.println("任务状态修改成功!");
         }
 
+        if (!commit.isEmpty()) {
+            return "/shenqingbefore?id=" + task.getTaskId();
+        }
+
         return "redirect:/mytask";
 
     }
@@ -800,7 +806,9 @@ public class TaskController {
         tp.setHandleMethod(pro.getHandleMethod());
         tp.setProcessOrderNumber(pro.getProcessOrderNumber());
         tp.setProcessCompletionTime(pro.getProcessCompletionTime());
+        tp.setProcessResponsibleParty(pro.getProcessResponsibleParty());
         tp.setRemarks(pro.getRemarks());
+        tp.setShouldClaim(pro.getShouldClaim());
         tbpDao.save(tp);
         return "";
     }
@@ -824,6 +832,10 @@ public class TaskController {
         DetailDrawQuestion q = ddqDao.findByDdId(question.getDdId());
         q.setProblemDescription(question.getProblemDescription());
         q.setProblemCount(question.getProblemCount());
+        q.setHandleMethod(question.getHandleMethod());
+        q.setProcessOrderNumber(question.getProcessOrderNumber());
+        q.setModify(question.getModify());
+        q.setRemarks(question.getRemarks());
         ddqDao.save(q);
         return "";
     }

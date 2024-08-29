@@ -1,7 +1,6 @@
 package cn.gson.oa.controller.task;
 
 import cn.gson.oa.model.dao.book.DetailDrawDao;
-import cn.gson.oa.model.dao.book.ThreeBookDao;
 import cn.gson.oa.model.dao.system.StatusDao;
 import cn.gson.oa.model.dao.system.TypeDao;
 import cn.gson.oa.model.dao.taskdao.TaskDao;
@@ -11,7 +10,6 @@ import cn.gson.oa.model.dao.user.DeptDao;
 import cn.gson.oa.model.dao.user.PositionDao;
 import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.book.DetailDraw;
-import cn.gson.oa.model.entity.book.ThreeBook;
 import cn.gson.oa.model.entity.system.SystemStatusList;
 import cn.gson.oa.model.entity.system.SystemTypeList;
 import cn.gson.oa.model.entity.task.Tasklist;
@@ -104,20 +102,19 @@ public class TaskDetailController {
         list.setModifyTime(new Date());
         list.setTypeId(2L);
         // 图纸细化
-        detailDraw.setResponsiblePerson(list.getReciverlist());
+        detailDraw.setIdentifyResponsiblePerson(list.getReciverlist());
         DetailDraw result = detailDrawDao.save(detailDraw);
         list.setDetailDraw(result);
-        if (detailDraw.getResponsiblePerson() != null) {
+        if (detailDraw.getProcessPerson() != null) {
             list.setStatusId(5);
         }
         tdao.save(list);
-        // 分割任务接收人
-        StringTokenizer st = new StringTokenizer(detailDraw.getResponsiblePerson(), ";");
+        StringTokenizer st = new StringTokenizer(list.getReciverlist() + (detailDraw.getProcessPerson() != null ? ";" + detailDraw.getProcessPerson() : ""), ";");
         while (st.hasMoreElements()) {
             User reciver = udao.findid(st.nextToken());
             Taskuser task = new Taskuser();
             task.setTaskId(list);
-            task.setIrp(result.getResponsiblePerson());
+            task.setIrp(result.getIdentifyResponsiblePerson());
             task.setUserId(reciver);
             task.setStatusId(list.getStatusId());
             // 存任务中间表

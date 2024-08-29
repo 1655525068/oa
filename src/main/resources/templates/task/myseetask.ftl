@@ -80,9 +80,25 @@
 
                         <#if task.reciverlist??>
                             <h5 class="fonts">
+<span id="ctl00_cphMain_lblFrom"
+      class="mailbox-read-time">发布人：<i>${user.userName!''}</i> &nbsp;&nbsp;责任人：<i>${task.reciverlist}</i> &nbsp;&nbsp;处理人：<i>
+                                        <#if task.typeId = 1>
+                                            ${task.threeBook.processPerson!''}
+                                        <#else >
+                                            ${task.detailDraw.processPerson!''}
+                                        </#if>
 
-                                <span id="ctl00_cphMain_lblFrom" class="mailbox-read-time">录入人：<i>${user.userName}</i> &nbsp;&nbsp;责任人：<i>${task.reciverlist}</i></span>
 
+                                    </i>
+                                &nbsp;&nbsp;审核人：<i>
+                                        <#if task.typeId = 1>
+                                            ${task.threeBook.auditPerson!''}
+                                        <#else >
+                                            ${task.detailDraw.auditPerson!''}
+                                        </#if>
+
+
+                                    </i>
                                 <span id="ctl00_cphMain_lblDate"
                                       class="mailbox-read-time pull-right">${task.publishTime}</span>
                             </h5>
@@ -256,7 +272,10 @@
                                                     <th colspan="2">责任方</th>
                                                     <th colspan="2">备注</th>
                                                     <th colspan="1">涉及索赔</th>
-                                                    <th colspan="2">操作</th>
+                                                    <#if  status.statusId = 6 || status.statusId = 7 >
+                                                    <#else >
+                                                        <th colspan="2">操作</th>
+                                                    </#if>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="tbody">
@@ -315,17 +334,21 @@
                                                                     <option value="/">/</option>
                                                                 </select>
                                                             </td>
-                                                            <td colspan="2">
-                                                                <a onclick="updateProcess(this,${pro.tbId})"
-                                                                   class="label xiugai"><span
-                                                                            class="glyphicon glyphicon-edit"></span> 修改</a>
-                                                                <a
-                                                                        onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                                                                        href="processremove?tbId=${pro.tbId}"
-                                                                        class="label shanchu"><span
-                                                                            class="glyphicon glyphicon-remove"></span>
-                                                                    删除</a>
-                                                            </td>
+                                                            <#if  status.statusId = 6 || status.statusId = 7 >
+                                                            <#else >
+                                                                <td colspan="2">
+                                                                    <a onclick="updateProcess(this,${pro.tbId})"
+                                                                       class="label xiugai"><span
+                                                                                class="glyphicon glyphicon-edit"></span>
+                                                                        修改</a>
+                                                                    <a
+                                                                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                                                                            href="processremove?tbId=${pro.tbId}"
+                                                                            class="label shanchu"><span
+                                                                                class="glyphicon glyphicon-remove"></span>
+                                                                        删除</a>
+                                                                </td>
+                                                            </#if>
                                                         </tr>
                                                     </#list>
                                                 </#if >
@@ -354,7 +377,7 @@
                         <div class="col-md-4 form-group">
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化责任人</span>
                             </label><input name="processPerson" type="text" id="" class="form-control"
-                                           value="${task.detailDraw.responsiblePerson!''}"/>
+                                           value="${task.detailDraw.processPerson!''}"/>
                             <div class="reciver">
                                         <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
                                         >通讯录</span>
@@ -375,12 +398,14 @@
                                             <tr>
                                                 <th colspan="1" style="width: 77px;">选择</th>
                                                 <th colspan="3">问题描述</th>
-                                                <th colspan="1">图纸问题数量</th>
                                                 <th colspan="1">处理方式</th>
                                                 <th colspan="2">处理单号</th>
                                                 <th colspan="1">核实郑分会审单问题是否修改</th>
                                                 <th colspan="1">备注</th>
-                                                <th colspan="2">操作</th>
+                                                <#if  status.statusId = 6 || status.statusId = 7 >
+                                                <#else >
+                                                    <th colspan="2">操作</th>
+                                                </#if>
                                             </tr>
                                             </thead>
                                             <tbody class="tbody">
@@ -398,12 +423,6 @@
                                                             <input type="text" class="form-control inpu"
                                                                    name="questions[${q_index}].problemDescription"
                                                                    value="${q.problemDescription!''}"
-                                                                   style="background-color:#fff;"/>
-                                                        </td>
-                                                        <td colspan="1">
-                                                            <input type="text" class="form-control inpu"
-                                                                   name="questions[${q_index}].problemCount"
-                                                                   value="${q.problemCount!''}"
                                                                    style="background-color:#fff;"/>
                                                         </td>
                                                         <td colspan="1">
@@ -430,17 +449,21 @@
                                                                    value="${q.remarks!''}"
                                                                    style="background-color:#fff;"/>
                                                         </td>
-                                                        <td colspan="2">
-                                                            <a onclick="updateQuestion(this,${q.ddId})"
-                                                               class="label xiugai"><span
-                                                                        class="glyphicon glyphicon-edit"></span> 修改</a>
-                                                            <a
-                                                                    onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                                                                    href="questionremove?ddId=${q.ddId}"
-                                                                    class="label shanchu"><span
-                                                                        class="glyphicon glyphicon-remove"></span>
-                                                                删除</a>
-                                                        </td>
+                                                        <#if  status.statusId = 6 || status.statusId = 7 >
+                                                        <#else >
+                                                            <td colspan="2">
+                                                                <a onclick="updateQuestion(this,${q.ddId})"
+                                                                   class="label xiugai"><span
+                                                                            class="glyphicon glyphicon-edit"></span> 修改</a>
+                                                                <a
+                                                                        onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                                                                        href="questionremove?ddId=${q.ddId}"
+                                                                        class="label shanchu"><span
+                                                                            class="glyphicon glyphicon-remove"></span>
+                                                                    删除</a>
+                                                            </td>
+                                                        </#if>
+
                                                     </tr>
                                                 </#list>
                                             </#if >
@@ -495,14 +518,29 @@
                             disabled="disabled"
                                 </#if>
                         />-->
-                        <#if   status.statusId == 7 >
+                        <#if  status.statusId == 7 || status.statusId == 6 >
                             disabled="disabled"
                         </#if>
                 />
                 <input class="btn btn-default" id="cancel" type="button" value="取消"
                        onclick="window.history.back();"/>
 
-                <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
+                <#if  status.statusId == 5 >
+                    <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
+                </#if>
+
+                <#if  status.statusId == 6 >
+                    <#if task.typeId = 1 && user2.realName == task.threeBook.auditPerson >
+                        <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
+                        <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
+                    </#if>
+                    <#if task.typeId = 2 && user2.realName == task.detailDraw.auditPerson >
+                        <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
+                        <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
+                    </#if>
+                </#if>
+
+
             </div>
 
         </form>
@@ -514,6 +552,13 @@
 <script type="text/javascript">
     $('#saveandcommit').on("click", function () {
         $('#commit').val('commit');
+        debugger;
+    });
+    $('#commitaccess').on("click", function () {
+        $('#commit').val('access');
+    });
+    $('#notcommitaccess').on("click", function () {
+        $('#commit').val('notaccess');
     });
 
     function updateProcess(button, tbId) {
@@ -541,15 +586,13 @@
         // 获取当前按钮所在的行
         var row = button.parentNode.parentNode;
         var problemDescription = row.cells[2].children[0].value;
-        var problemCount = row.cells[3].children[0].value;
-        var handleMethod = row.cells[4].children[0].value;
-        var processOrderNumber = row.cells[5].children[0].value;
-        var modify = row.cells[6].children[0].value;
-        var remarks = row.cells[7].children[0].value;
+        var handleMethod = row.cells[3].children[0].value;
+        var processOrderNumber = row.cells[4].children[0].value;
+        var modify = row.cells[5].children[0].value;
+        var remarks = row.cells[6].children[0].value;
         $(".xiugai").load("questionedit", {
             ddId: ddId,
             problemDescription: problemDescription,
-            problemCount: problemCount,
             handleMethod: handleMethod,
             processOrderNumber: processOrderNumber,
             modify: modify,
@@ -580,10 +623,12 @@
         });
         $(".zeng2").click(function () {
             var td1 = $('<td class="chebox" colspan="1"></td>').append($('<span class="labels"></span>').append($('<label></label>').append($('<input type="checkbox" name="items"  class="val" >')).append($('<i></i>').text('✓'))));
-            var td2 = $('<td colspan="6"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].problemDescription" style="background-color:#fff;"/>'));
-            var td3 = $('<td colspan="3"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].problemCount" style="background-color:#fff;"/>'));
-
-            var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3);
+            var td2 = $('<td colspan="3"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].problemDescription" style="background-color:#fff;"/>'));
+            var td4 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].handleMethod" style="background-color:#fff;"/>'));
+            var td5 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].processOrderNumber" style="background-color:#fff;"/>'));
+            var td6 = $('<td colspan="1"></td>').append($('<select class="form-control" name="questions[' + i + '].modify"><option value="否">否</option><option value="是">是</option>  <option value="/">/</option></select>'));
+            var td7 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].remarks" style="background-color:#fff;"/>'));
+            var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td4).append(td5).append(td6).append(td7);
             $('.tbody').append(tr);
             i = i + 1;
         });

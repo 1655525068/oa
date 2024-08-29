@@ -216,16 +216,6 @@
                                         >通讯录</span>
                                 </div>
                             </div>
-                            <!-- 处理人 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label" data-toggle="modal">处理人</label>
-                                <input name="processPerson" type="text" id="" class="form-control "
-                                       style="background-color:#fff;"/>
-                                <div class="reciver">
-                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
-                                        >通讯录</span>
-                                </div>
-                            </div>
                             <div class="col-md-4 form-group ">
                                 <label class="control-label">置顶</label>
                                 <span class="labels"><label><input type="checkbox" name="top"

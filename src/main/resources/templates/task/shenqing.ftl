@@ -61,7 +61,7 @@
 
 
         <div class="page-header"></div>
-        <form action="shenqing">
+        <form action="shenqingzhong">
             <div class="row">
                 <div class="box-body" style="margin-left:20px;margin-right: 20px;">
                     <div class=" mailbox-read-info">
@@ -122,9 +122,13 @@
                         <label>
                             <span id="ctl00_cphMain_Label1">状态</span>
                         </label>
-                        <input name="loggerStatusid" type="text" id="" class="form-control"
+                        <input name="" type="text" id="" class="form-control"
                                readonly="readonly"
                                value="${status.statusName}"/>
+
+                        <input name="loggerStatusid" type="text" id="" class="form-control" style="display: none"
+                               readonly="readonly"
+                               value="${status.statusId}"/>
                     </div>
                     <#if task.typeId == 1>
                         <div class="col-md-4 form-group">
@@ -258,7 +262,7 @@
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化责任人</span>
                             </label><input name="processPerson" type="text" id="" class="form-control"
                                            readonly="readonly"
-                                           value="${task.detailDraw.responsiblePerson!''}"/>
+                                           value="${task.detailDraw.processPerson!''}"/>
                         </div>
                         <table class="bo table ">
                             <tr>
@@ -272,7 +276,6 @@
                                             <tr>
                                                 <th colspan="1" style="width: 77px;">选择</th>
                                                 <th colspan="3">问题描述</th>
-                                                <th colspan="1">图纸问题数量</th>
                                                 <th colspan="1">处理方式</th>
                                                 <th colspan="2">处理单号</th>
                                                 <th colspan="1">核实郑分会审单问题是否修改</th>
@@ -296,12 +299,6 @@
                                                                    name="questions[${q_index}].problemDescription"
                                                                    readonly="readonly"
                                                                    value="${q.problemDescription!''}"/>
-                                                        </td>
-                                                        <td colspan="1">
-                                                            <input type="text" class="form-control inpu"
-                                                                   name="questions[${q_index}].problemCount"
-                                                                   readonly="readonly"
-                                                                   value="${q.problemCount!''}"/>
                                                         </td>
                                                         <td colspan="1">
                                                             <input type="text" class="form-control inpu"

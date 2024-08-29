@@ -47,7 +47,6 @@
                             <td><span>${task.threeBook.identifyResponsiblePerson!''}</span></td>
                             <td><span>${task.threeBook.processPerson!''}</span></td>
                             <td><span>${task.threeBook.auditPerson!''}</span></td>
-
                         <#else >
                             <td><span>图纸细化</span></td>
                             <td><span>${task.publishtime!''}</span></td>

@@ -52,7 +52,7 @@
                 <td><span>${detailDraw.planTimeFU!''}</span></td>
                 <td><span>${detailDraw.numberFU!''}</span></td>
                 <td><span>${detailDraw.planCompletionTime!''}</span></td>
-                <td><span>${detailDraw.responsiblePerson!''}</span></td>
+                <td><span>${detailDraw.processPerson!''}</span></td>
                 <td><span>${detailDraw.problemDescription!''}</span></td>
                 <td><span>${detailDraw.problemCount!''}</span></td>
                 <td><span>${detailDraw.handleMethod!''}</span></td>

@@ -68,7 +68,7 @@ public class DetailDraw implements Cloneable {
 
     // 细化责任人
     @Column(name = "responsible_person")
-    private String responsiblePerson;
+    private String processPerson;
 
     // 审核人
     @Column(name = "audit_person")
@@ -222,12 +222,12 @@ public class DetailDraw implements Cloneable {
         this.planCompletionTime = planCompletionTime;
     }
 
-    public String getResponsiblePerson() {
-        return responsiblePerson;
+    public String getProcessPerson() {
+        return processPerson;
     }
 
-    public void setResponsiblePerson(String responsiblePerson) {
-        this.responsiblePerson = responsiblePerson;
+    public void setProcessPerson(String responsiblePerson) {
+        this.processPerson = responsiblePerson;
     }
 
     public String getProblemDescription() {
@@ -358,7 +358,7 @@ public class DetailDraw implements Cloneable {
                 ", planTimeFU='" + planTimeFU + '\'' +
                 ", numberFU='" + numberFU + '\'' +
                 ", planCompletionTime='" + planCompletionTime + '\'' +
-                ", responsiblePerson='" + responsiblePerson + '\'' +
+                ", responsiblePerson='" + processPerson + '\'' +
                 ", handleMethod='" + handleMethod + '\'' +
                 ", processOrderNumber='" + processOrderNumber + '\'' +
                 ", modify='" + modify + '\'' +

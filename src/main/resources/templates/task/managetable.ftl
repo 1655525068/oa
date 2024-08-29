@@ -35,6 +35,7 @@
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
                     <th scope="col">处理人</th>
+                    <th scope="col">审核人</th>
                     <th scope="col" class="co commen">状态<span class="block"></span></th>
                     <th>置顶</th>
                     <th scope="col">操作</th>
@@ -52,6 +53,7 @@
                             <td><span>${task.username!''}</span></td>
                             <td><span>${task.identifyResponsiblePerson!''}</span></td>
                             <td><span>${task.processPerson!''}</span></td>
+                            <td><span>${task.auditPerson!''}</span></td>
                         <#else>
                             <td><span>图纸细化</span></td>
                             <td><span> </span></td>
@@ -60,8 +62,9 @@
                                     ${task.documentCodes!''}&nbsp;/&nbsp;${task.internalDocumentCodes!''}&nbsp;/&nbsp; ${task.catalogNumber!''}
                                 </span></td>
                             <td><span>${task.username!''}</span></td>
+                            <td><span>${task.identifyResponsiblePerson!''}</span></td>
                             <td><span>${task.processPerson!''}</span></td>
-                            <td><span> </span></td>
+                            <td><span>${task.auditPerson!''}</span></td>
                         </#if>
                         <#if task.cancel==true>
                             <td><span class="label label-default">已取消</span></td>

@@ -164,8 +164,7 @@
                             </div>
                             <#--细化责任人-->
                             <div class="col-md-4 form-group">
-                                <label class="control-label">细化责任人</label>
-                                <#--<input class="form-control" name="responsiblePerson" value=""/>-->
+                                <label class="control-label">识别责任人</label>
                                 <input class="form-control" name="reciverlist" value=""/>
                                 <div class="reciver">
                                         <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"

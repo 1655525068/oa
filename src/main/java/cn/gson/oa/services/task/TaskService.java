@@ -163,13 +163,16 @@ public class TaskService {
                 result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
                 result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
+                result.put("auditPerson", task.get(i).getThreeBook().getAuditPerson());
             }
 
             if (task.get(i).getDetailDraw() != null) {
                 result.put("documentCodes", task.get(i).getDetailDraw().getDocumentCodes());
                 result.put("internalDocumentCodes", task.get(i).getDetailDraw().getInternalDocumentCodes());
                 result.put("catalogNumber", task.get(i).getDetailDraw().getCatalogNumber());
-                result.put("processPerson", task.get(i).getDetailDraw().getResponsiblePerson());
+                result.put("identifyResponsiblePerson", task.get(i).getDetailDraw().getIdentifyResponsiblePerson());
+                result.put("processPerson", task.get(i).getDetailDraw().getProcessPerson());
+                result.put("auditPerson", task.get(i).getDetailDraw().getAuditPerson());
             }
             list.add(result);
         }
@@ -271,6 +274,101 @@ public class TaskService {
         return list;
     }
 
+
+    public Page<Tasklist> index33(Long userid, String title, int page, int size) {
+        Pageable pa = new PageRequest(page, size);
+        List<Order> orders = new ArrayList<>();
+        Page<Tasklist> tasklist = null;
+        // 根据接收人id查询任务id
+        List<Long> taskid = tudao.findByUserId(userid);
+        // 类型
+        SystemTypeList type = tydao.findByTypeModelAndTypeName("aoa_task_list", title);
+        // 状态
+        SystemStatusList status = sdao.findByStatusModelAndStatusName("aoa_task_list", title);
+        // 找用户
+        User user = udao.findByUserName(title);
+
+        if (StringUtil.isEmpty(title)) {
+            orders.addAll(Arrays.asList(new Order(Direction.ASC, "cancel"), new Order(Direction.ASC, "statusId")));
+            Sort sort = new Sort(orders);
+            pa = new PageRequest(page, size, sort);
+            if (taskid.size() > 0) {
+
+                tasklist = tdao.findTaskByTaskIdsAndStatusId(taskid, 6, pa);
+            }
+        } else if (!Objects.isNull(type)) {
+
+            tasklist = tdao.findtaskTypeIdAndTaskIdAndStatusId(type.getTypeId(), taskid, 6, pa);
+
+        } else if (!Objects.isNull(status)) {
+            // Long转换成Integer
+            Integer statusid = Integer.parseInt(status.getStatusId().toString());
+            // 根据找出的taskid和状态id查找任务
+            tasklist = tdao.findtaskStatusIdAndCancelAndTaskId(6, taskid, pa);
+
+        } else if (("已取消").equals(title)) {
+            tasklist = tdao.findtaskCancelAndTaskIdAndStatusId(true, taskid, 6, pa);
+
+        } else if (!Objects.isNull(user)) {
+
+            tasklist = tdao.findtaskUsersIdAndTaskIdAndStatusId(user, taskid, 6, pa);
+
+        } else {
+            // 根据title和taskid进行模糊查询
+            tasklist = tdao.findtaskByTitleLikeAndTaskIdAndStatusId(taskid, title, 6, pa);
+
+
+        }
+
+        return tasklist;
+    }
+
+    public List<Map<String, Object>> index44(Page<Tasklist> tasklist, Long userid) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        if (tasklist != null) {
+
+            List<Tasklist> task = tasklist.getContent();
+
+            for (int i = 0; i < task.size(); i++) {
+                Map<String, Object> result = new HashMap<>();
+                // 查询任务id
+                Long tid = task.get(i).getTaskId();
+
+                // 查询接收人的任务状态id
+                Long statusid = tudao.findByuserIdAndTaskId(userid, tid);
+
+                // 查询发布人
+                User ptu = udao.findOne(task.get(i).getUsersId().getUserId());
+                String username = ptu.getUserName();
+                String deptname = ddao.findname(ptu.getDept().getDeptId());
+
+                result.put("taskid", tid);
+                result.put("typename", tydao.findname(task.get(i).getTypeId()));
+                if (task.get(i).getTypeId() == 1) {
+                    result.put("threeBook", bdao.findOneByBookId(task.get(i).getThreeBook().getBookId()));
+                }
+                if (task.get(i).getTypeId() == 2) {
+                    result.put("detailDraw", dddao.findOneByBookId(task.get(i).getDetailDraw().getBookId()));
+                }
+
+                result.put("statusname", sdao.findname(statusid));
+                result.put("statuscolor", sdao.findcolor(statusid));
+                result.put("title", task.get(i).getTitle());
+                result.put("publishtime", task.get(i).getPublishTime());
+                result.put("zhiding", task.get(i).getTop());
+                result.put("cancel", task.get(i).getCancel());
+                result.put("username", username);
+                result.put("deptname", deptname);
+                //type
+                result.put("type", task.get(i).getTypeId());
+
+                list.add(result);
+            }
+        }
+
+        return list;
+    }
+
     public ThreeBook updateThreeBook(HttpServletRequest req, ThreeBook threeBook) {
 
         // 更新三单
@@ -293,9 +391,9 @@ public class TaskService {
 //            // 处理单号
 //            String processOrderNumber = req.getParameter("processOrderNumber");
 //            threeBook.setProcessOrderNumber(processOrderNumber);
-//            // 处理完成时间
-//            String processCompletionTime = req.getParameter("processCompletionTime");
-//            threeBook.setProcessCompletionTime(processCompletionTime);
+        // 处理完成时间
+        // String processCompletionTime = req.getParameter("processCompletionTime");
+        //threeBook.setProcessCompletionTime(processCompletionTime);
         // 责任方
         String processResponsibleParty = req.getParameter("processResponsibleParty");
         threeBook.setProcessResponsibleParty(processResponsibleParty);
@@ -320,9 +418,9 @@ public class TaskService {
 
     public DetailDraw updateDetailDraw(HttpServletRequest req, DetailDraw detailDraw) {
 
-        //细化责任人
+        // 细化责任人
         String processPerson = req.getParameter("processPerson");
-        detailDraw.setResponsiblePerson(processPerson);
+        detailDraw.setProcessPerson(processPerson);
         // 处理方式
         String handleMethod = req.getParameter("handleMethod");
         detailDraw.setHandleMethod(handleMethod);

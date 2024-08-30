@@ -68,6 +68,14 @@ public class ThreeBookProcess {
         this.tbs = tbs;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "ThreeBookProcess{" +
+                "tbId=" + tbId +
+                ", handleMethod='" + handleMethod + '\'' +
+                ", processOrderNumber='" + processOrderNumber + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", tbs=" + tbs +
+                '}';
+    }
 }

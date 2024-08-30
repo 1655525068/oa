@@ -430,8 +430,6 @@ public class TaskController {
         tldao.save(logger);
         // 修改任务状态
         tservice.updateStatusid(logger.getTaskId().getTaskId(), logger.getLoggerStatusid());
-        // 修改任务中间表状态
-//        tservice.updateUStatusid(logger.getTaskId().getTaskId(), logger.getLoggerStatusid());
 
         User findUser = null;
         if (task.getTypeId() == 1) {
@@ -659,7 +657,7 @@ public class TaskController {
                 }
             });
             if ("access".equals(commit)) {
-                if (finalLogger1.getLoggerStatusid() != 8 && task.getDetailDraw().getCompletionTime().isEmpty())
+                if (finalLogger1.getLoggerStatusid() != 8 && task.getDetailDraw().getCompletionTime() == null || task.getDetailDraw().getCompletionTime().isEmpty())
                     task.getDetailDraw().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
             }
             // 处理单号
@@ -801,9 +799,15 @@ public class TaskController {
                 StringTokenizer st = new StringTokenizer(task.getReciverlist() + ";" + task.getThreeBook().getProcessPerson(), ";");
                 while (st.hasMoreElements()) {
                     User reciver = udao.findid(st.nextToken());
-                    Long pkid = udao.findpkId(task.getTaskId(), reciver.getUserId());
-                    int m = tservice.delete(pkid);
-                    System.out.println(m + "sssssssssss111");
+                    if (reciver != null) {
+                        Long pkid = udao.findpkId(task.getTaskId(), reciver.getUserId());
+                        if (pkid != null) {
+                            int m = tservice.delete(pkid);
+                            System.out.println(m + "sssssssssss111");
+                        }
+                    }
+
+
                 }
             }
             if (task.getDetailDraw() != null) {

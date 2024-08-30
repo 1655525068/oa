@@ -365,31 +365,34 @@
                             <input class="form-control" name="completionTime" readonly
                                    value="${task.threeBook.completionTime!''}"/>
                         </div>
-                        <div class="col-md-4 form-group">
-                            <label class="control-label">责任方</label>
-                            <select name="processResponsibleParty"
-                                    class="form-control">
-                                <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
-                                <option value="设计院">设计院</option>
-                                <option value="施工承包商">施工承包商</option>
-                                <option value="细化引起">细化引起</option>
-                                <option value="工程公司">工程公司</option>
-                                <option value="业主">业主</option>
-                                <option value="其他">其他</option>
-                                <option value="/">/</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label class="control-label">是否涉及索赔</label>
-                            <select name="shouldClaim"
-                                    class="form-control">
-                                <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
-                                <option value="">/</option>
-                                <option value="否">否</option>
-                                <option value="是">是</option>
+                        <#if task.threeBook.type != "CR">
+                            <div class="col-md-4 form-group">
+                                <label class="control-label">责任方</label>
+                                <select name="processResponsibleParty"
+                                        class="form-control">
+                                    <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
+                                    <option value="设计院">设计院</option>
+                                    <option value="施工承包商">施工承包商</option>
+                                    <option value="细化引起">细化引起</option>
+                                    <option value="工程公司">工程公司</option>
+                                    <option value="业主">业主</option>
+                                    <option value="其他">其他</option>
+                                    <option value="/">/</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class="control-label">是否涉及索赔</label>
+                                <select name="shouldClaim"
+                                        class="form-control">
+                                    <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
+                                    <option value="">/</option>
+                                    <option value="否">否</option>
+                                    <option value="是">是</option>
 
-                            </select>
-                        </div>
+                                </select>
+                            </div>
+                        </#if>
+
                     <#--设计点值-->
                         <div class="col-md-4 form-group">
                             <label> <span>设计点值</span> </label>

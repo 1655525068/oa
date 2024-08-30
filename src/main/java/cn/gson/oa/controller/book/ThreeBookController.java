@@ -56,10 +56,22 @@ public class ThreeBookController {
         List<ThreeBook> threeBooks1 = new ArrayList<>();
         for (ThreeBook threeBook : threeBooks) {
             if (threeBook.getProcesses().size() > 0) {
+                int i = 1;
+                StringBuilder handleMethod = new StringBuilder();
+                StringBuilder processOrderNumber = new StringBuilder();
+                StringBuilder remarks = new StringBuilder();
                 for (ThreeBookProcess process : threeBook.getProcesses()) {
-                    ThreeBook t = (ThreeBook) threeBook.clone();
-                    threeBooks1.add(createThreeBook(t, process));
+                    System.out.println(process);
+                    handleMethod.append(i).append(".").append(process.getHandleMethod()).append("<br>");
+                    processOrderNumber.append(i).append(".").append(process.getProcessOrderNumber()).append("<br>");
+                    remarks.append(i).append(".").append(process.getRemarks()).append("<br>");
+                    i++;
+
                 }
+                threeBook.setHandleMethod(handleMethod.toString());
+                threeBook.setProcessOrderNumber(processOrderNumber.toString());
+                threeBook.setRemarks(remarks.toString());
+                threeBooks1.add(threeBook);
             } else
                 threeBooks1.add(createThreeBook(threeBook, null));
         }
@@ -89,10 +101,22 @@ public class ThreeBookController {
         List<ThreeBook> threeBooks1 = new ArrayList<>();
         for (ThreeBook threeBook : threeBooks) {
             if (threeBook.getProcesses().size() > 0) {
+                int i = 1;
+                StringBuilder handleMethod = new StringBuilder();
+                StringBuilder processOrderNumber = new StringBuilder();
+                StringBuilder remarks = new StringBuilder();
                 for (ThreeBookProcess process : threeBook.getProcesses()) {
-                    ThreeBook t = (ThreeBook) threeBook.clone();
-                    threeBooks1.add(createThreeBook(t, process));
+                    System.out.println(process);
+                    handleMethod.append(i).append(".").append(process.getHandleMethod()).append("<br>");
+                    processOrderNumber.append(i).append(".").append(process.getProcessOrderNumber()).append("<br>");
+                    remarks.append(i).append(".").append(process.getRemarks()).append("<br>");
+                    i++;
+
                 }
+                threeBook.setHandleMethod(handleMethod.toString());
+                threeBook.setProcessOrderNumber(processOrderNumber.toString());
+                threeBook.setRemarks(remarks.toString());
+                threeBooks1.add(threeBook);
             } else
                 threeBooks1.add(createThreeBook(threeBook, null));
         }
@@ -126,12 +150,25 @@ public class ThreeBookController {
         List<ThreeBook> threeBooks3 = new ArrayList<>();
 
         int index = 1;
+
+
         for (ThreeBook threeBook : threeBooks) {
             if (threeBook.getProcesses().size() > 0) {
+                int i = 1;
+                StringBuilder handleMethod = new StringBuilder();
+                StringBuilder processOrderNumber = new StringBuilder();
+                StringBuilder remarks = new StringBuilder();
                 for (ThreeBookProcess process : threeBook.getProcesses()) {
-                    ThreeBook t = (ThreeBook) threeBook.clone();
-                    threeBooks1.add(createThreeBook(t, process));
+                    handleMethod.append(i).append(".").append(process.getHandleMethod()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
+                    processOrderNumber.append(i).append(".").append(process.getProcessOrderNumber()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
+                    remarks.append(i).append(".").append(process.getRemarks()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
+                    i++;
+
                 }
+                threeBook.setHandleMethod(handleMethod.toString());
+                threeBook.setProcessOrderNumber(processOrderNumber.toString());
+                threeBook.setRemarks(remarks.toString());
+                threeBooks1.add(threeBook);
             } else
                 threeBooks1.add(createThreeBook(threeBook, null));
         }
@@ -167,7 +204,6 @@ public class ThreeBookController {
 
     private ThreeBook createThreeBook(ThreeBook tb, ThreeBookProcess pro) {
         if (pro != null) {
-            tb.setHandleMethod(pro.getHandleMethod());
             tb.setProcessOrderNumber(pro.getProcessOrderNumber());
             tb.setRemarks(pro.getRemarks());
         } else {

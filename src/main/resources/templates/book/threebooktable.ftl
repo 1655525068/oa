@@ -22,6 +22,7 @@
             <th style="background-color: yellow" scope="col">责任方</th>
             <th style="background-color: greenyellow" scope="col">识别责任人</th>
             <th style="background-color: greenyellow" scope="col">处理人</th>
+            <th style="background-color: greenyellow" scope="col">审核人</th>
             <th style="background-color: red" scope="col">是否需要处理</th>
             <th style="background-color: red" scope="col">处理方式</th>
             <th style="background-color: red" scope="col">处理单号</th>
@@ -63,10 +64,11 @@
                 <td><span>${threeBook.responsibleParty!''}</span></td>
                 <td><span>${threeBook.identifyResponsiblePerson!''}</span></td>
                 <td><span>${threeBook.processPerson!''}</span></td>
+                <td><span>${threeBook.auditPerson!''}</span></td>
                 <td><span>${threeBook.shouldHandle!''}</span></td>
                 <td><span>${threeBook.handleMethod!''}</span></td>
                 <td><span>${threeBook.processOrderNumber!''}</span></td>
-                <td><span>${threeBook.processCompletionTime!''}</span></td>
+                <td><span>${threeBook.completionTime!''}</span></td>
                 <td><span>${threeBook.processResponsibleParty!''}</span></td>
                 <td><span>${threeBook.remarks!''}</span></td>
                 <td><span>${threeBook.shouldClaim!''}</span></td>

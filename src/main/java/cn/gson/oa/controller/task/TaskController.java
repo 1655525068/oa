@@ -388,7 +388,7 @@ public class TaskController {
                     process.setTbs(task.getThreeBook());
                     if (process.getTbId() != null) {
                         tbpDao.save(process);
-                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessResponsibleParty().trim().length() == 0 && process.getRemarks().trim().length() == 0 && process.getShouldClaim().trim().length() == 0)) {
+                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getRemarks().trim().length() == 0)) {
                         tbpDao.save(process);
                     }
                 }
@@ -608,9 +608,6 @@ public class TaskController {
         if (commit.isEmpty() && req.getParameter("processPerson") != null) {
             logger.setLoggerStatusid(5);
         }
-        System.out.println(logger.getLoggerStatusid());
-        // 获取用户id
-
         // 查找用户
         User user = udao.findOne(userId);
         // 查任务
@@ -625,26 +622,22 @@ public class TaskController {
         if (task.getTypeId() == 1) {
             // 查三单
             threeBook = task.getThreeBook();
-
             // 获取原三单处理人
             Taskuser taskuser = tudao.findByuserNameAndTaskId(task.getThreeBook().getProcessPerson(), task.getTaskId());
-            System.out.println(taskuser);
             taskuser1 = taskuser;
             // 更新三单
             threeBook = tservice.updateThreeBook(req, threeBook);
-
             task.getThreeBook().setShouldHandle(tb.getShouldHandle());
+            if ("access".equals(commit)) {
+                task.getThreeBook().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
+            }
             tdao.save(task);
-            System.out.println(tb.getProcesses());
             if (tb.getProcesses() != null) {
                 for (ThreeBookProcess process : tb.getProcesses()) {
                     process.setTbs(task.getThreeBook());
-                    if (tb.getProcessCompletionTime() == null) {
-                        process.setProcessCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
-                    }
                     if (process.getTbId() != null) {
                         tbpDao.save(process);
-                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getProcessResponsibleParty().trim().length() == 0 && process.getRemarks().trim().length() == 0 && process.getShouldClaim().trim().length() == 0)) {
+                    } else if (!(process.getHandleMethod().trim().length() == 0 && process.getProcessOrderNumber().trim().length() == 0 && process.getRemarks().trim().length() == 0)) {
                         tbpDao.save(process);
                     }
                 }
@@ -653,49 +646,65 @@ public class TaskController {
             tservice.updateLogger(req, logger, "three");
         }
         if (task.getTypeId() == 2) {
-
             // 查细化
             detailDraw = task.getDetailDraw();
-
             Taskuser taskuser = tudao.findByuserNameAndTaskId(detailDraw.getProcessPerson(), task.getTaskId());
             taskuser1 = taskuser;
-            // 处理方式
-            task.getDetailDraw().setHandleMethod(dd.getHandleMethod());
+            // 是否需要处理
+            task.getDetailDraw().setShouldHandle(dd.getShouldHandle());
+            Tasklogger finalLogger1 = logger;
+            task.getDetailDraw().getQuestions().forEach(x -> {
+                if (x.getHandleMethod().isEmpty()) {
+                    finalLogger1.setLoggerStatusid(8);
+                }
+            });
+            if ("access".equals(commit)) {
+                if (finalLogger1.getLoggerStatusid() != 8 && task.getDetailDraw().getCompletionTime().isEmpty())
+                    task.getDetailDraw().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
+            }
             // 处理单号
             tdao.save(task);
-
             // 填写问题
-            System.out.println(dd.getQuestions());
             if (dd.getQuestions() != null) {
                 for (DetailDrawQuestion question : dd.getQuestions()) {
                     question.setDds(task.getDetailDraw());
                     if (question.getDdId() != null) {
                         ddqDao.save(question);
-                    } else if (!(question.getProblemDescription().trim().length() == 0 && question.getProblemCount().trim().length() == 0)) {
+                    } else if (!(question.getProblemDescription().trim().length() == 0 && question.getHandleMethod().trim().length() == 0 && question.getProcessOrderNumber().trim().length() == 0 && question.getModify().trim().length() == 0 && question.getRemarks().trim().length() == 0)) {
                         ddqDao.save(question);
                     }
                 }
             }
             tservice.updateDetailDraw(req, task.getDetailDraw());
             // 更新日志
-            logger = tservice.updateLogger(req, logger, "xihua");
+            logger = tservice.updateLogger(req, finalLogger1, "xihua");
         }
 
-        // 存日志
-        tldao.save(logger);
 
         // 修改任务中间表状态
         Long pkid = udao.findpkId(logger.getTaskId().getTaskId(), userId);
-        Taskuser tasku = new Taskuser();
-        tasku.setPkId(pkid);
-        tasku.setTaskId(task);
-        tasku.setUserId(user);
-        if (!Objects.isNull(logger.getLoggerStatusid())) {
+        Taskuser tu = tudao.findByuserIdAndTaskId2(userId, logger.getTaskId().getTaskId());
+        if (tu == null) {
+            Taskuser tasku = new Taskuser();
+            tasku.setPkId(pkid);
+            tasku.setTaskId(task);
+            tasku.setUserId(user);
+            if (!Objects.isNull(logger.getLoggerStatusid())) {
+                tasku.setStatusId(logger.getLoggerStatusid());
+            }
+            // 存任务中间表
+            tudao.save(tasku);
+        } else {
+            tu.setPkId(pkid);
+            tu.setTaskId(task);
+            tu.setUserId(user);
+            if (!Objects.isNull(logger.getLoggerStatusid())) {
 
-            tasku.setStatusId(logger.getLoggerStatusid());
+                tu.setStatusId(logger.getLoggerStatusid());
+            }
+            // 存任务中间表
+            tudao.save(tu);
         }
-        // 存任务中间表
-        tudao.save(tasku);
 
         User findUser = null;
         if (task.getTypeId() == 1) {
@@ -704,14 +713,12 @@ public class TaskController {
         if (task.getTypeId() == 2) {
             findUser = udao.findid(task.getDetailDraw().getProcessPerson());
         }
-
         if (taskuser1 != null) {
             if (!req.getParameter("processPerson").equals(user.getUserName())) {
                 tudao.delete(taskuser1);
                 taskuser1.setUserId(findUser);
                 tudao.save(taskuser1);
             }
-
         } else {
             Taskuser tasku2 = new Taskuser();
             tasku2.setTaskId(task);
@@ -722,7 +729,6 @@ public class TaskController {
             }
             tudao.save(tasku2);
         }
-
         // logger.getLoggerStatusid()
         List<Taskuser> tus = udao.findpkIdList(logger.getTaskId().getTaskId());
         Tasklogger finalLogger = logger;
@@ -731,9 +737,11 @@ public class TaskController {
             tudao.save(x);
         }));
         // 修改任务状态
+        // 存日志
+        tldao.save(finalLogger);
         // 通过任务id查看总状态
 
-        List<Integer> statu = tudao.findByTaskId(logger.getTaskId().getTaskId());
+        List<Integer> statu = tudao.findByTaskId(finalLogger.getTaskId().getTaskId());
         System.out.println(statu);
         // 选出最小的状态id 修改任务表里面的状态
         Integer min = statu.get(0);
@@ -742,8 +750,7 @@ public class TaskController {
                 min = integer;
             }
         }
-
-        int up = tservice.updateStatusid(logger.getTaskId().getTaskId(), min);
+        int up = tservice.updateStatusid(finalLogger.getTaskId().getTaskId(), min);
 
         if (up > 0) {
             System.out.println("任务状态修改成功!");
@@ -850,10 +857,7 @@ public class TaskController {
         ThreeBookProcess tp = tbpDao.findByAndTbId(pro.getTbId());
         tp.setHandleMethod(pro.getHandleMethod());
         tp.setProcessOrderNumber(pro.getProcessOrderNumber());
-        tp.setProcessCompletionTime(pro.getProcessCompletionTime());
-        tp.setProcessResponsibleParty(pro.getProcessResponsibleParty());
         tp.setRemarks(pro.getRemarks());
-        tp.setShouldClaim(pro.getShouldClaim());
         tbpDao.save(tp);
         return "";
     }

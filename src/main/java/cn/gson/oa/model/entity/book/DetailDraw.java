@@ -76,6 +76,9 @@ public class DetailDraw implements Cloneable {
     // 问题
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dds", orphanRemoval = true)
     private List<DetailDrawQuestion> questions;
+    // 是否需要处理
+    @Column(name = "should_handle")
+    private String shouldHandle;
     // 问题描述
     @Column(name = "problem_description")
     private String problemDescription;
@@ -340,6 +343,14 @@ public class DetailDraw implements Cloneable {
 
     public void setAuditPerson(String auditPerson) {
         this.auditPerson = auditPerson;
+    }
+
+    public String getShouldHandle() {
+        return shouldHandle;
+    }
+
+    public void setShouldHandle(String shouldHandle) {
+        this.shouldHandle = shouldHandle;
     }
 
     @Override

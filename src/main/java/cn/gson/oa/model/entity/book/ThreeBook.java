@@ -144,6 +144,10 @@ public class ThreeBook implements Cloneable {
     @Column(name = "actual_close_time")
     private String actualCloseTime;
 
+    // 完成时间
+    @Column(name = "completion_time")
+    private String completionTime;
+
     // 设计点值
     @Column(name = "design_point_value")
     private String designPointValue;
@@ -429,6 +433,14 @@ public class ThreeBook implements Cloneable {
 
     public void setLoggerTicking(String loggerTicking) {
         this.loggerTicking = loggerTicking;
+    }
+
+    public String getCompletionTime() {
+        return completionTime;
+    }
+
+    public void setCompletionTime(String completionTime) {
+        this.completionTime = completionTime;
     }
 
     @Override

@@ -1,7 +1,7 @@
 <div class="table-responsive">
     <table class="table table-hover table-condensed" style="min-width: 3500px;">
         <tr>
-            <#if user.role.roleName =='主任'>
+            <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员' >
                 <th scope="col">操作</th>
             </#if>
             <th style="background-color: yellow" scope="col">序号</th>
@@ -27,13 +27,13 @@
             <th style="background-color: greenyellow" scope="col">完成时间</th>
             <th style="background-color: greenyellow" scope="col">设计点值</th>
             <th style="background-color: greenyellow" scope="col">审核点值</th>
-            <#if user.role.roleName =='主任'>
+            <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                 <th scope="col">操作</th>
             </#if>
         </tr>
         <#list detailDraws as detailDraw>
             <tr>
-                <#if user.role.roleName =='主任'>
+                <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                     <td><a href="deletedetaildraw?bookId=${detailDraw.bookId}"
                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                            class="label shanchu"><span
@@ -62,7 +62,7 @@
                 <td><span>${detailDraw.completionTime!''}</span></td>
                 <td><span>${detailDraw.designPointValue!''}</span></td>
                 <td><span>${detailDraw.auditPointValue!''}</span></td>
-                <#if user.role.roleName =='主任'>
+                <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                     <td><a href="deletedetaildraw?bookId=${detailDraw.bookId}"
                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                            class="label shanchu"><span

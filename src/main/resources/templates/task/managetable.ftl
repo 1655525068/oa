@@ -32,6 +32,7 @@
                     <th scope="col" class="co commen">类型<span></span></th>
                     <th scope="col" class="co commen">发布时间<span class="block"></span></th>
                     <th scope="col">三单号/文件编码/编号/图册号</th>
+                    <th scope="col">专业(图纸类型)</th>
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
                     <th scope="col">处理人</th>
@@ -50,17 +51,19 @@
                             <td><span>${task.threeType!''}</span></td>
                             <td><span>${task.publishtime!''}</span></td>
                             <td><span>${task.threeBookNumbers!''}</span></td>
+                            <td><span>${task.professionalType!''}</span></td>
                             <td><span>${task.username!''}</span></td>
                             <td><span>${task.identifyResponsiblePerson!''}</span></td>
                             <td><span>${task.processPerson!''}</span></td>
                             <td><span>${task.auditPerson!''}</span></td>
                         <#else>
-                            <td><span>图纸细化</span></td>
+                            <td><span>图纸</span></td>
                             <td><span> </span></td>
                             <td><span>${task.publishtime!''}</span></td>
                             <td><span>
                                     ${task.documentCodes!''}&nbsp;/&nbsp;${task.internalDocumentCodes!''}&nbsp;/&nbsp; ${task.catalogNumber!''}
                                 </span></td>
+                            <td><span>${task.professionalType!''}&nbsp;/&nbsp;${task.drawingType!''}</span></td>
                             <td><span>${task.username!''}</span></td>
                             <td><span>${task.identifyResponsiblePerson!''}</span></td>
                             <td><span>${task.processPerson!''}</span></td>

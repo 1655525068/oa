@@ -81,6 +81,10 @@
                                 <span id="">&nbsp;&nbsp;内部文件编号：${task.detailDraw.internalDocumentCodes!''}</span>
                                 <span id="">&nbsp;&nbsp;图册号：${task.detailDraw.catalogNumber!''}</span>
                             </#if>
+                            <span id="ctl00_cphMain_lblDate"
+                                  class="mailbox-read-time pull-right">状态：<i class="label ${status.statusColor}">
+                                    ${(status.statusName)!''}
+                                </i></span>
                         </h3>
                         <h5 class="fonts">
 
@@ -182,20 +186,23 @@
 							</span> <span id="ctl00_cphMain_lblNote"></span>
                     </div>
                     <div class="page-header page"></div>
-                    <div class="col-md-4 form-group">
-                        <label> <span>状态</span> </label>
-                        <select name="loggerStatusid" class="form-control">
-                            <option value="${status.statusId}">${status.statusName}</option>
-                            <#if status.statusId==5> <#else>
-                                <option value="5">进行中</option></#if>
-                            <#if status.statusId==7> <#else>
-                                <option value="7">已完成</option></#if>
-                        </select>
-                    </div>
-
-                    <#if task.typeId == 1>
+                    <select name="loggerStatusid" id="ctl00_cphMain_ddlStatus"
+                            class="form-control select2 ddlstatus" style="display: none">
+                        <option value="${status.statusId}">${status.statusName}</option>
+                    </select>
+                    <#if task.typeId ==1 >
                         <div class="col-md-4 form-group">
-                            <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">三单处理人</span>
+                            <label>
+                                <span id="ctl00_cphMain_Label1">专业</span>
+                            </label>
+                            <select name="professionalType" id="ctl00_cphMain_ddlStatus"
+                                    class="form-control select2 ddlstatus">
+                                <option value="${task.threeBook.professionalType}">${task.threeBook.professionalType}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">处理人</span>
                             </label><input name="processPerson" type="text" id="" class="form-control"
                                            value="${task.threeBook.processPerson!''}"/>
                             <div class="reciver">
@@ -203,7 +210,63 @@
                                         >通讯录</span>
                             </div>
                         </div>
+                        <div class="col-md-4 form-group">
+                            <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
+                            <select name="shouldHandle" class="form-control">
+                                <#if task.threeBook.shouldHandle ??>
+                                    <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
+                                </#if>
+                                <option value="">/</option>
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                    <#else >
+                        <div class="col-md-3 form-group">
+                            <label>
+                                <span id="ctl00_cphMain_Label1">专业</span>
+                            </label>
+                            <select name="professionalType" id="ctl00_cphMain_ddlStatus"
+                                    class="form-control select2 ddlstatus">
+                                <option value="${task.detailDraw.professionalType}">${task.detailDraw.professionalType}</option>
 
+                            </select>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>
+                                <span id="ctl00_cphMain_Label1">图纸类型</span>
+                            </label>
+                            <select name="professionalType" id="ctl00_cphMain_ddlStatus"
+                                    class="form-control select2 ddlstatus">
+                                <option value="${task.detailDraw.drawingType}">${task.detailDraw.drawingType}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化责任人</span>
+                            </label><input name="processPerson" type="text" id="" class="form-control"
+                                           value="${task.detailDraw.processPerson!''}"/>
+                            <div class="reciver">
+                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
+                                        >通讯录</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
+                            <select name="shouldHandle" class="form-control">
+                                <#if task.detailDraw.shouldHandle ??>
+                                    <option value="${task.detailDraw.shouldHandle}">${task.detailDraw.shouldHandle}</option>
+                                </#if>
+                                <option value="">/</option>
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+
+                            </select>
+                        </div>
+
+                    </#if>
+
+                    <#if task.typeId == 1>
                         <#if task.threeBook.type == "CR">
                         <#--CR--填写关闭时间-->
                             <div class="col-md-4 form-group">
@@ -218,18 +281,6 @@
                                                value="${task.threeBook.actualCloseTime!''}"/>
                             </div>
                         <#else>
-                        <#--填写处理方式-->
-                            <div class="col-md-4 form-group">
-                                <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
-                                <select name="shouldHandle" class="form-control">
-                                    <#if task.threeBook.shouldHandle ??>
-                                        <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
-                                    </#if>
-                                    <option value="是">是</option>
-                                    <option value="否">否</option>
-                                    <option value="/">/</option>
-                                </select>
-                            </div>
                         <#--table-->
                             <table class="bo table ">
                                 <tr>
@@ -247,10 +298,7 @@
                                                     <th colspan="1" style="width: 77px;">选择</th>
                                                     <th colspan="1">处理方式</th>
                                                     <th colspan="2">处理单号</th>
-                                                    <th colspan="1">处理时间</th>
-                                                    <th colspan="2">责任方</th>
                                                     <th colspan="2">备注</th>
-                                                    <th colspan="1">涉及索赔</th>
                                                     <#if  status.statusId = 6 || status.statusId = 7 >
                                                     <#else >
                                                         <th colspan="2">操作</th>
@@ -283,42 +331,16 @@
                                                                        value="${pro.processOrderNumber!''}"
                                                                        style="background-color:#fff;"/>
                                                             </td>
-                                                            <td colspan="1"><input type="text"
-                                                                                   class="form-control inpu processCompletionTime"
-                                                                                   name="processes[${pro_index}].processCompletionTime"
-                                                                                   value="${pro.processCompletionTime!''}"/>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <select name="processes[${pro_index}].processResponsibleParty"
-                                                                        class="form-control">
-                                                                    <option value="${pro.processResponsibleParty!''}">${pro.processResponsibleParty!''}</option>
-                                                                    <option value="设计院">设计院</option>
-                                                                    <option value="施工承包商">施工承包商</option>
-                                                                    <option value="细化引起">细化引起</option>
-                                                                    <option value="工程公司">工程公司</option>
-                                                                    <option value="业主">业主</option>
-                                                                    <option value="其他">其他</option>
-                                                                    <option value="/">/</option>
-                                                                </select>
-                                                            </td>
                                                             <td colspan="2"><input type="text" class="form-control inpu"
                                                                                    name="processes[${pro_index}].remarks"
                                                                                    value="${pro.remarks!''}"/></td>
-                                                            <td colspan="1">
-                                                                <select name="processes[${pro_index}].shouldClaim"
-                                                                        class="form-control">
-                                                                    <option value="${pro.shouldClaim!''}">${pro.shouldClaim!''}</option>
-                                                                    <option value="否">否</option>
-                                                                    <option value="是">是</option>
-                                                                    <option value="/">/</option>
-                                                                </select>
-                                                            </td>
                                                             <#if  status.statusId = 6 || status.statusId = 7 >
                                                             <#else >
                                                                 <td colspan="2">
                                                                     <a onclick="updateProcess(this,${pro.tbId})"
                                                                        class="label xiugai"><span
-                                                                                class="glyphicon glyphicon-edit"></span> 修改</a>
+                                                                                class="glyphicon glyphicon-edit"></span>
+                                                                        修改</a>
                                                                     <a
                                                                             onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                                                                             href="processremove?tbId=${pro.tbId}"
@@ -338,30 +360,38 @@
                             </table>
 
                         </#if>
-                    <#--设计点值-->
                         <div class="col-md-4 form-group">
-                            <label> <span>设计点值</span> </label>
-                            <input name="designPointValue" type="text" id="" class="form-control"
-                                   value="${task.threeBook.designPointValue!''}"/>
+                            <label class="control-label">完成时间</label>
+                            <input class="form-control" name="completionTime" readonly
+                                   value="${task.threeBook.completionTime!''}"/>
                         </div>
-
-                    <#--审核点值-->
                         <div class="col-md-4 form-group">
-                            <label> <span>审核点值</span> </label>
-                            <input name="auditPointValue" type="text" id="" class="form-control"
-                                   value="${task.threeBook.auditPointValue!''}"/>
+                            <label class="control-label">责任方</label>
+                            <select name="processResponsibleParty"
+                                    class="form-control">
+                                <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
+                                <option value="设计院">设计院</option>
+                                <option value="施工承包商">施工承包商</option>
+                                <option value="细化引起">细化引起</option>
+                                <option value="工程公司">工程公司</option>
+                                <option value="业主">业主</option>
+                                <option value="其他">其他</option>
+                                <option value="/">/</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">是否涉及索赔</label>
+                            <select name="shouldClaim"
+                                    class="form-control">
+                                <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
+                                <option value="">/</option>
+                                <option value="否">否</option>
+                                <option value="是">是</option>
+
+                            </select>
                         </div>
 
                     <#else >
-                        <div class="col-md-4 form-group">
-                            <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化处理人</span>
-                            </label><input name="processPerson" type="text" id="" class="form-control"
-                                           value="${task.detailDraw.processPerson!''}"/>
-                            <div class="reciver">
-                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
-                                        >通讯录</span>
-                            </div>
-                        </div>
                         <table class="bo table ">
                             <tr>
                                 <td class="title"><label class="control-label">填写问题</label></td>
@@ -417,10 +447,13 @@
                                                                    style="background-color:#fff;"/>
                                                         </td>
                                                         <td colspan="1">
-                                                            <input type="text" class="form-control inpu"
-                                                                   name="questions[${q_index}].modify"
-                                                                   value="${q.modify!''}"
-                                                                   style="background-color:#fff;"/>
+                                                            <select name="questions[${q_index}].modify"
+                                                                    class="form-control">
+                                                                <option value="${q.modify!''}">${q.modify!''}</option>
+                                                                <option value="">/</option>
+                                                                <option value="是">是</option>
+                                                                <option value="否">否</option>
+                                                            </select>
                                                         </td>
                                                         <td colspan="1">
                                                             <input type="text" class="form-control inpu"
@@ -495,7 +528,7 @@
                        onclick="window.history.back();"/>
 
 
-                <#if  status.statusId == 5 >
+                <#if  status.statusId == 5 || status.statusId == 8 >
                     <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
                 </#if>
 
@@ -523,14 +556,12 @@
         var row = button.parentNode.parentNode;
         var handleMethod = row.querySelector('select');
         var processOrderNumber = row.cells[3].children[0].value;
-        var processCompletionTime = row.cells[4].children[0].value;
-        var remarks = row.cells[5].children[0].value;
+        var remarks = row.cells[4].children[0].value;
         $(".xiugai").load("processedit", {
             tbId: tbId,
             handleMethod: handleMethod.value,
             processOrderNumber: processOrderNumber,
-            processCompletionTime: processCompletionTime,
-            remarks: remarks
+            remarks: remarks,
         });
         window.location.href = "/taskmanage";
     };
@@ -539,11 +570,17 @@
         // 获取当前按钮所在的行
         var row = button.parentNode.parentNode;
         var problemDescription = row.cells[2].children[0].value;
-        var problemCount = row.cells[3].children[0].value;
+        var handleMethod = row.cells[3].children[0].value;
+        var processOrderNumber = row.cells[4].children[0].value;
+        var modify = row.cells[5].children[0].value;
+        var remarks = row.cells[6].children[0].value;
         $(".xiugai").load("questionedit", {
             ddId: ddId,
             problemDescription: problemDescription,
-            problemCount: problemCount
+            handleMethod: handleMethod,
+            processOrderNumber: processOrderNumber,
+            modify: modify,
+            remarks: remarks
         });
         window.location.href = "/taskmanage";
     };
@@ -560,11 +597,8 @@
             var td1 = $('<td class="chebox" colspan="1"></td>').append($('<span class="labels"></span>').append($('<label></label>').append($('<input type="checkbox" name="items"  class="val" >')).append($('<i></i>').text('✓'))));
             var td2 = $('<td colspan="1"></td>').append($('<select class="form-control" name="processes[' + i + '].handleMethod"><option value="ICR">ICR</option><option value="细化">细化</option>  <option value="/">/</option></select>'));
             var td3 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].processOrderNumber" style="background-color:#fff;"/>'));
-            var td4 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu processCompletionTime" name="processes[' + i + '].processCompletionTime"/>'));
-            var td5 = $('<td colspan="2"></td>').append($('<select class="form-control" name="processes[' + i + '].processResponsibleParty"><option value="设计院">设计院</option><option value="施工承包商">施工承包商</option><option value="细化引起">细化引起</option><option value="工程公司">工程公司</option> <option value="业主">业主</option><option value="其他">其他</option>  <option value="/">/</option></select>'));
-            var td6 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].remarks"/>'));
-            var td7 = $('<td colspan="2"></td>').append($('<select class="form-control" name="processes[' + i + '].shouldClaim"><option value="否">否</option><option value="是">是</option>  <option value="/">/</option></select>'));
-            var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7);
+            var td4 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].remarks"/>'));
+            var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3).append(td4);
             $('.tbody').append(tr);
             i = i + 1;
         });
@@ -573,7 +607,7 @@
             var td2 = $('<td colspan="3"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].problemDescription" style="background-color:#fff;"/>'));
             var td4 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].handleMethod" style="background-color:#fff;"/>'));
             var td5 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].processOrderNumber" style="background-color:#fff;"/>'));
-            var td6 = $('<td colspan="1"></td>').append($('<select class="form-control" name="questions[' + i + '].modify"><option value="否">否</option><option value="是">是</option>  <option value="/">/</option></select>'));
+            var td6 = $('<td colspan="1"></td>').append($('<select class="form-control" name="questions[' + i + '].modify"><option value="">/</option><option value="是">是</option>  <option value="否">否</option></select>'));
             var td7 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="questions[' + i + '].remarks" style="background-color:#fff;"/>'));
             var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td4).append(td5).append(td6).append(td7);
             $('.tbody').append(tr);

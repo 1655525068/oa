@@ -169,10 +169,7 @@ public class ThreeBookController {
         if (pro != null) {
             tb.setHandleMethod(pro.getHandleMethod());
             tb.setProcessOrderNumber(pro.getProcessOrderNumber());
-            tb.setProcessCompletionTime(pro.getProcessCompletionTime());
-            tb.setProcessResponsibleParty(pro.getProcessResponsibleParty());
             tb.setRemarks(pro.getRemarks());
-            tb.setShouldClaim(pro.getShouldClaim());
         } else {
             tb.setShouldHandle("/");
             tb.setHandleMethod("/");

@@ -20,18 +20,6 @@ public class ThreeBookProcess {
     @Column(name = "process_order_number")
     private String processOrderNumber;
 
-    // 处理完成时间
-    @Column(name = "process_completion_time")
-    private String processCompletionTime;
-
-    // 责任方
-    @Column(name = "process_responsible_party")
-    private String processResponsibleParty;
-
-    // 是否涉及索赔
-    @Column(name = "should_claim")
-    private String shouldClaim;
-
     // 备注
     @Column(name = "remarks")
     private String remarks;
@@ -64,14 +52,6 @@ public class ThreeBookProcess {
         this.processOrderNumber = processOrderNumber;
     }
 
-    public String getProcessCompletionTime() {
-        return processCompletionTime;
-    }
-
-    public void setProcessCompletionTime(String processCompletionTime) {
-        this.processCompletionTime = processCompletionTime;
-    }
-
     public String getRemarks() {
         return remarks;
     }
@@ -88,19 +68,6 @@ public class ThreeBookProcess {
         this.tbs = tbs;
     }
 
-    public String getProcessResponsibleParty() {
-        return processResponsibleParty;
-    }
 
-    public void setProcessResponsibleParty(String processResponsibleParty) {
-        this.processResponsibleParty = processResponsibleParty;
-    }
 
-    public String getShouldClaim() {
-        return shouldClaim;
-    }
-
-    public void setShouldClaim(String shouldClaim) {
-        this.shouldClaim = shouldClaim;
-    }
 }

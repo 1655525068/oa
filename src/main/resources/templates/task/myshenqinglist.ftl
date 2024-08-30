@@ -48,7 +48,7 @@
                             <td><span>${task.threeBook.processPerson!''}</span></td>
                             <td><span>${task.threeBook.auditPerson!''}</span></td>
                         <#else >
-                            <td><span>图纸细化</span></td>
+                            <td><span>图纸</span></td>
                             <td><span>${task.publishtime!''}</span></td>
                             <td><span>
                                     ${task.detailDraw.documentCodes!''}&nbsp;/&nbsp;${task.detailDraw.internalDocumentCodes!''}&nbsp;/&nbsp; ${task.detailDraw.catalogNumber!''}

@@ -174,10 +174,7 @@
                                                         <th colspan="1" style="width: 77px;">选择</th>
                                                         <th colspan="2">处理方式</th>
                                                         <th colspan="2">处理单号</th>
-                                                        <th colspan="3">处理时间</th>
-                                                        <th colspan="2">责任方</th>
                                                         <th colspan="2">备注</th>
-                                                        <th colspan="2">涉及索赔</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="tbody">
@@ -210,27 +207,9 @@
                                                                 </td>
                                                                 <td colspan="2"><input type="text"
                                                                                        class="form-control inpu"
-                                                                                       name="processes[${pro_index}].processCompletionTime"
-                                                                                       readonly="readonly"
-                                                                                       value="${pro.processCompletionTime!''}"/>
-                                                                </td>
-                                                                <td colspan="2">
-                                                                    <input name="processes[${pro_index}].processResponsibleParty"
-                                                                           type="text" id="" class="form-control inpu"
-                                                                           readonly="readonly"
-                                                                           value="${pro.processResponsibleParty!''}"/>
-                                                                </td>
-                                                                <td colspan="2"><input type="text"
-                                                                                       class="form-control inpu"
                                                                                        name="processes[${pro_index}].remarks"
                                                                                        readonly="readonly"
                                                                                        value="${pro.remarks!''}"/></td>
-                                                                <td colspan="2">
-                                                                    <input name="processes[${pro_index}].shouldClaim"
-                                                                           type="text" id="" class="form-control inpu"
-                                                                           readonly="readonly"
-                                                                           value="${pro.shouldClaim!''}"/>
-                                                                </td>
                                                             </tr>
                                                         </#list>
                                                     </#if >
@@ -243,6 +222,27 @@
                             </#if>
 
                         </#if>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">完成时间</label>
+                            <input class="form-control" name="completionTime" readonly
+                                   value="${task.threeBook.completionTime!''}"/>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">责任方</label>
+                            <select name="processResponsibleParty"
+                                    readonly="readonly"
+                                    class="form-control">
+                                <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="control-label">是否涉及索赔</label>
+                            <select name="shouldClaim"
+                                    readonly="readonly"
+                                    class="form-control">
+                                <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
+                            </select>
+                        </div>
                     <#--设计点值-->
                         <div class="col-md-4 form-group">
                             <label> <span>设计点值</span> </label>
@@ -263,6 +263,15 @@
                             </label><input name="processPerson" type="text" id="" class="form-control"
                                            readonly="readonly"
                                            value="${task.detailDraw.processPerson!''}"/>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
+                            <select name="shouldHandle" class="form-control"
+                                    readonly="readonly">
+                                <#if task.detailDraw.shouldHandle ??>
+                                    <option value="${task.detailDraw.shouldHandle}">${task.detailDraw.shouldHandle}</option>
+                                </#if>
+                            </select>
                         </div>
                         <table class="bo table ">
                             <tr>

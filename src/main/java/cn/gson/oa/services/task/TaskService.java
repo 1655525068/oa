@@ -164,6 +164,7 @@ public class TaskService {
                 result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
                 result.put("auditPerson", task.get(i).getThreeBook().getAuditPerson());
+                result.put("professionalType", task.get(i).getThreeBook().getProfessionalType());
             }
 
             if (task.get(i).getDetailDraw() != null) {
@@ -173,6 +174,8 @@ public class TaskService {
                 result.put("identifyResponsiblePerson", task.get(i).getDetailDraw().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getDetailDraw().getProcessPerson());
                 result.put("auditPerson", task.get(i).getDetailDraw().getAuditPerson());
+                result.put("professionalType", task.get(i).getDetailDraw().getProfessionalType());
+                result.put("drawingType", task.get(i).getDetailDraw().getDrawingType());
             }
             list.add(result);
         }
@@ -433,9 +436,7 @@ public class TaskService {
         // 备注
         String remarks = req.getParameter("remarks");
         detailDraw.setRemarks(remarks);
-        // 完成时间
-        String completionTime = req.getParameter("completionTime");
-        detailDraw.setCompletionTime(completionTime);
+
         // 设计点值
         String designPointValue = req.getParameter("designPointValue");
         detailDraw.setDesignPointValue(designPointValue);

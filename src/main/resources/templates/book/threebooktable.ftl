@@ -1,7 +1,7 @@
 <div class="table-responsive">
     <table class="table table-hover table-condensed" style="min-width: 3500px;">
         <tr>
-            <#if user.role.roleName =='主任'>
+            <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                 <th scope="col">操作</th>
             </#if>
             <th style="background-color: yellow" scope="col">序号</th>
@@ -33,13 +33,13 @@
             <th style="background-color: yellow" scope="col">实际关闭时间</th>
             <th style="background-color: greenyellow" scope="col">设计点值</th>
             <th style="background-color: greenyellow" scope="col">审核点值</th>
-            <#if user.role.roleName =='主任'>
+            <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                 <th scope="col">操作</th>
             </#if>
         </tr>
         <#list threeBooks as threeBook>
             <tr>
-                <#if user.role.roleName =='主任'>
+                <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                     <td><a href="deletethreebook?bookId=${threeBook.bookId}"
                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                            class="label shanchu"><span
@@ -74,7 +74,7 @@
                 <td><span>${threeBook.actualCloseTime!''}</span></td>
                 <td><span>${threeBook.designPointValue!''}</span></td>
                 <td><span>${threeBook.auditPointValue!''}</span></td>
-                <#if user.role.roleName =='主任'>
+                <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                     <td><a href="deletethreebook?bookId=${threeBook.bookId}"
                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                            class="label shanchu"><span

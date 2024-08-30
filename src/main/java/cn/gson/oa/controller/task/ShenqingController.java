@@ -159,12 +159,10 @@ public class ShenqingController {
         User user = udao.findid(tb.getAuditPerson());
         if (user != null) {
             if (task.getTypeId() == 1) {
-                task.getThreeBook().setProcessCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
                 //
                 task.getThreeBook().setAuditPerson(tb.getAuditPerson());
                 tbdao.save(task.getThreeBook());
             } else {
-                task.getDetailDraw().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
                 //
                 task.getDetailDraw().setAuditPerson(tb.getAuditPerson());
                 dddao.save(task.getDetailDraw());

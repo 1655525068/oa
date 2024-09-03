@@ -4,16 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="0829">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/template3.ftl" afterDir="false" />
+    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="0830">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/现场设计室变更三单管理台账.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/doc/现场设计室变更三单管理台账.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/现场设计室图纸细化管理台账.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/doc/现场设计室图纸细化管理台账.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa.sql" beforeDir="false" afterPath="$PROJECT_DIR$/oa.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBookProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBookProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/threebooktable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/threebooktable.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/address/addrmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/address/addrmanage.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/detaildrawtable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/detaildrawtable.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/leftlist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/leftlist.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/reciver.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/common/reciver.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/control.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/systemcontrol/control.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/edittask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/edittask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template1.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template1.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/template2.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/template2.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,17 +98,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="oa" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gson.oa.Application" />
@@ -156,7 +158,10 @@
       <workItem from="1724837402433" duration="195000" />
       <workItem from="1724837623774" duration="10932000" />
       <workItem from="1724890105702" duration="11909000" />
-      <workItem from="1724919148116" duration="35664000" />
+      <workItem from="1724919148116" duration="36391000" />
+      <workItem from="1725155728676" duration="6302000" />
+      <workItem from="1725254184435" duration="10845000" />
+      <workItem from="1725332090127" duration="2444000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1722829344867</created>
@@ -242,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1724993756446</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="0830">
+      <created>1725009659666</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1725009659666</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +296,8 @@
     <MESSAGE value="0827" />
     <MESSAGE value="0828" />
     <MESSAGE value="0829" />
-    <option name="LAST_COMMIT_MESSAGE" value="0829" />
+    <MESSAGE value="0830" />
+    <option name="LAST_COMMIT_MESSAGE" value="0830" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -361,7 +374,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>249</line>
+          <line>259</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -411,7 +424,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>276</line>
+          <line>286</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -446,7 +459,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>890</line>
+          <line>909</line>
           <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -461,22 +474,22 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>423</line>
+          <line>438</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>442</line>
+          <line>457</line>
           <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>373</line>
+          <line>388</line>
           <option name="timeStamp" value="211" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>759</line>
+          <line>778</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -491,37 +504,37 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>611</line>
+          <line>630</line>
           <option name="timeStamp" value="248" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>682</line>
+          <line>701</line>
           <option name="timeStamp" value="249" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>658</line>
+          <line>677</line>
           <option name="timeStamp" value="252" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>669</line>
+          <line>688</line>
           <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>667</line>
+          <line>686</line>
           <option name="timeStamp" value="254" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>628</line>
+          <line>647</line>
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>675</line>
+          <line>694</line>
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -536,13 +549,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>431</line>
+          <line>446</line>
           <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>375</line>
-          <option name="timeStamp" value="268" />
+          <line>298</line>
+          <option name="timeStamp" value="269" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>928</line>
+          <option name="timeStamp" value="270" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -552,6 +570,8 @@
         <watch expression="req.getParameter(&quot;processPerson&quot;)" language="JAVA" />
         <watch expression="userlist.getUserName()" language="JAVA" />
         <watch expression="task.getThreeBook() != null ? task.getThreeBook().getProcessPerson() : task.getDetailDraw().getProcessPerson()" language="JAVA" />
+        <watch expression="pagelist.getTotalPages()" language="JAVA" />
+        <watch expression="req.getParameter(&quot;processPerson&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

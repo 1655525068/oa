@@ -1,5 +1,6 @@
 package cn.gson.oa.controller.task;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 
@@ -26,7 +27,9 @@ import cn.gson.oa.model.entity.book.DetailDraw;
 import cn.gson.oa.model.entity.book.DetailDrawQuestion;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import cn.gson.oa.model.entity.book.ThreeBookProcess;
+import cn.gson.oa.model.entity.file.FileList;
 import cn.gson.oa.model.entity.role.Role;
+import cn.gson.oa.services.file.FileServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,6 +41,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.util.StringUtil;
@@ -97,6 +101,9 @@ public class TaskController {
     @Autowired
     private DetailDrawDao ddDao;
 
+    @Autowired
+    private FileServices fs;
+
     /**
      * 任务管理表格
      *
@@ -106,7 +113,7 @@ public class TaskController {
     public String index(Model model,
                         @SessionAttribute("userId") Long userId,
                         @RequestParam(value = "page", defaultValue = "0") int page,
-                        @RequestParam(value = "size", defaultValue = "10") int size) {
+                        @RequestParam(value = "size", defaultValue = "50") int size) {
 
         // 通过发布人id找用户
         User tu = udao.findOne(userId);
@@ -127,7 +134,7 @@ public class TaskController {
     public String paixu(HttpServletRequest request,
                         @SessionAttribute("userId") Long userId, Model model,
                         @RequestParam(value = "page", defaultValue = "0") int page,
-                        @RequestParam(value = "size", defaultValue = "10") int size) {
+                        @RequestParam(value = "size", defaultValue = "50") int size) {
 
         // 通过发布人id找用户
         User tu = udao.findOne(userId);
@@ -163,6 +170,9 @@ public class TaskController {
         Iterable<SystemStatusList> statuslist = sdao.findAll();
         // 查询部门下面的员工
         Page<User> pagelist = udao.findByFatherId(userId, pa);
+        if (pagelist.getTotalPages() == 0) {
+            pagelist = udao.findAll(pa);
+        }
         List<User> emplist = pagelist.getContent();
         // 查询部门表
         Iterable<Dept> deptlist = ddao.findAll();
@@ -281,7 +291,12 @@ public class TaskController {
         task.setPublishTime(new Date());
         task.setModifyTime(new Date());
         Tasklist tasklist = tdao.findOne(task.getTaskId());
-        task.setThreeBook(tasklist.getThreeBook());
+        if (tasklist.getTypeId() == 1) {
+            task.setThreeBook(tasklist.getThreeBook());
+        } else {
+            task.setDetailDraw(tasklist.getDetailDraw());
+        }
+
         tservice.save(task);
 
         // 分割任务接收人 还要查找联系人的主键
@@ -606,6 +621,10 @@ public class TaskController {
         if (commit.isEmpty() && req.getParameter("processPerson") != null) {
             logger.setLoggerStatusid(5);
         }
+        if ("否".equals(tb.getShouldHandle())) {
+            logger.setLoggerStatusid(7);
+        }
+
         // 查找用户
         User user = udao.findOne(userId);
         // 查任务
@@ -901,6 +920,20 @@ public class TaskController {
         DetailDrawQuestion q = ddqDao.findByDdId(ddId);
         ddqDao.delete(q);
         return "redirect:/taskmanage";
+    }
+
+    @RequestMapping("readthreebook")
+    public String uploadfile(@RequestParam("file") MultipartFile file,
+                             HttpSession session, Model model) throws IllegalStateException, IOException {
+        Long userid = Long.parseLong(session.getAttribute("userId") + "");
+        User user = udao.findOne(userid);
+//        FilePath nowpath = fpdao.findOne(pathid);
+//        // true 表示从文件使用上传
+//        FileList uploadfile = (FileList) fs.savefile(file, user, nowpath, true);
+//        System.out.println(uploadfile);
+
+//        model.addAttribute("pathid", pathid);
+        return "forward:/taskmanage";
     }
 
 

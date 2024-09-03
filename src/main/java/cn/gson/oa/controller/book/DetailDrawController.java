@@ -59,10 +59,25 @@ public class DetailDrawController {
         List<DetailDraw> detailDraws1 = new ArrayList<>();
         for (DetailDraw dd : detailDraws) {
             if (dd.getQuestions().size() > 0) {
+                int i = 1;
+                StringBuilder problemDescription = new StringBuilder();
+                StringBuilder handleMethod = new StringBuilder();
+                StringBuilder processOrderNumber = new StringBuilder();
+                StringBuilder modify = new StringBuilder();
+                StringBuilder remarks = new StringBuilder();
                 for (DetailDrawQuestion question : dd.getQuestions()) {
-                    DetailDraw d = (DetailDraw) dd.clone();
-                    detailDraws1.add(createDetailDraw(d, question));
+                    problemDescription.append(i).append(".").append(question.getProblemDescription()).append("<br>");
+                    handleMethod.append(i).append(".").append(question.getHandleMethod()).append("<br>");
+                    processOrderNumber.append(i).append(".").append(question.getProcessOrderNumber()).append("<br>");
+                    modify.append(i).append(".").append(question.getModify()).append("<br>");
+                    remarks.append(i).append(".").append(question.getRemarks()).append("<br>");
+                    i++;
                 }
+                dd.setProblemDescription(problemDescription.toString());
+                dd.setHandleMethod(handleMethod.toString());
+                dd.setProcessOrderNumber(processOrderNumber.toString());
+                dd.setModify(modify.toString());
+                dd.setRemarks(remarks.toString());
             } else
                 detailDraws1.add(createDetailDraw(dd, null));
         }

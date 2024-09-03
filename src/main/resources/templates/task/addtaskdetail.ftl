@@ -78,14 +78,12 @@
                                 <input name="title" type="text" id="title_Name" class="form-control"/>
                             </div>
 
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">描述</label>
-                                <input class="form-control" name="taskDescribe" value="描述"/>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">评价</label>
-                                <input class="form-control" name="comment" value="评价"/>
-                            </div>
+
+                            <input class="form-control" name="taskDescribe" style="display: none" value="描述"/>
+
+
+                            <input class="form-control" name="comment" style="display: none" value="评价"/>
+
                             <#--文件编码-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">文件编码</label>
@@ -171,65 +169,16 @@
                                         >通讯录</span>
                                 </div>
                             </div>
-                            <#--&lt;#&ndash;问题描述&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">问题描述</label>
-                                <input class="form-control" name="problemDescription" value=""/>
-                            </div>
-                            &lt;#&ndash;图纸问题数量&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">图纸问题数量</label>
-                                <input class="form-control" name="problemCount" value=""/>
-                            </div>
-                            &lt;#&ndash;处理方式&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">处理方式</label>
-                                <input class="form-control" name="handleMethod" value=""/>
-                            </div>
-                            &lt;#&ndash;处理单号&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">处理单号</label>
-                                <input class="form-control" name="processOrderNumber" value=""/>
-                            </div>
-                            &lt;#&ndash;核实郑分会审单问题是否修改&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">核实郑分会审单问题是否修改</label>
-                                <select class="form-control" name="modify">
-                                    <option value="是">是</option>
-                                    <option value="否">否</option>
-                                </select>
-                            </div>
-                            &lt;#&ndash;备注&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">备注</label>
-                                <input class="form-control" name="remarks" value=""/>
-                            </div>
-                            &lt;#&ndash;完成时间&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">完成时间</label>
-                                <input class="form-control" name="completionTime" value=""/>
-                            </div>
-                            &lt;#&ndash;设计点值&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">设计点值</label>
-                                <input class="form-control" name="designPointValue" value=""/>
-                            </div>
-                            &lt;#&ndash;审核点值&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">审核点值</label>
-                                <input class="form-control" name="auditPointValue" value=""/>
-                            </div>-->
 
-                            <div class="col-md-4 form-group ">
-                                <label class="control-label">置顶</label>
-                                <span class="labels"><label><input type="checkbox" name="top"
-                                                                   class="val"><i>✓</i></label></span>
-                            </div>
 
-                            <div class="col-md-4  form-group">
-                                <label class="control-label">取消</label> <span
-                                        class="labels"><label><input type="checkbox" name="cancel" class="val"><i>✓</i></label></span>
-                            </div>
+                            <span class="labels"><label><input type="checkbox" name="top" style="display: none"
+                                                               class="val"><i>✓</i></label></span>
+
+
+                            <span
+                                    class="labels"><label><input type="checkbox" name="cancel" style="display: none"
+                                                                 class="val"><i>✓</i></label></span>
+
                         </div>
                     </div>
                 </div>
@@ -262,13 +211,13 @@
             // 如果在这些input框中，判断是否能够为空
             if ($(this).val() === "") {
                 // 排除哪些字段是可以为空的，在这里排除
-                 if (index === 18 || index === 19) {
+                if (index === 18 || index === 19) {
                     return true;
-                 }
+                }
 
                 // 获取到input框的兄弟的文本信息，并对应提醒；
                 var brother = $(this).siblings('.control-label').text();
-                 ;
+                ;
                 var errorMess = "[" + brother + "输入框信息不能为空]";
                 // 对齐设置错误信息提醒；红色边框
                 $(this).parent().addClass("has-error has-feedback");

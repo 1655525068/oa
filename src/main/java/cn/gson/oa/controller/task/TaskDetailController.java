@@ -122,7 +122,7 @@ public class TaskDetailController {
 
         }
 
-        return "redirect:/taskmanage";
+        return "redirect:/#myModal,#myModalDetail";
     }
 
 

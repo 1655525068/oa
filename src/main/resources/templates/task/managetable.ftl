@@ -3,11 +3,11 @@
     <div class="box-header">
         <h3 class="box-title">
             <a href="addtask" class="label label-success" style="padding: 5px;">
-                <span class="glyphicon glyphicon-plus"></span> 新增三单
+                <span class="glyphicon glyphicon-plus"></span>新增三单
             </a>
             &nbsp;&nbsp;
             <a href="addtaskdetail" class="label label-success" style="padding: 5px;">
-                <span class="glyphicon glyphicon-plus"></span> 新增细化
+                <span class="glyphicon glyphicon-plus"></span>新增细化
             </a>
         </h3>
         <div class="box-tools">
@@ -38,7 +38,7 @@
                     <th scope="col">处理人</th>
                     <th scope="col">审核人</th>
                     <th scope="col" class="co commen">状态<span class="block"></span></th>
-                    <th>置顶</th>
+                    <#--<th>置顶</th>-->
                     <th scope="col">操作</th>
                 </tr>
                 </thead>
@@ -74,15 +74,15 @@
                         <#else>
                             <td><span class="label ${task.statuscolor}">${task.statusname}</span></td>
                         </#if>
-                        <#if task.zhiding==true>
+                        <#--<#if task.zhiding==true>
                             <td><span class="labels"><label><input type="checkbox" name="top" class="val" checked
                                                                    disabled><i>✓</i></label></span></td>
                         <#else>
                             <td><span class="labels"><label><input type="checkbox" name="top" class="val"
                                                                    disabled><i>✓</i></label></span></td>
-                        </#if>
+                        </#if>-->
                         <td>
-                            <#--<a href="edittasks?id=${task.taskid}"
+                           <#-- <a href="edittasks?id=${task.taskid}"
                                class="label xiugai"><span
                                         class="glyphicon glyphicon-edit"></span> 修改</a>-->
                             <a href="seetasks?id=${task.taskid}" class="label xiugai"><span

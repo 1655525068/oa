@@ -546,7 +546,20 @@
                             disabled="disabled"
                                 </#if>
                         />-->
+
                         <#if  status.statusId == 7 || status.statusId == 6 >
+                            disabled="disabled"
+                        </#if>
+                        <#if task.typeId = 1 && task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson >
+                            disabled="disabled"
+                        </#if>
+                        <#if task.typeId = 2 && task.detailDraw.processPerson?? && user2.realName == task.detailDraw.processPerson >
+                            disabled="disabled"
+                        </#if>
+                        <#if task.typeId = 1 && task.threeBook.processPerson?? && task.threeBook.processPerson !=''>
+                            disabled="disabled"
+                        </#if>
+                        <#if task.typeId = 2 && task.detailDraw.processPerson?? && task.threeBook.processPerson !='' >
                             disabled="disabled"
                         </#if>
                 />
@@ -554,7 +567,13 @@
                        onclick="window.history.back();"/>
 
                 <#if  status.statusId == 5 || status.statusId == 8  >
-                    <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
+                    <#if task.typeId = 1 && task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson >
+                        <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
+                    </#if>
+                    <#if task.typeId = 2 && task.detailDraw.processPerson?? && user2.realName == task.detailDraw.processPerson >
+                        <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
+                    </#if>
+
                 </#if>
 
                 <#if  status.statusId == 6 >

@@ -146,8 +146,6 @@ public class ThreeBookController {
         Map<String, Object> datas = new HashMap<>();
 
         List<ThreeBook> threeBooks1 = new ArrayList<>();
-        List<ThreeBook> threeBooks2 = new ArrayList<>();
-        List<ThreeBook> threeBooks3 = new ArrayList<>();
 
         int index = 1;
 
@@ -181,15 +179,6 @@ public class ThreeBookController {
 
         datas.put("threeBooks1", threeBooks11);
 
-        threeBooks11.forEach(x -> {
-            if (x.getType().equals("CR")) {
-                threeBooks2.add(x);
-            } else {
-                threeBooks3.add(x);
-            }
-        });
-        datas.put("threeBooks2", threeBooks2);
-        datas.put("threeBooks3", threeBooks3);
 
         if (threeBooks1.size() > 0) {
             ExportExcel.exportFile(response, "现场设计室变更三单管理台账" + new Date().getTime(), "template1.ftl", datas);

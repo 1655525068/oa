@@ -25,7 +25,7 @@
 
                                 <h4 style="float:left;">
                                     <a class="btn btn-success glyphicon glyphicon-plus btn-sm" href="##"
-                                       onclick="addvalue()"> 新增接收人</a>
+                                       onclick="addvalue()">确认</a>
                                 </h4>
 
                                 <div class="input-group">

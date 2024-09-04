@@ -40,6 +40,16 @@
                         <i class="glyphicon glyphicon-chevron-left"></i> <span>返回</span>
                     </a>
                 </h3>
+                <h3>
+                    <form class="fileuploadform" action="readdetaildraw" method="post" enctype="multipart/form-data">
+                        <div class="btn btn-primary uploadfile"
+                             style="position: relative; overflow: hidden;width: 100%; margin-bottom: 20px;">
+                            <i class="glyphicon glyphicon-open"></i>细化文件导入
+                            <input type="file" name="file"
+                                   style="opacity: 0; position: absolute; top: 0; right: 0; min-width: 100%; min-height: 100%;"/>
+                        </div>
+                    </form>
+                </h3>
             </div>
 
             <!--盒子身体-->
@@ -253,6 +263,9 @@
         $(".recive_list").change(function () {
             var $val = $(this).val();
             $(".qu").siblings("input").val($val);
+        });
+        $(".uploadfile input").bind("change",function(){
+            $(".fileuploadform").submit();
         });
     })
 </script>

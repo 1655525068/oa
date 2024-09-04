@@ -1,16 +1,12 @@
 package cn.gson.oa.controller.task;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.StringTokenizer;
+import java.util.*;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import cn.gson.oa.common.OfficeUtils;
 import cn.gson.oa.model.dao.book.DetailDrawDao;
 import cn.gson.oa.model.dao.book.DetailDrawQuestionDao;
 import cn.gson.oa.model.dao.book.ThreeBookDao;
@@ -30,7 +27,10 @@ import cn.gson.oa.model.entity.book.ThreeBookProcess;
 import cn.gson.oa.model.entity.file.FileList;
 import cn.gson.oa.model.entity.role.Role;
 import cn.gson.oa.services.file.FileServices;
+import com.jfinal.plugin.activerecord.Record;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -101,8 +101,9 @@ public class TaskController {
     @Autowired
     private DetailDrawDao ddDao;
 
-    @Autowired
-    private FileServices fs;
+    @Value("${file.root.path}")
+    private String rootPath;
+
 
     /**
      * 任务管理表格
@@ -927,14 +928,146 @@ public class TaskController {
                              HttpSession session, Model model) throws IllegalStateException, IOException {
         Long userid = Long.parseLong(session.getAttribute("userId") + "");
         User user = udao.findOne(userid);
-//        FilePath nowpath = fpdao.findOne(pathid);
-//        // true 表示从文件使用上传
-//        FileList uploadfile = (FileList) fs.savefile(file, user, nowpath, true);
-//        System.out.println(uploadfile);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        File root = new File(this.rootPath, simpleDateFormat.format(new Date()));
 
-//        model.addAttribute("pathid", pathid);
-        return "forward:/taskmanage";
+        File savepath = new File(root, user.getUserName());
+
+        if (!file.getOriginalFilename().contains("三单")) {
+            model.addAttribute("errormess", "需要导入三单文件");
+            return "forward:/taskmanage";
+        }
+
+        if (!savepath.exists()) {
+            savepath.mkdirs();
+        }
+
+        String shuffix = FilenameUtils.getExtension(file.getOriginalFilename());
+        String newFileName = UUID.randomUUID().toString().toLowerCase() + "." + shuffix;
+        File targetFile = new File(savepath, newFileName);
+        file.transferTo(targetFile);
+
+
+        String[] threebookcol = new String[]{
+                "序号", "类型", "三单号", "中文名称", "FCR版本", "状态", "编制人", "最新版", "接收时间", "分发时间", "作废标识", "相关文件编码", "相关文件内部编码", "图纸版本", "专业", "责任方", "识别责任人"};
+
+
+        List<Record> records = OfficeUtils.readOffice(targetFile, threebookcol);
+        List<Tasklist> list = new ArrayList<Tasklist>();
+        for (Record record : records) {
+            Map<String, Object> map = record.getColumns();
+            Tasklist tl = new Tasklist();
+            ThreeBook tb = new ThreeBook();
+            map.forEach((s1, o) -> {
+
+                        switch (s1) {
+                            case "类型":
+                                tb.setType(o.toString());
+                                break;
+                            case "三单号":
+                                tb.setThreeBookNumbers(o.toString());
+                                break;
+                            case "中文名称":
+                                tb.setChineseName(o.toString());
+                                break;
+                            case "FCR版本":
+                                tb.setFcrVersion(o.toString());
+                                break;
+                            case "状态":
+                                tb.setState(o.toString());
+                                break;
+                            case "编制人":
+                                tb.setPreparedBy(o.toString());
+                                break;
+                            case "最新版":
+                                tb.setLatestVersion(o.toString());
+                                break;
+                            case "接收时间":
+                                tb.setReceivingTime(o.toString());
+                                break;
+                            case "分发时间":
+                                tb.setDistributionTime(o.toString());
+                                break;
+                            case "作废标识":
+                                tb.setInvalidIdentification(o.toString());
+                                break;
+                            case "相关文件编码":
+                                tb.setRelatedDocumentCodes(o.toString());
+                                break;
+                            case "相关文件内部编码":
+                                tb.setInternalCodes(o.toString());
+                                break;
+                            case "图纸版本":
+                                tb.setDrawVersion(o.toString());
+                                break;
+                            case "专业":
+                                tb.setProfessionalType(o.toString());
+                                break;
+                            case "责任方":
+                                tb.setResponsibleParty(o.toString());
+                                break;
+                            case "识别责任人":
+                                tb.setIdentifyResponsiblePerson(o.toString());
+                                break;
+
+                        }
+                    }
+
+            );
+            tl.setThreeBook(tb);
+            list.add(tl);
+        }
+
+        if (targetFile.exists()) {
+            targetFile.delete();
+        }
+
+        for (Tasklist tasklist : list) {
+            if (tasklist.getThreeBook().getIdentifyResponsiblePerson().equals("")) {
+                model.addAttribute("errormess", "需要导入细化文件");
+                return "forward:/taskmanage";
+            }
+        }
+
+        int i = 1;
+        for (Tasklist tasklist : list) {
+            tasklist.setTitle(FilenameUtils.removeExtension(file.getOriginalFilename()) + simpleDateFormat.format(new Date()) + "-" + i);
+            tasklist.setUsersId(user);
+            tasklist.setPublishTime(new Date());
+            tasklist.setModifyTime(new Date());
+            tasklist.setStarTime(new Date());
+            tasklist.setEndTime(new Date(new Date().getTime() + 3 * 86400000));
+            tasklist.setTypeId(1L);
+            tasklist.setTaskDescribe("@@");
+            tasklist.setStatusId(5);
+            tasklist.setReciverlist(tasklist.getThreeBook().getIdentifyResponsiblePerson());
+            //三单
+            ThreeBook result = bdao.save(tasklist.getThreeBook());
+
+            tdao.save(tasklist);
+            // 分割任务接收人
+            StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getThreeBook().getProcessPerson() != null ? ";" + tasklist.getThreeBook().getProcessPerson() : ""), ";");
+            while (st.hasMoreElements()) {
+                User reciver = udao.findid(st.nextToken());
+                Taskuser task = new Taskuser();
+                task.setTaskId(tasklist);
+                task.setIrp(result.getIdentifyResponsiblePerson());
+                task.setUserId(reciver);
+                task.setStatusId(tasklist.getStatusId());
+                // 存任务中间表
+                tudao.save(task);
+
+            }
+            i++;
+        }
+
+
+        model.addAttribute("success", "文件导入成功");
+
+
+        return "redirect:/taskmanage";
     }
+
 
 
 }

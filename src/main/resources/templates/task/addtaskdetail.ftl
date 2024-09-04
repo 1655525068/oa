@@ -150,18 +150,18 @@
                             <#--是否需FU-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">是否需FU</label>
-                                <select class="form-control" name="doNeedFU">
+                                <select id="doNeedFU" class="form-control" name="doNeedFU">
                                     <option value="是">是</option>
                                     <option value="否">否</option>
                                 </select>
                             </div>
                             <#--FU计划时间-->
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-4 form-group displaytable">
                                 <label class="control-label">FU计划时间</label>
                                 <input id="planTimeFU" class="form-control" name="planTimeFU" value=""/>
                             </div>
                             <#--FU单号-->
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-4 form-group displaytable">
                                 <label class="control-label">FU单号</label>
                                 <input class="form-control" name="numberFU" value=""/>
                             </div>
@@ -181,13 +181,15 @@
                             </div>
 
 
-                            <span class="labels"><label><input type="checkbox" name="top" style="display: none"
-                                                               class="val"><i>✓</i></label></span>
+                            <span class="labels" style="display: none"><label><input type="checkbox" name="top"
+                                                                                     style="display: none"
+                                                                                     class="val"><i>✓</i></label></span>
 
 
                             <span
-                                    class="labels"><label><input type="checkbox" name="cancel" style="display: none"
-                                                                 class="val"><i>✓</i></label></span>
+                                    class="labels" style="display: none"><label><input type="checkbox" name="cancel"
+                                                                                       style="display: none"
+                                                                                       class="val"><i>✓</i></label></span>
 
                         </div>
                     </div>
@@ -221,9 +223,17 @@
             // 如果在这些input框中，判断是否能够为空
             if ($(this).val() === "") {
                 // 排除哪些字段是可以为空的，在这里排除
-                if (index === 18 || index === 19) {
-                    return true;
+                if ($('#doNeedFU').val() === '是') {
+                    debugger;
+                    if (index === 19) {
+                        return true;
+                    }
+                } else {
+                    if (index === 15 || index === 16 || index === 19) {
+                        return true;
+                    }
                 }
+
 
                 // 获取到input框的兄弟的文本信息，并对应提醒；
                 var brother = $(this).siblings('.control-label').text();
@@ -264,8 +274,16 @@
             var $val = $(this).val();
             $(".qu").siblings("input").val($val);
         });
-        $(".uploadfile input").bind("change",function(){
+        $(".uploadfile input").bind("change", function () {
             $(".fileuploadform").submit();
+        });
+        $('#doNeedFU').change(function () {
+            var selectedValue = $(this).val();
+            if (selectedValue === '是') {
+                $('.displaytable').show();
+            } else {
+                $('.displaytable').hide();
+            }
         });
     })
 </script>

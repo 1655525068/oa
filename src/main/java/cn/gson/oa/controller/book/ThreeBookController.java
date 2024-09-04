@@ -129,6 +129,7 @@ public class ThreeBookController {
 
     @RequestMapping(value = "threebookexport", method = RequestMethod.GET)
     public String threebookexport(Model model, HttpServletResponse response, @SessionAttribute("userId") Long userId, @RequestParam(value = "search", required = false) String search) throws CloneNotSupportedException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
         User user = udao.findOne(userId);
         Iterable<ThreeBook> threeBooks = null;
         if (StringUtil.isEmpty(search)) {
@@ -181,7 +182,7 @@ public class ThreeBookController {
 
 
         if (threeBooks1.size() > 0) {
-            ExportExcel.exportFile(response, "现场设计室变更三单管理台账" + new Date().getTime(), "template1.ftl", datas);
+            ExportExcel.exportFile(response, "现场设计室变更三单管理台账" + simpleDateFormat.format(new Date()), "template1.ftl", datas);
         }
 
         model.addAttribute("threeBooks", threeBooks);

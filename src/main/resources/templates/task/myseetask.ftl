@@ -210,7 +210,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                             <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
-                            <select name="shouldHandle" class="form-control">
+                            <select id="shouldHandle" name="shouldHandle" class="form-control">
                                 <#if task.threeBook.shouldHandle ??>
                                     <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
                                 </#if>
@@ -251,7 +251,7 @@
                         </div>
                         <div class="col-md-3 form-group">
                             <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
-                            <select name="shouldHandle" class="form-control">
+                            <select id="shouldHandle" name="shouldHandle" class="form-control">
                                 <#if task.detailDraw.shouldHandle ??>
                                     <option value="${task.detailDraw.shouldHandle}">${task.detailDraw.shouldHandle}</option>
                                 </#if>
@@ -283,7 +283,7 @@
                         <#--填写处理方式-->
 
                         <#--table-->
-                            <table class="bo table ">
+                            <table class="bo table " id="displaytable">
                                 <tr>
                                     <td class="title"><label class="control-label">填写处理</label></td>
                                     <td colspan="13" style="text-align: right;"><i
@@ -408,7 +408,7 @@
                         </div>
 
                     <#else >
-                        <table class="bo table ">
+                        <table class="bo table " id="displaytable">
                             <tr>
                                 <td class="title"><label class="control-label">填写问题</label></td>
                                 <td colspan="13" style="text-align: right;"><i
@@ -550,16 +550,10 @@
                         <#if  status.statusId == 7 || status.statusId == 6 >
                             disabled="disabled"
                         </#if>
-                        <#if task.typeId = 1 && task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson >
+                        <#if task.typeId = 1 && task.threeBook.processPerson?? && user2.realName != task.threeBook.processPerson >
                             disabled="disabled"
                         </#if>
-                        <#if task.typeId = 2 && task.detailDraw.processPerson?? && user2.realName == task.detailDraw.processPerson >
-                            disabled="disabled"
-                        </#if>
-                        <#if task.typeId = 1 && task.threeBook.processPerson?? && task.threeBook.processPerson !=''>
-                            disabled="disabled"
-                        </#if>
-                        <#if task.typeId = 2 && task.detailDraw.processPerson?? && task.threeBook.processPerson !='' >
+                        <#if task.typeId = 2 && task.detailDraw.processPerson?? && user2.realName != task.detailDraw.processPerson >
                             disabled="disabled"
                         </#if>
                 />
@@ -606,6 +600,15 @@
     $('#notcommitaccess').on("click", function () {
         $('#commit').val('notaccess');
     });
+    $('#shouldHandle').change(function () {
+        var selectedValue = $(this).val();
+        if (selectedValue === '是') {
+            $('#displaytable').show();
+        } else {
+            $('#displaytable').hide();
+        }
+    });
+
 
     function updateProcess(button, tbId) {
         // 获取当前按钮所在的行

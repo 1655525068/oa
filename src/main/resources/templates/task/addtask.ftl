@@ -223,11 +223,11 @@
                                 </div>
                             </div>
 
-                            <span class="labels"><label><input type="checkbox" name="top" style="display: none"
+                            <span class="labels" style="display: none"><label><input type="checkbox" name="top" style="display: none"
                                                                class="val"><i>✓</i></label></span>
 
                             <span
-                                    class="labels"><label><input type="checkbox" name="cancel" style="display: none"
+                                    class="labels" style="display: none"><label><input type="checkbox" name="cancel" style="display: none"
                                                                  class="val"><i>✓</i></label></span>
 
                         </div>

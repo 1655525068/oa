@@ -17,6 +17,7 @@
             <th style="background-color: yellow" scope="col">FU计划时间</th>
             <th style="background-color: yellow" scope="col">FU单号</th>
             <th style="background-color: greenyellow" scope="col">计划细化完成时间（无需细化填/）</th>
+            <th style="background-color: greenyellow" scope="col">识别责任人</th>
             <th style="background-color: greenyellow" scope="col">细化责任人</th>
             <th style="background-color: greenyellow" scope="col">审核人</th>
             <th style="background-color: red" scope="col">问题描述</th>
@@ -53,7 +54,8 @@
                 <td><span>${detailDraw.planTimeFU!''}</span></td>
                 <td><span>${detailDraw.numberFU!''}</span></td>
                 <td><span>${detailDraw.planCompletionTime!''}</span></td>
-                <td><span>${detailDraw.responsiblePerson!''}</span></td>
+                <td><span>${detailDraw.identifyResponsiblePerson!''}</span></td>
+                <td><span>${detailDraw.processPerson!''}</span></td>
                 <td><span>${detailDraw.auditPerson!''}</span></td>
                 <td><span>${detailDraw.problemDescription!''}</span></td>
                 <td><span>${detailDraw.problemCount!''}</span></td>

@@ -25,4 +25,7 @@ public interface ThreeBookDao extends PagingAndSortingRepository<ThreeBook, Stri
     @Query("select tb from ThreeBook tb where tb.type like %?1% or tb.threeBookNumbers like %?1% or tb.chineseName like %?1% or tb.fcrVersion like %?1% or tb.state like %?1% or tb.preparedBy like %?1% or tb.latestVersion like %?1% or tb.receivingTime like %?1% or tb.distributionTime like %?1% or tb.invalidIdentification like %?1% or tb.relatedDocumentCodes like %?1% or tb.internalCodes like %?1% or tb.drawVersion like %?1% or tb.professionalType like %?1% or tb.responsibleParty like %?1% or tb.identifyResponsiblePerson like %?1% or tb.processPerson like %?1% or tb.processResponsibleParty like %?1% or tb.shouldClaim like %?1% or tb.planToCloseTime like %?1% or tb.actualCloseTime like %?1% or tb.designPointValue like %?1% or tb.auditPointValue like %?1% order by tb.bookId ASC ")
     Iterable<ThreeBook> findAllByCondition(String name);
 
+    @Query("select tb from ThreeBook tb where tb.threeBookNumbers=:threeBookNumbers and tb.relatedDocumentCodes=:relatedDocumentCodes and tb.drawVersion=:drawVersion")
+    ThreeBook findByThreeBookNumbersAndDrawVersion(@Param("threeBookNumbers") String threeBookNumbers, @Param("relatedDocumentCodes") String relatedDocumentCodes, @Param("drawVersion") String drawVersion);
+
 }

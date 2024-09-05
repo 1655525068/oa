@@ -25,4 +25,7 @@ public interface DetailDrawDao extends PagingAndSortingRepository<DetailDraw, St
 
     @Query("from DetailDraw dd where dd.documentCodes like %?1% or dd.internalDocumentCodes like %?1% or dd.catalogNumber like %?1% or dd.professionalType like %?1% or dd.version like %?1% or dd.state like %?1% or dd.receivingTime like %?1% or dd.doNeedFU like %?1% or dd.planTimeFU like %?1% or dd.numberFU like %?1% or dd.planCompletionTime like %?1% or dd.processPerson like %?1% order by dd.bookId ASC ")
     Iterable<DetailDraw> findAllByCondition(String name);
+
+    @Query("select dd from DetailDraw dd where dd.documentCodes=:documentCodes and dd.version=:version")
+    DetailDraw findByDocumentCodesAndVersion(@Param("documentCodes") String documentCodes, @Param("version") String version);
 }

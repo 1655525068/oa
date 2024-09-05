@@ -55,7 +55,7 @@
     <div class="containers">
 
         <button type="button" class="bs btn btn-xs btn-default out">
-            <a href="javascript:history.back();">
+            <a href="/myseetasks?id=${task.taskId}">
                 <span class="glyphicon glyphicon-chevron-left back">返回</span></a>
         </button>
 
@@ -399,9 +399,9 @@
             </div>
 
             <div class="box-footer foot">
-                <input class="btn btn-success" id="save2" type="submit" value="保存并提交"/>
+                <input class="btn btn-success" id="save2" type="submit" value="申请"/>
                 <input class="btn btn-default" id="cancel" type="button" value="取消"
-                       onclick="window.history.back();"/>
+                       onclick="backtask()"/>
             </div>
 
         </form>
@@ -411,7 +411,9 @@
 <#include "/common/modalTip.ftl">
 <input type="text" class="recive_list" style="display: none">
 <script type="text/javascript">
-
+    function backtask() {
+        window.location.href = "/mytask";
+    }
 
     $(function () {
 

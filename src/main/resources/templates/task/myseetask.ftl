@@ -201,22 +201,42 @@
                         </div>
                         <div class="col-md-4 form-group">
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">处理人</span>
-                            </label><input name="processPerson" type="text" id="" class="form-control"
+                            </label><input id="processPerson" name="processPerson" type="text" id=""
+                                           class="form-control"
+                                    <#if user2.realName == task.threeBook.processPerson!''>
+                                        readonly="readonly"
+
+                                    </#if>
                                            value="${task.threeBook.processPerson!''}"/>
-                            <div class="reciver">
+                            <div class="reciver"
+                                    <#if user2.realName == task.threeBook.processPerson!''>
+                                        disabled="disabled"
+
+                                    </#if>
+                            >
                                         <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
                                         >通讯录</span>
                             </div>
                         </div>
                         <div class="col-md-4 form-group">
                             <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
-                            <select id="shouldHandle" name="shouldHandle" class="form-control">
+                            <select id="shouldHandle" name="shouldHandle" class="form-control"
+                                    <#if task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??>
+                                        <#if task.threeBook.shouldHandle !='是'>
+                                            readonly="readonly"
+                                        </#if>
+
+                                    </#if>
+                            >
                                 <#if task.threeBook.shouldHandle ??>
                                     <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
                                 </#if>
-                                <option value="">/</option>
-                                <option value="是">是</option>
-                                <option value="否">否</option>
+                                <#if (!(task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??))>
+                                    <option value="">/</option>
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                </#if>
+
                             </select>
                         </div>
                     <#else >
@@ -369,6 +389,9 @@
                             <div class="col-md-4 form-group">
                                 <label class="control-label">责任方</label>
                                 <select name="processResponsibleParty"
+                                        <#if task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson>
+                                            required
+                                        </#if>
                                         class="form-control">
                                     <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
                                     <option value="设计院">设计院</option>
@@ -383,6 +406,9 @@
                             <div class="col-md-4 form-group">
                                 <label class="control-label">是否涉及索赔</label>
                                 <select name="shouldClaim"
+                                        <#if task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson>
+                                            required
+                                        </#if>
                                         class="form-control">
                                     <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
                                     <option value="">/</option>
@@ -540,49 +566,60 @@
 
             </div>
 
-            <div class="box-footer foot">
-                <input class="btn btn-primary" id="save" type="submit" value="保存"
-                        <#--<#if  (status.statusId == 6 || status.statusId == 7) && !c_user.role.roleName?contains("负责人") >
-                            disabled="disabled"
+            <#if user2.realName != task.usersId.realName!''>
+                <div class="box-footer foot">
+                    <input class="btn btn-primary" id="save" type="submit" value="保存"
+
+                            <#if  status.statusId == 7 >
+                                disabled="disabled"
+                            </#if>
+
+                            <#if task.typeId == 1 >
+                                <#if task.threeBook.processPerson?? && task.threeBook.processPerson != ''>
+                                    <#if user2.realName != task.threeBook.processPerson!''>
+                                        disabled="disabled"
+                                    </#if>
                                 </#if>
-                        />-->
 
-                        <#if  status.statusId == 7 || status.statusId == 6 >
-                            disabled="disabled"
+                            </#if>
+                            <#if task.typeId == 2 >
+                                <#if task.detailDraw.processPerson?? && task.detailDraw.processPerson != ''>
+                                    <#if user2.realName != task.detailDraw.processPerson!''>
+                                        disabled="disabled"
+                                    </#if>
+                                </#if>
+
+                            </#if>
+                    />
+                    <input class="btn btn-default" id="cancel" type="button" value="取消"
+                           onclick="window.history.back();"/>
+                    <#if  status.statusId == 5 || status.statusId == 8  >
+                        <#if task.typeId == 1 && user2.realName == task.threeBook.processPerson!'' >
+                            <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
                         </#if>
-                        <#if task.typeId = 1 && task.threeBook.processPerson?? && user2.realName != task.threeBook.processPerson >
-                            disabled="disabled"
+                        <#if task.typeId == 2 && user2.realName == task.detailDraw.processPerson!'' >
+                            <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
                         </#if>
-                        <#if task.typeId = 2 && task.detailDraw.processPerson?? && user2.realName != task.detailDraw.processPerson >
-                            disabled="disabled"
+
+                    </#if>
+                    <#if  status.statusId == 6 >
+                        <#if task.typeId = 1 && user2.realName == task.threeBook.auditPerson >
+                            <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
+                            <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
                         </#if>
-                />
-                <input class="btn btn-default" id="cancel" type="button" value="取消"
-                       onclick="window.history.back();"/>
-
-                <#if  status.statusId == 5 || status.statusId == 8  >
-                    <#if task.typeId = 1 && task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson >
-                        <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
+                        <#if task.typeId = 2 && user2.realName == task.detailDraw.auditPerson >
+                            <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
+                            <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
+                        </#if>
                     </#if>
-                    <#if task.typeId = 2 && task.detailDraw.processPerson?? && user2.realName == task.detailDraw.processPerson >
-                        <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
-                    </#if>
-
-                </#if>
-
-                <#if  status.statusId == 6 >
-                    <#if task.typeId = 1 && user2.realName == task.threeBook.auditPerson >
-                        <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
-                        <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
-                    </#if>
-                    <#if task.typeId = 2 && user2.realName == task.detailDraw.auditPerson >
-                        <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
-                        <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
-                    </#if>
-                </#if>
-
-
-            </div>
+                </div>
+            <#else >
+                <div class="box-footer foot">
+                    <input class="btn btn-primary" id="save" type="submit" value="保存"/>
+                    <input class="btn btn-default" id="cancel" type="button" value="取消"
+                           onclick="window.history.back();"/>
+                </div>
+            </#if>
 
         </form>
     </div>
@@ -605,6 +642,7 @@
         if (selectedValue === '是') {
             $('#displaytable').show();
         } else {
+            $('#processPerson').val('');
             $('#displaytable').hide();
         }
     });

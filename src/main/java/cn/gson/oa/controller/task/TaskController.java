@@ -162,7 +162,7 @@ public class TaskController {
     @RequestMapping("addtask")
     public ModelAndView index2(@SessionAttribute("userId") Long userId,
                                @RequestParam(value = "page", defaultValue = "0") int page,
-                               @RequestParam(value = "size", defaultValue = "10") int size) {
+                               @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
         ModelAndView mav = new ModelAndView("task/addtask");
         // 查询类型表
@@ -243,7 +243,7 @@ public class TaskController {
     @RequestMapping("edittasks")
     public ModelAndView index3(HttpServletRequest req, @SessionAttribute("userId") Long userId,
                                @RequestParam(value = "page", defaultValue = "0") int page,
-                               @RequestParam(value = "size", defaultValue = "10") int size) {
+                               @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
         ModelAndView mav = new ModelAndView("task/edittask");
         // 得到链接中的任务id
@@ -322,7 +322,7 @@ public class TaskController {
      */
     @RequestMapping("seetasks")
     public ModelAndView index4(HttpServletRequest req, @SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
-                               @RequestParam(value = "size", defaultValue = "10") int size) {
+                               @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
         ModelAndView mav = new ModelAndView("task/seetask");
         // 得到任务的 id
@@ -491,7 +491,7 @@ public class TaskController {
     @RequestMapping("mytask")
     public String index5(@SessionAttribute("userId") Long userId, Model model,
                          @RequestParam(value = "page", defaultValue = "0") int page,
-                         @RequestParam(value = "size", defaultValue = "10") int size) {
+                         @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
         Page<Tasklist> tasklist = tservice.index3(userId, null, page, size);
 
@@ -518,7 +518,7 @@ public class TaskController {
     @RequestMapping("mychaxun")
     public String select(HttpServletRequest request, @SessionAttribute("userId") Long userId, Model model,
                          @RequestParam(value = "page", defaultValue = "0") int page,
-                         @RequestParam(value = "size", defaultValue = "10") int size) throws ParseException {
+                         @RequestParam(value = "size", defaultValue = "50") int size) throws ParseException {
 
         String title = null;
         if (!StringUtil.isEmpty(request.getParameter("title"))) {
@@ -536,7 +536,7 @@ public class TaskController {
 
     @RequestMapping("myseetasks")
     public ModelAndView myseetask(HttpServletRequest req, @SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
-                                  @RequestParam(value = "size", defaultValue = "10") int size) {
+                                  @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
 
         ModelAndView mav = new ModelAndView("task/myseetask");
@@ -622,7 +622,13 @@ public class TaskController {
         if (commit.isEmpty() && req.getParameter("processPerson") != null) {
             logger.setLoggerStatusid(5);
         }
-        if ("否".equals(tb.getShouldHandle())) {
+        if ("否".equals(tb.getShouldHandle()) || "否".equals(dd.getShouldHandle())) {
+            if (tb != null) {
+                tb.setProcessPerson("");
+            }
+            if (dd != null) {
+                dd.setProcessPerson("");
+            }
             logger.setLoggerStatusid(7);
         }
 
@@ -646,6 +652,9 @@ public class TaskController {
             // 更新三单
             threeBook = tservice.updateThreeBook(req, threeBook);
             task.getThreeBook().setShouldHandle(tb.getShouldHandle());
+            if ("否".equals(tb.getShouldHandle())) {
+                task.getThreeBook().setProcessPerson("");
+            }
             if ("access".equals(commit)) {
                 task.getThreeBook().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
             }
@@ -670,6 +679,9 @@ public class TaskController {
             taskuser1 = taskuser;
             // 是否需要处理
             task.getDetailDraw().setShouldHandle(dd.getShouldHandle());
+            if ("否".equals(dd.getShouldHandle())) {
+                task.getDetailDraw().setProcessPerson("");
+            }
             Tasklogger finalLogger1 = logger;
             task.getDetailDraw().getQuestions().forEach(x -> {
                 if (x.getHandleMethod().isEmpty()) {
@@ -843,10 +855,19 @@ public class TaskController {
                     }
 
                 }
+
             }
 
             // 删除这条任务
             tservice.deteletask(task);
+
+            if (task.getThreeBook() != null) {
+                bdao.delete(task.getThreeBook());
+            }
+            if (task.getDetailDraw() != null) {
+                ddDao.delete(task.getDetailDraw());
+            }
+
         } else {
             System.out.println("权限不匹配，不能删除");
             return "redirect:/notlimit";
@@ -1041,24 +1062,28 @@ public class TaskController {
             tasklist.setTaskDescribe("@@");
             tasklist.setStatusId(5);
             tasklist.setReciverlist(tasklist.getThreeBook().getIdentifyResponsiblePerson());
-            //三单
-            ThreeBook result = bdao.save(tasklist.getThreeBook());
+            // 三单
+            // 查询三单，如果无，则新建任务
+            ThreeBook querythreeBook = bdao.findByThreeBookNumbersAndDrawVersion(tasklist.getThreeBook().getThreeBookNumbers(), tasklist.getThreeBook().getRelatedDocumentCodes(), tasklist.getThreeBook().getDrawVersion());
+            if (querythreeBook == null) {
+                ThreeBook result = bdao.save(tasklist.getThreeBook());
+                tdao.save(tasklist);
+                // 分割任务接收人
+                StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getThreeBook().getProcessPerson() != null ? ";" + tasklist.getThreeBook().getProcessPerson() : ""), ";");
+                while (st.hasMoreElements()) {
+                    User reciver = udao.findid(st.nextToken());
+                    Taskuser task = new Taskuser();
+                    task.setTaskId(tasklist);
+                    task.setIrp(result.getIdentifyResponsiblePerson());
+                    task.setUserId(reciver);
+                    task.setStatusId(tasklist.getStatusId());
+                    // 存任务中间表
+                    tudao.save(task);
 
-            tdao.save(tasklist);
-            // 分割任务接收人
-            StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getThreeBook().getProcessPerson() != null ? ";" + tasklist.getThreeBook().getProcessPerson() : ""), ";");
-            while (st.hasMoreElements()) {
-                User reciver = udao.findid(st.nextToken());
-                Taskuser task = new Taskuser();
-                task.setTaskId(tasklist);
-                task.setIrp(result.getIdentifyResponsiblePerson());
-                task.setUserId(reciver);
-                task.setStatusId(tasklist.getStatusId());
-                // 存任务中间表
-                tudao.save(task);
-
+                }
+                i++;
             }
-            i++;
+
         }
 
 
@@ -1067,7 +1092,6 @@ public class TaskController {
 
         return "redirect:/taskmanage";
     }
-
 
 
 }

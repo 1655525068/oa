@@ -161,6 +161,8 @@ public class TaskService {
             if (task.get(i).getThreeBook() != null) {
                 result.put("threeType", task.get(i).getThreeBook().getType());
                 result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
+                result.put("relatedDocumentCodes", task.get(i).getThreeBook().getRelatedDocumentCodes());
+                result.put("drawVersion", task.get(i).getThreeBook().getDrawVersion());
                 result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
                 result.put("auditPerson", task.get(i).getThreeBook().getAuditPerson());
@@ -170,6 +172,7 @@ public class TaskService {
             if (task.get(i).getDetailDraw() != null) {
                 result.put("documentCodes", task.get(i).getDetailDraw().getDocumentCodes());
                 result.put("internalDocumentCodes", task.get(i).getDetailDraw().getInternalDocumentCodes());
+                result.put("version", task.get(i).getDetailDraw().getVersion());
                 result.put("catalogNumber", task.get(i).getDetailDraw().getCatalogNumber());
                 result.put("identifyResponsiblePerson", task.get(i).getDetailDraw().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getDetailDraw().getProcessPerson());

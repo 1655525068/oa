@@ -75,7 +75,7 @@ public class TaskDetailController {
     @RequestMapping("addtaskdetail")
     public ModelAndView index2(@SessionAttribute("userId") Long userId,
                                @RequestParam(value = "page", defaultValue = "0") int page,
-                               @RequestParam(value = "size", defaultValue = "10") int size) {
+                               @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
         ModelAndView mav = new ModelAndView("task/addtaskdetail");
         // 查询类型表
@@ -249,23 +249,29 @@ public class TaskDetailController {
             tasklist.setStatusId(5);
             tasklist.setReciverlist(tasklist.getDetailDraw().getIdentifyResponsiblePerson());
             // 细化
-            DetailDraw result = detailDrawDao.save(tasklist.getDetailDraw());
+            // 查询细化，如果无，则新建任务
+            DetailDraw queryableDraw = detailDrawDao.findByDocumentCodesAndVersion(tasklist.getDetailDraw().getDocumentCodes(), tasklist.getDetailDraw().getVersion());
 
-            tdao.save(tasklist);
-            // 分割任务接收人
-            StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getDetailDraw().getProcessPerson() != null ? ";" + tasklist.getDetailDraw().getProcessPerson() : ""), ";");
-            while (st.hasMoreElements()) {
-                User reciver = udao.findid(st.nextToken());
-                Taskuser task = new Taskuser();
-                task.setTaskId(tasklist);
-                task.setIrp(result.getIdentifyResponsiblePerson());
-                task.setUserId(reciver);
-                task.setStatusId(tasklist.getStatusId());
-                // 存任务中间表
-                tudao.save(task);
+            if (queryableDraw == null) {
+                DetailDraw result = detailDrawDao.save(tasklist.getDetailDraw());
 
+                tdao.save(tasklist);
+                // 分割任务接收人
+                StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getDetailDraw().getProcessPerson() != null ? ";" + tasklist.getDetailDraw().getProcessPerson() : ""), ";");
+                while (st.hasMoreElements()) {
+                    User reciver = udao.findid(st.nextToken());
+                    Taskuser task = new Taskuser();
+                    task.setTaskId(tasklist);
+                    task.setIrp(result.getIdentifyResponsiblePerson());
+                    task.setUserId(reciver);
+                    task.setStatusId(tasklist.getStatusId());
+                    // 存任务中间表
+                    tudao.save(task);
+
+                }
+                i++;
             }
-            i++;
+
         }
 
 

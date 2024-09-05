@@ -27,23 +27,6 @@
         cursor: pointer;
     }
 </style>
-<script>
-    $(function () {
-
-
-        $(".ddlstatus").each(function () {
-            var options = $(".ddlstatus option:selected");
-
-
-            if (options.val() == "7") {
-                $("#save").prop("disabled", true);
-
-            } else {
-                $("#save").removeAttr("disabled");
-            }
-        });
-    });
-</script>
 </head>
 
 <body>
@@ -526,22 +509,6 @@
                 <input class="btn btn-primary" id="save" type="submit" value="保存"/>
                 <input class="btn btn-default" id="cancel" type="button" value="取消"
                        onclick="window.history.back();"/>
-
-
-                <#if  status.statusId == 5 || status.statusId == 8 >
-                    <input class="btn btn-success" id="saveandcommit" type="submit" value="审核申请"/>
-                </#if>
-
-                <#if  status.statusId == 6 >
-                    <#if task.typeId = 1 && user2.realName == task.threeBook.auditPerson >
-                        <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
-                        <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
-                    </#if>
-                    <#if task.typeId = 2 && user2.realName == task.detailDraw.auditPerson >
-                        <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
-                        <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
-                    </#if>
-                </#if>
             </div>
 
         </form>

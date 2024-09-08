@@ -199,7 +199,6 @@
                                 <#if task.threeBook.shouldHandle ??>
                                     <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
                                 </#if>
-                                <option value="">/</option>
                                 <option value="是">是</option>
                                 <option value="否">否</option>
                             </select>
@@ -240,7 +239,6 @@
                                 <#if task.detailDraw.shouldHandle ??>
                                     <option value="${task.detailDraw.shouldHandle}">${task.detailDraw.shouldHandle}</option>
                                 </#if>
-                                <option value="">/</option>
                                 <option value="是">是</option>
                                 <option value="否">否</option>
 
@@ -367,7 +365,6 @@
                             <select name="shouldClaim"
                                     class="form-control">
                                 <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
-                                <option value="">/</option>
                                 <option value="否">否</option>
                                 <option value="是">是</option>
 
@@ -433,7 +430,6 @@
                                                             <select name="questions[${q_index}].modify"
                                                                     class="form-control">
                                                                 <option value="${q.modify!''}">${q.modify!''}</option>
-                                                                <option value="">/</option>
                                                                 <option value="是">是</option>
                                                                 <option value="否">否</option>
                                                             </select>

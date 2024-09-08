@@ -4,37 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="0905">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/DetailDrawDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/DetailDrawDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ThreeBookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ThreeBookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="origin" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -45,16 +28,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="SKIP_HIGHLIGHTING" />
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="a27d5f68-5e58-40c7-b708-525d5918ba55" />
   </component>
-  <component name="ProjectId" id="2k3DN6GCfGIFmKgjNIjAKxQzjyB" />
+  <component name="ProjectId" id="2ligVqEZaSsFfzb6O86Uf9ELSKp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -66,44 +48,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\02_github\oa\src\test\java" />
-      <recent name="E:\02_github\oa\src\main\java\cn\gson\oa\common" />
-      <recent name="E:\02_github\oa\src\main\resources\templates" />
-      <recent name="E:\02_github\oa\src\main\resources\templates\user" />
-      <recent name="E:\02_github\oa\src\main\resources\templates\task" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\02_github\oa\src\main\resources\templates" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.gson.oa.common" />
-      <recent name="cn.gson.oa.model.dao.book" />
-      <recent name="cn.gson.oa.controller.task" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.Application">
-    <configuration name="OfficeUtilsTest.testReadOffice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="oa" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OfficeUtilsTest" />
-      <option name="METHOD_NAME" value="testReadOffice" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="oa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gson.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gson.oa.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -111,182 +67,27 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OfficeUtilsTest.testReadOffice" />
+        <item itemvalue="Spring Boot.Application" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2613843f-d2dc-4c03-a06c-0769ebcb8b57" name="Default Changelist" comment="" />
-      <created>1722503336690</created>
+      <changelist id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="" />
+      <created>1725668342025</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1722503336690</updated>
-      <workItem from="1722503342103" duration="140000" />
-      <workItem from="1722829158848" duration="34000" />
-      <workItem from="1722829244686" duration="21018000" />
-      <workItem from="1722911022037" duration="30483000" />
-      <workItem from="1722985805009" duration="2277000" />
-      <workItem from="1722991418244" duration="626000" />
-      <workItem from="1722992455977" duration="174000" />
-      <workItem from="1722993929539" duration="4629000" />
-      <workItem from="1723003569176" duration="155000" />
-      <workItem from="1723003732221" duration="22234000" />
-      <workItem from="1723070064128" duration="20991000" />
-      <workItem from="1723164036791" duration="16547000" />
-      <workItem from="1723183379737" duration="1000" />
-      <workItem from="1723243496314" duration="915000" />
-      <workItem from="1723250655922" duration="5684000" />
-      <workItem from="1723321956645" duration="23149000" />
-      <workItem from="1723420974509" duration="636000" />
-      <workItem from="1723421626634" duration="6315000" />
-      <workItem from="1723507956798" duration="2465000" />
-      <workItem from="1723510611532" duration="16219000" />
-      <workItem from="1723683180104" duration="11935000" />
-      <workItem from="1723696457992" duration="718000" />
-      <workItem from="1723697422763" duration="3388000" />
-      <workItem from="1723710018315" duration="12516000" />
-      <workItem from="1723960667035" duration="7722000" />
-      <workItem from="1723969670357" duration="16531000" />
-      <workItem from="1724026745283" duration="6788000" />
-      <workItem from="1724112784103" duration="25029000" />
-      <workItem from="1724197653740" duration="36204000" />
-      <workItem from="1724285378057" duration="953000" />
-      <workItem from="1724287589322" duration="29098000" />
-      <workItem from="1724325940103" duration="8339000" />
-      <workItem from="1724341627451" duration="373000" />
-      <workItem from="1724366460279" duration="25594000" />
-      <workItem from="1724451142489" duration="5425000" />
-      <workItem from="1724456859419" duration="457000" />
-      <workItem from="1724513771639" duration="1247000" />
-      <workItem from="1724537488628" duration="3697000" />
-      <workItem from="1724644809363" duration="6636000" />
-      <workItem from="1724708381740" duration="36007000" />
-      <workItem from="1724804049679" duration="4103000" />
-      <workItem from="1724837402433" duration="195000" />
-      <workItem from="1724837623774" duration="10932000" />
-      <workItem from="1724890105702" duration="11909000" />
-      <workItem from="1724919148116" duration="36391000" />
-      <workItem from="1725155728676" duration="6302000" />
-      <workItem from="1725254184435" duration="10845000" />
-      <workItem from="1725332090127" duration="2444000" />
-      <workItem from="1725409725305" duration="497000" />
-      <workItem from="1725410234662" duration="19778000" />
+      <updated>1725668342025</updated>
+      <workItem from="1725668346149" duration="482000" />
+      <workItem from="1725668853706" duration="107000" />
+      <workItem from="1725668973960" duration="6586000" />
+      <workItem from="1725758064078" duration="7832000" />
     </task>
-    <task id="LOCAL-00001" summary="add gitignore">
-      <created>1722829344867</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1722829344867</updated>
-    </task>
-    <task id="LOCAL-00002" summary="update 用户名">
-      <created>1722945713295</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1722945713295</updated>
-    </task>
-    <task id="LOCAL-00003" summary="新建任务三单form">
-      <created>1723037300937</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1723037300937</updated>
-    </task>
-    <task id="LOCAL-00004" summary="查看任务">
-      <created>1723116307276</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1723116307276</updated>
-    </task>
-    <task id="LOCAL-00005" summary="查看任务-msql">
-      <created>1723116378415</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1723116378415</updated>
-    </task>
-    <task id="LOCAL-00006" summary="三单一览">
-      <created>1723726023213</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1723726023214</updated>
-    </task>
-    <task id="LOCAL-00007" summary="细化一览">
-      <created>1724298004349</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1724298004349</updated>
-    </task>
-    <task id="LOCAL-00008" summary="细化一览">
-      <created>1724340915114</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1724340915114</updated>
-    </task>
-    <task id="LOCAL-00009" summary="0825">
-      <created>1724545115345</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1724545115345</updated>
-    </task>
-    <task id="LOCAL-00010" summary="0827">
-      <created>1724743347318</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1724743347318</updated>
-    </task>
-    <task id="LOCAL-00011" summary="0828">
-      <created>1724899918223</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1724899918223</updated>
-    </task>
-    <task id="LOCAL-00012" summary="0829">
-      <created>1724993756446</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1724993756446</updated>
-    </task>
-    <task id="LOCAL-00013" summary="0830">
-      <created>1725009659666</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1725009659666</updated>
-    </task>
-    <task id="LOCAL-00014" summary="0904">
-      <created>1725423531076</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1725423531076</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -300,296 +101,14 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="add gitignore" />
-    <MESSAGE value="通讯录" />
-    <MESSAGE value="update 用户名" />
-    <MESSAGE value="新建任务三单form" />
-    <MESSAGE value="查看任务" />
-    <MESSAGE value="查看任务-msql" />
-    <MESSAGE value="三单一览" />
-    <MESSAGE value="细化一览" />
-    <MESSAGE value="0823" />
-    <MESSAGE value="0825" />
-    <MESSAGE value="0827" />
-    <MESSAGE value="0828" />
-    <MESSAGE value="0829" />
-    <MESSAGE value="0830" />
-    <MESSAGE value="0904" />
-    <MESSAGE value="0905" />
-    <option name="LAST_COMMIT_MESSAGE" value="0905" />
-  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>192</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>191</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
-          <line>211</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/address/AddrController.java</url>
-          <line>548</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/note/NoteController.java</url>
-          <line>581</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/process/ProcessService.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/note/NoteController.java</url>
-          <line>590</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
-          <line>438</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
-          <line>165</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
-          <line>176</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/process/ProcedureController.java</url>
-          <line>171</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/DeptController.java</url>
-          <line>186</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>260</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
-          <line>161</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java</url>
-          <line>183</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserpanelController.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>173</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/role/RoleController.java</url>
-          <line>195</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>287</line>
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/system/MenuSysController.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/common/utils/FreemarkerUtils.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java</url>
-          <line>222</line>
-          <option name="timeStamp" value="162" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="164" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DetailDraw.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="198" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>912</line>
-          <option name="timeStamp" value="202" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java</url>
-          <line>155</line>
-          <option name="timeStamp" value="204" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="208" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>439</line>
-          <option name="timeStamp" value="209" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>458</line>
-          <option name="timeStamp" value="210" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>389</line>
-          <option name="timeStamp" value="211" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>779</line>
-          <option name="timeStamp" value="238" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
-          <line>382</line>
-          <option name="timeStamp" value="242" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>631</line>
-          <option name="timeStamp" value="248" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>702</line>
-          <option name="timeStamp" value="249" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>678</line>
-          <option name="timeStamp" value="252" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>689</line>
-          <option name="timeStamp" value="253" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>687</line>
-          <option name="timeStamp" value="254" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>648</line>
-          <option name="timeStamp" value="256" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>695</line>
-          <option name="timeStamp" value="258" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>299</line>
-          <option name="timeStamp" value="269" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="300" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="304" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="305" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="307" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="process" language="JAVA" />
-        <watch expression="req.getParameter(&quot;processPerson&quot;)" language="JAVA" />
-        <watch expression="userlist.getUserName()" language="JAVA" />
-        <watch expression="task.getThreeBook() != null ? task.getThreeBook().getProcessPerson() : task.getDetailDraw().getProcessPerson()" language="JAVA" />
-        <watch expression="pagelist.getTotalPages()" language="JAVA" />
-        <watch expression="req.getParameter(&quot;processPerson&quot;)" language="JAVA" />
-        <watch expression="cell.getCellTypeEnum()" language="JAVA" />
-        <watch expression="cell.getCellFormula()" language="JAVA" />
-        <watch expression="cell.getCellType()" language="JAVA" />
-        <watch expression="CellType." language="JAVA" />
-        <watch expression="cell.getStringCellValue()" language="JAVA" />
-        <watch expression="cell.toString()" language="JAVA" />
-        <watch expression="sdf2.format(new Date())" language="JAVA" />
-        <watch expression="tasklist.getDetailDraw().getDocumentCodes()" language="JAVA" />
+        <watch expression="tasklist.getThreeBook()" language="JAVA" />
+        <watch expression="task.getThreeBook().getProcessPerson()" language="JAVA" />
+        <watch expression="task.getTaskId()" language="JAVA" />
+        <watch expression="task.getTaskId()" language="JAVA" />
+        <watch expression="reciver.getUserId()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

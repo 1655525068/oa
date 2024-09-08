@@ -201,21 +201,26 @@
                         </div>
                         <div class="col-md-4 form-group">
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">处理人</span>
-                            </label><input id="processPerson" name="processPerson" type="text" id=""
+                            </label><input id="processPerson" name="processPerson" type="text" id="" required="required"
                                            class="form-control"
                                     <#if user2.realName == task.threeBook.processPerson!''>
                                         readonly="readonly"
-
                                     </#if>
                                            value="${task.threeBook.processPerson!''}"/>
-                            <div class="reciver"
+                            <div class="reciver" id="reciver"
                                     <#if user2.realName == task.threeBook.processPerson!''>
                                         disabled="disabled"
-
                                     </#if>
                             >
+                                <#if task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??>
+                                    <#if task.threeBook.shouldHandle !='否' && user2.realName != task.threeBook.processPerson!''>
                                         <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
                                         >通讯录</span>
+
+                                    </#if>
+
+                                </#if>
+
                             </div>
                         </div>
                         <div class="col-md-4 form-group">
@@ -232,7 +237,6 @@
                                     <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
                                 </#if>
                                 <#if (!(task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??))>
-                                    <option value="">/</option>
                                     <option value="是">是</option>
                                     <option value="否">否</option>
                                 </#if>
@@ -263,10 +267,17 @@
                         <div class="col-md-3 form-group">
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化责任人</span>
                             </label><input name="processPerson" type="text" id="" class="form-control"
+                                           required="required"
+                                           id="processPerson"
                                            value="${task.detailDraw.processPerson!''}"/>
-                            <div class="reciver">
+                            <div class="reciver" id="reciver">
+                                <#if task.detailDraw.shouldHandle ?? &&  task.detailDraw.processPerson ??>
+                                    <#if task.detailDraw.shouldHandle !='否'>
                                         <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
                                         >通讯录</span>
+                                    </#if>
+
+                                </#if>
                             </div>
                         </div>
                         <div class="col-md-3 form-group">
@@ -275,7 +286,6 @@
                                 <#if task.detailDraw.shouldHandle ??>
                                     <option value="${task.detailDraw.shouldHandle}">${task.detailDraw.shouldHandle}</option>
                                 </#if>
-                                <option value="">/</option>
                                 <option value="是">是</option>
                                 <option value="否">否</option>
 
@@ -388,7 +398,7 @@
                         <#if task.threeBook.type != "CR">
                             <div class="col-md-4 form-group">
                                 <label class="control-label">责任方</label>
-                                <select name="processResponsibleParty"
+                                <select name="processResponsibleParty" id="processResponsibleParty"
                                         <#if task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson>
                                             required
                                         </#if>
@@ -405,13 +415,12 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="control-label">是否涉及索赔</label>
-                                <select name="shouldClaim"
+                                <select name="shouldClaim" id="shouldClaim"
                                         <#if task.threeBook.processPerson?? && user2.realName == task.threeBook.processPerson>
                                             required
                                         </#if>
                                         class="form-control">
                                     <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
-                                    <option value="">/</option>
                                     <option value="否">否</option>
                                     <option value="是">是</option>
 
@@ -570,7 +579,7 @@
                 <div class="box-footer foot">
                     <input class="btn btn-primary" id="save" type="submit" value="保存"
 
-                            <#if  status.statusId == 7 >
+                            <#if  status.statusId == 6 || status.statusId == 7 >
                                 disabled="disabled"
                             </#if>
 
@@ -618,7 +627,18 @@
                     <input class="btn btn-primary" id="save" type="submit" value="保存"/>
                     <input class="btn btn-default" id="cancel" type="button" value="取消"
                            onclick="window.history.back();"/>
+                    <#if  status.statusId == 6 >
+                        <#if task.typeId = 1 && user2.realName == task.threeBook.auditPerson >
+                            <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
+                            <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
+                        </#if>
+                        <#if task.typeId = 2 && user2.realName == task.detailDraw.auditPerson >
+                            <input class="btn btn-success" id="commitaccess" type="submit" value="通过"/>
+                            <input class="btn btn-danger" id="notcommitaccess" type="submit" value="驳回"/>
+                        </#if>
+                    </#if>
                 </div>
+
             </#if>
 
         </form>
@@ -640,10 +660,21 @@
     $('#shouldHandle').change(function () {
         var selectedValue = $(this).val();
         if (selectedValue === '是') {
+            debugger;
             $('#displaytable').show();
+            $('#processResponsibleParty').removeAttr('required');
+            $('#shouldClaim').removeAttr('required');
+            $('#processPerson').removeAttr('readonly');
+            $('#reciver').show();
+            $('#processPerson').attr('required', 'required');
         } else {
             $('#processPerson').val('');
             $('#displaytable').hide();
+            $('#processPerson').attr('readonly', 'readonly');
+            $('#processPerson').removeAttr('required')
+            $('#reciver').hide();
+            $('#processResponsibleParty').attr('required', 'required');
+            $('#shouldClaim').attr('required', 'required');
         }
     });
 

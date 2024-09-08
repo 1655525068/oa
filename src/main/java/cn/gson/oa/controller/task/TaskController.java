@@ -750,14 +750,23 @@ public class TaskController {
                 tudao.save(taskuser1);
             }
         } else {
-            Taskuser tasku2 = new Taskuser();
-            tasku2.setTaskId(task);
-            tasku2.setUserId(findUser);
-            if (!Objects.isNull(logger.getLoggerStatusid())) {
+            if (findUser == null ||
+                    task.getTypeId() == 1 && !findUser.getUserName().equals(task.getThreeBook().getIdentifyResponsiblePerson())
+                    ||
+                    task.getTypeId() == 2 && !findUser.getUserName().equals(task.getDetailDraw().getIdentifyResponsiblePerson())
+            ) {
+                if ("是".equals(dd.getShouldHandle())) {
+                    Taskuser tasku2 = new Taskuser();
+                    tasku2.setTaskId(task);
+                    tasku2.setUserId(findUser);
+                    if (!Objects.isNull(logger.getLoggerStatusid())) {
 
-                tasku2.setStatusId(logger.getLoggerStatusid());
+                        tasku2.setStatusId(logger.getLoggerStatusid());
+                    }
+                    tudao.save(tasku2);
+                }
             }
-            tudao.save(tasku2);
+
         }
         // logger.getLoggerStatusid()
         List<Taskuser> tus = udao.findpkIdList(logger.getTaskId().getTaskId());
@@ -1045,7 +1054,7 @@ public class TaskController {
 
         for (Tasklist tasklist : list) {
             if (tasklist.getThreeBook().getIdentifyResponsiblePerson().equals("")) {
-                model.addAttribute("errormess", "需要导入细化文件");
+                model.addAttribute("errormess", "文件导入失败");
                 return "forward:/taskmanage";
             }
         }

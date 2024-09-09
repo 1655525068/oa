@@ -10,34 +10,27 @@
                  style="width: 32px; height: 32px; border-radius: 50%;"/>
         </div>
         <ul class="list-group">
-            <li><a href="#"><span class="glyphicon glyphicon-asterisk"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-education"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-time"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-hourglass"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-flag"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-calendar"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-plane"></span></a>
-            </li>
-            <li><a href="#"><span
-                            class="glyphicon glyphicon-folder-open"></span></a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-earphone"></span></a>
-            </li>
-            <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a>
-            </li>
+            <#list oneMenuAll as one>
+                <#list twoMenuAll as two>
+                    <#if one.menuId==two.parentId>
+                        <#if two.menuUrl??>
+                            <li>
+                                <a href="javascript:changepath('${two.menuUrl}');"> <span
+                                            class="glyphicon ${two.menuIcon}" title="${two.menuName}"></span>
+                                </a>
+                            </li>
+
+                        <#else>
+                            <li>
+                                <a href="#"> <span
+                                            class="glyphicon ${two.menuIcon}" title="${two.menuName}"></span>
+                                </a>
+                            </li>
+                        </#if>
+                    </#if>
+                </#list>
+            </#list>
+
         </ul>
     </div>
 </div>

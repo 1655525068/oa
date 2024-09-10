@@ -13,6 +13,22 @@ public class Profession {
     private Long proId;
 
     @Column(name = "pro_name")
-    @NotEmpty(message="图纸类型名字不为空")
-    private String proName; // 菜单名字
+    @NotEmpty(message = "图纸类型名字不为空")
+    private String proName;
+
+    public Long getProId() {
+        return proId;
+    }
+
+    public void setProId(Long proId) {
+        this.proId = proId;
+    }
+
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName;
+    }
 }

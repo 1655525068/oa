@@ -78,13 +78,6 @@
                         <#else>
                             <td><span class="label ${task.statuscolor}">${task.statusname}</span></td>
                         </#if>
-                        <#--<#if task.zhiding==true>
-                            <td><span class="labels"><label><input type="checkbox" name="top" class="val" checked
-                                                                   disabled><i>✓</i></label></span></td>
-                        <#else>
-                            <td><span class="labels"><label><input type="checkbox" name="top" class="val"
-                                                                   disabled><i>✓</i></label></span></td>
-                        </#if>-->
                         <td>
                             <#-- <a href="edittasks?id=${task.taskid}"
                                 class="label xiugai"><span

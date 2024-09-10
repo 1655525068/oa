@@ -15,15 +15,9 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import cn.gson.oa.common.OfficeUtils;
-import cn.gson.oa.model.dao.book.DetailDrawDao;
-import cn.gson.oa.model.dao.book.DetailDrawQuestionDao;
-import cn.gson.oa.model.dao.book.ThreeBookDao;
-import cn.gson.oa.model.dao.book.ThreeBookProcessDao;
+import cn.gson.oa.model.dao.book.*;
 import cn.gson.oa.model.dao.roledao.RoleDao;
-import cn.gson.oa.model.entity.book.DetailDraw;
-import cn.gson.oa.model.entity.book.DetailDrawQuestion;
-import cn.gson.oa.model.entity.book.ThreeBook;
-import cn.gson.oa.model.entity.book.ThreeBookProcess;
+import cn.gson.oa.model.entity.book.*;
 import cn.gson.oa.model.entity.file.FileList;
 import cn.gson.oa.model.entity.role.Role;
 import cn.gson.oa.services.file.FileServices;
@@ -100,6 +94,12 @@ public class TaskController {
 
     @Autowired
     private DetailDrawDao ddDao;
+
+    @Autowired
+    private ProfessionDao pfDao;
+
+    @Autowired
+    private DrawTypeDao dtDao;
 
     @Value("${file.root.path}")
     private String rootPath;
@@ -194,6 +194,12 @@ public class TaskController {
 
         mav.addObject("url2", "details");
         mav.addObject("qufen", "任务");
+        // 专业列表
+        Iterable<Profession> professions = pfDao.findAll();
+        mav.addObject("professions", professions);
+        // 图纸列表
+        Iterable<DrawType> drawTypes = dtDao.findAll();
+        mav.addObject("drawTypes", drawTypes);
         return mav;
     }
 
@@ -377,6 +383,12 @@ public class TaskController {
         mav.addObject("rolelist", rolelist);
         mav.addObject("page", pagelist);
         mav.addObject("url", "names");
+        // 专业列表
+        Iterable<Profession> professions = pfDao.findAll();
+        mav.addObject("professions", professions);
+        // 图纸列表
+        Iterable<DrawType> drawTypes = dtDao.findAll();
+        mav.addObject("drawTypes", drawTypes);
         return mav;
     }
 
@@ -601,6 +613,12 @@ public class TaskController {
         mav.addObject("rolelist", rolelist);
         mav.addObject("page", pagelist);
         mav.addObject("url", "paixu");
+        // 专业列表
+        Iterable<Profession> professions = pfDao.findAll();
+        mav.addObject("professions", professions);
+        // 图纸列表
+        Iterable<DrawType> drawTypes = dtDao.findAll();
+        mav.addObject("drawTypes", drawTypes);
 
         return mav;
 
@@ -651,6 +669,9 @@ public class TaskController {
             taskuser1 = taskuser;
             // 更新三单
             threeBook = tservice.updateThreeBook(req, threeBook);
+            // 专业
+            task.getThreeBook().setProfessionalType(tb.getProfessionalType());
+            // 是否需要处理
             task.getThreeBook().setShouldHandle(tb.getShouldHandle());
             if ("否".equals(tb.getShouldHandle())) {
                 task.getThreeBook().setProcessPerson("");
@@ -677,6 +698,10 @@ public class TaskController {
             detailDraw = task.getDetailDraw();
             Taskuser taskuser = tudao.findByuserNameAndTaskId(detailDraw.getProcessPerson(), task.getTaskId());
             taskuser1 = taskuser;
+            // 专业
+            task.getDetailDraw().setProfessionalType(dd.getProfessionalType());
+            // 图纸类型
+            task.getDetailDraw().setDrawingType(dd.getDrawingType());
             // 是否需要处理
             task.getDetailDraw().setShouldHandle(dd.getShouldHandle());
             if ("否".equals(dd.getShouldHandle())) {

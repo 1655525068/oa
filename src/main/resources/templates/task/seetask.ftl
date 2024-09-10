@@ -181,7 +181,9 @@
                             <select name="professionalType" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.threeBook.professionalType}">${task.threeBook.professionalType}</option>
-
+                                <#list professions as profession>
+                                    <option value="${profession.proName}">${profession.proName}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="col-md-4 form-group">
@@ -211,7 +213,9 @@
                             <select name="professionalType" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.detailDraw.professionalType}">${task.detailDraw.professionalType}</option>
-
+                                <#list professions as profession>
+                                    <option value="${profession.proName}">${profession.proName}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="col-md-3 form-group">
@@ -221,7 +225,9 @@
                             <select name="professionalType" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.detailDraw.drawingType}">${task.detailDraw.drawingType}</option>
-
+                                <#list drawTypes as drawType>
+                                    <option value="${drawType.dtName}">${drawType.dtName}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="col-md-3 form-group">

@@ -6,7 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import cn.gson.oa.model.dao.book.DrawTypeDao;
+import cn.gson.oa.model.dao.book.ProfessionDao;
 import cn.gson.oa.model.entity.book.DetailDraw;
+import cn.gson.oa.model.entity.book.DrawType;
+import cn.gson.oa.model.entity.book.Profession;
 import cn.gson.oa.model.entity.book.ThreeBook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +58,10 @@ public class ValidatorController {
     private DeptDao ddao;
     @Autowired
     private RoleDao rdao;
+    @Autowired
+    private ProfessionDao pfDao;
+    @Autowired
+    private DrawTypeDao dtDao;
 
     @RequestMapping("ck_addtask")
     public String addtask(HttpServletRequest request, @Valid Tasklist tlist, @Valid ThreeBook threeBook, BindingResult br, HttpSession session,
@@ -94,12 +102,18 @@ public class ValidatorController {
             Iterable<Dept> deptlist = ddao.findAll();
             // 查角色表
             Iterable<Role> rolelist = rdao.findAll();
+            // 专业列表
+            Iterable<Profession> professions = pfDao.findAll();
+            // 图纸列表
+            Iterable<DrawType> drawTypes = dtDao.findAll();
             request.setAttribute("typelist", typelist);
             request.setAttribute("statuslist", statuslist);
             request.setAttribute("emplist", emplist);
             request.setAttribute("page", pagelist);
             request.setAttribute("deptlist", deptlist);
             request.setAttribute("rolelist", rolelist);
+            request.setAttribute("professions", professions);
+            request.setAttribute("drawTypes", drawTypes);
             return "task/addtask";
         } else {
 
@@ -108,12 +122,13 @@ public class ValidatorController {
 
 
     }
+
     @RequestMapping("ck_addtaskdetail")
     public String addtaskdetail(HttpServletRequest request, @Valid Tasklist tlist, @Valid DetailDraw detailDraw, BindingResult br, HttpSession session,
-                          @RequestParam(value = "page", defaultValue = "0") int page,
-                          @RequestParam(value = "size", defaultValue = "10") int size) {
+                                @RequestParam(value = "page", defaultValue = "0") int page,
+                                @RequestParam(value = "size", defaultValue = "10") int size) {
         request.setAttribute("tasklist", tlist);
-        request.setAttribute("detailDraw",detailDraw);
+        request.setAttribute("detailDraw", detailDraw);
         Pageable pa = new PageRequest(page, size);
 
         // 这里返回ResultVO对象，如果校验通过，ResultEnum.SUCCESS.getCode()返回的值为200；否则就是没有通过；
@@ -147,12 +162,18 @@ public class ValidatorController {
             Iterable<Dept> deptlist = ddao.findAll();
             // 查角色表
             Iterable<Role> rolelist = rdao.findAll();
+            // 专业列表
+            Iterable<Profession> professions = pfDao.findAll();
+            // 图纸列表
+            Iterable<DrawType> drawTypes = dtDao.findAll();
             request.setAttribute("typelist", typelist);
             request.setAttribute("statuslist", statuslist);
             request.setAttribute("emplist", emplist);
             request.setAttribute("page", pagelist);
             request.setAttribute("deptlist", deptlist);
             request.setAttribute("rolelist", rolelist);
+            request.setAttribute("professions", professions);
+            request.setAttribute("drawTypes", drawTypes);
             return "task/addtaskdetail";
         } else {
 

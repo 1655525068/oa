@@ -4,11 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0909">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DrawTypeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ProfessionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/DrawTypeDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ProfessionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtype.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtypeedit.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtypemanage.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtypetable.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/profession.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/professionedit.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/professionmanage.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/professiontable.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oa.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DrawType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DrawType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/Profession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/Profession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/time.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/time.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
     </list>
@@ -16,6 +34,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,10 +73,32 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/book" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\02_github\oa\src\main\resources\templates\book" />
+      <recent name="E:\02_github\oa\src\main\resources\templates\book\aa" />
+      <recent name="E:\02_github\oa\doc" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.gson.oa.model.dao.book" />
+      <recent name="cn.gson.oa.controller.book" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="oa" />
       <extension name="coverage">
@@ -83,7 +130,22 @@
       <workItem from="1725668853706" duration="107000" />
       <workItem from="1725668973960" duration="6586000" />
       <workItem from="1725758064078" duration="7832000" />
+      <workItem from="1725834733688" duration="245000" />
+      <workItem from="1725894850602" duration="601000" />
+      <workItem from="1725948319909" duration="596000" />
+      <workItem from="1725962855322" duration="290000" />
+      <workItem from="1725963501428" duration="5119000" />
+      <workItem from="1725968765960" duration="5773000" />
+      <workItem from="1725974701065" duration="4796000" />
     </task>
+    <task id="LOCAL-00001" summary="0909">
+      <created>1725834782912</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725834782913</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +163,30 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="0909" />
+    <option name="LAST_COMMIT_MESSAGE" value="0909" />
+  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DrawTypeController.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ProfessionController.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="tasklist.getThreeBook()" language="JAVA" />
@@ -109,6 +194,8 @@
         <watch expression="task.getTaskId()" language="JAVA" />
         <watch expression="task.getTaskId()" language="JAVA" />
         <watch expression="reciver.getUserId()" language="JAVA" />
+        <watch expression="((ArrayList) professions).size()" language="JAVA" custom="java.util.ArrayList" />
+        <watch expression="req.getParameter(&quot;proId&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

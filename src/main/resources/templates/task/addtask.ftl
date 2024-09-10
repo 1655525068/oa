@@ -198,9 +198,9 @@
                             <div class="col-md-4 form-group">
                                 <label class="control-label">专业</label>
                                 <select class="form-control" name="professionalType">
-                                    <option value="管道">管道</option>
-                                    <option value="通风">通风</option>
-                                    <option value="电仪">电仪</option>
+                                    <#list professions as profession>
+                                        <option value="${profession.proName}">${profession.proName}</option>
+                                    </#list>
                                 </select>
                             </div>
                             <!-- 责任方 -->
@@ -223,12 +223,14 @@
                                 </div>
                             </div>
 
-                            <span class="labels" style="display: none"><label><input type="checkbox" name="top" style="display: none"
-                                                               class="val"><i>✓</i></label></span>
+                            <span class="labels" style="display: none"><label><input type="checkbox" name="top"
+                                                                                     style="display: none"
+                                                                                     class="val"><i>✓</i></label></span>
 
                             <span
-                                    class="labels" style="display: none"><label><input type="checkbox" name="cancel" style="display: none"
-                                                                 class="val"><i>✓</i></label></span>
+                                    class="labels" style="display: none"><label><input type="checkbox" name="cancel"
+                                                                                       style="display: none"
+                                                                                       class="val"><i>✓</i></label></span>
 
                         </div>
                     </div>
@@ -328,7 +330,7 @@
             // 显示对应的div
             $('#div' + selectedValue).show();
         });
-        $(".uploadfile input").bind("change",function(){
+        $(".uploadfile input").bind("change", function () {
             $(".fileuploadform").submit();
         });
     })

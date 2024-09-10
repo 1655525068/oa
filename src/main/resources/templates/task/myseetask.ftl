@@ -196,7 +196,9 @@
                             <select name="professionalType" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.threeBook.professionalType}">${task.threeBook.professionalType}</option>
-
+                                <#list professions as profession>
+                                    <option value="${profession.proName}">${profession.proName}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="col-md-4 form-group">
@@ -251,17 +253,21 @@
                             <select name="professionalType" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.detailDraw.professionalType}">${task.detailDraw.professionalType}</option>
-
+                                <#list professions as profession>
+                                    <option value="${profession.proName}">${profession.proName}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="col-md-3 form-group">
                             <label>
                                 <span id="ctl00_cphMain_Label1">图纸类型</span>
                             </label>
-                            <select name="professionalType" id="ctl00_cphMain_ddlStatus"
+                            <select name="drawingType" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.detailDraw.drawingType}">${task.detailDraw.drawingType}</option>
-
+                                <#list drawTypes as drawType>
+                                    <option value="${drawType.dtName}">${drawType.dtName}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="col-md-3 form-group">
@@ -660,7 +666,6 @@
     $('#shouldHandle').change(function () {
         var selectedValue = $(this).val();
         if (selectedValue === '是') {
-            debugger;
             $('#displaytable').show();
             $('#processResponsibleParty').removeAttr('required');
             $('#shouldClaim').removeAttr('required');

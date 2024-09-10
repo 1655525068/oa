@@ -140,7 +140,11 @@
                             <#--图纸类型-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">图纸类型</label>
-                                <input class="form-control" name="drawingType" value=""/>
+                                <select class="form-control" name="drawingType">
+                                    <#list drawTypes as drawType>
+                                        <option value="${drawType.dtName}">${drawType.dtName}</option>
+                                    </#list>
+                                </select>
                             </div>
                             <#--接收日期-->
                             <div class="col-md-4 form-group">
@@ -224,7 +228,6 @@
             if ($(this).val() === "") {
                 // 排除哪些字段是可以为空的，在这里排除
                 if ($('#doNeedFU').val() === '是') {
-                    debugger;
                     if (index === 19) {
                         return true;
                     }

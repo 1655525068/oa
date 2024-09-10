@@ -13,7 +13,23 @@ public class DrawType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dtId;
 
-    @Column(name = "menu_name")
-    @NotEmpty(message="图纸类型名字不为空")
-    private String dtName; // 菜单名字
+    @Column(name = "dt_name")
+    @NotEmpty(message = "图纸类型名字不为空")
+    private String dtName;
+
+    public Long getDtId() {
+        return dtId;
+    }
+
+    public void setDtId(Long dtId) {
+        this.dtId = dtId;
+    }
+
+    public String getDtName() {
+        return dtName;
+    }
+
+    public void setDtName(String dtName) {
+        this.dtName = dtName;
+    }
 }

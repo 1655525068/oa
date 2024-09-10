@@ -2,6 +2,7 @@ package cn.gson.oa.controller.task;
 
 import cn.gson.oa.common.OfficeUtils;
 import cn.gson.oa.model.dao.book.DetailDrawDao;
+import cn.gson.oa.model.dao.book.DrawTypeDao;
 import cn.gson.oa.model.dao.system.StatusDao;
 import cn.gson.oa.model.dao.system.TypeDao;
 import cn.gson.oa.model.dao.taskdao.TaskDao;
@@ -11,6 +12,7 @@ import cn.gson.oa.model.dao.user.DeptDao;
 import cn.gson.oa.model.dao.user.PositionDao;
 import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.book.DetailDraw;
+import cn.gson.oa.model.entity.book.DrawType;
 import cn.gson.oa.model.entity.system.SystemStatusList;
 import cn.gson.oa.model.entity.system.SystemTypeList;
 import cn.gson.oa.model.entity.task.Tasklist;
@@ -58,13 +60,11 @@ public class TaskDetailController {
     @Autowired
     private TaskuserDao tudao;
     @Autowired
-    private TaskService tservice;
-    @Autowired
-    private TaskloggerDao tldao;
-    @Autowired
     private PositionDao pdao;
     @Autowired
     private DetailDrawDao detailDrawDao;
+    @Autowired
+    private DrawTypeDao dtDao;
 
     @Value("${file.root.path}")
     private String rootPath;
@@ -97,6 +97,9 @@ public class TaskDetailController {
         mav.addObject("page", pagelist);
         mav.addObject("url", "names");
         mav.addObject("qufen", "任务");
+        // 图纸列表
+        Iterable<DrawType> drawTypes = dtDao.findAll();
+        mav.addObject("drawTypes", drawTypes);
         return mav;
     }
 

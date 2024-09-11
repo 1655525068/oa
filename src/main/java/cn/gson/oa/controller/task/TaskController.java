@@ -1128,4 +1128,162 @@ public class TaskController {
     }
 
 
+    @RequestMapping("readthreebookAll")
+    public String uploadfileAll(@RequestParam("file") MultipartFile file,
+                                HttpSession session, Model model) throws IllegalStateException, IOException {
+        Long userid = Long.parseLong(session.getAttribute("userId") + "");
+        User user = udao.findOne(userid);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        File root = new File(this.rootPath, simpleDateFormat.format(new Date()));
+
+        File savepath = new File(root, user.getUserName());
+
+        if (!file.getOriginalFilename().contains("三单")) {
+            model.addAttribute("errormess", "需要导入三单文件");
+            return "forward:/threebookmanage";
+        }
+
+        if (!savepath.exists()) {
+            savepath.mkdirs();
+        }
+
+        String shuffix = FilenameUtils.getExtension(file.getOriginalFilename());
+        String newFileName = UUID.randomUUID().toString().toLowerCase() + "." + shuffix;
+        File targetFile = new File(savepath, newFileName);
+        file.transferTo(targetFile);
+
+
+        String[] threebookcol = new String[]{
+                "序号", "类型", "份数", "三单号", "中文名称", "FCR版本", "状态", "编制人", "最新版", "接收时间", "分发时间", "作废标识", "相关文件编码", "相关文件内部编码", "图纸版本", "专业", "责任方", "识别责任人",
+                "处理人", "是否需要处理", "处理方式(ICR / 细化)", "处理单号", "处理完成时间", "责任方2", "备注", "是否涉及索赔", "计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN", "预警", "实际关闭时间", "未关闭原因", "设计点值", "审核点值"
+        };
+
+
+        List<Record> records = OfficeUtils.readOffice(targetFile, threebookcol);
+        List<ThreeBook> list = new ArrayList<>();
+        for (Record record : records) {
+            Map<String, Object> map = record.getColumns();
+            ThreeBook tb = new ThreeBook();
+            map.forEach((s1, o) -> {
+                        switch (s1) {
+                            case "类型":
+                                tb.setType(o.toString());
+                                break;
+                            case "三单号":
+                                tb.setThreeBookNumbers(o.toString());
+                                break;
+                            case "中文名称":
+                                tb.setChineseName(o.toString());
+                                break;
+                            case "FCR版本":
+                                tb.setFcrVersion(o.toString());
+                                break;
+                            case "状态":
+                                tb.setState(o.toString());
+                                break;
+                            case "编制人":
+                                tb.setPreparedBy(o.toString());
+                                break;
+                            case "最新版":
+                                tb.setLatestVersion(o.toString());
+                                break;
+                            case "接收时间":
+                                tb.setReceivingTime(o.toString());
+                                break;
+                            case "分发时间":
+                                tb.setDistributionTime(o.toString());
+                                break;
+                            case "作废标识":
+                                tb.setInvalidIdentification(o.toString());
+                                break;
+                            case "相关文件编码":
+                                tb.setRelatedDocumentCodes(o.toString());
+                                break;
+                            case "相关文件内部编码":
+                                tb.setInternalCodes(o.toString());
+                                break;
+                            case "图纸版本":
+                                tb.setDrawVersion(o.toString());
+                                break;
+                            case "专业":
+                                tb.setProfessionalType(o.toString());
+                                break;
+                            case "责任方":
+                                tb.setResponsibleParty(o.toString());
+                                break;
+                            case "识别责任人":
+                                tb.setIdentifyResponsiblePerson(o.toString());
+                                break;
+                            case "处理人":
+                                tb.setProcessPerson(o.toString());
+                                break;
+                            case "是否需要处理":
+                                tb.setShouldHandle(o.toString());
+                                break;
+                            case "处理方式(ICR / 细化)":
+                                tb.setHandleMethod(o.toString());
+                                break;
+                            case "处理单号":
+                                tb.setProcessOrderNumber(o.toString());
+                                break;
+                            case "处理完成时间":
+                                tb.setProcessCompletionTime(o.toString());
+                                break;
+                            case "责任方2":
+                                tb.setProcessResponsibleParty(o.toString());
+                                break;
+                            case "备注":
+                                tb.setRemarks(o.toString());
+                                break;
+                            case "是否涉及索赔":
+                                tb.setShouldClaim(o.toString());
+                                break;
+                            case "计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN":
+                                tb.setPlanToCloseTime(o.toString());
+                                break;
+                            case "预警":
+                                break;
+                            case "实际关闭时间":
+                                tb.setActualCloseTime(o.toString());
+                                break;
+                            case "未关闭原因":
+                                break;
+                            case "设计点值":
+                                tb.setDesignPointValue(o.toString());
+                                break;
+                            case "审核点值":
+                                tb.setAuditPointValue(o.toString());
+                                break;
+                        }
+                    }
+
+            );
+            list.add(tb);
+        }
+
+        if (targetFile.exists()) {
+            targetFile.delete();
+        }
+
+
+        for (ThreeBook threeBook : list) {
+            System.out.println(threeBook);
+
+            // 三单
+            // 查询三单，如果无，则新建任务
+            ThreeBook querythreeBook = bdao.findByThreeBookNumbersAndDrawVersion(threeBook.getThreeBookNumbers(), threeBook.getRelatedDocumentCodes(), threeBook.getDrawVersion());
+            if (querythreeBook == null) {
+                ThreeBook result = bdao.save(threeBook);
+            }
+
+        }
+
+
+        model.addAttribute("success", "文件导入成功");
+
+
+        return "redirect:/threebookmanage";
+    }
+
+
 }

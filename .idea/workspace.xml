@@ -4,31 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0909">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DrawTypeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ProfessionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/DrawTypeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/book/ProfessionDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtype.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtypeedit.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtypemanage.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/drawtypetable.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/profession.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/professionedit.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/professionmanage.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/book/professiontable.ftl" afterDir="false" />
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0910">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DetailDrawController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/ThreeBookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DrawType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DrawType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/Profession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/Profession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/time.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/time.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/addtaskdetail.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DetailDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/DetailDraw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/book/ThreeBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/detaildrawmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/detaildrawmanage.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/threebookmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/threebookmanage.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OfficeUtilsTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,17 +74,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="oa" />
       <extension name="coverage">
@@ -136,7 +111,9 @@
       <workItem from="1725962855322" duration="290000" />
       <workItem from="1725963501428" duration="5119000" />
       <workItem from="1725968765960" duration="5773000" />
-      <workItem from="1725974701065" duration="4796000" />
+      <workItem from="1725974701065" duration="5701000" />
+      <workItem from="1726016942354" duration="1966000" />
+      <workItem from="1726022619061" duration="16042000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -145,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1725834782913</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="0910">
+      <created>1725980048416</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725980048416</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +149,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="0909" />
-    <option name="LAST_COMMIT_MESSAGE" value="0909" />
+    <MESSAGE value="0910" />
+    <option name="LAST_COMMIT_MESSAGE" value="0910" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -196,6 +181,8 @@
         <watch expression="reciver.getUserId()" language="JAVA" />
         <watch expression="((ArrayList) professions).size()" language="JAVA" custom="java.util.ArrayList" />
         <watch expression="req.getParameter(&quot;proId&quot;)" language="JAVA" />
+        <watch expression="record" language="JAVA" />
+        <watch expression="dd.getProblemDescription()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

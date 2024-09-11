@@ -68,11 +68,11 @@ public class DetailDrawController {
                 StringBuilder modify = new StringBuilder();
                 StringBuilder remarks = new StringBuilder();
                 for (DetailDrawQuestion question : dd.getQuestions()) {
-                    problemDescription.append(i).append(".").append(question.getProblemDescription()).append("<br>");
-                    handleMethod.append(i).append(".").append(question.getHandleMethod()).append("<br>");
-                    processOrderNumber.append(i).append(".").append(question.getProcessOrderNumber()).append("<br>");
-                    modify.append(i).append(".").append(question.getModify()).append("<br>");
-                    remarks.append(i).append(".").append(question.getRemarks()).append("<br>");
+                    problemDescription.append(i).append("、").append(question.getProblemDescription()).append("<br>");
+                    handleMethod.append(i).append("、").append(question.getHandleMethod()).append("<br>");
+                    processOrderNumber.append(i).append("、").append(question.getProcessOrderNumber()).append("<br>");
+                    modify.append(i).append("、").append(question.getModify()).append("<br>");
+                    remarks.append(i).append("、").append(question.getRemarks()).append("<br>");
                     i++;
                 }
                 dd.setProblemDescription(problemDescription.toString());
@@ -120,11 +120,11 @@ public class DetailDrawController {
                 StringBuilder modify = new StringBuilder();
                 StringBuilder remarks = new StringBuilder();
                 for (DetailDrawQuestion question : dd.getQuestions()) {
-                    problemDescription.append(i).append(".").append(question.getProblemDescription()).append(i != dd.getQuestions().size() ? "<br>" : "");
-                    handleMethod.append(i).append(".").append(question.getHandleMethod()).append(i != dd.getQuestions().size() ? "<br>" : "");
-                    processOrderNumber.append(i).append(".").append(question.getProcessOrderNumber()).append(i != dd.getQuestions().size() ? "<br>" : "");
-                    modify.append(i).append(".").append(question.getModify()).append(i != dd.getQuestions().size() ? "<br>" : "");
-                    remarks.append(i).append(".").append(question.getRemarks()).append(i != dd.getQuestions().size() ? "<br>" : "");
+                    problemDescription.append(i).append("、").append(question.getProblemDescription()).append(i != dd.getQuestions().size() ? "<br>" : "");
+                    handleMethod.append(i).append("、").append(question.getHandleMethod()).append(i != dd.getQuestions().size() ? "<br>" : "");
+                    processOrderNumber.append(i).append("、").append(question.getProcessOrderNumber()).append(i != dd.getQuestions().size() ? "<br>" : "");
+                    modify.append(i).append("、").append(question.getModify()).append(i != dd.getQuestions().size() ? "<br>" : "");
+                    remarks.append(i).append("、").append(question.getRemarks()).append(i != dd.getQuestions().size() ? "<br>" : "");
                     i++;
                 }
                 dd.setProblemDescription(problemDescription.toString());
@@ -174,11 +174,11 @@ public class DetailDrawController {
                 StringBuilder modify = new StringBuilder();
                 StringBuilder remarks = new StringBuilder();
                 for (DetailDrawQuestion question : dd.getQuestions()) {
-                    problemDescription.append(i).append(".").append(question.getProblemDescription()).append(i != dd.getQuestions().size() ? "\r\n" : "");
-                    handleMethod.append(i).append(".").append(question.getHandleMethod()).append(i != dd.getQuestions().size() ? "\r\n" : "");
-                    processOrderNumber.append(i).append(".").append(question.getProcessOrderNumber()).append(i != dd.getQuestions().size() ? "\r\n" : "");
-                    modify.append(i).append(".").append(question.getModify()).append(i != dd.getQuestions().size() ? "\r\n" : "");
-                    remarks.append(i).append(".").append(question.getRemarks()).append(i != dd.getQuestions().size() ? "\r\n" : "");
+                    problemDescription.append(i).append("、").append(question.getProblemDescription()).append(i != dd.getQuestions().size() ? "\r\n" : "");
+                    handleMethod.append(i).append("、").append(question.getHandleMethod()).append(i != dd.getQuestions().size() ? "\r\n" : "");
+                    processOrderNumber.append(i).append("、").append(question.getProcessOrderNumber()).append(i != dd.getQuestions().size() ? "\r\n" : "");
+                    modify.append(i).append("、").append(question.getModify()).append(i != dd.getQuestions().size() ? "\r\n" : "");
+                    remarks.append(i).append("、").append(question.getRemarks()).append(i != dd.getQuestions().size() ? "\r\n" : "");
                     i++;
                 }
                 dd.setProblemDescription(problemDescription.toString());
@@ -222,12 +222,24 @@ public class DetailDrawController {
             dd.setProcessOrderNumber(question.getProcessOrderNumber());
             dd.setRemarks(question.getRemarks());
         } else {
-            dd.setProblemDescription("/");
-            dd.setProblemCount("/");
-            dd.setHandleMethod("/");
-            dd.setProcessOrderNumber("/");
-            dd.setModify("/");
-            dd.setRemarks("/");
+            if (dd.getProblemDescription() == null) {
+                dd.setProblemDescription("/");
+            }
+            if (dd.getProblemCount() == null) {
+                dd.setProblemCount("/");
+            }
+            if (dd.getHandleMethod() == null) {
+                dd.setHandleMethod("/");
+            }
+            if (dd.getProcessOrderNumber() == null) {
+                dd.setProcessOrderNumber("/");
+            }
+            if (dd.getModify() == null) {
+                dd.setModify("/");
+            }
+            if (dd.getRemarks() == null) {
+                dd.setRemarks("/");
+            }
         }
         return dd;
 

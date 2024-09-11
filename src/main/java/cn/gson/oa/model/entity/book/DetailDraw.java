@@ -40,6 +40,9 @@ public class DetailDraw implements Cloneable {
     // 版本
     @Column(name = "version")
     private String version;
+    // 最新版
+    @Column(name = "latest_version")
+    private String latestVersion;
     // 状态
     @Column(name = "state")
     private String state;
@@ -79,6 +82,9 @@ public class DetailDraw implements Cloneable {
     // 是否需要处理
     @Column(name = "should_handle")
     private String shouldHandle;
+    // 细化完成时间(需审核)
+    @Column(name = "completion_time_should_audit")
+    private String completionTimeShouldAudit;
     // 问题描述
     @Column(name = "problem_description")
     private String problemDescription;
@@ -165,8 +171,24 @@ public class DetailDraw implements Cloneable {
         return version;
     }
 
+    public String getCompletionTimeShouldAudit() {
+        return completionTimeShouldAudit;
+    }
+
+    public void setCompletionTimeShouldAudit(String completionTimeShouldAudit) {
+        this.completionTimeShouldAudit = completionTimeShouldAudit;
+    }
+
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getLatestVersion() {
+        return latestVersion;
+    }
+
+    public void setLatestVersion(String latestVersion) {
+        this.latestVersion = latestVersion;
     }
 
     public String getState() {
@@ -229,8 +251,8 @@ public class DetailDraw implements Cloneable {
         return processPerson;
     }
 
-    public void setProcessPerson(String responsiblePerson) {
-        this.processPerson = responsiblePerson;
+    public void setProcessPerson(String processPerson) {
+        this.processPerson = processPerson;
     }
 
     public String getProblemDescription() {
@@ -369,7 +391,7 @@ public class DetailDraw implements Cloneable {
                 ", planTimeFU='" + planTimeFU + '\'' +
                 ", numberFU='" + numberFU + '\'' +
                 ", planCompletionTime='" + planCompletionTime + '\'' +
-                ", responsiblePerson='" + processPerson + '\'' +
+                ", processPerson='" + processPerson + '\'' +
                 ", handleMethod='" + handleMethod + '\'' +
                 ", processOrderNumber='" + processOrderNumber + '\'' +
                 ", modify='" + modify + '\'' +

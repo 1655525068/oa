@@ -62,9 +62,9 @@ public class ThreeBookController {
                 StringBuilder remarks = new StringBuilder();
                 for (ThreeBookProcess process : threeBook.getProcesses()) {
                     System.out.println(process);
-                    handleMethod.append(i).append(".").append(process.getHandleMethod()).append("<br>");
-                    processOrderNumber.append(i).append(".").append(process.getProcessOrderNumber()).append("<br>");
-                    remarks.append(i).append(".").append(process.getRemarks()).append("<br>");
+                    handleMethod.append(i).append("、").append(process.getHandleMethod()).append("<br>");
+                    processOrderNumber.append(i).append("、").append(process.getProcessOrderNumber()).append("<br>");
+                    remarks.append(i).append("、").append(process.getRemarks()).append("<br>");
                     i++;
 
                 }
@@ -107,9 +107,9 @@ public class ThreeBookController {
                 StringBuilder remarks = new StringBuilder();
                 for (ThreeBookProcess process : threeBook.getProcesses()) {
                     System.out.println(process);
-                    handleMethod.append(i).append(".").append(process.getHandleMethod()).append("<br>");
-                    processOrderNumber.append(i).append(".").append(process.getProcessOrderNumber()).append("<br>");
-                    remarks.append(i).append(".").append(process.getRemarks()).append("<br>");
+                    handleMethod.append(i).append("、").append(process.getHandleMethod()).append("<br>");
+                    processOrderNumber.append(i).append("、").append(process.getProcessOrderNumber()).append("<br>");
+                    remarks.append(i).append("、").append(process.getRemarks()).append("<br>");
                     i++;
 
                 }
@@ -158,9 +158,9 @@ public class ThreeBookController {
                 StringBuilder processOrderNumber = new StringBuilder();
                 StringBuilder remarks = new StringBuilder();
                 for (ThreeBookProcess process : threeBook.getProcesses()) {
-                    handleMethod.append(i).append(".").append(process.getHandleMethod()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
-                    processOrderNumber.append(i).append(".").append(process.getProcessOrderNumber()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
-                    remarks.append(i).append(".").append(process.getRemarks()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
+                    handleMethod.append(i).append("、").append(process.getHandleMethod()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
+                    processOrderNumber.append(i).append("、").append(process.getProcessOrderNumber()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
+                    remarks.append(i).append("、").append(process.getRemarks()).append(i != threeBook.getProcesses().size() ? "\r\n" : "");
                     i++;
 
                 }
@@ -197,13 +197,32 @@ public class ThreeBookController {
             tb.setProcessOrderNumber(pro.getProcessOrderNumber());
             tb.setRemarks(pro.getRemarks());
         } else {
-            tb.setShouldHandle("/");
-            tb.setHandleMethod("/");
-            tb.setProcessOrderNumber("/");
-            tb.setProcessCompletionTime("/");
-            tb.setProcessResponsibleParty("/");
-            tb.setRemarks("/");
-            tb.setShouldClaim("/");
+            if (!tb.getProcessCompletionTime().isEmpty()) {
+                tb.setCompletionTime(tb.getProcessCompletionTime());
+            }
+            if (tb.getShouldHandle().isEmpty()) {
+                tb.setShouldHandle("/");
+            }
+            if (tb.getHandleMethod().isEmpty()) {
+                tb.setHandleMethod("/");
+            }
+            if (tb.getProcessOrderNumber().isEmpty()) {
+                tb.setProcessOrderNumber("/");
+            }
+
+            if (tb.getProcessCompletionTime().isEmpty()) {
+                tb.setProcessCompletionTime("/");
+            }
+            if (tb.getProcessResponsibleParty().isEmpty()) {
+                tb.setProcessResponsibleParty("/");
+            }
+            if (tb.getRemarks().isEmpty()) {
+                tb.setRemarks("/");
+            }
+            if (tb.getShouldClaim().isEmpty()) {
+                tb.setShouldClaim("/");
+            }
+
         }
         return tb;
     }

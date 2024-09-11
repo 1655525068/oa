@@ -446,12 +446,12 @@ public class ThreeBook implements Cloneable {
     @Override
     public String toString() {
         return "ThreeBook{" +
-                "bookId='" + bookId + '\'' +
+                "bookId=" + bookId +
                 ", serialNumber='" + serialNumber + '\'' +
                 ", type='" + type + '\'' +
                 ", threeBookNumbers='" + threeBookNumbers + '\'' +
                 ", chineseName='" + chineseName + '\'' +
-                ", FCRVersion='" + fcrVersion + '\'' +
+                ", fcrVersion='" + fcrVersion + '\'' +
                 ", state='" + state + '\'' +
                 ", preparedBy='" + preparedBy + '\'' +
                 ", latestVersion='" + latestVersion + '\'' +
@@ -465,11 +465,21 @@ public class ThreeBook implements Cloneable {
                 ", responsibleParty='" + responsibleParty + '\'' +
                 ", identifyResponsiblePerson='" + identifyResponsiblePerson + '\'' +
                 ", processPerson='" + processPerson + '\'' +
-                ", designPointValue='" + designPointValue + '\'' +
-                ", auditPointValue='" + auditPointValue + '\'' +
+                ", auditPerson='" + auditPerson + '\'' +
+                ", shouldHandle='" + shouldHandle + '\'' +
+                ", handleMethod='" + handleMethod + '\'' +
+                ", processOrderNumber='" + processOrderNumber + '\'' +
+                ", processCompletionTime='" + processCompletionTime + '\'' +
+                ", processResponsibleParty='" + processResponsibleParty + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", shouldClaim='" + shouldClaim + '\'' +
                 ", planToCloseTime='" + planToCloseTime + '\'' +
                 ", actualCloseTime='" + actualCloseTime + '\'' +
-                ", loggerTicking " + loggerTicking + '\'' +
+                ", completionTime='" + completionTime + '\'' +
+                ", designPointValue='" + designPointValue + '\'' +
+                ", auditPointValue='" + auditPointValue + '\'' +
+                ", loggerTicking='" + loggerTicking + '\'' +
+                ", isLock=" + isLock +
                 '}';
     }
 }

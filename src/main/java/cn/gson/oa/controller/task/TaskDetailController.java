@@ -234,7 +234,7 @@ public class TaskDetailController {
         for (Tasklist tasklist : list) {
             if (tasklist.getDetailDraw().getIdentifyResponsiblePerson().equals("") && tasklist.getDetailDraw().getIdentifyResponsiblePerson().equals("/")) {
                 model.addAttribute("errormess", "文件导入失败");
-                return "forward:/taskmanage";
+                return "forward:/detaildrawmanage";
             }
         }
 
@@ -282,6 +282,155 @@ public class TaskDetailController {
 
 
         return "redirect:/taskmanage";
+    }
+
+
+    @RequestMapping("readdetaildrawAll")
+    public String uploadfile3(@RequestParam("file") MultipartFile file,
+                              HttpSession session, Model model) throws IllegalStateException, IOException {
+        Long userid = Long.parseLong(session.getAttribute("userId") + "");
+        User user = udao.findOne(userid);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        File root = new File(this.rootPath, simpleDateFormat.format(new Date()));
+
+        File savepath = new File(root, user.getUserName());
+
+        if (!file.getOriginalFilename().contains("细化")) {
+            model.addAttribute("errormess", "文件导入失败");
+            return "forward:/taskmanage";
+        }
+
+        if (!savepath.exists()) {
+            savepath.mkdirs();
+        }
+
+        String shuffix = FilenameUtils.getExtension(file.getOriginalFilename());
+        String newFileName = UUID.randomUUID().toString().toLowerCase() + "." + shuffix;
+        File targetFile = new File(savepath, newFileName);
+        file.transferTo(targetFile);
+
+
+        String[] detaildrawcol = new String[]{
+                "序号", "文件编码", "内部文件编号", "图册号", "专业", "版本", "最新版", "状态", "图纸类型", "接收日期", "是否需FU", "FU计划时间", "FU单号", "计划细化完成时间（无需细化填/）", "识别责任人",
+                "细化责任人", "细化完成时间(需审核)", "问题描述", "图纸问题数量", "处理方式", "处理单号", "核实郑分会审单问题是否修改", "备注", "完成时间", "状态2", "设计点值", "审核点值"
+        };
+
+        List<Record> records = OfficeUtils.readOffice(targetFile, detaildrawcol);
+        List<DetailDraw> list = new ArrayList<>();
+        for (Record record : records) {
+            Map<String, Object> map = record.getColumns();
+            Tasklist tl = new Tasklist();
+            DetailDraw dd = new DetailDraw();
+            map.forEach((s1, o) -> {
+
+                        switch (s1) {
+                            case "文件编码":
+                                dd.setDocumentCodes(o.toString());
+                                break;
+                            case "内部文件编号":
+                                dd.setInternalDocumentCodes(o.toString());
+                                break;
+                            case "图册号":
+                                dd.setCatalogNumber(o.toString());
+                                break;
+                            case "专业":
+                                dd.setProfessionalType(o.toString());
+                                break;
+                            case "版本":
+                                dd.setVersion(o.toString());
+                                break;
+                            case "最新版":
+                                dd.setLatestVersion(o.toString());
+                                break;
+                            case "状态":
+                                dd.setState(o.toString());
+                                break;
+                            case "图纸类型":
+                                dd.setDrawingType(o.toString());
+                                break;
+                            case "接收日期":
+                                dd.setReceivingTime(o.toString());
+                                break;
+                            case "是否需FU":
+                                dd.setDoNeedFU(o.toString());
+                                break;
+                            case "FU计划时间":
+                                dd.setPlanTimeFU(o.toString());
+                                break;
+                            case "FU单号":
+                                dd.setNumberFU(o.toString());
+                                break;
+                            case "计划细化完成时间（无需细化填/）":
+                                dd.setPlanCompletionTime(o.toString());
+                                break;
+                            case "识别责任人":
+                                dd.setIdentifyResponsiblePerson(o.toString());
+                                break;
+                            case "细化责任人":
+                                dd.setProcessPerson(o.toString());
+                                break;
+                            case "细化完成时间(需审核)":
+                                dd.setCompletionTimeShouldAudit(o.toString());
+                                break;
+                            case "问题描述":
+                                dd.setProblemDescription(o.toString());
+                                break;
+                            case "图纸问题数量":
+                                dd.setProblemCount(o.toString());
+                                break;
+                            case "处理方式":
+                                dd.setHandleMethod(o.toString());
+                                break;
+                            case "处理单号":
+                                dd.setProcessOrderNumber(o.toString());
+                                break;
+                            case "核实郑分会审单问题是否修改":
+                                dd.setModify(o.toString());
+                                break;
+                            case "备注":
+                                dd.setRemarks(o.toString());
+                                break;
+                            case "完成时间":
+                                dd.setCompletionTime(o.toString());
+                                break;
+                            case "状态2":
+                                break;
+                            case "设计点值":
+                                dd.setDesignPointValue(o.toString());
+                                break;
+                            case "审核点值":
+                                dd.setAuditPointValue(o.toString());
+                                break;
+
+                        }
+                    }
+
+            );
+            list.add(dd);
+        }
+
+        if (targetFile.exists()) {
+            targetFile.delete();
+        }
+
+        for (DetailDraw detailDraw : list) {
+            // 细化
+            // 查询细化，如果无，则新建任务
+            DetailDraw queryableDraw = detailDrawDao.findByDocumentCodesAndVersion(detailDraw.getDocumentCodes(), detailDraw.getVersion());
+
+            if (queryableDraw == null) {
+                DetailDraw result = detailDrawDao.save(detailDraw);
+
+
+            }
+
+        }
+
+
+        model.addAttribute("success", "文件导入成功");
+
+
+        return "redirect:/detaildrawmanage";
     }
 
 

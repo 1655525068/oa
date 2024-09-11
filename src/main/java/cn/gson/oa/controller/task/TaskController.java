@@ -1078,7 +1078,7 @@ public class TaskController {
         }
 
         for (Tasklist tasklist : list) {
-            if (tasklist.getThreeBook().getIdentifyResponsiblePerson().equals("")) {
+            if (tasklist.getThreeBook().getIdentifyResponsiblePerson().equals("") || tasklist.getThreeBook().getIdentifyResponsiblePerson().equals("/")) {
                 model.addAttribute("errormess", "文件导入失败");
                 return "forward:/taskmanage";
             }

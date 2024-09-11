@@ -235,9 +235,9 @@ public class TaskDetailController {
         }
 
         for (Tasklist tasklist : list) {
-            if (tasklist.getDetailDraw().getIdentifyResponsiblePerson().equals("") && tasklist.getDetailDraw().getIdentifyResponsiblePerson().equals("/")) {
+            if (tasklist.getDetailDraw().getIdentifyResponsiblePerson().equals("") || tasklist.getDetailDraw().getIdentifyResponsiblePerson().equals("/")) {
                 model.addAttribute("errormess", "文件导入失败");
-                return "forward:/detaildrawmanage";
+                return "forward:/taskmanage";
             }
         }
 

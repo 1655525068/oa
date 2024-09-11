@@ -168,7 +168,7 @@ public class TaskDetailController {
 
 
         String[] detaildrawcol = new String[]{
-                "序号", "文件编码", "内部文件编号", "图册号", "专业", "版本", "状态", "图纸类型", "接收日期", "是否需FU", "FU计划时间", "FU单号", "计划细化完成时间（无需细化填/）", "识别责任人", "细化责任人"
+                "序号", "文件编码", "内部文件编号", "图册号", "专业", "版本", "最新版", "状态", "图纸类型", "接收日期", "是否需FU", "FU计划时间", "FU单号", "计划细化完成时间（无需细化填/）", "识别责任人", "细化责任人"
         };
 
         List<Record> records = OfficeUtils.readOffice(targetFile, detaildrawcol);
@@ -194,6 +194,9 @@ public class TaskDetailController {
                                 break;
                             case "版本":
                                 dd.setVersion(o.toString());
+                                break;
+                            case "最新版":
+                                dd.setLatestVersion(o.toString());
                                 break;
                             case "状态":
                                 dd.setState(o.toString());

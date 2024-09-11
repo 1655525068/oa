@@ -197,29 +197,28 @@ public class ThreeBookController {
             tb.setProcessOrderNumber(pro.getProcessOrderNumber());
             tb.setRemarks(pro.getRemarks());
         } else {
-            if (!tb.getProcessCompletionTime().isEmpty()) {
+            if (tb.getProcessCompletionTime() != null) {
                 tb.setCompletionTime(tb.getProcessCompletionTime());
             }
-            if (tb.getShouldHandle().isEmpty()) {
+            if (tb.getShouldHandle() == null) {
                 tb.setShouldHandle("/");
             }
-            if (tb.getHandleMethod().isEmpty()) {
+            if (tb.getHandleMethod() == null) {
                 tb.setHandleMethod("/");
             }
-            if (tb.getProcessOrderNumber().isEmpty()) {
+            if (tb.getProcessOrderNumber() == null) {
                 tb.setProcessOrderNumber("/");
             }
-
-            if (tb.getProcessCompletionTime().isEmpty()) {
+            if (tb.getProcessCompletionTime() == null) {
                 tb.setProcessCompletionTime("/");
             }
-            if (tb.getProcessResponsibleParty().isEmpty()) {
+            if (tb.getProcessResponsibleParty() == null) {
                 tb.setProcessResponsibleParty("/");
             }
-            if (tb.getRemarks().isEmpty()) {
+            if (tb.getRemarks() == null) {
                 tb.setRemarks("/");
             }
-            if (tb.getShouldClaim().isEmpty()) {
+            if (tb.getShouldClaim() == null) {
                 tb.setShouldClaim("/");
             }
 

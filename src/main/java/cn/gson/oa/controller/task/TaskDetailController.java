@@ -315,7 +315,7 @@ public class TaskDetailController {
 
         String[] detaildrawcol = new String[]{
                 "序号", "文件编码", "内部文件编号", "图册号", "专业", "版本", "最新版", "状态", "图纸类型", "接收日期", "是否需FU", "FU计划时间", "FU单号", "计划细化完成时间（无需细化填/）", "识别责任人",
-                "细化责任人", "细化完成时间(需审核)", "问题描述", "图纸问题数量", "处理方式", "处理单号", "核实郑分会审单问题是否修改", "备注", "完成时间", "状态2", "设计点值", "审核点值"
+                "细化责任人", "审核人", "细化完成时间(需审核)", "问题描述", "图纸问题数量", "处理方式", "处理单号", "核实郑分会审单问题是否修改", "备注", "完成时间", "状态2", "设计点值", "审核点值"
         };
 
         List<Record> records = OfficeUtils.readOffice(targetFile, detaildrawcol);
@@ -371,6 +371,9 @@ public class TaskDetailController {
                                 break;
                             case "细化责任人":
                                 dd.setProcessPerson(o.toString());
+                                break;
+                            case "审核人":
+                                dd.setAuditPerson(o.toString());
                                 break;
                             case "细化完成时间(需审核)":
                                 dd.setCompletionTimeShouldAudit(o.toString());

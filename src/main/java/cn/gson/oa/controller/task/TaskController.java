@@ -1155,7 +1155,7 @@ public class TaskController {
 
         String[] threebookcol = new String[]{
                 "序号", "类型", "份数", "三单号", "中文名称", "FCR版本", "状态", "编制人", "最新版", "接收时间", "分发时间", "作废标识", "相关文件编码", "相关文件内部编码", "图纸版本", "专业", "责任方", "识别责任人",
-                "处理人", "是否需要处理", "处理方式(ICR / 细化)", "处理单号", "处理完成时间", "责任方2", "备注", "是否涉及索赔", "计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN", "预警", "实际关闭时间", "未关闭原因", "设计点值", "审核点值"
+                "处理人", "审核人", "是否需要处理", "处理方式(ICR / 细化)", "处理单号", "处理完成时间", "责任方2", "备注", "是否涉及索赔", "计划关闭时间（CR关闭时间）直接关闭/转FCR/转DEN", "预警", "实际关闭时间", "未关闭原因", "设计点值", "审核点值"
         };
 
 
@@ -1216,6 +1216,9 @@ public class TaskController {
                                 break;
                             case "处理人":
                                 tb.setProcessPerson(o.toString());
+                                break;
+                            case "审核人":
+                                tb.setAuditPerson(o.toString());
                                 break;
                             case "是否需要处理":
                                 tb.setShouldHandle(o.toString());

@@ -330,7 +330,7 @@
                                                                         修改</a>
                                                                     <a
                                                                             onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                                                                            href="processremove?tbId=${pro.tbId}"
+                                                                            href="processremove?tbId=${pro.tbId}&id=${task.taskId}&type=2"
                                                                             class="label shanchu"><span
                                                                                 class="glyphicon glyphicon-remove"></span>
                                                                         删除</a>

@@ -205,9 +205,6 @@
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">处理人</span>
                             </label><input id="processPerson" name="processPerson" type="text" id="" required="required"
                                            class="form-control"
-                                    <#if user2.realName == task.threeBook.processPerson!''>
-                                        readonly="readonly"
-                                    </#if>
                                            value="${task.threeBook.processPerson!''}"/>
                             <div class="reciver" id="reciver"
                                     <#if user2.realName == task.threeBook.processPerson!''>
@@ -380,7 +377,7 @@
                                                                         修改</a>
                                                                     <a
                                                                             onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                                                                            href="processremove?tbId=${pro.tbId}"
+                                                                            href="processremove?tbId=${pro.tbId}&id=${task.taskId}&type=1"
                                                                             class="label shanchu"><span
                                                                                 class="glyphicon glyphicon-remove"></span>
                                                                         删除</a>

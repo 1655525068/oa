@@ -402,6 +402,16 @@ public class TaskController {
         logger.setUsername(userlist.getUserName());
 
         Tasklist task = tdao.getOne(logger.getTaskId().getTaskId());
+        String identifyResponsiblePerson = "";
+        String processPerson = "";
+        if (task.getTypeId() == 1) {
+            identifyResponsiblePerson = task.getThreeBook().getIdentifyResponsiblePerson();
+            processPerson = task.getThreeBook().getProcessPerson();
+        } else {
+            identifyResponsiblePerson = task.getDetailDraw().getIdentifyResponsiblePerson();
+            processPerson = task.getDetailDraw().getProcessPerson();
+        }
+        userlist = udao.findByUserName(identifyResponsiblePerson);
         Taskuser taskuser = null;
         if (task.getTypeId() == 1) {
             //更新三单
@@ -468,12 +478,21 @@ public class TaskController {
 
         Taskuser taskuser1 = taskuser;
         if (taskuser1 != null) {
-            if (!req.getParameter("processPerson").equals(userlist.getUserName())) {
+            if (!identifyResponsiblePerson.equals(processPerson)) {
                 tudao.delete(taskuser1);
                 taskuser1.setUserId(findUser);
-                tudao.save(taskuser1);
+                Taskuser t = tudao.findByuserIdAndTaskId2(udao.findByUserName(req.getParameter("processPerson")).getUserId(), task.getTaskId());
+                if (t == null) {
+                    tudao.save(taskuser1);
+                }
             } else {
-                tudao.delete(taskuser1);
+                Taskuser tasku2 = new Taskuser();
+                tasku2.setTaskId(task);
+                tasku2.setUserId(findUser);
+                if (!Objects.isNull(logger.getLoggerStatusid())) {
+                    tasku2.setStatusId(logger.getLoggerStatusid());
+                }
+                tudao.save(tasku2);
             }
 
         } else {
@@ -654,6 +673,15 @@ public class TaskController {
         User user = udao.findOne(userId);
         // 查任务
         Tasklist task = tdao.findOne(logger.getTaskId().getTaskId());
+        String identifyResponsiblePerson = "";
+        String processPerson = "";
+        if (task.getTypeId() == 1) {
+            identifyResponsiblePerson = task.getThreeBook().getIdentifyResponsiblePerson();
+            processPerson = task.getThreeBook().getProcessPerson();
+        } else {
+            identifyResponsiblePerson = task.getDetailDraw().getIdentifyResponsiblePerson();
+            processPerson = task.getDetailDraw().getProcessPerson();
+        }
         logger.setCreateTime(new Date());
         logger.setUsername(user.getUserName());
 
@@ -769,10 +797,25 @@ public class TaskController {
             findUser = udao.findid(task.getDetailDraw().getProcessPerson());
         }
         if (taskuser1 != null) {
-            if (!req.getParameter("processPerson").equals(user.getUserName())) {
+            if (!req.getParameter("processPerson").equals(user.getUserName()) && !identifyResponsiblePerson.equals(processPerson)) {
                 tudao.delete(taskuser1);
                 taskuser1.setUserId(findUser);
-                tudao.save(taskuser1);
+                Taskuser t = tudao.findByuserIdAndTaskId2(udao.findByUserName(req.getParameter("processPerson")).getUserId(), task.getTaskId());
+                if (t == null) {
+                    tudao.save(taskuser1);
+                }
+            } else {
+                Taskuser tasku2 = new Taskuser();
+                tasku2.setTaskId(task);
+                tasku2.setUserId(findUser);
+                if (!Objects.isNull(logger.getLoggerStatusid())) {
+                    tasku2.setStatusId(logger.getLoggerStatusid());
+                }
+                Taskuser t = tudao.findByuserIdAndTaskId2(tasku2.getUserId().getUserId(), tasku2.getTaskId().getTaskId());
+                if (t == null) {
+                    tudao.save(tasku2);
+                }
+
             }
         } else {
             if (findUser == null ||
@@ -945,10 +988,14 @@ public class TaskController {
      * 删除处理过程
      */
     @RequestMapping("processremove")
-    public String processremove(@RequestParam(value = "tbId") Long tbId) {
+    public String processremove(@RequestParam(value = "tbId") Long tbId, @RequestParam(value = "id") String id, @RequestParam(value = "type") String type) {
         ThreeBookProcess tp = tbpDao.findByAndTbId(tbId);
         tbpDao.delete(tp);
-        return "redirect:/taskmanage";
+        if ("1".equals(type)) {
+            return "redirect:/myseetasks?id=" + id;
+        } else {
+            return "redirect:/seetasks?id=" + id;
+        }
     }
 
 

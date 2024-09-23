@@ -4,9 +4,11 @@ import java.util.List;
 
 import cn.gson.oa.model.dao.system.StatusDao;
 import cn.gson.oa.model.dao.system.TypeDao;
+import cn.gson.oa.model.dao.user.*;
 import cn.gson.oa.model.entity.system.SystemStatusList;
 import cn.gson.oa.model.entity.system.SystemTypeList;
 import cn.gson.oa.model.entity.user.Dept;
+import cn.gson.oa.model.entity.user.UserLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -25,9 +27,6 @@ import com.github.stuxuhai.jpinyin.PinyinFormat;
 import com.github.stuxuhai.jpinyin.PinyinHelper;
 
 import cn.gson.oa.model.dao.roledao.RoleDao;
-import cn.gson.oa.model.dao.user.DeptDao;
-import cn.gson.oa.model.dao.user.PositionDao;
-import cn.gson.oa.model.dao.user.UserDao;
 import cn.gson.oa.model.entity.role.Role;
 import cn.gson.oa.model.entity.user.Position;
 import cn.gson.oa.model.entity.user.User;
@@ -39,6 +38,10 @@ public class UserController {
 
     @Autowired
     UserDao udao;
+    @Autowired
+    UserLogDao userLogDao;
+    @Autowired
+    UserLogRecordDao userLogRecordDao;
     @Autowired
     DeptDao ddao;
     @Autowired
@@ -204,10 +207,12 @@ public class UserController {
     @RequestMapping("deleteuser")
     public String deleteuser(@RequestParam("userid") Long userid, Model model) {
         User user = udao.findOne(userid);
+        List<UserLog> list = userLogDao.findByUser2(userid);
+        list.forEach(x -> userLogDao.delete(x.getId()));
+        userLogRecordDao.findbasekey2(userid).forEach(x -> userLogRecordDao.delete(x.getId()));
+//        user.setIsLock(1);l
 
-        user.setIsLock(1);
-
-        udao.save(user);
+        udao.delete(user);
 
         model.addAttribute("success", 1);
         return "/usermanage";

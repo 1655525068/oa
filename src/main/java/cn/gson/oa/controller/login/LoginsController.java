@@ -68,15 +68,15 @@ public class LoginsController {
     public String loginCheck(HttpSession session, HttpServletRequest req, Model model) throws UnknownHostException {
         String userName = req.getParameter("userName").trim();
         String password = req.getParameter("password");
-        String ca = req.getParameter("code").toLowerCase();
+//        String ca = req.getParameter("code").toLowerCase();
         String sesionCode = (String) req.getSession().getAttribute(CAPTCHA_KEY);
         model.addAttribute("userName", userName);
-        if (!ca.equals(sesionCode.toLowerCase())) {
+        /*if (!ca.equals(sesionCode.toLowerCase())) {
             System.out.println("验证码输入错误!");
             model.addAttribute("errormess", "验证码输入错误!");
             req.setAttribute("errormess", "验证码输入错误!");
             return "login/login";
-        }
+        }*/
         /*
          * 将员工号分开查找；员工号或者姓名拼音；
          * */

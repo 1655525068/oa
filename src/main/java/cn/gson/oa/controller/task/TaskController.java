@@ -742,7 +742,7 @@ public class TaskController {
                 }
             });
             if ("access".equals(commit)) {
-                if (finalLogger1.getLoggerStatusid() != 8 && task.getDetailDraw().getCompletionTime() == null || task.getDetailDraw().getCompletionTime().isEmpty())
+                if (finalLogger1.getLoggerStatusid() != 8 && (task.getDetailDraw().getCompletionTime() == null || task.getDetailDraw().getCompletionTime().isEmpty()))
                     task.getDetailDraw().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
             }
             // 处理单号

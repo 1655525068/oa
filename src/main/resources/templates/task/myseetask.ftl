@@ -203,7 +203,7 @@
                         </div>
                         <div class="col-md-4 form-group">
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">处理人</span>
-                            </label><input id="processPerson" name="processPerson" type="text" id="" required="required"
+                            </label><input id="processPerson" name="processPerson" type="text" required="required"
                                            class="form-control"
                                            value="${task.threeBook.processPerson!''}"/>
                             <div class="reciver" id="reciver"
@@ -269,7 +269,7 @@
                         </div>
                         <div class="col-md-3 form-group">
                             <label data-toggle="modal"> <span id="ctl00_cphMain_Label2">细化责任人</span>
-                            </label><input name="processPerson" type="text" id="" class="form-control"
+                            </label><input id="processPerson" name="processPerson" type="text" class="form-control"
                                            required="required"
                                            id="processPerson"
                                            value="${task.detailDraw.processPerson!''}"/>
@@ -354,7 +354,9 @@
                                                                 <select name="processes[${pro_index}].handleMethod"
                                                                         class="form-control">
                                                                     <option value="${pro.handleMethod!''}">${pro.handleMethod!''}</option>
+                                                                    <option value="FCR">FCR</option>
                                                                     <option value="ICR">ICR</option>
+                                                                    <option value="CR">CR</option>
                                                                     <option value="细化">细化</option>
                                                                     <option value="/">/</option>
                                                                 </select>
@@ -725,7 +727,7 @@
         //增加一行
         $(".zeng").click(function () {
             var td1 = $('<td class="chebox" colspan="1"></td>').append($('<span class="labels"></span>').append($('<label></label>').append($('<input type="checkbox" name="items"  class="val" >')).append($('<i></i>').text('✓'))));
-            var td2 = $('<td colspan="1"></td>').append($('<select class="form-control" name="processes[' + i + '].handleMethod"><option value="ICR">ICR</option><option value="细化">细化</option>  <option value="/">/</option></select>'));
+            var td2 = $('<td colspan="1"></td>').append($('<select class="form-control" name="processes[' + i + '].handleMethod"><option value="FCR">FCR</option><option value="ICR">ICR</option><option value="CR">CR</option><option value="细化">细化</option><option value="/">/</option></select>'));
             var td3 = $('<td colspan="2"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].processOrderNumber" style="background-color:#fff;"/>'));
             var td4 = $('<td colspan="1"></td>').append($('<input type="text" class="form-control inpu" name="processes[' + i + '].remarks"/>'));
             var tr = $('<tr class="tr"></tr>').append(td1).append(td2).append(td3).append(td4);

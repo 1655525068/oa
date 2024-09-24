@@ -567,10 +567,10 @@
                         </label>
                         <#if task.typeId == 1>
                             <textarea class="form-control text" placeholder="反馈"
-                                      name="loggerTicking">${task.threeBook.loggerTicking}</textarea>
+                                      name="loggerTicking">${task.threeBook.loggerTicking!''}</textarea>
                         <#else >
                             <textarea class="form-control text" placeholder="反馈"
-                                      name="loggerTicking">${task.detailDraw.loggerTicking}</textarea>
+                                      name="loggerTicking">${task.detailDraw.loggerTicking!''}</textarea>
                         </#if>
                     </div>
                     <input

@@ -499,10 +499,10 @@
                         <label> <span id="ctl00_cphMain_Label2">反馈</span>
                         </label> <#if task.typeId == 1>
                             <textarea class="form-control text" placeholder="反馈"
-                                      name="loggerTicking">${task.threeBook.loggerTicking}</textarea>
+                                      name="loggerTicking">${task.threeBook.loggerTicking!''}</textarea>
                         <#else >
                             <textarea class="form-control text" placeholder="反馈"
-                                      name="loggerTicking">${task.detailDraw.loggerTicking}</textarea>
+                                      name="loggerTicking">${task.detailDraw.loggerTicking!''}</textarea>
                         </#if>
                     </div>
                     <input

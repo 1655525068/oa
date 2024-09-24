@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0923">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0924">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" afterDir="false" />
@@ -77,6 +76,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="oa" />
       <extension name="coverage">
@@ -122,7 +134,8 @@
       <workItem from="1726049216576" duration="16667000" />
       <workItem from="1726103872089" duration="6520000" />
       <workItem from="1727091032580" duration="6088000" />
-      <workItem from="1727168443049" duration="6846000" />
+      <workItem from="1727168443049" duration="7482000" />
+      <workItem from="1727188818763" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -173,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727096546471</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="0924">
+      <created>1727188295995</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727188295995</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +226,8 @@
     <MESSAGE value="0910" />
     <MESSAGE value="0911" />
     <MESSAGE value="0923" />
-    <option name="LAST_COMMIT_MESSAGE" value="0923" />
+    <MESSAGE value="0924" />
+    <option name="LAST_COMMIT_MESSAGE" value="0924" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

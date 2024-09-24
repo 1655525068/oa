@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0911">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0923">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="origin" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -87,6 +93,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="Spring Boot.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -114,6 +121,8 @@
       <workItem from="1726048900066" duration="295000" />
       <workItem from="1726049216576" duration="16667000" />
       <workItem from="1726103872089" duration="6520000" />
+      <workItem from="1727091032580" duration="6088000" />
+      <workItem from="1727168443049" duration="6846000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -157,11 +166,28 @@
       <option name="project" value="LOCAL" />
       <updated>1726053728355</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="0923">
+      <created>1727096546471</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727096546471</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -179,69 +205,35 @@
     <MESSAGE value="0909" />
     <MESSAGE value="0910" />
     <MESSAGE value="0911" />
-    <option name="LAST_COMMIT_MESSAGE" value="0911" />
+    <MESSAGE value="0923" />
+    <option name="LAST_COMMIT_MESSAGE" value="0923" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/ValidatorController.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/book/DrawTypeController.java</url>
           <line>90</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>725</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>798</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>807</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>400</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
-          <line>480</line>
-          <option name="timeStamp" value="35" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/common/OfficeUtils.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="tasklist.getThreeBook()" language="JAVA" />
-        <watch expression="task.getThreeBook().getProcessPerson()" language="JAVA" />
-        <watch expression="task.getTaskId()" language="JAVA" />
-        <watch expression="task.getTaskId()" language="JAVA" />
-        <watch expression="reciver.getUserId()" language="JAVA" />
-        <watch expression="((ArrayList) professions).size()" language="JAVA" custom="java.util.ArrayList" />
-        <watch expression="req.getParameter(&quot;proId&quot;)" language="JAVA" />
+        <watch expression="map" language="JAVA" />
         <watch expression="record" language="JAVA" />
-        <watch expression="dd.getProblemDescription()" language="JAVA" />
+        <watch expression="records" language="JAVA" />
+        <watch expression="cell" language="JAVA" />
+        <watch expression="cell.getStringCellValue()" language="JAVA" />
+        <watch expression="finalLogger1.getLoggerStatusid()" language="JAVA" />
+        <watch expression="task.getDetailDraw().getCompletionTime()" language="JAVA" />
+        <watch expression="task.getDetailDraw().getCompletionTime()" language="JAVA" />
+        <watch expression="req.getParameter(&quot;processPerson&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

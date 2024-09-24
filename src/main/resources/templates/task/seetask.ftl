@@ -497,8 +497,13 @@
 
                     <div class="col-md-4 form-group">
                         <label> <span id="ctl00_cphMain_Label2">反馈</span>
-                        </label> <input name="loggerTicking" type="text"
-                                        id="ctl00_cphMain_txtPowerValue" class="form-control"/>
+                        </label> <#if task.typeId == 1>
+                            <textarea class="form-control text" placeholder="反馈"
+                                      name="loggerTicking">${task.threeBook.loggerTicking}</textarea>
+                        <#else >
+                            <textarea class="form-control text" placeholder="反馈"
+                                      name="loggerTicking">${task.detailDraw.loggerTicking}</textarea>
+                        </#if>
                     </div>
                     <input
                             name="taskId" type="text" id=""

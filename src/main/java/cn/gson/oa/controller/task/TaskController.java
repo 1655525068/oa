@@ -560,7 +560,7 @@ public class TaskController {
         model.addAttribute("tasklist", list);
         model.addAttribute("page", tasklist);
         model.addAttribute("url", "mychaxun");
-        model.addAttribute("sort", "&title=" + title);
+//        model.addAttribute("sort", "&title=" + title);
         return "task/mytasklist";
     }
 

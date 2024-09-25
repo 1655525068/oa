@@ -147,7 +147,7 @@ public class TaskService {
         for (int i = 0; i < task.size(); i++) {
             Map<String, Object> result = new HashMap<>();
             Long statusid = task.get(i).getStatusId().longValue();
-            result.put("taskid", task.get(i).getTaskId());
+            result.put("taskid", task.get(i).getTaskId().toString());
             result.put("typename", tydao.findname(task.get(i).getTypeId()));
             result.put("statusname", sdao.findname(statusid));
             result.put("statuscolor", sdao.findcolor(statusid));
@@ -253,7 +253,7 @@ public class TaskService {
                 String username = ptu.getUserName();
                 String deptname = ddao.findname(ptu.getDept().getDeptId());
 
-                result.put("taskid", tid);
+                result.put("taskid", tid.toString());
                 result.put("typename", tydao.findname(task.get(i).getTypeId()));
                 if (task.get(i).getTypeId() == 1) {
                     result.put("threeBook", bdao.findOneByBookId(task.get(i).getThreeBook().getBookId()));
@@ -348,7 +348,7 @@ public class TaskService {
                 String username = ptu.getUserName();
                 String deptname = ddao.findname(ptu.getDept().getDeptId());
 
-                result.put("taskid", tid);
+                result.put("taskid", tid.toString());
                 result.put("typename", tydao.findname(task.get(i).getTypeId()));
                 if (task.get(i).getTypeId() == 1) {
                     result.put("threeBook", bdao.findOneByBookId(task.get(i).getThreeBook().getBookId()));

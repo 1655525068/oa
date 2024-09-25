@@ -58,8 +58,8 @@
 
                         <#else >
                             <td><span>图纸</span></td>
-                            <td><span>${task.publishtime!''}</span></td>
                             <td><span> </span></td>
+                            <td><span>${task.publishtime!''}</span></td>
                             <td><span>
                                     ${task.detailDraw.documentCodes!''}(${task.detailDraw.version!''})
                                 </span></td>

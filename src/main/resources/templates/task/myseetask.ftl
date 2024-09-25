@@ -379,7 +379,7 @@
                                                                         修改</a>
                                                                     <a
                                                                             onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
-                                                                            href="processremove?tbId=${pro.tbId}&id=${task.taskId}&type=1"
+                                                                            href="processremove?tbId=${pro.tbId}&id=${task.taskId?c}&type=1"
                                                                             class="label shanchu"><span
                                                                                 class="glyphicon glyphicon-remove"></span>
                                                                         删除</a>
@@ -575,7 +575,7 @@
                     </div>
                     <input
                             name="taskId" type="text" id="ctl00_cphMain_txtPowerValue"
-                            class="form-control" value="${task.taskId}"
+                            class="form-control" value="${task.taskId?c}"
                             style="display: none;"/>
                     <input
                             name="commit" type="text" id="commit"

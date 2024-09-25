@@ -393,7 +393,7 @@
                     </div>
                     <input
                             name="taskId" type="text" id="ctl00_cphMain_txtPowerValue"
-                            class="form-control" value="${task.taskId}"
+                            class="form-control" value="${task.taskId?c}"
                             style="display: none;"/>
                     <input
                             name="commit" type="text" id="commit"

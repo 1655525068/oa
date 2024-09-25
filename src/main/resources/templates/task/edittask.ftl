@@ -114,7 +114,7 @@
                             <textarea class="form-control text" style="display: none"
                                       name="comment">${(task.comment)!''}</textarea>
 
-                            <input name="taskId" type="text" style="display:none;" value="${task.taskId}">
+                            <input name="taskId" type="text" style="display:none;" value="${task.taskId?c}">
                             <input name="typeId" type="text" style="display:none;" value="${task.typeId}">
                             <#if task.typeId ==1 >
                                 <input name="bookId" type="text" style="display:none;" value="${task.threeBook.bookId}">

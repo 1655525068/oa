@@ -1019,10 +1019,14 @@ public class TaskController {
      * 删除问题
      */
     @RequestMapping("questionremove")
-    public String questionremove(@RequestParam(value = "ddId") Long ddId) {
+    public String questionremove(@RequestParam(value = "ddId") Long ddId, @RequestParam(value = "id") String id, @RequestParam(value = "type") String type) {
         DetailDrawQuestion q = ddqDao.findByDdId(ddId);
         ddqDao.delete(q);
-        return "redirect:/taskmanage";
+        if ("1".equals(type)) {
+            return "redirect:/myseetasks?id=" + id;
+        } else {
+            return "redirect:/seetasks?id=" + id;
+        }
     }
 
     @RequestMapping("readthreebook")

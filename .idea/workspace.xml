@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0924">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0925">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/detaildrawmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/detaildrawmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/threebookmanage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/threebookmanage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/edittask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/edittask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/shenqing.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727189473371</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="0925">
+      <created>1727266096213</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727266096213</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +228,8 @@
     <MESSAGE value="0911" />
     <MESSAGE value="0923" />
     <MESSAGE value="0924" />
-    <option name="LAST_COMMIT_MESSAGE" value="0924" />
+    <MESSAGE value="0925" />
+    <option name="LAST_COMMIT_MESSAGE" value="0925" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

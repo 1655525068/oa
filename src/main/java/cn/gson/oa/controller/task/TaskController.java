@@ -1055,7 +1055,7 @@ public class TaskController {
 
 
         String[] threebookcol = new String[]{
-                "序号", "类型", "份数", "三单号", "中文名称", "FCR版本", "状态", "编制人", "最新版", "接收时间", "分发时间", "作废标识", "相关文件编码", "相关文件内部编码", "图纸版本", "专业", "责任方", "识别责任人"};
+                "序号", "类型", "份数", "三单号", "中文名称", "FCR版本", "状态", "编制人", "最新版", "接收时间", "分发时间", "作废标识", "相关文件编码", "相关文件内部编码", "图纸版本", "专业", "责任方", "识别责任人", "处理人"};
 
 
         List<Record> records = OfficeUtils.readOffice(targetFile, threebookcol);
@@ -1115,7 +1115,9 @@ public class TaskController {
                             case "识别责任人":
                                 tb.setIdentifyResponsiblePerson(o.toString());
                                 break;
-
+                            case "处理人":
+                                tb.setProcessPerson(o.toString());
+                                break;
                         }
                     }
 
@@ -1164,7 +1166,6 @@ public class TaskController {
                     task.setStatusId(tasklist.getStatusId());
                     // 存任务中间表
                     tudao.save(task);
-
                 }
                 i++;
             }

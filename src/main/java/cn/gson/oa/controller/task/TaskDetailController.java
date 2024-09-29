@@ -222,6 +222,9 @@ public class TaskDetailController {
                             case "识别责任人":
                                 dd.setIdentifyResponsiblePerson(o.toString());
                                 break;
+                            case "细化责任人":
+                                dd.setProcessPerson(o.toString());
+                                break;
                         }
                     }
 
@@ -257,10 +260,8 @@ public class TaskDetailController {
             // 细化
             // 查询细化，如果无，则新建任务
             DetailDraw queryableDraw = detailDrawDao.findByDocumentCodesAndVersion(tasklist.getDetailDraw().getDocumentCodes(), tasklist.getDetailDraw().getVersion());
-
             if (queryableDraw == null) {
                 DetailDraw result = detailDrawDao.save(tasklist.getDetailDraw());
-
                 tdao.save(tasklist);
                 // 分割任务接收人
                 StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getDetailDraw().getProcessPerson() != null ? ";" + tasklist.getDetailDraw().getProcessPerson() : ""), ";");
@@ -273,7 +274,6 @@ public class TaskDetailController {
                     task.setStatusId(tasklist.getStatusId());
                     // 存任务中间表
                     tudao.save(task);
-
                 }
                 i++;
             }

@@ -130,10 +130,15 @@ public class TaskService {
         } else if (("发布时间").equals(val)) {
             tasklist = tdao.findByUsersIdOrderByPublishTimeDesc(tu, pa);
         } else {
-            tasklist = tdao.findByTitleLikeAndUsersId(val, tu, pa);
-            if (tasklist.getContent().size() == 0) {
-                tasklist = tdao.findByTitleLikeAndUsersId2(val, tu, pa);
+            if ("三单".equals(val) || "图纸".equals(val)) {
+                tasklist = tdao.findTasklistByTypeId((long) ("三单".equals(val) ? 1 : 2), pa);
+            } else {
+                tasklist = tdao.findByTitleLikeAndUsersId(val, tu, pa);
+                if (tasklist.getContent().size() == 0) {
+                    tasklist = tdao.findByTitleLikeAndUsersId2(val, tu, pa);
+                }
             }
+
         }
         return tasklist;
 
@@ -223,12 +228,25 @@ public class TaskService {
         } else if (!Objects.isNull(user)) {
 
             tasklist = tdao.findtaskUsersIdAndTaskId(user, taskid, pa);
+            if (tasklist.getContent().size() == 0) {
+                tasklist = tdao.findByTitleLikeAndUsersId3(title, pa);
+                if (tasklist.getContent().size() == 0) {
+                    tasklist = tdao.findByTitleLikeAndUsersId4(title, pa);
+                }
+            }
 
         } else {
-            // 根据title和taskid进行模糊查询
-            tasklist = tdao.findtaskByTitleLikeAndTaskId(taskid, title, pa);
+//            // 根据title和taskid进行模糊查询
+//            tasklist = tdao.findtaskByTitleLikeAndTaskId(taskid, title, pa);
 
-
+            if ("三单".equals(title) || "图纸".equals(title)) {
+                tasklist = tdao.findTasklistByTypeId((long) ("三单".equals(title) ? 1 : 2), pa);
+            } else {
+                tasklist = tdao.findByTitleLikeAndUsersId(title, user, pa);
+                if (tasklist.getContent().size() == 0) {
+                    tasklist = tdao.findByTitleLikeAndUsersId2(title, user, pa);
+                }
+            }
         }
 
         return tasklist;

@@ -29,16 +29,16 @@
                 <tr>
                     <th scope="col">序号</th>
                     <th scope="col">标题</th>
-                    <th scope="col" class="co commen">文件<span class="block"></span></th>
-                    <th scope="col" class="co commen">类型<span></span></th>
-                    <th scope="col" class="co commen">发布时间<span class="block"></span></th>
+                    <th scope="col">文件<span class="block"></span></th>
+                    <th scope="col">类型<span></span></th>
+                    <th scope="col">发布时间<span class="block"></span></th>
                     <th scope="col">三单号/文件编码(版本)</th>
                     <th scope="col">专业(图纸类型)</th>
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
                     <th scope="col">处理人</th>
                     <th scope="col">审核人</th>
-                    <th scope="col" class="co commen">状态<span class="block"></span></th>
+                    <th scope="col">状态<span class="block"></span></th>
                     <#--<th>置顶</th>-->
                     <th scope="col">操作</th>
                 </tr>

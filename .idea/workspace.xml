@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0925">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0929 导入数据(任务)时，连带处理人一起导入">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/taskdao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/taskdao/TaskDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +38,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="a27d5f68-5e58-40c7-b708-525d5918ba55" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/1.5.6.RELEASE/spring-boot-autoconfigure-1.5.6.RELEASE.jar!/org/springframework/boot/autoconfigure/web/BasicErrorController.class" root0="SKIP_INSPECTION" />
-  </component>
   <component name="ProjectId" id="2ligVqEZaSsFfzb6O86Uf9ELSKp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -60,8 +55,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/book" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -123,6 +121,16 @@
       <workItem from="1727168443049" duration="7482000" />
       <workItem from="1727188818763" duration="822000" />
       <workItem from="1727227260395" duration="4415000" />
+      <workItem from="1727276871760" duration="680000" />
+      <workItem from="1727277664673" duration="316000" />
+      <workItem from="1727277993027" duration="313000" />
+      <workItem from="1727278497053" duration="45000" />
+      <workItem from="1727278554066" duration="203000" />
+      <workItem from="1727309375360" duration="2467000" />
+      <workItem from="1727319160715" duration="669000" />
+      <workItem from="1727321743114" duration="110000" />
+      <workItem from="1727322025896" duration="20000" />
+      <workItem from="1727604291030" duration="9600000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -194,7 +202,21 @@
       <option name="project" value="LOCAL" />
       <updated>1727266096213</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="0925">
+      <created>1727269510093</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727269510093</updated>
+    </task>
+    <task id="LOCAL-00012" summary="0929 导入数据(任务)时，连带处理人一起导入">
+      <created>1727610793864</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1727610793864</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +251,8 @@
     <MESSAGE value="0923" />
     <MESSAGE value="0924" />
     <MESSAGE value="0925" />
-    <option name="LAST_COMMIT_MESSAGE" value="0925" />
+    <MESSAGE value="0929 导入数据(任务)时，连带处理人一起导入" />
+    <option name="LAST_COMMIT_MESSAGE" value="0929 导入数据(任务)时，连带处理人一起导入" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -244,20 +267,32 @@
           <line>120</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
+          <line>241</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
+          <line>230</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="map" language="JAVA" />
-        <watch expression="record" language="JAVA" />
-        <watch expression="records" language="JAVA" />
-        <watch expression="cell" language="JAVA" />
-        <watch expression="cell.getStringCellValue()" language="JAVA" />
-        <watch expression="finalLogger1.getLoggerStatusid()" language="JAVA" />
-        <watch expression="task.getDetailDraw().getCompletionTime()" language="JAVA" />
-        <watch expression="task.getDetailDraw().getCompletionTime()" language="JAVA" />
-        <watch expression="req.getParameter(&quot;processPerson&quot;)" language="JAVA" />
-        <watch expression="list" language="JAVA" />
+        <watch expression="tasklist" language="JAVA" />
+        <watch expression="tasklist.getDetailDraw().getProcessPerson()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

@@ -737,7 +737,7 @@ public class TaskController {
             }
             Tasklogger finalLogger1 = logger;
             task.getDetailDraw().getQuestions().forEach(x -> {
-                if (x.getHandleMethod().isEmpty()) {
+                if (x.getHandleMethod().isEmpty() && task.getDetailDraw().getAuditPerson() != null) {
                     finalLogger1.setLoggerStatusid(8);
                 }
             });

@@ -53,8 +53,9 @@
             <!--盒子头-->
             <div class="box-header">
                 <h3 class="box-title">
-                    <#if user.role == '文件管理员' || user.role =='主任'>
-                        <form class="fileuploadform" action="readdetaildrawAll" method="post" enctype="multipart/form-data">
+                    <#if user.role.roleId == 1 || user.role.roleId == 2>
+                        <form class="fileuploadform" action="readdetaildrawAll" method="post"
+                              enctype="multipart/form-data">
                             <div class="btn btn-primary uploadfile"
                                  style="position: relative; overflow: hidden;width: 100%; margin-bottom: 20px;">
                                 <i class="glyphicon glyphicon-open"></i>细化文件导入

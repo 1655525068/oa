@@ -53,7 +53,7 @@
             <!--盒子头-->
             <div class="box-header">
                 <h3 class="box-title">
-                    <#if user.role == '文件管理员' || user.role =='主任'>
+                    <#if user.role.roleId == 1 || user.role.roleId == 2>
                         <form class="fileuploadform" action="readthreebookAll" method="post"
                               enctype="multipart/form-data">
                             <div class="btn btn-primary uploadfile"

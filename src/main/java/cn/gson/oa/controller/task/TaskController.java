@@ -1156,7 +1156,7 @@ public class TaskController {
                 ThreeBook result = bdao.save(tasklist.getThreeBook());
                 tdao.save(tasklist);
                 // 分割任务接收人
-                StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getThreeBook().getProcessPerson() != null ? ";" + tasklist.getThreeBook().getProcessPerson() : ""), ";");
+                StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getThreeBook().getProcessPerson() != null && !tasklist.getReciverlist().equals(tasklist.getThreeBook().getProcessPerson()) ? ";" + tasklist.getThreeBook().getProcessPerson() : ""), ";");
                 while (st.hasMoreElements()) {
                     User reciver = udao.findid(st.nextToken());
                     Taskuser task = new Taskuser();

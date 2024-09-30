@@ -264,7 +264,7 @@ public class TaskDetailController {
                 DetailDraw result = detailDrawDao.save(tasklist.getDetailDraw());
                 tdao.save(tasklist);
                 // 分割任务接收人
-                StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getDetailDraw().getProcessPerson() != null ? ";" + tasklist.getDetailDraw().getProcessPerson() : ""), ";");
+                StringTokenizer st = new StringTokenizer(tasklist.getReciverlist() + (tasklist.getDetailDraw().getProcessPerson() != null && !tasklist.getReciverlist().equals(tasklist.getDetailDraw().getProcessPerson()) ? ";" + tasklist.getDetailDraw().getProcessPerson() : ""), ";");
                 while (st.hasMoreElements()) {
                     User reciver = udao.findid(st.nextToken());
                     Taskuser task = new Taskuser();

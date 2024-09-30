@@ -65,7 +65,8 @@
                         </form>
                     </#if>
 
-                    <a onclick="downloadFile()" class="label label-success" style="padding: 5px;">
+                    <a href="#" onclick="downloadFile(); event.preventDefault();" class="label label-success"
+                       style="padding: 5px;margin-left:5px;">
                         <span class="glyphicon glyphicon-export"></span> 导出
                     </a>
 

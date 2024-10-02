@@ -99,7 +99,6 @@ public interface TaskDao extends JpaRepository<Tasklist, Long> {
     @Query("from Tasklist tl where tl.taskId in (?1) and tl.title like  %?2% and tl.statusId = ?3 ")
     Page<Tasklist> findtaskByTitleLikeAndTaskIdAndStatusId(List<Long> taskids, String title, Integer statusId, Pageable pa);
 
-
     Page<Tasklist> findByTickingIsNotNull(Pageable pa);
 
 

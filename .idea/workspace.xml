@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0929 导入数据(任务)时，连带处理人一起导入">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0930 判断是否有审核人,有审核人就跳转">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/taskdao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/taskdao/TaskDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Tasklist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Tasklist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +56,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -130,7 +132,12 @@
       <workItem from="1727319160715" duration="669000" />
       <workItem from="1727321743114" duration="110000" />
       <workItem from="1727322025896" duration="20000" />
-      <workItem from="1727604291030" duration="9600000" />
+      <workItem from="1727604291030" duration="10240000" />
+      <workItem from="1727659189600" duration="4883000" />
+      <workItem from="1727664225713" duration="4438000" />
+      <workItem from="1727678178443" duration="4571000" />
+      <workItem from="1727835492570" duration="4613000" />
+      <workItem from="1727842106575" duration="647000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -216,7 +223,42 @@
       <option name="project" value="LOCAL" />
       <updated>1727610793864</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="0929 还有查询，能不能关联全一些">
+      <created>1727617344089</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727617344089</updated>
+    </task>
+    <task id="LOCAL-00014" summary="0930 文件管理员和系统管理员账号上也没有三单/图纸一览的导入了">
+      <created>1727661708523</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727661708523</updated>
+    </task>
+    <task id="LOCAL-00015" summary="0930 加处理人能导进去了，但是保存和提交审核之后直接黑屏">
+      <created>1727661727172</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727661727172</updated>
+    </task>
+    <task id="LOCAL-00016" summary="0930 最后就是一览这里，这个刷新有鼠标反馈">
+      <created>1727663500740</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1727663500740</updated>
+    </task>
+    <task id="LOCAL-00017" summary="0930 判断是否有审核人,有审核人就跳转">
+      <created>1727667885347</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1727667885347</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +294,12 @@
     <MESSAGE value="0924" />
     <MESSAGE value="0925" />
     <MESSAGE value="0929 导入数据(任务)时，连带处理人一起导入" />
-    <option name="LAST_COMMIT_MESSAGE" value="0929 导入数据(任务)时，连带处理人一起导入" />
+    <MESSAGE value="0929 还有查询，能不能关联全一些" />
+    <MESSAGE value="0930 文件管理员和系统管理员账号上也没有三单/图纸一览的导入了" />
+    <MESSAGE value="0930 加处理人能导进去了，但是保存和提交审核之后直接黑屏" />
+    <MESSAGE value="0930 最后就是一览这里，这个刷新有鼠标反馈" />
+    <MESSAGE value="0930 判断是否有审核人,有审核人就跳转" />
+    <option name="LAST_COMMIT_MESSAGE" value="0930 判断是否有审核人,有审核人就跳转" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -269,23 +316,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
-          <line>239</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
           <line>125</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
-          <line>241</line>
-          <option name="timeStamp" value="54" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>952</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
-          <line>230</line>
-          <option name="timeStamp" value="56" />
+          <line>229</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

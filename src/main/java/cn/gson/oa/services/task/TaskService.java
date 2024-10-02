@@ -236,8 +236,6 @@ public class TaskService {
             }
 
         } else {
-//            // 根据title和taskid进行模糊查询
-//            tasklist = tdao.findtaskByTitleLikeAndTaskId(taskid, title, pa);
 
             if ("三单".equals(title) || "图纸".equals(title)) {
                 tasklist = tdao.findTasklistByTypeId((long) ("三单".equals(title) ? 1 : 2), pa);
@@ -247,6 +245,11 @@ public class TaskService {
                     tasklist = tdao.findByTitleLikeAndUsersId2(title, user, pa);
                 }
             }
+            if (tasklist.getContent().size() == 0) {
+                //根据title和taskid进行模糊查询
+                tasklist = tdao.findtaskByTitleLikeAndTaskId(taskid, title, pa);
+            }
+
         }
 
         return tasklist;

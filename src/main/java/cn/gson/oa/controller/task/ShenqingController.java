@@ -84,7 +84,7 @@ public class ShenqingController {
 
     @RequestMapping("shenqingbefore")
     public ModelAndView shenqingbefore(HttpServletRequest req, @SessionAttribute("userId") Long userId, @RequestParam(value = "page", defaultValue = "0") int page,
-                                       @RequestParam(value = "size", defaultValue = "10") int size) {
+                                       @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
 
         ModelAndView mav = new ModelAndView("task/shenqing");
@@ -210,7 +210,7 @@ public class ShenqingController {
     @RequestMapping("shenqingmanage")
     public String index5(@SessionAttribute("userId") Long userId, Model model,
                          @RequestParam(value = "page", defaultValue = "0") int page,
-                         @RequestParam(value = "size", defaultValue = "10") int size) {
+                         @RequestParam(value = "size", defaultValue = "50") int size) {
         Pageable pa = new PageRequest(page, size);
         Page<Tasklist> tasklist = tservice.index33(userId, null, page, size);
 

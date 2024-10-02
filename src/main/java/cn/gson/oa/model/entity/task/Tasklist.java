@@ -63,6 +63,16 @@ public class Tasklist implements Serializable {
     @JoinColumn(name = "task_push_user_id")
     private User usersId;//发布人id
 
+    // identifyResponsiblePerson
+    @JoinColumn(name = "identify_responsible_person")
+    private String identifyResponsiblePerson;
+
+    @JoinColumn(name = "process_person")
+    private String processPerson;
+
+    @JoinColumn(name = "audit_person")
+    private String auditPerson;
+
     @Column(name = "task_describe")
     private String taskDescribe;//任务描述
 
@@ -233,6 +243,29 @@ public class Tasklist implements Serializable {
         this.reciverlist = reciverlist;
     }
 
+    public String getIdentifyResponsiblePerson() {
+        return identifyResponsiblePerson;
+    }
+
+    public void setIdentifyResponsiblePerson(String identifyResponsiblePerson) {
+        this.identifyResponsiblePerson = identifyResponsiblePerson;
+    }
+
+    public String getProcessPerson() {
+        return processPerson;
+    }
+
+    public void setProcessPerson(String processPerson) {
+        this.processPerson = processPerson;
+    }
+
+    public String getAuditPerson() {
+        return auditPerson;
+    }
+
+    public void setAuditPerson(String auditPerson) {
+        this.auditPerson = auditPerson;
+    }
 
     public Tasklist(Long typeId, Date starTime, Date endTime, String title, String reciverlist, String taskDescribe,
                     String comment, Boolean top, Boolean cancel, Integer statusId) {

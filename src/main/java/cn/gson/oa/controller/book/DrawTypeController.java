@@ -65,7 +65,7 @@ public class DrawTypeController {
      * @return
      */
     @RequestMapping("drawtypeedit")
-    public String drawTypeedit(HttpServletRequest req) {
+    public String drawtypeedit(HttpServletRequest req) {
         if (!StringUtils.isEmpty(req.getParameter("dtId"))) {
             Long dtId = Long.parseLong(req.getParameter("dtId"));
             DrawType drawType = dtDao.findByDtId(dtId);
@@ -73,7 +73,7 @@ public class DrawTypeController {
             HttpSession session = req.getSession();
             session.setAttribute("dtId", dtId);
         }
-        return "book/drawTypeedit";
+        return "book/drawtypeedit";
     }
 
     /**

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="0930 判断是否有审核人,有审核人就跳转">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="1007 图纸类型管理">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/ShenqingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/taskdao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/dao/taskdao/TaskDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Tasklist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/model/entity/task/Tasklist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/edituser.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/edituser.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/usermanagepaging.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/usermanagepaging.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +57,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -138,6 +138,9 @@
       <workItem from="1727678178443" duration="4571000" />
       <workItem from="1727835492570" duration="4613000" />
       <workItem from="1727842106575" duration="647000" />
+      <workItem from="1728268952310" duration="250000" />
+      <workItem from="1728288044917" duration="6172000" />
+      <workItem from="1728378537724" duration="1070000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -258,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727667885347</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="1007 图纸类型管理">
+      <created>1728295108655</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1728295108655</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +309,8 @@
     <MESSAGE value="0930 加处理人能导进去了，但是保存和提交审核之后直接黑屏" />
     <MESSAGE value="0930 最后就是一览这里，这个刷新有鼠标反馈" />
     <MESSAGE value="0930 判断是否有审核人,有审核人就跳转" />
-    <option name="LAST_COMMIT_MESSAGE" value="0930 判断是否有审核人,有审核人就跳转" />
+    <MESSAGE value="1007 图纸类型管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="1007 图纸类型管理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

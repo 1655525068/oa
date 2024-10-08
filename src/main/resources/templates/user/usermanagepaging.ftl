@@ -33,6 +33,7 @@
                     <th scope="col">员工号</th>
                     <th scope="col">职位</th>
                     <th scope="col">角色</th>
+                    <th scope="col">性別</th>
                     <th scope="col">电话</th>
                     <th scope="col">操作</th>
                 </tr>
@@ -55,6 +56,13 @@
                         <td><span>${(user.uid)!''}</span></td>
                         <td><span>${(user.position.name)!''}</span></td>
                         <td><span>${(user.role.roleName)!''}</span></td>
+                        <td><span>
+				<#if user.sex=="男">
+                    <img src="images/male.png" alt="男" style="width: 20px;height: 20px"/>
+				<#else>
+                    <img src="images/female.png" alt="女" style="width: 20px;height: 20px"/>
+                </#if>
+				</span></td>
                         <td><span>${(user.userTel)!''}</span></td>
                         <td><a href="useredit?userid=${user.userId}" class="label xiugai"><span
                                         class="glyphicon glyphicon-edit"></span> 修改</a> <a

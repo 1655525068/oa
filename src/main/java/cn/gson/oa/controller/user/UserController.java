@@ -180,6 +180,7 @@ public class UserController {
             user2.setUid(user.getUid());
             user2.setUserTel(user.getUserTel());
             user2.setRealName(user.getUserName());
+            user2.setSex(user.getSex());
             user2.setEmail(user.getEmail());
             user2.setAddress(user.getAddress());
             user2.setUserEdu(user.getUserEdu());

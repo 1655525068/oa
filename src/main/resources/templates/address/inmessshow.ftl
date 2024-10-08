@@ -11,7 +11,7 @@
 	<table class="table" border=""  style="width: 90%;margin: auto;margin-bottom: 20px;">
 		<tr>
 			<td class="text-right"  >工号:</td>
-			<td >	${user.userName}</td>
+			<td >	${user.uid}</td>
 			<td rowspan="3" colspan="2">
 				<div id="">
 					<img src="image/${(user.imgPath)!'timg.jpg'}" style="width: 120px;height: 120px;border-radius: 50%;margin-left: 15%;"/>

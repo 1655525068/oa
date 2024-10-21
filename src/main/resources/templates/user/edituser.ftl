@@ -86,15 +86,21 @@
                             <div class="col-md-6 form-group">
                                 <label class="control-label"> <span>性别</span>
                                 </label> <select class="form-control" name="sex">
-                                    <#if user??>
-                                        <option value="${(user.sex)!''}">${(user.sex)!''}</option>
-                                    </#if>
-                                    <#if user.sex=="男">
+                                    <#if where??>
+                                        <#if user??>
+                                            <option value="${(user.sex)!''}">${(user.sex)!''}</option>
+                                        </#if>
+                                        <#if user.sex=="男">
+                                            <option value="女">女</option>
+                                        </#if>
+                                        <#if user.sex=="女">
+                                            <option value="男">男</option>
+                                        </#if>
+                                    <#else >
+                                        <option value="男">男</option>
                                         <option value="女">女</option>
                                     </#if>
-                                    <#if user.sex=="女">
-                                        <option value="男">男</option>
-                                    </#if>
+
                                 </select>
                             </div>
                             <div class="col-md-6 form-group">

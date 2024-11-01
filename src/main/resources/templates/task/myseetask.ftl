@@ -81,7 +81,12 @@
                                     ${(status.statusName)!''}
                                 </i></span>
                         </h3>
-
+                        <h3>
+                            <#if task.typeId == 1>
+                                <span id="">相关文件编码：${task.threeBook.relatedDocumentCodes!''}</span>
+                                <span id="">&nbsp;&nbsp;内部文件编码：${task.threeBook.internalCodes!''}</span>
+                            </#if>
+                        </h3>
                         <#if task.reciverlist??>
                             <h5 class="fonts"><span id="ctl00_cphMain_lblFrom"
                                                     class="mailbox-read-time">发布人：<i>${user.userName!''}</i> &nbsp;&nbsp;责任人：<i>${task.reciverlist}</i> &nbsp;&nbsp;处理人：<i>
@@ -197,7 +202,10 @@
                                     class="form-control select2 ddlstatus">
                                 <option value="${task.threeBook.professionalType}">${task.threeBook.professionalType}</option>
                                 <#list professions as profession>
-                                    <option value="${profession.proName}">${profession.proName}</option>
+                                    <#if task.threeBook.professionalType = profession.proName>
+                                    <#else >
+                                        <option value="${profession.proName}">${profession.proName}</option>
+                                    </#if>
                                 </#list>
                             </select>
                         </div>
@@ -222,20 +230,37 @@
 
                             </div>
                         </div>
+                    <#--                        <div class="col-md-4 form-group">-->
+                    <#--                            <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>-->
+                    <#--                            <select id="shouldHandle" name="shouldHandle" class="form-control"-->
+                    <#--                                    <#if task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??>-->
+                    <#--                                        <#if task.threeBook.shouldHandle !='是'>-->
+                    <#--                                            readonly="readonly"-->
+                    <#--                                        </#if>-->
+
+                    <#--                                    </#if>-->
+                    <#--                            >-->
+                    <#--                                <#if task.threeBook.shouldHandle ??>-->
+                    <#--                                    <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>-->
+                    <#--                                </#if>-->
+                    <#--                                <#if (!(task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??))>-->
+                    <#--                                    <option value="是">是</option>-->
+                    <#--                                    <option value="否">否</option>-->
+                    <#--                                </#if>-->
+
+                    <#--                            </select>-->
+                    <#--                        </div>-->
                         <div class="col-md-4 form-group">
                             <label> <span id="ctl00_cphMain_Label2">是否需要处理</span> </label>
-                            <select id="shouldHandle" name="shouldHandle" class="form-control"
-                                    <#if task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??>
-                                        <#if task.threeBook.shouldHandle !='是'>
-                                            readonly="readonly"
-                                        </#if>
-
-                                    </#if>
-                            >
+                            <select id="shouldHandle" name="shouldHandle" class="form-control">
                                 <#if task.threeBook.shouldHandle ??>
                                     <option value="${task.threeBook.shouldHandle}">${task.threeBook.shouldHandle}</option>
-                                </#if>
-                                <#if (!(task.threeBook.shouldHandle ?? &&  task.threeBook.processPerson ??))>
+                                    <#if task.threeBook.shouldHandle = '是' >
+                                        <option value="否">否</option>
+                                    <#else >
+                                        <option value="是">是</option>
+                                    </#if>
+                                <#else >
                                     <option value="是">是</option>
                                     <option value="否">否</option>
                                 </#if>
@@ -409,13 +434,45 @@
                                         </#if>
                                         class="form-control">
                                     <option value="${task.threeBook.processResponsibleParty!''}">${task.threeBook.processResponsibleParty!''}</option>
-                                    <option value="设计院">设计院</option>
-                                    <option value="施工承包商">施工承包商</option>
-                                    <option value="细化引起">细化引起</option>
-                                    <option value="工程公司">工程公司</option>
-                                    <option value="业主">业主</option>
-                                    <option value="其他">其他</option>
-                                    <option value="/">/</option>
+                                    <#if task.threeBook.processResponsibleParty ??>
+                                        <#if task.threeBook.processResponsibleParty = '设计院' >
+                                        <#else >
+                                            <option value="设计院">设计院</option>
+                                        </#if>
+                                        <#if task.threeBook.processResponsibleParty = '施工承包商' >
+                                        <#else >
+                                            <option value="施工承包商">施工承包商</option>
+                                        </#if>
+                                        <#if task.threeBook.processResponsibleParty = '细化引起' >
+                                        <#else >
+                                            <option value="细化引起">细化引起</option>
+                                        </#if>
+                                        <#if task.threeBook.processResponsibleParty = '工程公司' >
+                                        <#else >
+                                            <option value="工程公司">工程公司</option>
+                                        </#if>
+                                        <#if task.threeBook.processResponsibleParty = '业主' >
+                                        <#else >
+                                            <option value="业主">业主</option>
+                                        </#if>
+                                        <#if task.threeBook.processResponsibleParty = '其他' >
+                                        <#else >
+                                            <option value="其他">其他</option>
+                                        </#if>
+                                        <#if task.threeBook.processResponsibleParty = '/' >
+                                        <#else >
+                                            <option value="/">/</option>
+                                        </#if>
+                                    <#else >
+                                        <option value="设计院">设计院</option>
+                                        <option value="施工承包商">施工承包商</option>
+                                        <option value="细化引起">细化引起</option>
+                                        <option value="工程公司">工程公司</option>
+                                        <option value="业主">业主</option>
+                                        <option value="其他">其他</option>
+                                        <option value="/">/</option>
+                                    </#if>
+
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
@@ -426,9 +483,16 @@
                                         </#if>
                                         class="form-control">
                                     <option value="${task.threeBook.shouldClaim!''}">${task.threeBook.shouldClaim!''}</option>
-                                    <option value="否">否</option>
-                                    <option value="是">是</option>
-
+                                    <#if task.threeBook.shouldClaim ??>
+                                        <#if task.threeBook.shouldClaim = '是' >
+                                            <option value="否">否</option>
+                                        <#else >
+                                            <option value="是">是</option>
+                                        </#if>
+                                    <#else >
+                                        <option value="否">否</option>
+                                        <option value="是">是</option>
+                                    </#if>
                                 </select>
                             </div>
                         </#if>
@@ -674,15 +738,15 @@
             $('#displaytable').show();
             $('#processResponsibleParty').removeAttr('required');
             $('#shouldClaim').removeAttr('required');
-            $('#processPerson').removeAttr('readonly');
+            // $('#processPerson').removeAttr('readonly');
             $('#reciver').show();
             $('#processPerson').attr('required', 'required');
         } else {
-            $('#processPerson').val('');
+            // $('#processPerson').val('');
             $('#displaytable').hide();
-            $('#processPerson').attr('readonly', 'readonly');
+            // $('#processPerson').attr('readonly', 'readonly');
             $('#processPerson').removeAttr('required')
-            $('#reciver').hide();
+            // $('#reciver').hide();
             $('#processResponsibleParty').attr('required', 'required');
             $('#shouldClaim').attr('required', 'required');
         }

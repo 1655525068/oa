@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="1007 图纸类型管理">
+    <list default="true" id="dd0cc40e-4c41-4d49-b1d7-bea7c4642784" name="Default Changelist" comment="1008 管理员用户变更">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/edituser.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/edituser.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/usermanagepaging.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/usermanagepaging.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/managetable.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/myseetask.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/mytasklist.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/task/seetask.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +65,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -140,7 +144,19 @@
       <workItem from="1727842106575" duration="647000" />
       <workItem from="1728268952310" duration="250000" />
       <workItem from="1728288044917" duration="6172000" />
-      <workItem from="1728378537724" duration="1070000" />
+      <workItem from="1728378537724" duration="1791000" />
+      <workItem from="1728432128742" duration="6000" />
+      <workItem from="1728699287881" duration="640000" />
+      <workItem from="1728700342620" duration="274000" />
+      <workItem from="1728714684330" duration="111000" />
+      <workItem from="1728868990713" duration="26000" />
+      <workItem from="1728917962540" duration="5000" />
+      <workItem from="1729991309332" duration="110000" />
+      <workItem from="1729991436978" duration="207000" />
+      <workItem from="1730003459943" duration="61000" />
+      <workItem from="1730176075159" duration="646000" />
+      <workItem from="1730377943645" duration="1278000" />
+      <workItem from="1730424279671" duration="5952000" />
     </task>
     <task id="LOCAL-00001" summary="0909">
       <created>1725834782912</created>
@@ -268,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1728295108655</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="1008 管理员用户变更">
+      <created>1728379924322</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1728379924322</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +333,8 @@
     <MESSAGE value="0930 最后就是一览这里，这个刷新有鼠标反馈" />
     <MESSAGE value="0930 判断是否有审核人,有审核人就跳转" />
     <MESSAGE value="1007 图纸类型管理" />
-    <option name="LAST_COMMIT_MESSAGE" value="1007 图纸类型管理" />
+    <MESSAGE value="1008 管理员用户变更" />
+    <option name="LAST_COMMIT_MESSAGE" value="1008 管理员用户变更" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -337,8 +361,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/services/task/TaskService.java</url>
-          <line>229</line>
+          <line>230</line>
           <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/gson/oa/controller/task/TaskController.java</url>
+          <line>401</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -346,6 +375,7 @@
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="tasklist" language="JAVA" />
         <watch expression="tasklist.getDetailDraw().getProcessPerson()" language="JAVA" />
+        <watch expression="task.getThreeBook().getProcessPerson()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

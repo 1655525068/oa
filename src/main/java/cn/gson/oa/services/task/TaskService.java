@@ -167,6 +167,7 @@ public class TaskService {
                 result.put("threeType", task.get(i).getThreeBook().getType());
                 result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
                 result.put("relatedDocumentCodes", task.get(i).getThreeBook().getRelatedDocumentCodes());
+                result.put("internalCodes",task.get(i).getThreeBook().getInternalCodes());
                 result.put("drawVersion", task.get(i).getThreeBook().getDrawVersion());
                 result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());

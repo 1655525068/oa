@@ -438,8 +438,7 @@ public class TaskController {
             // 更新日志
             logger = tservice.updateLogger(req, logger, "three");
         } else {
-            // 是否处理
-            task.getDetailDraw().setShouldHandle(dd.getShouldHandle());
+            System.out.println(task.getDetailDraw());
             // 处理方式
             task.getDetailDraw().setHandleMethod(dd.getHandleMethod());
             // 细化处理人
@@ -660,15 +659,15 @@ public class TaskController {
         if (commit.isEmpty() && req.getParameter("processPerson") != null) {
             logger.setLoggerStatusid(5);
         }
-//        if ("否".equals(tb.getShouldHandle()) || "否".equals(dd.getShouldHandle())) {
-//            if (tb != null) {
-//                tb.setProcessPerson("");
-//            }
-//            if (dd != null) {
-//                dd.setProcessPerson("");
-//            }
-//            logger.setLoggerStatusid(7);
-//        }
+        if ("否".equals(tb.getShouldHandle()) || "否".equals(dd.getShouldHandle())) {
+            if (tb != null) {
+                tb.setProcessPerson("");
+            }
+            if (dd != null) {
+                dd.setProcessPerson("");
+            }
+            logger.setLoggerStatusid(7);
+        }
 
         // 查找用户
         User user = udao.findOne(userId);
@@ -702,9 +701,9 @@ public class TaskController {
             task.getThreeBook().setProfessionalType(tb.getProfessionalType());
             // 是否需要处理
             task.getThreeBook().setShouldHandle(tb.getShouldHandle());
-//            if ("否".equals(tb.getShouldHandle())) {
-//                task.getThreeBook().setProcessPerson("");
-//            }
+            if ("否".equals(tb.getShouldHandle())) {
+                task.getThreeBook().setProcessPerson("");
+            }
             if ("access".equals(commit)) {
                 task.getThreeBook().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
             }

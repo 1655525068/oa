@@ -28,7 +28,7 @@
                     <th scope="col">文件</th>
                     <th scope="col">类型</th>
                     <th scope="col">发布时间</th>
-                    <th scope="col">三单号/文件编码/内部文件编码(版本)</th>
+                    <th scope="col">三单号/文件编码(版本)</th>
                     <th scope="col">专业(图纸类型)</th>
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
@@ -48,7 +48,7 @@
                             <td><span>${task.threeBook.type!''}</span></td>
                             <td><span>${task.publishtime!''}</span></td>
                             <td>
-                                <span>${task.threeBook.threeBookNumbers!''} / ${task.threeBook.relatedDocumentCodes} / ${task.threeBook.internalCodes!''}  (${task.threeBook.drawVersion})</span>
+                                <span>${task.threeBook.threeBookNumbers!''} / ${task.threeBook.relatedDocumentCodes} (${task.threeBook.drawVersion})</span>
                             </td>
                             <td><span>${task.threeBook.professionalType!''}</span></td>
                             <td><span>${task.username!''}</span></td>

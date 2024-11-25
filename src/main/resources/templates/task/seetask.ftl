@@ -59,7 +59,6 @@
                                 <span id="">&nbsp;&nbsp;三单号：${task.threeBook.threeBookNumbers!''}</span>
                                 <span id="">&nbsp;&nbsp;中文名称：${task.threeBook.chineseName!''}</span>
                                 <span id="">&nbsp;&nbsp;类型：${task.threeBook.type!''}</span>
-
                             <#else >
                                 <span id="">&nbsp;&nbsp;文件编码：${task.detailDraw.documentCodes!''}</span>
                                 <span id="">&nbsp;&nbsp;内部文件编号：${task.detailDraw.internalDocumentCodes!''}</span>
@@ -69,12 +68,6 @@
                                   class="mailbox-read-time pull-right">状态：<i class="label ${status.statusColor}">
                                     ${(status.statusName)!''}
                                 </i></span>
-                        </h3>
-                        <h3>
-                            <#if task.typeId == 1>
-                                <span id="">相关文件编码：${task.threeBook.relatedDocumentCodes!''}</span>
-                                <span id="">&nbsp;&nbsp;内部文件编码：${task.threeBook.internalCodes!''}</span>
-                            </#if >
                         </h3>
                         <h5 class="fonts">
 

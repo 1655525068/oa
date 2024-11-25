@@ -32,7 +32,7 @@
                     <th scope="col">文件<span class="block"></span></th>
                     <th scope="col">类型<span></span></th>
                     <th scope="col">发布时间<span class="block"></span></th>
-                    <th scope="col">三单号/文件编码/内部文件编码(版本)</th>
+                    <th scope="col">三单号/文件编码(版本)</th>
                     <th scope="col">专业(图纸类型)</th>
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
@@ -53,7 +53,7 @@
                             <td><span>${task.threeType!''}</span></td>
                             <td><span>${task.publishtime!''}</span></td>
                             <td>
-                                <span>${task.threeBookNumbers!''} / ${task.relatedDocumentCodes!''} / ${task.internalCodes!''} (${task.drawVersion!''})</span>
+                                <span>${task.threeBookNumbers!''} / ${task.relatedDocumentCodes!''} (${task.drawVersion!''})</span>
                             </td>
                             <td><span>${task.professionalType!''}</span></td>
                             <td><span>${task.username!''}</span></td>

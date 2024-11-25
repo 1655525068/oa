@@ -9,6 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import cn.gson.oa.model.dao.taskdao.TaskDao;
+import cn.gson.oa.model.entity.task.Tasklist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +99,8 @@ public class IndexController {
     private DaymanageDao daydao;
     @Autowired
     private InformRelationService informrelationservice;
+    @Autowired
+    private TaskDao taskDao;
 
     @RequestMapping("index")
     public String index(HttpServletRequest req, Model model) {

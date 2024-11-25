@@ -30,6 +30,5 @@
 </div>
 
 <#include "/common/paging2.ftl">
-<script type="text/javascript" src="js/mail/mail.js"></script>
 
 								

@@ -45,6 +45,16 @@
                         <i class="glyphicon glyphicon-chevron-left"></i> <span>返回</span>
                     </a>
                 </h3>
+                <h3>
+                    <form class="fileuploadform" action="readthreebook" method="post" enctype="multipart/form-data">
+                        <div class="btn btn-primary uploadfile"
+                             style="position: relative; overflow: hidden;width: 100%; margin-bottom: 20px;">
+                            <i class="glyphicon glyphicon-open"></i>三单文件导入
+                            <input type="file" name="file"
+                                   style="opacity: 0; position: absolute; top: 0; right: 0; min-width: 100%; min-height: 100%;"/>
+                        </div>
+                    </form>
+                </h3>
             </div>
 
             <!--盒子身体-->
@@ -83,14 +93,10 @@
                                 <input name="title" type="text" id="title_Name" class="form-control"/>
                             </div>
 
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">描述</label>
-                                <input class="form-control" name="taskDescribe" value="描述"/>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">评价</label>
-                                <input class="form-control" name="comment" value="评价"/>
-                            </div>
+                            <input class="form-control" name="taskDescribe" style="display: none" value="描述"/>
+
+                            <input class="form-control" name="comment" style="display: none" value="评价"/>
+
 
                             <!-- 类型 -->
                             <div class="col-md-4 form-group">
@@ -192,9 +198,9 @@
                             <div class="col-md-4 form-group">
                                 <label class="control-label">专业</label>
                                 <select class="form-control" name="professionalType">
-                                    <option value="管道">管道</option>
-                                    <option value="通风">通风</option>
-                                    <option value="电仪">电仪</option>
+                                    <#list professions as profession>
+                                        <option value="${profession.proName}">${profession.proName}</option>
+                                    </#list>
                                 </select>
                             </div>
                             <!-- 责任方 -->
@@ -216,26 +222,16 @@
                                         >通讯录</span>
                                 </div>
                             </div>
-                            <!-- 处理人 -->
-                            <div class="col-md-4 form-group">
-                                <label class="control-label" data-toggle="modal">处理人</label>
-                                <input name="processPerson" type="text" id="" class="form-control "
-                                       style="background-color:#fff;"/>
-                                <div class="reciver">
-                                        <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
-                                        >通讯录</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4 form-group ">
-                                <label class="control-label">置顶</label>
-                                <span class="labels"><label><input type="checkbox" name="top"
-                                                                   class="val"><i>✓</i></label></span>
-                            </div>
 
-                            <div class="col-md-4  form-group">
-                                <label class="control-label">取消</label> <span
-                                        class="labels"><label><input type="checkbox" name="cancel" class="val"><i>✓</i></label></span>
-                            </div>
+                            <span class="labels" style="display: none"><label><input type="checkbox" name="top"
+                                                                                     style="display: none"
+                                                                                     class="val"><i>✓</i></label></span>
+
+                            <span
+                                    class="labels" style="display: none"><label><input type="checkbox" name="cancel"
+                                                                                       style="display: none"
+                                                                                       class="val"><i>✓</i></label></span>
+
                         </div>
                     </div>
                 </div>
@@ -333,6 +329,9 @@
             $('#div1, #div2').hide();
             // 显示对应的div
             $('#div' + selectedValue).show();
+        });
+        $(".uploadfile input").bind("change", function () {
+            $(".fileuploadform").submit();
         });
     })
 </script>

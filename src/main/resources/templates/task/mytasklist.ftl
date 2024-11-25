@@ -23,13 +23,17 @@
             <table class="table table-hover table-striped">
                 <thead>
                 <tr>
+                    <th scope="col">序号</th>
                     <th scope="col">标题</th>
-                    <th scope="col">文件类型</th>
+                    <th scope="col">文件</th>
+                    <th scope="col">类型</th>
                     <th scope="col">发布时间</th>
-                    <th scope="col">三单号/文件编码/编号/图册号</th>
+                    <th scope="col">三单号/文件编码/内部文件编码(版本)</th>
+                    <th scope="col">专业(图纸类型)</th>
                     <th scope="col">发布人</th>
                     <th scope="col">责任人</th>
                     <th scope="col">处理人</th>
+                    <th scope="col">审核人</th>
                     <th scope="col">状态</th>
                     <th scope="col">操作</th>
                 </tr>
@@ -37,23 +41,35 @@
                 <tbody>
                 <#list tasklist as task>
                     <tr>
+                        <td><span>${task_index+1}</span></td>
                         <td><span>${task.title}</span></td>
                         <#if task.type == 1>
                             <td><span>三单</span></td>
+                            <td><span>${task.threeBook.type!''}</span></td>
                             <td><span>${task.publishtime!''}</span></td>
-                            <td><span>${task.threeBook.threeBookNumbers!''}</span></td>
+                            <td>
+                                <span>${task.threeBook.threeBookNumbers!''} / ${task.threeBook.relatedDocumentCodes} / ${task.threeBook.internalCodes!''}  (${task.threeBook.drawVersion})</span>
+                            </td>
+                            <td><span>${task.threeBook.professionalType!''}</span></td>
                             <td><span>${task.username!''}</span></td>
                             <td><span>${task.threeBook.identifyResponsiblePerson!''}</span></td>
                             <td><span>${task.threeBook.processPerson!''}</span></td>
+                            <td><span>${task.threeBook.auditPerson!''}</span></td>
+
                         <#else >
-                            <td><span>图纸细化</span></td>
+                            <td><span>图纸</span></td>
+                            <td><span> </span></td>
                             <td><span>${task.publishtime!''}</span></td>
                             <td><span>
-                                    ${task.detailDraw.documentCodes!''}&nbsp;/&nbsp;${task.detailDraw.internalDocumentCodes!''}&nbsp;/&nbsp; ${task.detailDraw.catalogNumber!''}
+                                    ${task.detailDraw.documentCodes!''}(${task.detailDraw.version!''})
                                 </span></td>
+                            <td>
+                                <span>${task.detailDraw.professionalType!''}&nbsp;/&nbsp;${task.detailDraw.drawingType!''}</span>
+                            </td>
                             <td><span>${task.username!''}</span></td>
-                            <td><span>${task.detailDraw.responsiblePerson!''}</span></td>
-                            <td><span> / </span></td>
+                            <td><span>${task.detailDraw.identifyResponsiblePerson!''}</span></td>
+                            <td><span>${task.detailDraw.processPerson!''}</span></td>
+                            <td><span>${task.detailDraw.auditPerson!''}</span></td>
                         </#if>
 
 

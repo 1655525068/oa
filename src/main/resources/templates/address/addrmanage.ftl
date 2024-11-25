@@ -88,7 +88,7 @@
         </h1>
     </div>
     <div class="col-md-10 text-right">
-        <a href="##"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
+        <a href="##" id="glyphicon-home"><span class="glyphicon glyphicon-home"></span> 首页</a> > <a
                 disabled="disabled">通讯录</a>
     </div>
 </div>
@@ -528,5 +528,9 @@
                 }
             });
         });
+        $('#glyphicon-home').on('click', function () {
+            /*debugger;
+            $('#shouye').click();*/
+        })
     });
 </script>

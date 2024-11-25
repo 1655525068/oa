@@ -94,12 +94,16 @@ public class ThreeBook implements Cloneable {
     @Column(name = "identify_responsible_person")
     private String identifyResponsiblePerson;
 
-    // 处理人
+    // 三单处理人
     @Column(name = "process_person")
     private String processPerson;
 
+    // 审核人
+    @Column(name = "audit_person")
+    private String auditPerson;
+
     // 处理流程
-    @OneToMany(cascade=CascadeType.ALL,mappedBy="tbs",orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbs", orphanRemoval = true)
     List<ThreeBookProcess> processes;
 
     /*处理流程*/
@@ -140,6 +144,10 @@ public class ThreeBook implements Cloneable {
     @Column(name = "actual_close_time")
     private String actualCloseTime;
 
+    // 完成时间
+    @Column(name = "completion_time")
+    private String completionTime;
+
     // 设计点值
     @Column(name = "design_point_value")
     private String designPointValue;
@@ -153,7 +161,6 @@ public class ThreeBook implements Cloneable {
 
     @Column(name = "is_lock")
     private Integer isLock = 0;
-
 
 
     public List<ThreeBookProcess> getProcesses() {
@@ -202,6 +209,14 @@ public class ThreeBook implements Cloneable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public String getAuditPerson() {
+        return auditPerson;
+    }
+
+    public void setAuditPerson(String auditPerson) {
+        this.auditPerson = auditPerson;
     }
 
     public Integer getIsLock() {
@@ -420,15 +435,23 @@ public class ThreeBook implements Cloneable {
         this.loggerTicking = loggerTicking;
     }
 
+    public String getCompletionTime() {
+        return completionTime;
+    }
+
+    public void setCompletionTime(String completionTime) {
+        this.completionTime = completionTime;
+    }
+
     @Override
     public String toString() {
         return "ThreeBook{" +
-                "bookId='" + bookId + '\'' +
+                "bookId=" + bookId +
                 ", serialNumber='" + serialNumber + '\'' +
                 ", type='" + type + '\'' +
                 ", threeBookNumbers='" + threeBookNumbers + '\'' +
                 ", chineseName='" + chineseName + '\'' +
-                ", FCRVersion='" + fcrVersion + '\'' +
+                ", fcrVersion='" + fcrVersion + '\'' +
                 ", state='" + state + '\'' +
                 ", preparedBy='" + preparedBy + '\'' +
                 ", latestVersion='" + latestVersion + '\'' +
@@ -442,11 +465,21 @@ public class ThreeBook implements Cloneable {
                 ", responsibleParty='" + responsibleParty + '\'' +
                 ", identifyResponsiblePerson='" + identifyResponsiblePerson + '\'' +
                 ", processPerson='" + processPerson + '\'' +
-                ", designPointValue='" + designPointValue + '\'' +
-                ", auditPointValue='" + auditPointValue + '\'' +
+                ", auditPerson='" + auditPerson + '\'' +
+                ", shouldHandle='" + shouldHandle + '\'' +
+                ", handleMethod='" + handleMethod + '\'' +
+                ", processOrderNumber='" + processOrderNumber + '\'' +
+                ", processCompletionTime='" + processCompletionTime + '\'' +
+                ", processResponsibleParty='" + processResponsibleParty + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", shouldClaim='" + shouldClaim + '\'' +
                 ", planToCloseTime='" + planToCloseTime + '\'' +
                 ", actualCloseTime='" + actualCloseTime + '\'' +
-                ", loggerTicking " + loggerTicking + '\'' +
+                ", completionTime='" + completionTime + '\'' +
+                ", designPointValue='" + designPointValue + '\'' +
+                ", auditPointValue='" + auditPointValue + '\'' +
+                ", loggerTicking='" + loggerTicking + '\'' +
+                ", isLock=" + isLock +
                 '}';
     }
 }

@@ -20,16 +20,12 @@ public class ThreeBookProcess {
     @Column(name = "process_order_number")
     private String processOrderNumber;
 
-    // 处理完成时间
-    @Column(name = "process_completion_time")
-    private String processCompletionTime;
-
     // 备注
     @Column(name = "remarks")
     private String remarks;
 
     @ManyToOne()
-    @JoinColumn(name="book_id")
+    @JoinColumn(name = "book_id")
     private ThreeBook tbs;//对应三单表
 
     public Long getTbId() {
@@ -56,14 +52,6 @@ public class ThreeBookProcess {
         this.processOrderNumber = processOrderNumber;
     }
 
-    public String getProcessCompletionTime() {
-        return processCompletionTime;
-    }
-
-    public void setProcessCompletionTime(String processCompletionTime) {
-        this.processCompletionTime = processCompletionTime;
-    }
-
     public String getRemarks() {
         return remarks;
     }
@@ -78,5 +66,16 @@ public class ThreeBookProcess {
 
     public void setTbs(ThreeBook tbs) {
         this.tbs = tbs;
+    }
+
+    @Override
+    public String toString() {
+        return "ThreeBookProcess{" +
+                "tbId=" + tbId +
+                ", handleMethod='" + handleMethod + '\'' +
+                ", processOrderNumber='" + processOrderNumber + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", tbs=" + tbs +
+                '}';
     }
 }

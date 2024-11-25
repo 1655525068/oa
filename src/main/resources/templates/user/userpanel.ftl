@@ -185,6 +185,7 @@
                                     <input
                                             name="userName" type="text" readonly="readonly" value="${user.userName}"
                                             id="ctl00_cphMain_txtFullName" class="form-control"/>
+                                    <input type="text" style="display: none" name="realName" value="${user.realName}">
                                 </div>
 
                                 <div class="col-md-6 form-group">

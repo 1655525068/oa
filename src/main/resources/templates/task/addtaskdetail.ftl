@@ -40,6 +40,16 @@
                         <i class="glyphicon glyphicon-chevron-left"></i> <span>返回</span>
                     </a>
                 </h3>
+                <h3>
+                    <form class="fileuploadform" action="readdetaildraw" method="post" enctype="multipart/form-data">
+                        <div class="btn btn-primary uploadfile"
+                             style="position: relative; overflow: hidden;width: 100%; margin-bottom: 20px;">
+                            <i class="glyphicon glyphicon-open"></i>细化文件导入
+                            <input type="file" name="file"
+                                   style="opacity: 0; position: absolute; top: 0; right: 0; min-width: 100%; min-height: 100%;"/>
+                        </div>
+                    </form>
+                </h3>
             </div>
 
             <!--盒子身体-->
@@ -78,14 +88,12 @@
                                 <input name="title" type="text" id="title_Name" class="form-control"/>
                             </div>
 
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">描述</label>
-                                <input class="form-control" name="taskDescribe" value="描述"/>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">评价</label>
-                                <input class="form-control" name="comment" value="评价"/>
-                            </div>
+
+                            <input class="form-control" name="taskDescribe" style="display: none" value="描述"/>
+
+
+                            <input class="form-control" name="comment" style="display: none" value="评价"/>
+
                             <#--文件编码-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">文件编码</label>
@@ -132,7 +140,11 @@
                             <#--图纸类型-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">图纸类型</label>
-                                <input class="form-control" name="drawingType" value=""/>
+                                <select class="form-control" name="drawingType">
+                                    <#list drawTypes as drawType>
+                                        <option value="${drawType.dtName}">${drawType.dtName}</option>
+                                    </#list>
+                                </select>
                             </div>
                             <#--接收日期-->
                             <div class="col-md-4 form-group">
@@ -142,18 +154,18 @@
                             <#--是否需FU-->
                             <div class="col-md-4 form-group">
                                 <label class="control-label">是否需FU</label>
-                                <select class="form-control" name="doNeedFU">
+                                <select id="doNeedFU" class="form-control" name="doNeedFU">
                                     <option value="是">是</option>
                                     <option value="否">否</option>
                                 </select>
                             </div>
                             <#--FU计划时间-->
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-4 form-group displaytable">
                                 <label class="control-label">FU计划时间</label>
                                 <input id="planTimeFU" class="form-control" name="planTimeFU" value=""/>
                             </div>
                             <#--FU单号-->
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-4 form-group displaytable">
                                 <label class="control-label">FU单号</label>
                                 <input class="form-control" name="numberFU" value=""/>
                             </div>
@@ -164,73 +176,25 @@
                             </div>
                             <#--细化责任人-->
                             <div class="col-md-4 form-group">
-                                <label class="control-label">细化责任人</label>
-                                <#--<input class="form-control" name="responsiblePerson" value=""/>-->
+                                <label class="control-label">识别责任人</label>
                                 <input class="form-control" name="reciverlist" value=""/>
                                 <div class="reciver">
                                         <span class="label label-success glyphicon glyphicon-plus" data-toggle="modal"
                                         >通讯录</span>
                                 </div>
                             </div>
-                            <#--&lt;#&ndash;问题描述&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">问题描述</label>
-                                <input class="form-control" name="problemDescription" value=""/>
-                            </div>
-                            &lt;#&ndash;图纸问题数量&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">图纸问题数量</label>
-                                <input class="form-control" name="problemCount" value=""/>
-                            </div>
-                            &lt;#&ndash;处理方式&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">处理方式</label>
-                                <input class="form-control" name="handleMethod" value=""/>
-                            </div>
-                            &lt;#&ndash;处理单号&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">处理单号</label>
-                                <input class="form-control" name="processOrderNumber" value=""/>
-                            </div>
-                            &lt;#&ndash;核实郑分会审单问题是否修改&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">核实郑分会审单问题是否修改</label>
-                                <select class="form-control" name="modify">
-                                    <option value="是">是</option>
-                                    <option value="否">否</option>
-                                </select>
-                            </div>
-                            &lt;#&ndash;备注&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">备注</label>
-                                <input class="form-control" name="remarks" value=""/>
-                            </div>
-                            &lt;#&ndash;完成时间&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">完成时间</label>
-                                <input class="form-control" name="completionTime" value=""/>
-                            </div>
-                            &lt;#&ndash;设计点值&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">设计点值</label>
-                                <input class="form-control" name="designPointValue" value=""/>
-                            </div>
-                            &lt;#&ndash;审核点值&ndash;&gt;
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">审核点值</label>
-                                <input class="form-control" name="auditPointValue" value=""/>
-                            </div>-->
 
-                            <div class="col-md-4 form-group ">
-                                <label class="control-label">置顶</label>
-                                <span class="labels"><label><input type="checkbox" name="top"
-                                                                   class="val"><i>✓</i></label></span>
-                            </div>
 
-                            <div class="col-md-4  form-group">
-                                <label class="control-label">取消</label> <span
-                                        class="labels"><label><input type="checkbox" name="cancel" class="val"><i>✓</i></label></span>
-                            </div>
+                            <span class="labels" style="display: none"><label><input type="checkbox" name="top"
+                                                                                     style="display: none"
+                                                                                     class="val"><i>✓</i></label></span>
+
+
+                            <span
+                                    class="labels" style="display: none"><label><input type="checkbox" name="cancel"
+                                                                                       style="display: none"
+                                                                                       class="val"><i>✓</i></label></span>
+
                         </div>
                     </div>
                 </div>
@@ -263,13 +227,20 @@
             // 如果在这些input框中，判断是否能够为空
             if ($(this).val() === "") {
                 // 排除哪些字段是可以为空的，在这里排除
-                 if (index === 18 || index === 19) {
-                    return true;
-                 }
+                if ($('#doNeedFU').val() === '是') {
+                    if (index === 19) {
+                        return true;
+                    }
+                } else {
+                    if (index === 15 || index === 16 || index === 19) {
+                        return true;
+                    }
+                }
+
 
                 // 获取到input框的兄弟的文本信息，并对应提醒；
                 var brother = $(this).siblings('.control-label').text();
-                 ;
+                ;
                 var errorMess = "[" + brother + "输入框信息不能为空]";
                 // 对齐设置错误信息提醒；红色边框
                 $(this).parent().addClass("has-error has-feedback");
@@ -305,6 +276,17 @@
         $(".recive_list").change(function () {
             var $val = $(this).val();
             $(".qu").siblings("input").val($val);
+        });
+        $(".uploadfile input").bind("change", function () {
+            $(".fileuploadform").submit();
+        });
+        $('#doNeedFU').change(function () {
+            var selectedValue = $(this).val();
+            if (selectedValue === '是') {
+                $('.displaytable').show();
+            } else {
+                $('.displaytable').hide();
+            }
         });
     })
 </script>

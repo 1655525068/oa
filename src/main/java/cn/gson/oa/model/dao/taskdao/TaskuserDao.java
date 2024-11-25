@@ -28,6 +28,9 @@ public interface TaskuserDao extends PagingAndSortingRepository<Taskuser, Long> 
 	@Query("select tu.statusId from Taskuser tu where tu.userId.userId=:userid and tu.taskId.taskId=:taskid ")
 	Long findByuserIdAndTaskId(@Param("userid")Long userid,@Param("taskid")Long taskid);
 
+	@Query("select tu from Taskuser tu where tu.userId.userId=:userid and tu.taskId.taskId=:taskid ")
+	Taskuser findByuserIdAndTaskId2(@Param("userid")Long userid,@Param("taskid")Long taskid);
+
 	@Query("select tu from Taskuser tu where tu.userId.userName=:userName and tu.taskId.taskId=:taskid ")
 	Taskuser findByuserNameAndTaskId(@Param("userName")String userName,@Param("taskid")Long taskid);
 

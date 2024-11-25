@@ -30,16 +30,24 @@ public interface TaskDao extends JpaRepository<Tasklist, Long> {
     int update(@Param("taskid") Long taskid, @Param("statusid") Integer statusid);
 
     //根据用户id 和title的模糊查询(threeBook)
-    @Query("select tl from Tasklist tl where tl.usersId=:userId and tl.title like %:title% or tl.threeBook.type like %:title% or tl.threeBook.threeBookNumbers like %:title% or tl.threeBook.identifyResponsiblePerson like %:title% or tl.threeBook.processPerson like %:title% ")
+    @Query("select tl from Tasklist tl where tl.usersId=:userId and tl.title like %:title% or tl.threeBook.type like %:title% or tl.threeBook.professionalType like %:title% or tl.threeBook.threeBookNumbers like %:title% or tl.threeBook.identifyResponsiblePerson like %:title% or tl.threeBook.processPerson like %:title% ")
     Page<Tasklist> findByTitleLikeAndUsersId(@Param("title") String title, @Param("userId") User userId, Pageable pa);
 
     //根据用户id 和title的模糊查询(detailDraw)
-    @Query("select tl from Tasklist tl where tl.usersId=:userId and tl.title like %:title% or tl.detailDraw.documentCodes like %:title% or tl.detailDraw.internalDocumentCodes like %:title% or tl.detailDraw.catalogNumber like %:title% ")
+    @Query("select tl from Tasklist tl where tl.usersId=:userId and tl.title like %:title% or tl.detailDraw.drawingType like %:title% or  tl.detailDraw.documentCodes like %:title% or tl.detailDraw.internalDocumentCodes like %:title% or tl.detailDraw.catalogNumber like %:title% ")
     Page<Tasklist> findByTitleLikeAndUsersId2(@Param("title") String title, @Param("userId") User userId, Pageable pa);
 
+    //根据用户id 和title的模糊查询(threeBook)
+    @Query("select tl from Tasklist tl where tl.title like %:title% or tl.threeBook.type like %:title% or tl.threeBook.professionalType like %:title% or tl.threeBook.threeBookNumbers like %:title% or tl.threeBook.identifyResponsiblePerson like %:title% or tl.threeBook.processPerson like %:title% ")
+    Page<Tasklist> findByTitleLikeAndUsersId3(@Param("title") String title, Pageable pa);
+
+    //根据用户id 和title的模糊查询(detailDraw)
+    @Query("select tl from Tasklist tl where tl.title like %:title% or tl.detailDraw.drawingType like %:title% or  tl.detailDraw.documentCodes like %:title% or tl.detailDraw.internalDocumentCodes like %:title% or tl.detailDraw.catalogNumber like %:title% or tl.detailDraw.identifyResponsiblePerson like %:title% or tl.detailDraw.processPerson like %:title%")
+    Page<Tasklist> findByTitleLikeAndUsersId4(@Param("title") String title, Pageable pa);
+
     //根据任务id和发布时间的模糊查询
-    @Query("select tl from Tasklist tl where tl.taskId=:taskid and tl.publishTime like %:title%")
-    Tasklist findByPublishTimeLikeAndTaskId(@Param("taskid") Long taskid, @Param("title") String title);
+//    @Query("select tl from Tasklist tl where tl.taskId=:taskid and tl.publishTime like %:title%")
+//    Tasklist findByPublishTimeLikeAndTaskId(@Param("taskid") Long taskid, @Param("title") String title);
 
     //类型排序
     Page<Tasklist> findByUsersIdOrderByTypeId(User userId, Pageable page);
@@ -53,28 +61,43 @@ public interface TaskDao extends JpaRepository<Tasklist, Long> {
     @Query("from Tasklist t where t.taskId in (?1)")
     Page<Tasklist> findTaskByTaskIds(List<Long> taskids, Pageable pa);
 
+    @Query("from Tasklist t where t.taskId in (?1) and t.statusId = ?2")
+    Page<Tasklist> findTaskByTaskIdsAndStatusId(List<Long> taskids, Integer statusId, Pageable pa);
+
     //根据typeid和taskid找任务
     @Query("from Tasklist t where t.typeId = ?1  and t.taskId in (?2)")
     Page<Tasklist> findtaskTypeIdAndTaskId(Long typeId, List<Long> taskids, Pageable pa);
 
+    @Query("from Tasklist t where t.typeId = ?1  and t.taskId in (?2) and t.statusId = ?3")
+    Page<Tasklist> findtaskTypeIdAndTaskIdAndStatusId(Long typeId, List<Long> taskids, Integer statusId, Pageable pa);
+
+    @Query("from Tasklist t where t.typeId = ?1")
+    Page<Tasklist> findTasklistByTypeId(Long typeId, Pageable pa);
 
     //根据statusid和taskid找任务
     @Query("from Tasklist t where t.statusId = ?1  and t.taskId in (?2)")
     Page<Tasklist> findtaskStatusIdAndCancelAndTaskId(Integer statusId, List<Long> taskids, Pageable pa);
 
-
     //根据用户对象和taskid找任务
     @Query("from Tasklist t where t.usersId	= ?1  and t.taskId in (?2)")
     Page<Tasklist> findtaskUsersIdAndTaskId(User user, List<Long> taskids, Pageable pa);
+
+    @Query("from Tasklist t where t.usersId	= ?1  and t.taskId in (?2) and t.statusId = ?3 ")
+    Page<Tasklist> findtaskUsersIdAndTaskIdAndStatusId(User user, List<Long> taskids, Integer statusId, Pageable pa);
 
 
     @Query("from Tasklist t where t.cancel = ?1  and t.taskId in (?2)")
     Page<Tasklist> findtaskCancelAndTaskId(Boolean b, List<Long> taskids, Pageable pa);
 
+    @Query("from Tasklist t where t.cancel = ?1  and t.taskId in (?2) and t.statusId = ?3 ")
+    Page<Tasklist> findtaskCancelAndTaskIdAndStatusId(Boolean b, List<Long> taskids, Integer statusId, Pageable pa);
+
     //根据任务id和title的模糊查询
     @Query("from Tasklist tl where tl.taskId in (?1) and tl.title like  %?2%")
     Page<Tasklist> findtaskByTitleLikeAndTaskId(List<Long> taskids, String title, Pageable pa);
 
+    @Query("from Tasklist tl where tl.taskId in (?1) and tl.title like  %?2% and tl.statusId = ?3 ")
+    Page<Tasklist> findtaskByTitleLikeAndTaskIdAndStatusId(List<Long> taskids, String title, Integer statusId, Pageable pa);
 
     Page<Tasklist> findByTickingIsNotNull(Pageable pa);
 

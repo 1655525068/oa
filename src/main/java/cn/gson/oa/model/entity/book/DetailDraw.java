@@ -40,6 +40,9 @@ public class DetailDraw implements Cloneable {
     // 版本
     @Column(name = "version")
     private String version;
+    // 最新版
+    @Column(name = "latest_version")
+    private String latestVersion;
     // 状态
     @Column(name = "state")
     private String state;
@@ -61,12 +64,27 @@ public class DetailDraw implements Cloneable {
     // 计划细化完成时间（无需细化填/）
     @Column(name = "plan_completion_time")
     private String planCompletionTime;
+
+    // 识别责任人
+    @Column(name = "identify_responsible_person")
+    private String identifyResponsiblePerson;
+
     // 细化责任人
     @Column(name = "responsible_person")
-    private String responsiblePerson;
+    private String processPerson;
+
+    // 审核人
+    @Column(name = "audit_person")
+    private String auditPerson;
     // 问题
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dds", orphanRemoval = true)
     private List<DetailDrawQuestion> questions;
+    // 是否需要处理
+    @Column(name = "should_handle")
+    private String shouldHandle;
+    // 细化完成时间(需审核)
+    @Column(name = "completion_time_should_audit")
+    private String completionTimeShouldAudit;
     // 问题描述
     @Column(name = "problem_description")
     private String problemDescription;
@@ -153,8 +171,24 @@ public class DetailDraw implements Cloneable {
         return version;
     }
 
+    public String getCompletionTimeShouldAudit() {
+        return completionTimeShouldAudit;
+    }
+
+    public void setCompletionTimeShouldAudit(String completionTimeShouldAudit) {
+        this.completionTimeShouldAudit = completionTimeShouldAudit;
+    }
+
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getLatestVersion() {
+        return latestVersion;
+    }
+
+    public void setLatestVersion(String latestVersion) {
+        this.latestVersion = latestVersion;
     }
 
     public String getState() {
@@ -213,12 +247,12 @@ public class DetailDraw implements Cloneable {
         this.planCompletionTime = planCompletionTime;
     }
 
-    public String getResponsiblePerson() {
-        return responsiblePerson;
+    public String getProcessPerson() {
+        return processPerson;
     }
 
-    public void setResponsiblePerson(String responsiblePerson) {
-        this.responsiblePerson = responsiblePerson;
+    public void setProcessPerson(String processPerson) {
+        this.processPerson = processPerson;
     }
 
     public String getProblemDescription() {
@@ -317,6 +351,30 @@ public class DetailDraw implements Cloneable {
         this.loggerTicking = loggerTicking;
     }
 
+    public String getIdentifyResponsiblePerson() {
+        return identifyResponsiblePerson;
+    }
+
+    public void setIdentifyResponsiblePerson(String identifyResponsiblePerson) {
+        this.identifyResponsiblePerson = identifyResponsiblePerson;
+    }
+
+    public String getAuditPerson() {
+        return auditPerson;
+    }
+
+    public void setAuditPerson(String auditPerson) {
+        this.auditPerson = auditPerson;
+    }
+
+    public String getShouldHandle() {
+        return shouldHandle;
+    }
+
+    public void setShouldHandle(String shouldHandle) {
+        this.shouldHandle = shouldHandle;
+    }
+
     @Override
     public String toString() {
         return "DetailDraw{" +
@@ -333,7 +391,7 @@ public class DetailDraw implements Cloneable {
                 ", planTimeFU='" + planTimeFU + '\'' +
                 ", numberFU='" + numberFU + '\'' +
                 ", planCompletionTime='" + planCompletionTime + '\'' +
-                ", responsiblePerson='" + responsiblePerson + '\'' +
+                ", processPerson='" + processPerson + '\'' +
                 ", handleMethod='" + handleMethod + '\'' +
                 ", processOrderNumber='" + processOrderNumber + '\'' +
                 ", modify='" + modify + '\'' +

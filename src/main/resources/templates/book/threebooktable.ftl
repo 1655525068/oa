@@ -1,7 +1,7 @@
 <div class="table-responsive">
     <table class="table table-hover table-condensed" style="min-width: 3500px;">
         <tr>
-            <#if user.role.roleName =='主任'>
+            <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                 <th scope="col">操作</th>
             </#if>
             <th style="background-color: yellow" scope="col">序号</th>
@@ -22,6 +22,7 @@
             <th style="background-color: yellow" scope="col">责任方</th>
             <th style="background-color: greenyellow" scope="col">识别责任人</th>
             <th style="background-color: greenyellow" scope="col">处理人</th>
+            <th style="background-color: greenyellow" scope="col">审核人</th>
             <th style="background-color: red" scope="col">是否需要处理</th>
             <th style="background-color: red" scope="col">处理方式</th>
             <th style="background-color: red" scope="col">处理单号</th>
@@ -33,13 +34,13 @@
             <th style="background-color: yellow" scope="col">实际关闭时间</th>
             <th style="background-color: greenyellow" scope="col">设计点值</th>
             <th style="background-color: greenyellow" scope="col">审核点值</th>
-            <#if user.role.roleName =='主任'>
+            <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                 <th scope="col">操作</th>
             </#if>
         </tr>
         <#list threeBooks as threeBook>
             <tr>
-                <#if user.role.roleName =='主任'>
+                <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                     <td><a href="deletethreebook?bookId=${threeBook.bookId}"
                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                            class="label shanchu"><span
@@ -63,10 +64,11 @@
                 <td><span>${threeBook.responsibleParty!''}</span></td>
                 <td><span>${threeBook.identifyResponsiblePerson!''}</span></td>
                 <td><span>${threeBook.processPerson!''}</span></td>
+                <td><span>${threeBook.auditPerson!''}</span></td>
                 <td><span>${threeBook.shouldHandle!''}</span></td>
                 <td><span>${threeBook.handleMethod!''}</span></td>
                 <td><span>${threeBook.processOrderNumber!''}</span></td>
-                <td><span>${threeBook.processCompletionTime!''}</span></td>
+                <td><span>${threeBook.completionTime!''}</span></td>
                 <td><span>${threeBook.processResponsibleParty!''}</span></td>
                 <td><span>${threeBook.remarks!''}</span></td>
                 <td><span>${threeBook.shouldClaim!''}</span></td>
@@ -74,7 +76,7 @@
                 <td><span>${threeBook.actualCloseTime!''}</span></td>
                 <td><span>${threeBook.designPointValue!''}</span></td>
                 <td><span>${threeBook.auditPointValue!''}</span></td>
-                <#if user.role.roleName =='主任'>
+                <#if user.role.roleName =='主任' || user.role.roleName =='文件管理员'>
                     <td><a href="deletethreebook?bookId=${threeBook.bookId}"
                            onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                            class="label shanchu"><span

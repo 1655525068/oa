@@ -53,7 +53,18 @@
             <!--盒子头-->
             <div class="box-header">
                 <h3 class="box-title">
-                    <a onclick="downloadFile()" class="label label-success" style="padding: 5px;">
+                    <#if user.role.roleId == 1 || user.role.roleId == 2>
+                        <form class="fileuploadform" action="readthreebookAll" method="post"
+                              enctype="multipart/form-data">
+                            <div class="btn btn-primary uploadfile"
+                                 style="position: relative; overflow: hidden;width: 100%; margin-bottom: 20px;">
+                                <i class="glyphicon glyphicon-open"></i>三单文件导入
+                                <input type="file" name="file"
+                                       style="opacity: 0; position: absolute; top: 0; right: 0; min-width: 100%; min-height: 100%;"/>
+                            </div>
+                        </form>
+                    </#if>
+                    <a href="#" onclick="downloadFile(); event.preventDefault();" class="label label-success" style="padding: 5px;margin-left:5px;">
                         <span class="glyphicon glyphicon-export"></span> 导出
                     </a>
 
@@ -93,5 +104,9 @@
         var search = $('.baseKey').val();
         window.location.href = '/threebookexport?search=' + search
     }
+
+    $(".uploadfile input").bind("change", function () {
+        $(".fileuploadform").submit();
+    });
 
 </script>

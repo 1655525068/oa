@@ -1,5 +1,5 @@
 <#include "/common/commoncss.ftl">
-
+<#include "/common/modalTip.ftl"/>
 <style type="text/css">
 a {
 	color: black;

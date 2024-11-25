@@ -46,6 +46,5 @@
 </div>
 
 <#include "/common/paging.ftl">
-<script type="text/javascript" src="js/mail/mail.js"></script>
 
 								

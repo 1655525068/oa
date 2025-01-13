@@ -11,5 +11,5 @@ import java.util.List;
 public interface ThreeBookProcessDao extends PagingAndSortingRepository<ThreeBookProcess, String> {
     List<ThreeBookProcess> findAllByTbs(ThreeBook threeBook);
 
-    ThreeBookProcess findByAndTbId(Long tbId);
+    ThreeBookProcess findByAndTbId(String tbId);
 }

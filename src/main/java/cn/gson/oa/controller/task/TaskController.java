@@ -989,7 +989,7 @@ public class TaskController {
      * 删除处理过程
      */
     @RequestMapping("processremove")
-    public String processremove(@RequestParam(value = "tbId") Long tbId, @RequestParam(value = "id") String id, @RequestParam(value = "type") String type) {
+    public String processremove(@RequestParam(value = "tbId") String tbId, @RequestParam(value = "id") String id, @RequestParam(value = "type") String type) {
         ThreeBookProcess tp = tbpDao.findByAndTbId(tbId);
         tbpDao.delete(tp);
         if ("1".equals(type)) {

@@ -74,6 +74,7 @@ public class ThreeBookController {
                 threeBooks1.add(threeBook);
             } else
                 threeBooks1.add(createThreeBook(threeBook, null));
+            break;
         }
         model.addAttribute("threeBooks", threeBooks1);
 //        model.addAttribute("page", threeBookPage);

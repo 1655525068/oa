@@ -86,6 +86,7 @@ public class DetailDrawController {
                 detailDraws1.add(dd);
             } else
                 detailDraws1.add(createDetailDraw(dd, null));
+            break;
         }
         model.addAttribute("detailDraws", detailDraws1);
         model.addAttribute("url", "detaildrawtable");

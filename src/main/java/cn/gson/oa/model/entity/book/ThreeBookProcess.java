@@ -10,7 +10,7 @@ public class ThreeBookProcess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tb_id")
     // tbId
-    private Long tbId;
+    private String tbId;
 
     // 处理方式 (ICR/细化)
     @Column(name = "handle_method")
@@ -28,11 +28,11 @@ public class ThreeBookProcess {
     @JoinColumn(name = "book_id")
     private ThreeBook tbs;//对应三单表
 
-    public Long getTbId() {
+    public String getTbId() {
         return tbId;
     }
 
-    public void setTbId(Long tbId) {
+    public void setTbId(String tbId) {
         this.tbId = tbId;
     }
 

@@ -16,7 +16,7 @@ public class ExportExcel {
         //缓存xml路径
         freemarkerInput.setXmlTempFile("/templates/tmp");
         //缓存xml名字
-        freemarkerInput.setFileName("tmpXml");
+        freemarkerInput.setFileName("/tmpXml");
         //设置freemarker模板数据
         freemarkerInput.setDataMap(data);
         //导出Excel到输出流（Excel2007版及以上，xlsx格式）速度快

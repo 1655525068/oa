@@ -167,7 +167,7 @@ public class TaskService {
                 result.put("threeType", task.get(i).getThreeBook().getType());
                 result.put("threeBookNumbers", task.get(i).getThreeBook().getThreeBookNumbers());
                 result.put("relatedDocumentCodes", task.get(i).getThreeBook().getRelatedDocumentCodes());
-                result.put("internalCodes",task.get(i).getThreeBook().getInternalCodes());
+                result.put("internalCodes", task.get(i).getThreeBook().getInternalCodes());
                 result.put("drawVersion", task.get(i).getThreeBook().getDrawVersion());
                 result.put("identifyResponsiblePerson", task.get(i).getThreeBook().getIdentifyResponsiblePerson());
                 result.put("processPerson", task.get(i).getThreeBook().getProcessPerson());
@@ -192,8 +192,8 @@ public class TaskService {
 
     }
 
-    public Page<Tasklist> index3(Long userid, String title, int page, int size) {
-        Pageable pa = new PageRequest(page, size);
+    public Page<Tasklist> index3(Long userid, String title, int page, int size, Sort sort) {
+        Pageable pa = new PageRequest(page, size, sort);
         List<Order> orders = new ArrayList<>();
         Page<Tasklist> tasklist = null;
         // 根据接收人id查询任务id
@@ -206,9 +206,9 @@ public class TaskService {
         User user = udao.findByUserName(title);
 
         if (StringUtil.isEmpty(title)) {
-            orders.addAll(Arrays.asList(new Order(Direction.ASC, "cancel"), new Order(Direction.ASC, "statusId")));
-            Sort sort = new Sort(orders);
-            pa = new PageRequest(page, size, sort);
+            orders.addAll(Arrays.asList(new Order(Direction.ASC, "cancel"), new Order(Direction.ASC, "statusId"), new Order(Direction.DESC, "modifyTime")));
+            Sort sort2 = new Sort(orders);
+            pa = new PageRequest(page, size, sort2);
             if (taskid.size() > 0) {
 
                 tasklist = tdao.findTaskByTaskIds(taskid, pa);

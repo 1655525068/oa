@@ -1,8 +1,9 @@
 package cn.gson.oa.model.entity.book;
 
-import cn.gson.oa.model.entity.user.User;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -162,6 +163,18 @@ public class ThreeBook implements Cloneable {
     @Column(name = "is_lock")
     private Integer isLock = 0;
 
+    //修改时间
+    @Column(name = "modify_time")
+    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    private Date modifyTime;
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
 
     public List<ThreeBookProcess> getProcesses() {
         return processes;

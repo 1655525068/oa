@@ -524,8 +524,9 @@ public class TaskController {
     public String index5(@SessionAttribute("userId") Long userId, Model model,
                          @RequestParam(value = "page", defaultValue = "0") int page,
                          @RequestParam(value = "size", defaultValue = "50") int size) {
-        Pageable pa = new PageRequest(page, size);
-        Page<Tasklist> tasklist = tservice.index3(userId, null, page, size);
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "modifyTime"));
+        Pageable pa = new PageRequest(page, size, sort);
+        Page<Tasklist> tasklist = tservice.index3(userId, null, page, size, sort);
 
         Page<Tasklist> tasklist2 = tdao.findByTickingIsNotNull(pa);
         if (tasklist != null) {
@@ -552,11 +553,12 @@ public class TaskController {
                          @RequestParam(value = "page", defaultValue = "0") int page,
                          @RequestParam(value = "size", defaultValue = "50") int size) throws ParseException {
 
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "modifyTime"));
         String title = null;
         if (!StringUtil.isEmpty(request.getParameter("title"))) {
             title = request.getParameter("title").trim();
         }
-        Page<Tasklist> tasklist = tservice.index3(userId, title, page, size);
+        Page<Tasklist> tasklist = tservice.index3(userId, title, page, size, sort);
         List<Map<String, Object>> list = tservice.index4(tasklist, userId);
         model.addAttribute("tasklist", list);
         model.addAttribute("page", tasklist);
@@ -707,7 +709,10 @@ public class TaskController {
 //            }
             if ("access".equals(commit)) {
                 task.getThreeBook().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
+
             }
+            task.getThreeBook().setModifyTime(new Date());
+            task.setModifyTime(new Date());
             tdao.save(task);
             if (tb.getProcesses() != null) {
                 for (ThreeBookProcess process : tb.getProcesses()) {
@@ -746,6 +751,7 @@ public class TaskController {
                 if (finalLogger1.getLoggerStatusid() != 8 && (task.getDetailDraw().getCompletionTime() == null || task.getDetailDraw().getCompletionTime().isEmpty()))
                     task.getDetailDraw().setCompletionTime(new SimpleDateFormat("yyyy-M-d").format(new Date()));
             }
+            task.getDetailDraw().setModifyTime(new Date());
             // 处理单号
             tdao.save(task);
             // 填写问题

@@ -142,7 +142,7 @@ public class FreemarkerUtils {
      * param freemarkerInput
      * param fileName
      */
-    public static void exportImageExcelNew(HttpServletResponse response, FreemarkerInput freemarkerInput,String fileName) {
+    public static void exportImageExcelNew(HttpServletResponse response, FreemarkerInput freemarkerInput, String fileName) {
         try {
             OutputStream outputStream = response.getOutputStream();
             // 写入excel文件
@@ -330,95 +330,95 @@ public class FreemarkerUtils {
             FileUtils.forceMkdirParent(tempXMLFile);
             out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempXMLFile), "UTF-8"));
             template.process(freemarkerInput.getDataMap(), out);
-            if (log.isDebugEnabled()) {
-                log.debug("1.完成将文本数据导入到XML文件中");
-            }
-            SAXReader reader = new SAXReader();
-            Document document = reader.read(tempXMLFile);
-            Map<String, Style> styleMap = readXmlStyle(document);
-            log.debug("2.完成解析XML中样式信息");
-            List<Worksheet> worksheets = readXmlWorksheet(document);
-            if (log.isDebugEnabled()) {
-                log.debug("3.开始将XML信息写入Excel，数据为：" + worksheets.toString());
-            }
-            XSSFWorkbook wb = new XSSFWorkbook();
-            for (Worksheet worksheet : worksheets) {
-                XSSFSheet sheet = wb.createSheet(worksheet.getName());
-                Table table = worksheet.getTable();
-                List<Row> rows = table.getRows();
-                List<Column> columns = table.getColumns();
-                if (columns != null && columns.size() > 0) {
-                    // 填充列宽
-                    int columnIndex = 0;
-                    for (int i = 0; i < columns.size(); i++) {
-                        Column column = columns.get(i);
-                        columnIndex = getCellWidthIndex(columnIndex, i, column.getIndex());
-                        sheet.setColumnWidth(columnIndex, (int) column.getWidth() * 50);
-                    }
-                }
-                int createRowIndex = 0;
-                List<CellRangeAddressEntity> cellRangeAddresses = new ArrayList<>();
-                for (int rowIndex = 0; rowIndex < rows.size(); rowIndex++) {
-                    Row rowInfo = rows.get(rowIndex);
-                    if (rowInfo == null) {
-                        continue;
-                    }
-                    createRowIndex = getIndex(createRowIndex, rowIndex, rowInfo.getIndex());
-                    XSSFRow row = sheet.createRow(createRowIndex);
-                    if (rowInfo.getHeight() != null) {
-                        Integer height = rowInfo.getHeight() * 20;
-                        row.setHeight(height.shortValue());
-                    }
-                    List<Cell> cells = rowInfo.getCells();
-                    if (CollectionUtils.isEmpty(cells)) {
-                        continue;
-                    }
-                    int startIndex = 0;
-                    for (int cellIndex = 0; cellIndex < cells.size(); cellIndex++) {
-                        Cell cellInfo = cells.get(cellIndex);
-                        if (cellInfo == null) {
-                            continue;
-                        }
-                        // 获取起始列
-                        startIndex = getIndex(startIndex, cellIndex, cellInfo.getIndex());
-                        XSSFCell cell = row.createCell(startIndex);
-                        String styleID = cellInfo.getStyleID();
-                        Style style = styleMap.get(styleID);
-                        /*设置数据单元格格式*/
-                        CellStyle dataStyle = wb.createCellStyle();
-                        // 设置边框样式
-                        setBorder(style, dataStyle);
-                        // 设置对齐方式
-                        setAlignment(style, dataStyle);
-                        // 填充文本
-                        setValue(wb, cellInfo, cell, style, dataStyle);
-                        // 填充颜色
-                        setCellColor(style, dataStyle);
-                        cell.setCellStyle(dataStyle);
-                        //单元格注释
-                        if (cellInfo.getComment() != null) {
-                            Data data = cellInfo.getComment().getData();
-                            Comment comment = sheet.createDrawingPatriarch()
-                                    .createCellComment(new XSSFClientAnchor(0, 0, 0, 0, (short) 3, 3, (short) 5, 6));
-                            comment.setString(new XSSFRichTextString(data.getText()));
-                            cell.setCellComment(comment);
-                        }
-                        // 合并单元格
-                        startIndex = getCellRanges(createRowIndex, cellRangeAddresses, startIndex, cellInfo, style);
-                    }
-                }
-                // 添加合并单元格
-                addCellRange(sheet, cellRangeAddresses);
-            }
-            // 加载图片到excel
-            log.debug("4.开始写入图片：" + freemarkerInput.getExcelImageInputs());
-            if (!CollectionUtils.isEmpty(freemarkerInput.getExcelImageInputs())) {
-                writeImageToExcel(freemarkerInput.getExcelImageInputs(), wb);
-            }
-            log.debug("5.完成写入图片：" + freemarkerInput.getExcelImageInputs());
-            // 写入excel文件,response字符流转换成字节流，template需要字节流作为输出
-            wb.write(outputStream);
-            outputStream.close();
+//            if (log.isDebugEnabled()) {
+//                log.debug("1.完成将文本数据导入到XML文件中");
+//            }
+//            SAXReader reader = new SAXReader();
+//            Document document = reader.read(tempXMLFile);
+//            Map<String, Style> styleMap = readXmlStyle(document);
+//            log.debug("2.完成解析XML中样式信息");
+//            List<Worksheet> worksheets = readXmlWorksheet(document);
+//            if (log.isDebugEnabled()) {
+//                log.debug("3.开始将XML信息写入Excel，数据为：" + worksheets.toString());
+//            }
+//            XSSFWorkbook wb = new XSSFWorkbook();
+//            for (Worksheet worksheet : worksheets) {
+//                XSSFSheet sheet = wb.createSheet(worksheet.getName());
+//                Table table = worksheet.getTable();
+//                List<Row> rows = table.getRows();
+//                List<Column> columns = table.getColumns();
+//                if (columns != null && columns.size() > 0) {
+//                    // 填充列宽
+//                    int columnIndex = 0;
+//                    for (int i = 0; i < columns.size(); i++) {
+//                        Column column = columns.get(i);
+//                        columnIndex = getCellWidthIndex(columnIndex, i, column.getIndex());
+//                        sheet.setColumnWidth(columnIndex, (int) column.getWidth() * 50);
+//                    }
+//                }
+//                int createRowIndex = 0;
+//                List<CellRangeAddressEntity> cellRangeAddresses = new ArrayList<>();
+//                for (int rowIndex = 0; rowIndex < rows.size(); rowIndex++) {
+//                    Row rowInfo = rows.get(rowIndex);
+//                    if (rowInfo == null) {
+//                        continue;
+//                    }
+//                    createRowIndex = getIndex(createRowIndex, rowIndex, rowInfo.getIndex());
+//                    XSSFRow row = sheet.createRow(createRowIndex);
+//                    if (rowInfo.getHeight() != null) {
+//                        Integer height = rowInfo.getHeight() * 20;
+//                        row.setHeight(height.shortValue());
+//                    }
+//                    List<Cell> cells = rowInfo.getCells();
+//                    if (CollectionUtils.isEmpty(cells)) {
+//                        continue;
+//                    }
+//                    int startIndex = 0;
+//                    for (int cellIndex = 0; cellIndex < cells.size(); cellIndex++) {
+//                        Cell cellInfo = cells.get(cellIndex);
+//                        if (cellInfo == null) {
+//                            continue;
+//                        }
+//                        // 获取起始列
+//                        startIndex = getIndex(startIndex, cellIndex, cellInfo.getIndex());
+//                        XSSFCell cell = row.createCell(startIndex);
+//                        String styleID = cellInfo.getStyleID();
+//                        Style style = styleMap.get(styleID);
+//                        /*设置数据单元格格式*/
+//                        CellStyle dataStyle = wb.createCellStyle();
+//                        // 设置边框样式
+//                        setBorder(style, dataStyle);
+//                        // 设置对齐方式
+//                        setAlignment(style, dataStyle);
+//                        // 填充文本
+//                        setValue(wb, cellInfo, cell, style, dataStyle);
+//                        // 填充颜色
+//                        setCellColor(style, dataStyle);
+//                        cell.setCellStyle(dataStyle);
+//                        //单元格注释
+//                        if (cellInfo.getComment() != null) {
+//                            Data data = cellInfo.getComment().getData();
+//                            Comment comment = sheet.createDrawingPatriarch()
+//                                    .createCellComment(new XSSFClientAnchor(0, 0, 0, 0, (short) 3, 3, (short) 5, 6));
+//                            comment.setString(new XSSFRichTextString(data.getText()));
+//                            cell.setCellComment(comment);
+//                        }
+//                        // 合并单元格
+//                        startIndex = getCellRanges(createRowIndex, cellRangeAddresses, startIndex, cellInfo, style);
+//                    }
+//                }
+//                // 添加合并单元格
+//                addCellRange(sheet, cellRangeAddresses);
+//            }
+//            // 加载图片到excel
+//            log.debug("4.开始写入图片：" + freemarkerInput.getExcelImageInputs());
+//            if (!CollectionUtils.isEmpty(freemarkerInput.getExcelImageInputs())) {
+//                writeImageToExcel(freemarkerInput.getExcelImageInputs(), wb);
+//            }
+//            log.debug("5.完成写入图片：" + freemarkerInput.getExcelImageInputs());
+//            // 写入excel文件,response字符流转换成字节流，template需要字节流作为输出
+//            wb.write(outputStream);
+//            outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
             log.error("导出excel异常：" + e.getMessage());
